@@ -101,9 +101,7 @@
       kate
       neovim
       git
-      github-desktop
       fzf
-    #  thunderbird
     ];
   };
 
