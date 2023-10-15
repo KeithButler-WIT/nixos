@@ -102,7 +102,6 @@
       neovim
       git
       fzf
-      icecat
     ];
   };
 
