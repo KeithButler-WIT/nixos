@@ -1,4 +1,4 @@
-#+title: Readme
+#+title: Home-Manager Configuration
 
 
 On non-nixos systems link the home-manager configs to the location its expected
