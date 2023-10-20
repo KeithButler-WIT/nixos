@@ -1,0 +1,7 @@
+#+title: Readme
+
+
+On non-nixos systems link the home-manager configs to the location its expected
+#+begin_src sh
+ln -s ~/nixos/home/ ~/.config/home-manager
+#+end_src
