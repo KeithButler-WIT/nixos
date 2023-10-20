@@ -19,6 +19,7 @@
     ./features/dunst
     ./features/emacs
     ./features/firefox
+    ./features/fish
     ./features/git
     ./features/nvim
     ./features/gtk
@@ -151,13 +152,6 @@
 **** Python
 #+begin_src nix
       (pkgs.python310.withPackages(ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots ]))
-#+end_src
-
-**** Lua
-Not all packages I need are in nix
-#+begin_src nix
-      # (pkgs.lua.withPackages(ps: with ps; [ luafilesystem penlight csv ]))
-      # pkgs.luarocks
 #+end_src
 
 **** Node
@@ -534,8 +528,8 @@ $color15 = rgb(${config.colorScheme.colors.base0F})
 #+begin_src nix
     sessionVariables = {
       EDITOR = "nvim";
-      TERMINAL = "nixGL alacritty";
-      TERMINAL_PROG = "nixGL alacritty";
+      TERMINAL = "alacritty";
+      TERMINAL_PROG = "alacritty";
       BROWSER = "firedragon";
 
       # ~/ Clean-up:
