@@ -18,6 +18,7 @@
     # ./features/qutebrowser.nix
     # ./features/spicetify.nix
     ./features/tealdeer
+    ./features/torrent
     ./features/xremap
   ];
 
@@ -40,7 +41,8 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes.onedark;
+  # colorScheme = inputs.nix-colors.colorSchemes.onedark;
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   # colorScheme = inputs.nix-colors.colorSchemes.dracula;
   # colorScheme = inputs.nix-colors.colorSchemes.nord;
   # colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
@@ -66,8 +68,34 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = [
+      # TODO move to hyprland conf
+      (pkgs.python3Packages.buildPythonPackage rec {
+        pname = "pyprland";
+        version = "1.4.1";
+        src = pkgs.fetchPypi {
+            inherit pname version;
+            sha256 = "sha256-JRxUn4uibkl9tyOe68YuHuJKwtJS//Pmi16el5gL9n8=";
+        };
+        format = "pyproject";
+        propagatedBuildInputs = with pkgs; [
+            python3Packages.setuptools
+            python3Packages.poetry-core
+            poetry
+        ];
+        doCheck = false;
+        })
+
+
+      pkgs.amdvlk
+      pkgs.mesa
+      # pkgs.linuxKernel.packages.linux_zen.amdgpu-pro
+      pkgs.egl-wayland
+      pkgs.i3lock
+      pkgs.xss-lock
       pkgs.mcfly
       pkgs.shfmt
+      pkgs.go-sct
+      # pkgs.caffeine
 
       # Core Packages
       pkgs.libglvnd
@@ -114,9 +142,7 @@
       pkgs.rclone
       pkgs.rclone-browser
 
-      (pkgs.python310.withPackages(ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots ]))
-
-      pkgs.postman
+      (pkgs.python310.withPackages(ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
       #pkgs.mongodb
       #pkgs.mongodb-tools
@@ -150,22 +176,23 @@
       #pkgs.heroic
       pkgs.gamemode
       pkgs.protonup-ng
+      pkgs.protonup-qt
       #pkgs.proton-ge
       pkgs.winetricks
       pkgs.protontricks
       #pkgs.wine-staging
       #pkgs.wine-osu
       #pkgs.wine-tkg
-      #pkgs.openmw
+      # (pkgs.openmw.overrideAttrs (_: rec { dontWrapQtApps = false; }))
+      # pkgs.openmw
 
       #pkgs.godot
       pkgs.aseprite
       pkgs.godot_4
-      pkgs.unityhub
+      # pkgs.unityhub
       pkgs.blender
 
       pkgs.mullvad-vpn
-      pkgs.qbittorrent
 
       # Xorg
       pkgs.xdg-desktop-portal-gtk
@@ -388,8 +415,8 @@ $color15 = rgb(${config.colorScheme.colors.base0F})
 
     sessionVariables = {
       EDITOR = "nvim";
-      TERMINAL = "alacritty";
-      TERMINAL_PROG = "alacritty";
+      TERMINAL = "kitty";
+      TERMINAL_PROG = "kitty";
       BROWSER = "firedragon";
 
       # ~/ Clean-up:
