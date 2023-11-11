@@ -10,12 +10,6 @@
     };
 
     shellInit = ''
-    '';
-
-    loginShellInit = ''
-    '';
-
-    interactiveShellInit = ''
       # Hide welcome message
       set fish_greeting
       set VIRTUAL_ENV_DISABLE_PROMPT "1"
@@ -107,6 +101,12 @@
 
     '';
 
+    loginShellInit = ''
+    '';
+
+    interactiveShellInit = ''
+    '';
+
     plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
       # { name = "grc"; src = pkgs.fishPlugins.grc.src; }
@@ -151,7 +151,7 @@
       big="expac -H M '%m\t%n' | sort -h | nl";     # Sort installed packages according to size in MB
       gitpkg="pacman -Q | grep -i '\-git' | wc -l"; # List amount of -git packages
       hm="home-manager";
-      hms="home-manager --file ~/nixos/home/home.nix switch --impure";
+      hms="home-manager switch --impure";
 
       # Get fastest mirrors
       mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist";
@@ -161,7 +161,7 @@
 
       # Cleanup orphaned packages
       cleanup="sudo pacman -Rns (pacman -Qtdq)";
-      nixclean="nix-store --gc; nix-store --optimise";
+      nixclean="home-manager expire-generations 10; nix-store --gc; nix-store --optimise";
 
       # Get the error messages from journalctl
       jctl="journalctl -p 3 -xb";
