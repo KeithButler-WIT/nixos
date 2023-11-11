@@ -23,6 +23,8 @@
         pkgs.fd
         pkgs.aspell
         pkgs.aspellDicts.en
+        pkgs.imagemagick
+        pkgs.librsvg
       ] );
   };
 
