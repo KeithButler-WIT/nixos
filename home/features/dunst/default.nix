@@ -316,7 +316,7 @@ experimental = {
         # IMPORTANT: colors have to be defined in quotation marks.
         # Otherwise the "#" and following would be interpreted as a comment.
         background = "#${base00}";
-        foreground = "#${base07}";
+        foreground = "#${base05}";
         timeout = 6;
         # Icon for notifications with low urgency, uncomment to enable
         #default_icon = /path/to/icon
@@ -326,16 +326,16 @@ experimental = {
       urgency_normal = {
         #background = "#6790eb";
         #foreground = "#425164";
-        background = "#${base02}";
-        foreground = "#${base07}";
+        background = "#${base00}";
+        foreground = "#${base05}";
         timeout = 6;
         # Icon for notifications with normal urgency, uncomment to enable
         #default_icon = /path/to/icon
       };
       urgency_critical = {
-        background = "#${base0F}";
+        background = "#${base08}";
         foreground = "#${base00}";
-        frame_color = "#${base07}";
+        frame_color = "#${base02}";
         timeout = 0;
         # Icon for notifications with critical urgency, uncomment to enable
         #default_icon = /path/to/icon
