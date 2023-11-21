@@ -5,12 +5,14 @@
   imports = [
     inputs.xremap-flake.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
-    ./features/alacritty
+    ./features/alacritty # requires nixGL on non-nixos
     ./features/dunst
     ./features/emacs
     ./features/firefox
     ./features/fish
     ./features/git
+    # ./features/kitty # requires nixGL on non-nixos
+    ./features/lf
     ./features/nvim
     ./features/gtk
     # ./features/mako.nix
@@ -85,6 +87,8 @@
         doCheck = false;
         })
 
+      # TODO add to direnv in required projects
+      pkgs.gum
 
       pkgs.amdvlk
       pkgs.mesa
@@ -94,6 +98,7 @@
       pkgs.xss-lock
       pkgs.mcfly
       pkgs.shfmt
+      # TODO write qtile conf from hm. use pkgs.go-sct/bin/sct
       pkgs.go-sct
       # pkgs.caffeine
 
@@ -218,7 +223,6 @@
       # pkgs.zoom-us
       # pkgs.slack
 
-      pkgs.spotify
       pkgs.cava
 
       # pkgs.jetbrains.idea-ultimate
@@ -247,11 +251,23 @@
       # # Building this configuration will create a copy of 'dotfiles/screenrc' in
       # # the Nix store. Activating the configuration will then make '~/.screenrc' a
       # # symlink to the Nix store copy.
+      # TODO stop using stow
       ".bashrc".source = ~/.dotfiles/.bashrc;
       ".bash_profile".source = ~/.dotfiles/.bash_profile;
-      ".profile".source = ~/.dotfiles/.profile;
       ".dmenurc".source = ~/.dotfiles/.dmenurc;
       ".xinitrc".source = ~/.dotfiles/.xinitrc;
+
+      ".config/doom".source = ~/.dotfiles/.config/doom;
+      # dunst
+      # fish
+      ".config/keepassxc".source = ~/.dotfiles/.config/keepassxc;
+      # openmw
+      # ${config.xdg.configHome}."/picom".source = ~/.dotfiles/.config/picom;
+      ".config/picom".source = ~/.dotfiles/.config/picom;
+      # qtile
+      # qutebrowser
+      # shell
+
 
       # # You can also set the file content immediately.
       # ".gradle/gradle.properties".text = ''
@@ -415,9 +431,12 @@ $color15 = rgb(${config.colorScheme.colors.base0F})
 
     sessionVariables = {
       EDITOR = "nvim";
+      ALTERNATE_EDITOR="emacs";
       TERMINAL = "kitty";
       TERMINAL_PROG = "kitty";
-      BROWSER = "firedragon";
+      BROWSER = "mercury-browser";
+      MAIL="thunderbird";
+
 
       # ~/ Clean-up:
       XDG_CONFIG_HOME="$HOME/.config";
@@ -448,9 +467,11 @@ $color15 = rgb(${config.colorScheme.colors.base0F})
       SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history";
 
       # Other program settings:
+      QT_QPA_PLATFORMTHEME="qt5ct";
+      XDG_CURRENT_DESKTOP="Unity";
       # DICS="/usr/share/stardict/dic/";
       # SUDO_ASKPASS="$HOME/.local/bin/dmenupass";
-      # FZF_DEFAULT_OPTS="--layout=reverse --height 40%";
+      FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1";
       # LESS=-R;
       # LESS_TERMCAP_mb="$(printf '%b' '[1;31m')";
       # LESS_TERMCAP_md="$(printf '%b' '[1;36m')";
