@@ -82,13 +82,13 @@
       end
 
 
-      if [ "$fish_key_bindings" = fish_vi_key_bindings ];
-            bind -Minsert ! __history_previous_command
-            bind -Minsert '$' __history_previous_command_arguments
-      else
-            bind ! __history_previous_command
-            bind '$' __history_previous_command_arguments
-      end
+      # if [ "$fish_key_bindings" = fish_vi_key_bindings ];
+      #       bind -Minsert ! __history_previous_command
+      #       bind -Minsert '$' __history_previous_command_arguments
+      # else
+      #       bind ! __history_previous_command
+      #       bind '$' __history_previous_command_arguments
+      # end
 
       set -g direnv_fish_mode eval_on_arrow    # trigger direnv at prompt, and on every arrow-based directory change (default)
 
@@ -115,15 +115,15 @@
 
     shellAliases = {
       # Replace ls with exa
-      ls="exa -al --color=always --group-directories-first --icons"; # preferred listing
-      la="exa -a --color=always --group-directories-first --icons";  # all files and dirs
-      ll="exa -l --color=always --group-directories-first --icons";  # long format
-      lt="exa -aT --color=always --group-directories-first --icons"; # tree listing
-      "l."="exa -a | grep -E '^\.'";                                   # show only dotfiles
+      ls="${pkgs.eza}/bin/eza -al --color=always --group-directories-first --icons"; # preferred listing
+      la="${pkgs.eza}/bin/eza -a --color=always --group-directories-first --icons";  # all files and dirs
+      ll="${pkgs.eza}/bin/eza -l --color=always --group-directories-first --icons";  # long format
+      lt="${pkgs.eza}/bin/eza -aT --color=always --group-directories-first --icons"; # tree listing
+      "l."="${pkgs.eza}/bin/eza -a | grep -E '^\.'";                                   # show only dotfiles
       ip="ip -color";
 
       # Replace some more things with better alternatives
-      cat="bat --style header --style snip --style changes --style header";
+      cat="${pkgs.bat}/bin/bat --style header --style snip --style changes --style header";
       yay="paru";
 
       # Common use
@@ -131,7 +131,7 @@
       fixpacman="sudo rm /var/lib/pacman/db.lck";
       tarnow="tar -acf ";
       untar="tar -xvf ";
-      wget="wget -c ";
+      wget="${pkgs.wget}/bin/wget -c ";
       rmpkg="sudo pacman -Rdd";
       psmem="ps auxf | sort -nr -k 4";
       psmem10="ps auxf | sort -nr -k 4 | head -10";
@@ -169,7 +169,7 @@
       # Recent installed packages
       rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
 
-      music="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify $argv";
+      music="LD_PRELOAD=/usr/local/lib/spotify-adblock.so ${pkgs.spotify}/bin/spotify $argv";
     };
   };
 
