@@ -4,9 +4,12 @@
 
   home.packages = [
       pkgs.qbittorrent
-      pkgs.jesec-rtorrent
+      #pkgs.jesec-rtorrent
+      pkgs.pyrosimple
+      pkgs.flood
   ];
 
+  #home.file.".config/rtorrent/rtorrent.rc".text = ''
   home.file.".rtorrent.rc".text = ''
     #############################################################################
     # A minimal rTorrent configuration that provides the basic features
@@ -26,6 +29,8 @@
     method.insert = cfg.session,  private|const|string, (cat,(cfg.basedir),".session/")
     method.insert = cfg.watch,    private|const|string, (cat,(cfg.basedir),"watch/")
 
+    # Create directories
+    #fs.mkdir.recursive = (cat,(cfg.basedir))
 
     ## Create instance directories
     execute.throw = sh, -c, (cat,\
@@ -48,13 +53,16 @@
     dht.port.set = 6881
     protocol.pex.set = yes
 
+    # DHT nodes for bootstrapping
+    #dht.add_bootstrap = dht.transmissionbt.com:6881
+    #dht.add_bootstrap = dht.libtorrent.org:25401
+
     trackers.use_udp.set = yes
 
 
     ## Peer settings
     throttle.max_uploads.set = 100
     throttle.max_uploads.global.set = 250
-
     throttle.min_peers.normal.set = 20
     throttle.max_peers.normal.set = 60
     throttle.min_peers.seed.set = 30
@@ -75,7 +83,7 @@
     ## Memory resource usage (increase if you have a large number of items loaded,
     ## and/or the available resources to spend)
     pieces.memory.max.set = 1800M
-    network.xmlrpc.size_limit.set = 4M
+    network.xmlrpc.size_limit.set = 16M
 
 
     ## Basic operational settings (no need to change these)
@@ -93,7 +101,7 @@
     system.cwd.set = (directory.default)
     network.http.dns_cache_timeout.set = 25
     schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace, 1000M))
-    #pieces.hash.on_completion.set = no
+    pieces.hash.on_completion.set = yes
     #view.sort_current = seeding, greater=d.ratio=
     #keys.layout.set = qwerty
     #network.http.capath.set = "/etc/ssl/certs"
@@ -116,6 +124,8 @@
     ## Add & download straight away
     schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start/*.torrent")))
 
+    #https://github.com/rakshasa/rtorrent/issues/250
+    #schedule = untied_directory,5,5,stop_untied=
 
     ## Run the rTorrent process as a daemon in the background
     ## (and control via XMLRPC sockets)
