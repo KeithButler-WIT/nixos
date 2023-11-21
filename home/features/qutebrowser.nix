@@ -2,7 +2,7 @@
 
 {
   programs.qutebrowser = with config.colorScheme.colors; {
-    enable = false;
+    enable = true;
     settings = {
       colors = {
         hints = {
