@@ -2,11 +2,17 @@
 
 {
 
+  home.packages = [
+        pkgs.zoxide
+        pkgs.curl
+        pkgs.man
+  ];
+
   programs.fish = {
     enable = true;
 
     functions = {
-      gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+      gitignore = "${pkgs.curl}/bin/curl -sL https://www.gitignore.io/api/$argv";
     };
 
     shellInit = ''
@@ -32,16 +38,16 @@
 
       # Add ~/.local/bin to PATH
       if test -d ~/.local/bin
-      if not contains -- ~/.local/bin $PATH
-            set -p PATH ~/.local/bin
-      end
+            if not contains -- ~/.local/bin $PATH
+                  set -p PATH ~/.local/bin
+            end
       end
 
       # Add depot_tools to PATH
       if test -d ~/Applications/depot_tools
-      if not contains -- ~/Applications/depot_tools $PATH
-            set -p PATH ~/Applications/depot_tools
-      end
+            if not contains -- ~/Applications/depot_tools $PATH
+                  set -p PATH ~/Applications/depot_tools
+            end
       end
 
       # Add ~/.config/.emacs.d/bin  to PATH
@@ -69,9 +75,14 @@
 
 
       ## Run fastfetch if session is interactive
-      if status --is-interactive && type -q fastfetch
-            fastfetch --load-config neofetch
-      end
+      # if status --is-interactive && type -q fastfetch
+            # ${pkgs.fastfetch}/bin/fastfetch --load-config neofetch
+      # end
+
+      ${pkgs.macchina}/bin/macchina -t Berylilum
+      # ${pkgs.macchina}/bin/macchina -t Helium
+      # ${pkgs.macchina}/bin/macchina -t Hydrogen
+      # ${pkgs.macchina}/bin/macchina -t Lithium
 
 
       if [ "$INSIDE_EMACS" = 'vterm' ]
@@ -80,6 +91,8 @@
                   tput clear;
             end
       end
+
+      ${pkgs.zoxide}/bin/zoxide init fish | source
 
 
       # if [ "$fish_key_bindings" = fish_vi_key_bindings ];
@@ -152,6 +165,7 @@
       gitpkg="pacman -Q | grep -i '\-git' | wc -l"; # List amount of -git packages
       hm="home-manager";
       hms="home-manager switch --impure";
+      g="git";
 
       # Get fastest mirrors
       mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist";
@@ -172,5 +186,35 @@
       music="LD_PRELOAD=/usr/local/lib/spotify-adblock.so ${pkgs.spotify}/bin/spotify $argv";
     };
   };
+
+  home.file.".config/macchina/themes/Berylilum.toml".text = ''
+      # Beryllium
+      # https://github.com/Macchina-CLI/macchina/blob/main/contrib/themes/Beryllium.toml
+
+      spacing         = 3
+      hide_ascii      = true
+      key_color       = "#7067CF"
+      separator       = ""
+
+      [box]
+      border          = "plain"
+      visible         = true
+
+      [palette]
+      glyph           = "○  "
+      visible         = true
+
+      [bar]
+      glyph           = "○"
+      hide_delimiters = true
+      visible         = true
+
+      [box.inner_margin]
+      x               = 2
+      y               = 1
+
+      [custom_ascii]
+      color           = "#FF7001"
+  '';
 
 }
