@@ -76,7 +76,7 @@ programs.mpv = {
     # may or may not help.
     hwdec="auto";
     #vo=gpu
-    #gpu-context=wayland
+    gpu-context="wayland";
     ##################
     # audio settings #
     ##################

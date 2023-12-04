@@ -12,8 +12,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Ant-Dracula";
-      package = pkgs.dracula-theme;
+      name = "Catppuccin-Mocha-Standard-Blue-Dark";
+      package = pkgs.catppuccin-gtk;
     };
     iconTheme = {
       name = "Tela-pink-dark";

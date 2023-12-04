@@ -90,6 +90,11 @@
       # TODO add to direnv in required projects
       pkgs.gum
 
+      pkgs.wallust # better pywal
+
+      pkgs.buku # browser indepenent bookmarks
+      pkgs.bukubrow
+
       pkgs.amdvlk
       pkgs.mesa
       # pkgs.linuxKernel.packages.linux_zen.amdgpu-pro
@@ -116,7 +121,6 @@
       pkgs.libreoffice
       pkgs.github-desktop
       pkgs.github-cli
-      # pkgs.firefox
       # pkgs.librewolf
       # pkgs.icecat
       pkgs.gpodder
@@ -133,30 +137,10 @@
       pkgs.trash-cli
       pkgs.ncdu # disk space management
 
-      # pkgs.borg
-
-      # pkgs.hyprland
-      # pkgs.swww
-      # pkgs.waybar
-      # pkgs.swaylock
-      # pkgs.wlogout
-      # pkgs.swayidle
-      # pkgs.grim
-      # pkgs.dunst
-
       pkgs.rclone
       pkgs.rclone-browser
 
       (pkgs.python310.withPackages(ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
-
-      #pkgs.mongodb
-      #pkgs.mongodb-tools
-      #pkgs.mongosh
-
-      pkgs.dracula-theme
-      pkgs.dracula-icon-theme
-      #pkgs.catppuccin-gtk
-      #pkgs.lxappearance
 
       #pkgs.virt-manager
       #pkgs.libvirt
@@ -257,10 +241,10 @@
       ".dmenurc".source = ~/.dotfiles/.dmenurc;
       ".xinitrc".source = ~/.dotfiles/.xinitrc;
 
-      ".config/doom".source = ~/.dotfiles/.config/doom;
+      ".config/doom".source = ./features/emacs/doom;
       # dunst
       # fish
-      ".config/keepassxc".source = ~/.dotfiles/.config/keepassxc;
+      ".config/keepassxc".source = ./features/keepassxc;
       # openmw
       # ${config.xdg.configHome}."/picom".source = ~/.dotfiles/.config/picom;
       ".config/picom".source = ~/.dotfiles/.config/picom;
@@ -274,6 +258,43 @@
       #   org.gradle.console=verbose
       #   org.gradle.daemon.idletimeout=3600000
       # '';
+
+     ".Xresources".text = ''
+        *background: #1E1E2E
+        *foreground: #CDD6F4
+
+        ! black
+        *color0: #45475A
+        *color8: #585B70
+
+        ! red
+        *color1: #F38BA8
+        *color9: #F38BA8
+
+        ! green
+        *color2: #A6E3A1
+        *color10: #A6E3A1
+
+        ! yellow
+        *color3: #F9E2AF
+        *color11: #F9E2AF
+
+        ! blue
+        *color4: #89B4FA
+        *color12: #89B4FA
+
+        ! magenta
+        *color5: #F5C2E7
+        *color13: #F5C2E7
+
+        ! cyan
+        *color6: #94E2D5
+        *color14: #94E2D5
+
+        ! white
+        *color7: #BAC2DE
+        *color15: #A6ADC8
+     '';
 
       ".config/rofi/config.rasi".text = ''
         configuration {
@@ -465,6 +486,7 @@ $color15 = rgb(${config.colorScheme.colors.base0F})
       ELECTRUMDIR="$XDG_DATA_HOME/electrum";
       PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc";
       SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history";
+      OpenGL_GL_PREFERENCE="GLVND";
 
       # Other program settings:
       QT_QPA_PLATFORMTHEME="qt5ct";
