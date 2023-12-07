@@ -1,5 +1,7 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Keith Butler
+#+auto_tangle: t
+
 
 * Table Of Contents :Toc:quote:
 #+BEGIN_QUOTE
@@ -22,6 +24,8 @@
   - [[#deft-variables][Deft Variables]]
   - [[#pdf-tools][PDF Tools]]
   - [[#yas-snippets][Yas Snippets]]
+  - [[#direnv-integration][direnv integration]]
+  - [[#zoxide-integration][zoxide integration]]
 - [[#org][org]]
   - [[#latex-exporter][LaTeX Exporter]]
   - [[#style][Style]]
@@ -561,6 +565,14 @@ https://protesilaos.com/emacs/dired-preview
       :leader :desc "Opens file in dragon-drop" :gnv "l" (start-process "" nil "dragon-drop" (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "dragon-drop" fPath)) ) (dired-get-marked-files) ))
 #+end_src
 
+** direnv integration
+#+begin_src  emacs-lisp :results none :tangle packages.el
+(package! direnv)
+#+end_src
+** zoxide integration
+#+begin_src  emacs-lisp :results none :tangle packages.el
+(package! zoxide)
+#+end_src
 * org
 ** LaTeX Exporter
 #+begin_src  emacs-lisp :results none
@@ -1065,7 +1077,7 @@ Use [[https://github.com/awth13/org-appear][org-appear]] to reveal emphasis mark
                 "okular"
                 '(file))
             (list (openwith-make-extension-regexp
-                '("xcf" "ai" "psd" "svg" "tub"))
+                '("xcf" "ai" "psd" "svg" "tu    b"))
                 "gimp"
                 '(file))
             (list (openwith-make-extension-regexp

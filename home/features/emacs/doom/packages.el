@@ -55,6 +55,10 @@
 
 (package! catppuccin-theme)
 
+(package! direnv)
+
+(package! zoxide)
+
 (package! org-super-agenda)
 
 (package! org-timeblock)
