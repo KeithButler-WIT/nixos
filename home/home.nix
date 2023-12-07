@@ -7,6 +7,7 @@
     inputs.nix-colors.homeManagerModules.default
     ./features/alacritty # requires nixGL on non-nixos
     ./features/bash
+    ./features/borgmatic
     ./features/dunst
     ./features/emacs
     ./features/firefox
@@ -18,8 +19,9 @@
     ./features/gtk
     # ./features/mako.nix
     ./features/mpv
+    ./features/ncmpcpp
     # ./features/qutebrowser.nix
-    # ./features/spicetify.nix
+    # ./features/spicetify.nix # Requires spotify premium
     ./features/tealdeer
     ./features/torrent
     ./features/xremap
@@ -635,64 +637,11 @@ programs.starship = {
   enableTransience = true;
 };
 
-programs.ncmpcpp = {
-  enable = true;
-  #mpdMusicDir= "~/Music";
-  bindings = [
-    { key = "j"; command = "scroll_down"; }
-    { key = "k"; command = "scroll_up"; }
-    { key = "J"; command = [ "select_item" "scroll_down" ]; }
-    { key = "K"; command = [ "select_item" "scroll_up" ]; }
-    { key = "v"; command = "show_visualizer"; }
-  ];
-};
-
 programs.java.enable = true;
 
 programs.direnv = {
   enable = true;
   nix-direnv.enable = true;
-};
-
-programs.borgmatic = {
-  enable = true;
-  backups = {
-    personal = {
-      location = {
-        sourceDirectories = [config.home.homeDirectory];
-        repositories = [ "/run/media/keith/4TB-BACKUP/backup" ];
-        excludeHomeManagerSymlinks = true;
-        # extraConfig = {
-          # before_backup = "${pkgs.util-linux}/bin/findmnt /run/media/keith/4TB-BACKUP > /dev/null || exit 75";
-        # };
-      };
-      consistency.checks = [
-        {
-            name = "repository";
-            frequency = "2 weeks";
-        }
-        {
-            name = "archives";
-            frequency = "4 weeks";
-        }
-        {
-            name = "data";
-            frequency = "6 weeks";
-        }
-        {
-            name = "extract";
-            frequency = "6 weeks";
-        }
-      ];
-      retention.keepWeekly = 3;
-      # storage.encryptionPasscommand = "${pkgs.password-store}/bin/pass Root/borg-repo"
-    };
-  };
-};
-
-services.borgmatic = {
-  enable = true;
-  frequency = "weekly";
 };
 
   services.mpd = {
