@@ -1,7 +1,13 @@
 { config, lib, pkgs, ... }:
 
 {
+
+  home.packages = [
+      pkgs.github-desktop
+  ];
+
   programs.gh.enable = true;
+
   programs.git = {
     enable = true;
     package = pkgs.git;
@@ -39,4 +45,5 @@
       co = "checkout";
     };
   };
+
 }

@@ -5,26 +5,19 @@
   imports = [
     inputs.xremap-flake.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
+
     ./features/alacritty # requires nixGL on non-nixos
-    ./features/bash
-    ./features/borgmatic
     ./features/dunst
     ./features/emacs
+    ./features/file
     ./features/firefox
-    ./features/fish
-    ./features/git
+    ./features/hyprland
     # ./features/kitty # requires nixGL on non-nixos
-    ./features/lf
-    ./features/nvim
     ./features/gtk
-    # ./features/mako.nix
-    ./features/mpv
-    ./features/ncmpcpp
-    # ./features/qutebrowser.nix
-    # ./features/spicetify.nix # Requires spotify premium
-    ./features/tealdeer
-    ./features/torrent
-    ./features/xremap
+    # ./features/mako
+    # ./features/qutebrowser
+    ./features/shell
+    # ./features/spicetify # Requires spotify premium
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -73,50 +66,24 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = [
-      # TODO move to hyprland conf
-      (pkgs.python3Packages.buildPythonPackage rec {
-        pname = "pyprland";
-        version = "1.4.1";
-        src = pkgs.fetchPypi {
-            inherit pname version;
-            sha256 = "sha256-JRxUn4uibkl9tyOe68YuHuJKwtJS//Pmi16el5gL9n8=";
-        };
-        format = "pyproject";
-        propagatedBuildInputs = with pkgs; [
-            python3Packages.setuptools
-            python3Packages.poetry-core
-            poetry
-        ];
-        doCheck = false;
-        })
-
       # TODO add to direnv in required projects
       pkgs.gum
-
+      pkgs.mermaid-cli
       # TODO Check if installed / move to right place
       pkgs.docker
-      pkgs.feh
-      pkgs.flameshot
-      pkgs.galculator
-      pkgs.gamemode
-      pkgs.gparted
-      pkgs.grimblast
-      pkgs.kdeconnect
-      pkgs.kleopatra
-      pkgs.mermaid-cli
-      # pkgs.miniconda
       pkgs.ncdu
       pkgs.newsboat
       pkgs.nsxiv
       pkgs.numlockx
-      pkgs.waybar
       pkgs.flatpak
 
-      pkgs.nwg-bar
-      pkgs.nwg-drawer
-      pkgs.nwg-launchers
-      pkgs.nwg-look
-
+      pkgs.flameshot
+      pkgs.galculator
+      pkgs.gamemode
+      pkgs.gparted
+      pkgs.kdeconnect
+      pkgs.kleopatra
+      # pkgs.miniconda
       pkgs.pavucontrol
       pkgs.piper
       # pkgs.r2modman
@@ -156,15 +123,12 @@
       pkgs.keepassxc
       pkgs.pass
       pkgs.libreoffice
-      pkgs.github-desktop
-      pkgs.github-cli
       # pkgs.librewolf
       # pkgs.icecat
       pkgs.gpodder
       pkgs.gparted
       pkgs.yt-dlp
       pkgs.tor-browser-bundle-bin
-      pkgs.fzf
       pkgs.rsync
       pkgs.grsync
       pkgs.feh
@@ -184,19 +148,6 @@
       #pkgs.libvirt-glib
       pkgs.quickemu
       pkgs.quickgui
-
-      #pkgs.steam
-      #pkgs.steam-run
-      #pkgs.steamPackages.steamcmd
-      #pkgs.steam-tui
-      #(pkgs.steam.override {
-      #  withPrimus = true;
-      #  withJava = true;
-      #  extraPkgs = pkgs: [
-      #    pkgs.mono pkgs.gtk3 pkgs.gtk3-x11 pkgs.libgdiplus pkgs.zlib pkgs.bumblebee pkgs.glxinfo
-      #  ];
-      #  nativeOnly = true; })
-      #pkgs.lutris
 
       pkgs.obs-studio
       #pkgs.heroic
@@ -267,214 +218,6 @@
       # '')
     ];
 
-    # Home Manager is pretty good at managing dotfiles. The primary way to manage
-    # plain files is through 'home.file'.
-    file = {
-      # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-      # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-      # # symlink to the Nix store copy.
-      # TODO stop using stow
-      ".dmenurc".source = ~/.dotfiles/.dmenurc;
-      ".xinitrc".source = ~/.dotfiles/.xinitrc;
-
-      ".config/doom".source = ./features/emacs/doom;
-      # dunst
-      # fish
-      ".config/keepassxc".source = ./features/keepassxc;
-      # openmw
-      # ${config.xdg.configHome}."/picom".source = ~/.dotfiles/.config/picom;
-      ".config/picom".source = ~/.dotfiles/.config/picom;
-      # qtile
-      # qutebrowser
-      # shell
-
-
-      # # You can also set the file content immediately.
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
-
-     ".Xresources".text = ''
-        *background: #1E1E2E
-        *foreground: #CDD6F4
-
-        ! black
-        *color0: #45475A
-        *color8: #585B70
-
-        ! red
-        *color1: #F38BA8
-        *color9: #F38BA8
-
-        ! green
-        *color2: #A6E3A1
-        *color10: #A6E3A1
-
-        ! yellow
-        *color3: #F9E2AF
-        *color11: #F9E2AF
-
-        ! blue
-        *color4: #89B4FA
-        *color12: #89B4FA
-
-        ! magenta
-        *color5: #F5C2E7
-        *color13: #F5C2E7
-
-        ! cyan
-        *color6: #94E2D5
-        *color14: #94E2D5
-
-        ! white
-        *color7: #BAC2DE
-        *color15: #A6ADC8
-     '';
-
-      ".config/rofi/config.rasi".text = ''
-        configuration {
-            display-drun: "Applications";
-            display-window: "drun";
-            drun-display-format: "{name}";
-            font: "Fira Sans SemiBold 11";
-            modi: "run,drun";
-            /* show-icons: true; */
-        }
-
-        window {
-            width:700px;
-        }
-
-        element {
-            padding:6;
-        }
-
-        element-text selected {
-            text-color:#${config.colorScheme.colors.base00};
-        }
-
-        prompt {
-            text-color:#${config.colorScheme.colors.base0F};
-        }
-
-        entry {
-            text-color:#${config.colorScheme.colors.base0A};
-        }
-
-        /* vim: ft=sass
-        '';
-
-      ".cache/nix-colors/colors.py".text = ''
-        #!/usr/bin/env python3
-
-        colors = {
-            "00": "${config.colorScheme.colors.base00}",
-            "01": "${config.colorScheme.colors.base01}",
-            "02": "${config.colorScheme.colors.base02}",
-            "03": "${config.colorScheme.colors.base03}",
-            "04": "${config.colorScheme.colors.base04}",
-            "05": "${config.colorScheme.colors.base05}",
-            "06": "${config.colorScheme.colors.base06}",
-            "07": "${config.colorScheme.colors.base07}",
-            "08": "${config.colorScheme.colors.base08}",
-            "09": "${config.colorScheme.colors.base09}",
-            "10": "${config.colorScheme.colors.base0A}",
-            "11": "${config.colorScheme.colors.base0B}",
-            "12": "${config.colorScheme.colors.base0C}",
-            "13": "${config.colorScheme.colors.base0D}",
-            "14": "${config.colorScheme.colors.base0E}",
-            "15": "${config.colorScheme.colors.base0F}"
-        }'';
-
-      ".cache/nix-colors/colors".text = ''
-        #${config.colorScheme.colors.base00}
-        #${config.colorScheme.colors.base01}
-        #${config.colorScheme.colors.base02}
-        #${config.colorScheme.colors.base03}
-        #${config.colorScheme.colors.base04}
-        #${config.colorScheme.colors.base05}
-        #${config.colorScheme.colors.base06}
-        #${config.colorScheme.colors.base07}
-        #${config.colorScheme.colors.base08}
-        #${config.colorScheme.colors.base09}
-        #${config.colorScheme.colors.base0A}
-        #${config.colorScheme.colors.base0B}
-        #${config.colorScheme.colors.base0C}
-        #${config.colorScheme.colors.base0D}
-        #${config.colorScheme.colors.base0E}
-        #${config.colorScheme.colors.base0F}
-        '';
-
-      ".cache/nix-colors/colors-hyprland.conf".text = ''
-$background = rgb(${config.colorScheme.colors.base00})
-$foreground = rgb(${config.colorScheme.colors.base00})
-$color0 = rgb(${config.colorScheme.colors.base00})
-$color1 = rgb(${config.colorScheme.colors.base01})
-$color2 = rgb(${config.colorScheme.colors.base02})
-$color3 = rgb(${config.colorScheme.colors.base03})
-$color4 = rgb(${config.colorScheme.colors.base04})
-$color5 = rgb(${config.colorScheme.colors.base05})
-$color6 = rgb(${config.colorScheme.colors.base06})
-$color7 = rgb(${config.colorScheme.colors.base07})
-$color8 = rgb(${config.colorScheme.colors.base08})
-$color9 = rgb(${config.colorScheme.colors.base09})
-$color10 = rgb(${config.colorScheme.colors.base0A})
-$color11 = rgb(${config.colorScheme.colors.base0B})
-$color12 = rgb(${config.colorScheme.colors.base0C})
-$color13 = rgb(${config.colorScheme.colors.base0D})
-$color14 = rgb(${config.colorScheme.colors.base0E})
-$color15 = rgb(${config.colorScheme.colors.base0F})
-        '';
-
-      ".cache/nix-colors/colors-waybar.css".text = ''
-@define-color foreground #${config.colorScheme.colors.base00};
-@define-color background #${config.colorScheme.colors.base00};
-@define-color cursor #${config.colorScheme.colors.base0F};
-
-@define-color color0 #${config.colorScheme.colors.base00};
-@define-color color1 #${config.colorScheme.colors.base01};
-@define-color color2 #${config.colorScheme.colors.base02};
-@define-color color3 #${config.colorScheme.colors.base03};
-@define-color color4 #${config.colorScheme.colors.base04};
-@define-color color5 #${config.colorScheme.colors.base05};
-@define-color color6 #${config.colorScheme.colors.base06};
-@define-color color7 #${config.colorScheme.colors.base07};
-@define-color color8 #${config.colorScheme.colors.base08};
-@define-color color9 #${config.colorScheme.colors.base09};
-@define-color color10 #${config.colorScheme.colors.base0A};
-@define-color color11 #${config.colorScheme.colors.base0B};
-@define-color color12 #${config.colorScheme.colors.base0C};
-@define-color color13 #${config.colorScheme.colors.base0D};
-@define-color color14 #${config.colorScheme.colors.base0E};
-@define-color color15 #${config.colorScheme.colors.base0F};
-        '';
-
-      ".cache/nix-colors/colors-wlogout.css".text = ''
-@define-color foreground #${config.colorScheme.colors.base00};
-@define-color background #${config.colorScheme.colors.base00};
-@define-color cursor #${config.colorScheme.colors.base0F};
-
-@define-color color0 #${config.colorScheme.colors.base00};
-@define-color color1 #${config.colorScheme.colors.base01};
-@define-color color2 #${config.colorScheme.colors.base02};
-@define-color color3 #${config.colorScheme.colors.base03};
-@define-color color4 #${config.colorScheme.colors.base04};
-@define-color color5 #${config.colorScheme.colors.base05};
-@define-color color6 #${config.colorScheme.colors.base06};
-@define-color color7 #${config.colorScheme.colors.base07};
-@define-color color8 #${config.colorScheme.colors.base08};
-@define-color color9 #${config.colorScheme.colors.base09};
-@define-color color10 #${config.colorScheme.colors.base0A};
-@define-color color11 #${config.colorScheme.colors.base0B};
-@define-color color12 #${config.colorScheme.colors.base0C};
-@define-color color13 #${config.colorScheme.colors.base0D};
-@define-color color14 #${config.colorScheme.colors.base0E};
-@define-color color15 #${config.colorScheme.colors.base0F};
-        '';
-
-    };
-
     # You can also manage environment variables but you will have to manually
     # source
     #
@@ -486,126 +229,6 @@ $color15 = rgb(${config.colorScheme.colors.base0F})
     #
     # if you don't want to manage your shell through Home Manager.
 
-    sessionVariables = {
-      EDITOR = "nvim";
-      ALTERNATE_EDITOR="emacs";
-      TERMINAL = "kitty";
-      TERMINAL_PROG = "kitty";
-      BROWSER = "mercury-browser";
-      MAIL="thunderbird";
-
-
-      # ~/ Clean-up:
-      XDG_CONFIG_HOME="$HOME/.config";
-      XDG_DATA_HOME="$HOME/.local/share";
-      XDG_CACHE_HOME="$HOME/.cache";
-      XINITRC="$XDG_CONFIG_HOME/x11/xinitrc";
-      #XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"; # This line will break some DMs.
-      NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config";
-      # GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0";
-      WGETRC="$XDG_CONFIG_HOME/wget/wgetrc";
-      INPUTRC="$XDG_CONFIG_HOME/shell/inputrc";
-      ZDOTDIR="$XDG_CONFIG_HOME/zsh";
-      GNUPGHOME="$XDG_DATA_HOME/gnupg";
-      WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default";
-      KODI_DATA="$XDG_DATA_HOME/kodi";
-      PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store";
-      TMUX_TMPDIR="$XDG_RUNTIME_DIR";
-      ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android";
-      CARGO_HOME="$XDG_DATA_HOME/cargo";
-      GOPATH="$XDG_DATA_HOME/go";
-      GOMODCACHE="$XDG_CACHE_HOME/go/mod";
-      ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg";
-      UNISON="$XDG_DATA_HOME/unison";
-      HISTFILE="$XDG_DATA_HOME/history";
-      MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config";
-      ELECTRUMDIR="$XDG_DATA_HOME/electrum";
-      PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc";
-      SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history";
-      OpenGL_GL_PREFERENCE="GLVND";
-
-      # Other program settings:
-      QT_QPA_PLATFORMTHEME="qt5ct";
-      XDG_CURRENT_DESKTOP="Unity";
-      # DICS="/usr/share/stardict/dic/";
-      # SUDO_ASKPASS="$HOME/.local/bin/dmenupass";
-      FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1";
-      # LESS=-R;
-      # LESS_TERMCAP_mb="$(printf '%b' '[1;31m')";
-      # LESS_TERMCAP_md="$(printf '%b' '[1;36m')";
-      # LESS_TERMCAP_me="$(printf '%b' '[0m')";
-      # LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')";
-      # LESS_TERMCAP_se="$(printf '%b' '[0m')";
-      # LESS_TERMCAP_us="$(printf '%b' '[1;32m')";
-      # LESS_TERMCAP_ue="$(printf '%b' '[0m')";
-      # LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null";
-      # QT_QPA_PLATFORMTHEME="gtk2"; # Have QT use gtk2 theme.
-      # MOZ_USE_XINPUT2="1"; # Mozilla smooth scrolling/touchpads.
-      # AWT_TOOLKIT="MToolkit wmname LG3D"; # May have to install wmname
-      # _JAVA_AWT_WM_NONREPARENTING=1; # Fix for Java applications in dwm
-    };
-
-shellAliases = {
-    # Replace ls with exa
-    ls="${pkgs.eza}/bin/eza -al --color=always --group-directories-first --icons"; # preferred listing
-    la="${pkgs.eza}/bin/eza -a --color=always --group-directories-first --icons";  # all files and dirs
-    ll="${pkgs.eza}/bin/eza -l --color=always --group-directories-first --icons";  # long format
-    lt="${pkgs.eza}/bin/eza -aT --color=always --group-directories-first --icons"; # tree listing
-    "l."="${pkgs.eza}/bin/eza -a | grep -E '^\.'";                                   # show only dotfiles
-    ip="ip -color";
-
-    # Replace some more things with better alternatives
-    cat="${pkgs.bat}/bin/bat --style header --style snip --style changes --style header";
-    cd="z";
-
-    # Common use
-    tarnow="tar -acf ";
-    untar="tar -xvf ";
-    wget="${pkgs.wget}/bin/wget -c ";
-    psmem="ps auxf | sort -nr -k 4";
-    psmem10="ps auxf | sort -nr -k 4 | head -10";
-    cl="clear";
-    ".."="cd ..";
-    "..."="cd ../..";
-    "...."="cd ../../..";
-    "....."="cd ../../../..";
-    "......"="cd ../../../../..";
-    dir="dir --color=auto";
-    vdir="vdir --color=auto";
-    grep="grep --color=auto";
-    fgrep="fgrep --color=auto";
-    egrep="egrep --color=auto";
-    hw="hwinfo --short";                          # Hardware Info
-    big="expac -H M '%m\t%n' | sort -h | nl";     # Sort installed packages according to size in MB
-    gitpkg="pacman -Q | grep -i '\-git' | wc -l"; # List amount of -git packages
-    hm="home-manager";
-    hms="home-manager switch --impure";
-    g="git";
-
-    # Get fastest mirrors
-    mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist";
-    mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist";
-    mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist";
-    mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist";
-
-    # Cleanup orphaned packages
-    cleanup="sudo pacman -Rns (pacman -Qtdq)";
-    nixclean="home-manager expire-generations 10; nix-store --gc; nix-store --optimise";
-
-    # Get the error messages from journalctl
-    jctl="journalctl -p 3 -xb";
-
-    music="LD_PRELOAD=/usr/local/lib/spotify-adblock.so ${pkgs.spotify}/bin/spotify $argv";
-
-    # Arch/Garuda aliases
-    yay="paru";
-    grubup="sudo update-grub";
-    fixpacman="sudo rm /var/lib/pacman/db.lck";
-    rmpkg="sudo pacman -Rdd";
-    upd="/usr/bin/garuda-update";
-    ## Recent installed packages
-    rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
-};
 
   };
 
@@ -613,36 +236,7 @@ shellAliases = {
 # wayland.windowManager.hyprland.systemdIntegration = true;
 # wayland.windowManager.hyprland.xwayland.enable = true;
 
-  programs.ssh = {
-    enable = true;
-    matchBlocks."github.com" = {
-      user = "git";
-      identityFile = "~/.ssh/id_ed25519";
-    };
-    extraConfig = ''
-    '';
-  };
-
-programs.fzf = {
-  package = pkgs.fzf;
-  enable = true;
-  enableFishIntegration = true;
-  enableBashIntegration = true;
-};
-
-programs.starship = {
-  enable = true;
-  enableFishIntegration = true;
-  enableBashIntegration = true;
-  enableTransience = true;
-};
-
 programs.java.enable = true;
-
-programs.direnv = {
-  enable = true;
-  nix-direnv.enable = true;
-};
 
   services.mpd = {
     enable = true;
@@ -651,11 +245,6 @@ programs.direnv = {
 
   services.syncthing.enable = true;
   services.syncthing.tray.enable = true;
-
-  #services.mullvad-vpn.enable = true;
-
-  #services.gvfs.enable = true; # Mount, trash, and other functionalities
-  #services.tumbler.enable = true; # Thumbnail support for images
 
   services.home-manager.autoUpgrade.frequency = "weekly";
 

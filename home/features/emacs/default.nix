@@ -28,6 +28,8 @@
       ] );
   };
 
+  home.file.".config/doom".source = ./doom;
+
   # https://nixos.wiki/wiki/Emacs
   # services.emacs.enable = true;
   # services.emacs.client.enable = true;
