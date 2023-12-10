@@ -75,7 +75,7 @@
       pkgs.newsboat
       pkgs.nsxiv
       pkgs.numlockx
-      pkgs.flatpak
+      # pkgs.flatpak # dosent work that well on non-nixos
 
       pkgs.flameshot
       pkgs.galculator
