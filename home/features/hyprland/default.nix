@@ -59,4 +59,14 @@
     }
     '';
 
+  programs.wpaperd = {
+      enable = true;
+      settings = {
+        default = {
+            path = "/home/keith/Pictures/Wallpapers";
+            duration = "1h";
+        };
+      };
+  };
+
 }
