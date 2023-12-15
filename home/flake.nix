@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nur.url = "github:nix-community/NUR";
+    # nix-doom-emacs.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
 
     home-manager = {
       url = "github:nix-community/home-manager";

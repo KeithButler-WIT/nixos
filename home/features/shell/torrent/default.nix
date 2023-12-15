@@ -3,7 +3,7 @@
 {
 
   home.packages = [
-      pkgs.qbittorrent
+      #pkgs.qbittorrent
       #pkgs.jesec-rtorrent
       pkgs.pyrosimple
       pkgs.flood
