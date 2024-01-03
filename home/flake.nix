@@ -4,6 +4,8 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nur.url = "github:nix-community/NUR";
     # nix-doom-emacs.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
