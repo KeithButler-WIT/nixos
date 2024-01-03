@@ -6,7 +6,19 @@
       pkgs.github-desktop
   ];
 
-  programs.gh.enable = true;
+  programs.gh = {
+    enable = true;
+    extensions = [ pkgs.gh-eco ];
+    gitCredentialHelper.hosts = [ "https://github.com" ];
+    settings = {  
+      version = 1; # https://github.com/cli/cli/issues/8462
+      git_protocol = "ssh";  
+      prompt = "enabled";  
+      aliases = {    
+        co = "pr checkout";    
+        pv = "pr view";  };
+      };
+  };
 
   programs.git = {
     enable = true;
