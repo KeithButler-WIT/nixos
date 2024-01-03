@@ -589,11 +589,12 @@ https://protesilaos.com/emacs/dired-preview
     ;; code here will run immediately
     :config
     ;; code here will run after the package is loaded
-    (setq org-latex-pdf-process
-          '("pdflatex -interaction nonstopmode -output-directory %o %f"
-            "bibtex %b"
-            "pdflatex -interaction nonstopmode -output-directory %o %f"
-            "pdflatex -interaction nonstopmode -output-directory %o %f"))
+    (setq org-latex-to-pdf-process '("texi2dvi --pdf --clean --verbose --batch %f"))
+    ;; (setq org-latex-pdf-process
+    ;;       '("pdflatex -interaction nonstopmode -output-directory %o %f"
+    ;;         "bibtex %b"
+    ;;         "pdflatex -interaction nonstopmode -output-directory %o %f"
+    ;;         "pdflatex -interaction nonstopmode -output-directory %o %f"))
     (setq org-latex-with-hyperref nil) ;; stop org adding hypersetup{author..} to latex export
     ;; (setq org-latex-prefer-user-labels t)
 
@@ -603,6 +604,8 @@ https://protesilaos.com/emacs/dired-preview
 
     (unless (boundp 'org-latex-classes)
       (setq org-latex-classes nil))))
+#+end_src
+#+begin_src emacs-lisp
 #+end_src
 
 ** Style
