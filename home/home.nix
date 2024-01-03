@@ -17,21 +17,22 @@
     # ./features/mako
     # ./features/qutebrowser
     ./features/shell
+    ./features/steam
+    ./features/vm
     # ./features/spicetify # Requires spotify premium
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  #nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = _: true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1u"
-    "python-2.7.18.6"
-    "nodejs-16.20.1"
-    "nodejs-16.20.2"
-  ];
-  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-  #   "postman"
-  # ];
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
+    permittedInsecurePackages = [
+        "openssl-1.1.1u"
+        "python-2.7.18.6"
+        "nodejs-16.20.1"
+        "nodejs-16.20.2"
+    ];
+  };
   targets.genericLinux.enable = true; # Enable this on non nixos
 
   nix = {
@@ -69,6 +70,9 @@
       # TODO add to direnv in required projects
       pkgs.gum
       pkgs.mermaid-cli
+      pkgs.w3m
+      pkgs.ripgrep
+      pkgs.entr
       # TODO Check if installed / move to right place
       pkgs.docker
       pkgs.ncdu
@@ -79,7 +83,6 @@
 
       pkgs.flameshot
       pkgs.galculator
-      pkgs.gamemode
       pkgs.gparted
       pkgs.kdeconnect
       pkgs.kleopatra
@@ -141,6 +144,7 @@
       pkgs.rclone
       pkgs.rclone-browser
 
+      # TODO: Move into a flake in required folders
       (pkgs.python310.withPackages(ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
       #pkgs.virt-manager
@@ -150,18 +154,6 @@
       pkgs.quickgui
 
       pkgs.obs-studio
-      #pkgs.heroic
-      pkgs.gamemode
-      pkgs.protonup-ng
-      pkgs.protonup-qt
-      #pkgs.proton-ge
-      pkgs.winetricks
-      pkgs.protontricks
-      #pkgs.wine-staging
-      #pkgs.wine-osu
-      #pkgs.wine-tkg
-      # (pkgs.openmw.overrideAttrs (_: rec { dontWrapQtApps = false; }))
-      # pkgs.openmw
 
       #pkgs.godot
       pkgs.aseprite
@@ -198,7 +190,7 @@
       pkgs.cava
 
       # pkgs.jetbrains.idea-ultimate
-      # pkgs.jetbrains.idea-community
+      pkgs.jetbrains.idea-community
       pkgs.jetbrains.clion
       # pkgs.jetbrains.rustrover
       pkgs.vscode
@@ -236,7 +228,7 @@
 # wayland.windowManager.hyprland.systemdIntegration = true;
 # wayland.windowManager.hyprland.xwayland.enable = true;
 
-programs.java.enable = true;
+  programs.java.enable = true;
 
   services.mpd = {
     enable = true;
