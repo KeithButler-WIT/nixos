@@ -47,7 +47,7 @@
 
       # Cleanup orphaned packages
       cleanup="sudo pacman -Rns (pacman -Qtdq)";
-      nixclean="home-manager expire-generations 10; nix-store --gc; nix-store --optimise";
+      nixclean="home-manager expire-generations 10; nix-store --gc; nix-store --optimise; nix-collect-garbage -d";
 
       # Get the error messages from journalctl
       jctl="journalctl -p 3 -xb";
