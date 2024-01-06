@@ -70,13 +70,8 @@
       # TODO add to direnv in required projects
       pkgs.gum
       pkgs.mermaid-cli
-      pkgs.w3m
-      pkgs.ripgrep
-      pkgs.entr
       # TODO Check if installed / move to right place
       pkgs.docker
-      pkgs.ncdu
-      pkgs.newsboat
       pkgs.nsxiv
       pkgs.numlockx
       # pkgs.flatpak # dosent work that well on non-nixos
@@ -93,10 +88,6 @@
       pkgs.scrcpy
       pkgs.vlc
 
-      # System management
-      pkgs.htop
-      pkgs.btop
-
       pkgs.wallust # better pywal
 
       pkgs.buku # browser indepenent bookmarks
@@ -110,36 +101,21 @@
       pkgs.xss-lock
       pkgs.mcfly
       pkgs.shfmt
-      # TODO write qtile conf from hm. use pkgs.go-sct/bin/sct
-      pkgs.go-sct
-      # pkgs.caffeine
 
       # Core Packages
       pkgs.libglvnd
       pkgs.mesa.drivers
-      pkgs.killall
-      pkgs.zip
-      pkgs.unzip
-      pkgs.light
       pkgs.thunderbird
-      pkgs.yt-dlp
       pkgs.keepassxc
-      pkgs.pass
       pkgs.libreoffice
       # pkgs.librewolf
       # pkgs.icecat
+      pkgs.floorp
       pkgs.gpodder
       pkgs.gparted
-      pkgs.yt-dlp
       pkgs.tor-browser-bundle-bin
       pkgs.rsync
       pkgs.grsync
-      pkgs.feh
-      pkgs.htop
-      pkgs.wget
-      pkgs.gnupg
-      pkgs.trash-cli
-      pkgs.ncdu # disk space management
 
       pkgs.rclone
       pkgs.rclone-browser
@@ -147,13 +123,10 @@
       # TODO: Move into a flake in required folders
       (pkgs.python310.withPackages(ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
-      #pkgs.virt-manager
-      #pkgs.libvirt
-      #pkgs.libvirt-glib
-      pkgs.quickemu
-      pkgs.quickgui
-
       pkgs.obs-studio
+
+      # TODO write qtile conf from hm. use pkgs.go-sct/bin/sct
+      pkgs.go-sct
 
       #pkgs.godot
       pkgs.aseprite
