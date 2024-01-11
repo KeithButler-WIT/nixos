@@ -5,6 +5,7 @@
   imports = [
     inputs.xremap-flake.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
+    # inputs.nixvim.homeManagerModules.nixvim
 
     ./features/alacritty # requires nixGL on non-nixos
     ./features/dunst
@@ -21,6 +22,8 @@
     ./features/vm
     # ./features/spicetify # Requires spotify premium
   ];
+
+  # programs.nixvim.enable = true;
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config = {
@@ -165,7 +168,7 @@
       # pkgs.jetbrains.idea-ultimate
       pkgs.jetbrains.idea-community
       pkgs.jetbrains.clion
-      # pkgs.jetbrains.rustrover
+      pkgs.jetbrains.rust-rover
       pkgs.vscode
       pkgs.android-studio
 
