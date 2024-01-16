@@ -67,10 +67,17 @@
           description = "Rust dev environment";
         };
 
+        haskell = {
+          inherit welcomeText;
+          path = ./templates/haskell;
+          description = "Haskell dev environment";
+        };
+
         js = javascript;
         ts = javascript;
         py = python;
         rs = rust;
+        hs = haskell;
       };
     };
 }
