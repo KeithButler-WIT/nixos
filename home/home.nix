@@ -102,8 +102,6 @@
       pkgs.waybar
       pkgs.swww
       pkgs.r2modman
-      # Move to flake
-      pkgs.ghc
 
       # TODO add to direnv in required projects
       pkgs.gum
@@ -135,7 +133,6 @@
       pkgs.mesa
       # pkgs.linuxKernel.packages.linux_zen.amdgpu-pro
       pkgs.egl-wayland
-      pkgs.i3lock
       pkgs.xss-lock
       pkgs.mcfly
       pkgs.shfmt
@@ -163,7 +160,6 @@
 
       pkgs.obs-studio
 
-      # TODO write qtile conf from hm. use pkgs.go-sct/bin/sct
       pkgs.go-sct
 
       pkgs.protonup-qt
@@ -174,6 +170,7 @@
       pkgs.godot_4
       pkgs.unityhub
       pkgs.blender
+      pkgs.heroic
 
       pkgs.mullvad-vpn
 

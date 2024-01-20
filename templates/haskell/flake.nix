@@ -22,6 +22,9 @@
           inherit inputs pkgs;
           modules = [
             {
+              packages = with pkgs; [
+                pkgs.ghc
+              ];
               languages.haskell.enable = true;
             }
           ];
