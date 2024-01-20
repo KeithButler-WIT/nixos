@@ -38,7 +38,7 @@
       hm="home-manager";
       hms="home-manager --flake ~/nixos/home/ switch --impure";
       g="git";
-      upd="sudo nixos-rebuild --flake ~/nixos switch";
+      upd="sudo nixos-rebuild --flake ~/nixos#nixos switch";
 
       # Get fastest mirrors
       mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist";
