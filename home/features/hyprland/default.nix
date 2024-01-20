@@ -7,7 +7,7 @@
     pkgs.kitty
     pkgs.grimblast
     pkgs.waybar
-    pkgs.wofi
+    pkgs.wofi #changes after moving to nix
     pkgs.nwg-bar
     pkgs.nwg-drawer
     pkgs.nwg-launchers
