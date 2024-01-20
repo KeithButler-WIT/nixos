@@ -13,10 +13,10 @@
     ./features/file
     ./features/firefox
     ./features/hyprland
-    # ./features/kitty # requires nixGL on non-nixos
+    ./features/kitty # requires nixGL on non-nixos
     ./features/gtk
     # ./features/mako
-    # ./features/qutebrowser
+    ./features/qutebrowser
     ./features/shell
     ./features/steam
     ./features/vm
@@ -36,7 +36,8 @@
         "nodejs-16.20.2"
     ];
   };
-  targets.genericLinux.enable = true; # Enable this on non nixos
+
+  #targets.genericLinux.enable = true; # Enable this on non nixos
 
   nix = {
     package = pkgs.nix;
@@ -70,6 +71,40 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = [
+      # (pkgs.python3Packages.buildPythonPackage rec {
+      #   pname = "rimpy";
+      #   version = "1.2.6.29";
+      #   src = pkgs.fetchPypi {
+      #       inherit pname version;
+      #       sha256 = lib.fakeSha256;
+      #   };
+      #   format = "pyproject";
+      #   propagatedBuildInputs = with pkgs; [
+      #       python3Packages.setuptools
+      #       python3Packages.poetry-core
+      #       poetry
+      #   ];
+      #   doCheck = false;
+      #   })
+
+      # (pkgs.stdenv.mkDerivation rec {
+      #   name = "rimpy-${version}";
+      #   version = "1.2.6.29";
+
+      #   let src = pkgs.fetchFromGitHub {
+      #     owner  = "rimpy-custom";
+      #     repo   = "rimpy";
+      #     rev    = "88150c7b8a0664a70757ffd88b2ac12b84dd0604";
+      #     sha256 = "1mb3gfg01mj7ajjl1ylw24mnwamcnnifbxkakzal2j6ibqyqw6rq";
+      #   };
+      #   in
+      #   import nix-build ${src}/release.nix
+      pkgs.waybar
+      pkgs.swww
+      pkgs.starship
+      # Move to flake
+      pkgs.ghc
+
       # TODO add to direnv in required projects
       pkgs.gum
       pkgs.mermaid-cli
@@ -77,19 +112,19 @@
       pkgs.docker
       pkgs.nsxiv
       pkgs.numlockx
-      # pkgs.flatpak # dosent work that well on non-nixos
+      pkgs.flatpak # dosent work that well on non-nixos
 
       pkgs.flameshot
       pkgs.galculator
       pkgs.gparted
       pkgs.kdeconnect
       pkgs.kleopatra
-      # pkgs.miniconda
+      #pkgs.conda
       pkgs.pavucontrol
       pkgs.piper
       # pkgs.r2modman
       pkgs.scrcpy
-      pkgs.vlc
+      #pkgs.vlc
 
       pkgs.wallust # better pywal
 
@@ -131,10 +166,13 @@
       # TODO write qtile conf from hm. use pkgs.go-sct/bin/sct
       pkgs.go-sct
 
+      pkgs.protonup-qt
+      pkgs.protonup-ng
+
       #pkgs.godot
       pkgs.aseprite
       pkgs.godot_4
-      # pkgs.unityhub
+      pkgs.unityhub
       pkgs.blender
 
       pkgs.mullvad-vpn
@@ -146,22 +184,19 @@
       pkgs.xorg.libxcb
       pkgs.xorg.libXft
       pkgs.xorg.libXinerama
-	    pkgs.xorg.xinit
+	  pkgs.xorg.xinit
       pkgs.xorg.xinput
-
-      pkgs.syncthing
-      pkgs.syncthing-tray
 
       pkgs.gpodder
       pkgs.ani-cli
       pkgs.mangal
       #pkgs.tachidesk
 
-      # pkgs.discord
+      pkgs.discord
       pkgs.betterdiscordctl
       pkgs.signal-desktop
-      # pkgs.zoom-us
-      # pkgs.slack
+      pkgs.zoom-us
+      pkgs.slack
 
       pkgs.cava
 
@@ -212,7 +247,7 @@
   };
 
   services.syncthing.enable = true;
-  services.syncthing.tray.enable = true;
+  # services.syncthing.tray.enable = true;
 
   services.home-manager.autoUpgrade.frequency = "weekly";
 
