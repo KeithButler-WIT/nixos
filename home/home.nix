@@ -192,7 +192,8 @@
       pkgs.mangal
       #pkgs.tachidesk
 
-      pkgs.discord
+      #pkgs.discord
+      pkgs.discord-screenaudio
       pkgs.betterdiscordctl
       pkgs.signal-desktop
       pkgs.zoom-us
