@@ -102,6 +102,7 @@
       pkgs.waybar
       pkgs.swww
       pkgs.r2modman
+      pkgs.bottles
 
       # TODO add to direnv in required projects
       pkgs.gum
@@ -131,7 +132,6 @@
 
       pkgs.amdvlk
       pkgs.mesa
-      # pkgs.linuxKernel.packages.linux_zen.amdgpu-pro
       pkgs.egl-wayland
       pkgs.xss-lock
       pkgs.mcfly

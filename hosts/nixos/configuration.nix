@@ -61,6 +61,17 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+    amdvlk
+  ];
+  # For 32 bit applications 
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+  hardware.opengl.driSupport = true; # This is already enabled by default
+  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
 
   # Enable the KDE Plasma Desktop Environment.
   #services.xserver.displayManager.sddm.enable = true;
@@ -114,11 +125,6 @@
     extraGroups = [ "networkmanager" "wheel" "plugdev" ];
     packages = with pkgs; [
       floorp
-      kate
-      thunderbird
-      unityhub
-      vscode
-      bottles
     ];
   };
 
@@ -140,8 +146,6 @@
    gnumake
   ];
 
-
-  hardware.opengl.driSupport32Bit = true;
   programs.java.enable = true; 
   programs.steam = {
     enable = true;
