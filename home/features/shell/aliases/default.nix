@@ -38,6 +38,7 @@
       hm="home-manager";
       hms="home-manager --flake ~/nixos/home/ switch --impure";
       g="git";
+      upd="sudo nixos-rebuild --flake ~/nixos switch";
 
       # Get fastest mirrors
       mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist";
@@ -55,13 +56,13 @@
       music="LD_PRELOAD=/usr/local/lib/spotify-adblock.so ${pkgs.spotify}/bin/spotify $argv";
 
       # Arch/Garuda aliases
-      yay="paru";
-      grubup="sudo update-grub";
-      fixpacman="sudo rm /var/lib/pacman/db.lck";
-      rmpkg="sudo pacman -Rdd";
+      #yay="paru";
+      #grubup="sudo update-grub";
+      #fixpacman="sudo rm /var/lib/pacman/db.lck";
+      #rmpkg="sudo pacman -Rdd";
       #upd="/usr/bin/garuda-update";
       ## Recent installed packages
-      rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
+      #rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
   };
 
 }
