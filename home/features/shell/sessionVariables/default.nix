@@ -44,6 +44,7 @@
             PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc";
             SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history";
             OpenGL_GL_PREFERENCE="GLVND";
+            ROC_ENABLE_PRE_VEGA = "1";
 
             # Other program settings:
             QT_QPA_PLATFORMTHEME="qt5ct";
