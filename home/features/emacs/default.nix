@@ -56,13 +56,14 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs29;
+    package = pkgs.emacs28;
     extraPackages =
       (epkgs: [
         epkgs.vterm epkgs.lsp-pyright epkgs.pdf-tools
 
         # Doom Emacs Deps
         pkgs.libpng
+        pkgs.gcc
         pkgs.zlib
         pkgs.poppler_gi
         pkgs.fd
@@ -82,12 +83,12 @@
       ] );
   };
 
-  home.file.".config/doom" = {
-    source = ./doom;
-    recursive = true;
-  };
+  # home.file.".config/doom" = {
+  #   source = ./doom;
+  #   recursive = true;
+  # };
 
   # https://nixos.wiki/wiki/Emacs
   # services.emacs.enable = true;
-  # services.emacs.client.enable = true;
+  services.emacs.client.enable = true;
 }
