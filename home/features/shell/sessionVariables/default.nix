@@ -8,10 +8,10 @@
 
       home.sessionVariables = {
             EDITOR = "nvim";
-            ALTERNATE_EDITOR="emacs";
+            ALTERNATE_EDITOR="nvim";
             TERMINAL = "kitty";
             TERMINAL_PROG = "kitty";
-            BROWSER = "mercury-browser";
+            BROWSER = "floorp";
             MAIL="thunderbird";
 
 

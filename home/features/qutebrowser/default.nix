@@ -14,10 +14,10 @@
       tabs.tabs_are_windows = false;
     };
   };
-  quickmarks = {
-    humblebundle = "https://www.humblebundle.com";
-    chatgpt= "https://chat.openai.com";
-    nixpkgs = "https://github.com/NixOS/nixpkgs";
-    home-manager = "https://github.com/nix-community/home-manager";
-  };
+  # quickmarks = {
+  #   humblebundle = "https://www.humblebundle.com";
+  #   chatgpt= "https://chat.openai.com";
+  #   nixpkgs = "https://github.com/NixOS/nixpkgs";
+  #   home-manager = "https://github.com/nix-community/home-manager";
+  # };
 }

@@ -5,6 +5,7 @@
   home.packages = [
       #pkgs.qbittorrent
       #pkgs.jesec-rtorrent
+      pkgs.rtorrent
       pkgs.pyrosimple
       pkgs.flood
   ];

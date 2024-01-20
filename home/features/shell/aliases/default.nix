@@ -34,9 +34,9 @@
       egrep="egrep --color=auto";
       hw="hwinfo --short";                          # Hardware Info
       big="expac -H M '%m\t%n' | sort -h | nl";     # Sort installed packages according to size in MB
-      gitpkg="pacman -Q | grep -i '\-git' | wc -l"; # List amount of -git packages
+      #gitpkg="pacman -Q | grep -i '\-git' | wc -l"; # List amount of -git packages
       hm="home-manager";
-      hms="home-manager switch --impure";
+      hms="home-manager --flake ~/nixos/home/ switch --impure";
       g="git";
 
       # Get fastest mirrors
@@ -59,7 +59,7 @@
       grubup="sudo update-grub";
       fixpacman="sudo rm /var/lib/pacman/db.lck";
       rmpkg="sudo pacman -Rdd";
-      upd="/usr/bin/garuda-update";
+      #upd="/usr/bin/garuda-update";
       ## Recent installed packages
       rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
   };
