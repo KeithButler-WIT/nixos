@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     devenv.url = "github:cachix/devenv/v0.6.3";
+    hosts.url = github:StevenBlack/hosts;
   };
 
-  outputs = inputs @ { nixpkgs, self, ... }:
+  outputs = inputs @ { nixpkgs, self, hosts, ... }:
     let
       forAllSystems = function:
         nixpkgs.lib.genAttrs ["x86_64-linux"] (system: function nixpkgs.legacyPackages.${system});
@@ -26,6 +27,9 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           modules = [
+            hosts.nixosModule {
+              networking.stevenBlackHosts.enable = true;
+            }
             ./hosts/nixos/configuration.nix
           ];
         };

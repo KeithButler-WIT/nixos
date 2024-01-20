@@ -137,6 +137,7 @@
    steamcmd
    progress
    rsync
+   gnumake
   ];
 
 
@@ -195,11 +196,14 @@ systemd = {
       };
   };
 };
+
   # https://github.com/StevenBlack/hosts
-  networking.extraHosts = let
-    hostsPath = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-    hostsFile = builtins.fetchurl hostsPath;
-  in builtins.readFile "${hostsFile}";
+  networking.stevenBlackHosts = {
+    blockFakenews = true;
+    blockGambling = true;
+    blockPorn = false;
+    blockSocial = false;
+  };
 
   # List services that you want to enable:
 

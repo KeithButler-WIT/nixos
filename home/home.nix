@@ -101,9 +101,7 @@
       #   import nix-build ${src}/release.nix
       pkgs.waybar
       pkgs.swww
-      pkgs.starship
       pkgs.r2modman
-      pkgs.bat
       # Move to flake
       pkgs.ghc
 

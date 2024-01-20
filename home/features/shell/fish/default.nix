@@ -6,6 +6,8 @@
         pkgs.zoxide
         pkgs.curl
         pkgs.man
+        pkgs.starship
+        pkgs.bat
   ];
 
   programs.fish = {
@@ -23,7 +25,7 @@
 
       ## Export variable need for qt-theme
       if type "qtile" >> /dev/null 2>&1
-      set -x QT_QPA_PLATFORMTHEME "qt5ct"
+            set -x QT_QPA_PLATFORMTHEME "qt5ct"
       end
 
       # Set settings for https://github.com/franciscolourenco/done
@@ -33,7 +35,7 @@
       ## Environment setup
       # Apply .profile: use this to put fish compatible .profile stuff in
       if test -f ~/.fish_profile
-      source ~/.fish_profile
+            source ~/.fish_profile
       end
 
       # Add ~/.local/bin to PATH
@@ -63,12 +65,6 @@
                   set -p PATH ~/.cargo/bin
             end
       end
-
-      ## Starship prompt
-      if status --is-interactive
-            source ("/usr/bin/starship" init fish --print-full-init | psub)
-      end
-
 
       ## Advanced command-not-found hook
       source /usr/share/doc/find-the-command/ftc.fish
@@ -107,9 +103,9 @@
 
       # >>> conda initialize >>>
       # !! Contents within this block are managed by 'conda init' !!
-      if test -f /home/keith/miniconda3/bin/conda
-            eval /home/keith/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-      end
+      #if test -f /home/keith/miniconda3/bin/conda
+      #      eval /home/keith/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+      #end
       # <<< conda initialize <<<
 
     '';
@@ -118,6 +114,7 @@
     '';
 
     interactiveShellInit = ''
+      source ("starship" init fish --print-full-init | psub)
     '';
 
     plugins = [
