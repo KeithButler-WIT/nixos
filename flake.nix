@@ -24,20 +24,20 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
-        vm = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           modules = [
-            ./hosts/vm/configuration.nix
+            ./hosts/nixos/configuration.nix
           ];
         };
       };
-      homeConfigurations = {
-        keith = inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home/home.nix
-          ];
-        };
-      };
+      # homeConfigurations = {
+      #   keith = inputs.home-manager.lib.homeManagerConfiguration {
+      #     inherit pkgs;
+      #     modules = [
+      #       ./home/home.nix
+      #     ];
+      #   };
+      # };
 
       # templates for devenv
       templates = let

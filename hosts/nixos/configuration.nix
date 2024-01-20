@@ -11,24 +11,28 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  # Enable grub cryptodisk
-  boot.loader.grub.enableCryptodisk=true;
-
-  boot.initrd.luks.devices."luks-5c28a72d-f25b-4c35-a13f-cbbcc9320c18".keyFile = "/crypto_keyfile.bin";
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  networking.hostName = "vm"; # Define your hostname.
+  #boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  #boot.kernelParams = [ "nohibernate" ];
+  systemd.services.zfs-mount.enable = true;
+  # boot.supportedFilesystems = [ "zfs" ];
+  # boot.zfs.forceImportRoot = false;
+  # boot.initrd.luks.devices."luks-ee0c8b1c-e042-492a-960d-df1fed98ec91".device = "/dev/disk/by-uuid/ee0c8b1c-e042-492a-960d-df1fed98ec91";
+  networking.hostId = "934bebc5";
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
+  };
+  
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -61,6 +65,18 @@
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  programs.hyprland = {
+    # Install the packages from nixpkgs
+    enable = true;
+    # Whether to enable XWayland
+    xwayland.enable = true;
+  };
+
+  # Enable automatic login for the user.
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "keith";
+  services.getty.autologinUser = "keith";
+
 
   # Configure keymap in X11
   services.xserver = {
@@ -94,20 +110,17 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.keith = {
     isNormalUser = true;
-    description = "keith";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "Keith Butler";
+    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
     packages = with pkgs; [
-      firefox
+      floorp
       kate
-      neovim
-      git
-      fzf
+      thunderbird
+      unityhub
+      vscode
+      bottles
     ];
   };
-
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "keith";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -115,9 +128,29 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+   git
+   gcc
+   ripgrep
+   vim 
+   wget
+   steam-run
+   steamcmd
+   progress
+   rsync
   ];
+
+
+  hardware.opengl.driSupport32Bit = true;
+  programs.java.enable = true; 
+  programs.steam = {
+    enable = true;
+    #package = pkgs.steam.override { 
+    #  withJava = true; 
+      #withPrimus = true;
+      #extraPkgs = pkgs: [ bumblebee glxinfo ];
+    #};
+    gamescopeSession.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -127,17 +160,57 @@
     enableSSHSupport = true;
   };
 
+  programs.dconf.enable = true;
+
+security.polkit.enable = true;
+security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("users")
+          && (
+            action.id == "org.freedesktop.login1.reboot" ||
+            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+            action.id == "org.freedesktop.login1.power-off" ||
+            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+          )
+        )
+      {
+        return polkit.Result.YES;
+      }
+    })
+  '';
+
+systemd = {
+  user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+  };
+};
+  # https://github.com/StevenBlack/hosts
+  networking.extraHosts = let
+    hostsPath = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+    hostsFile = builtins.fetchurl hostsPath;
+  in builtins.readFile "${hostsFile}";
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-  programs.git.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -145,6 +218,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }
