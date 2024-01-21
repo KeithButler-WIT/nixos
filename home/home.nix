@@ -163,16 +163,11 @@
 
       pkgs.go-sct
 
-      pkgs.protonup-qt
-      pkgs.protonup-ng
-      pkgs.protontricks
-
       #pkgs.godot
       pkgs.aseprite
       pkgs.godot_4
       pkgs.unityhub
       pkgs.blender
-      pkgs.heroic
 
       pkgs.mullvad-vpn
 
@@ -183,7 +178,7 @@
       pkgs.xorg.libxcb
       pkgs.xorg.libXft
       pkgs.xorg.libXinerama
-	  pkgs.xorg.xinit
+	    pkgs.xorg.xinit
       pkgs.xorg.xinput
 
       pkgs.gpodder
@@ -211,8 +206,10 @@
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
       # # fonts?
-      (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
+      #pkgs.fira-code-symbols
+      #(pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "Hack" "OpenDyslexic" "JetBrainsMono" ]; })
+      pkgs.nerdfonts
+      
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
       # # environment:
