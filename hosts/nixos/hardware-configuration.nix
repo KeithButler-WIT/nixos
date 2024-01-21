@@ -18,6 +18,8 @@
       fsType = "ext4";
     };
 
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelParams = [ "nohibernate" ];
   boot.zfs.forceImportRoot = false;
   boot.supportedFilesystems = [ "zfs" ];
   boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device = "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";

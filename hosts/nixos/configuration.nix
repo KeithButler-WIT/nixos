@@ -14,12 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  #boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  #boot.kernelParams = [ "nohibernate" ];
   systemd.services.zfs-mount.enable = true;
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
-  # boot.initrd.luks.devices."luks-ee0c8b1c-e042-492a-960d-df1fed98ec91".device = "/dev/disk/by-uuid/ee0c8b1c-e042-492a-960d-df1fed98ec91";
+  boot.initrd.luks.devices."luks-ee0c8b1c-e042-492a-960d-df1fed98ec91".device = "/dev/disk/by-uuid/ee0c8b1c-e042-492a-960d-df1fed98ec91";
   networking.hostId = "934bebc5";
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -62,16 +60,18 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.opengl.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-    amdvlk
-  ];
-  # For 32 bit applications 
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
-  hardware.opengl.driSupport = true; # This is already enabled by default
-  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
+  hardware.opengl = {
+    driSupport = true; # This is already enabled by default
+    driSupport32Bit = true; # For 32 bit applications
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+      amdvlk
+    ];
+    # For 32 bit applications 
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   #services.xserver.displayManager.sddm.enable = true;
@@ -84,9 +84,11 @@
   };
 
   # Enable automatic login for the user.
+  services.xserver.displayManager.startx.enable = true;
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "keith";
   services.getty.autologinUser = "keith";
+  #services.getty.loginProgram = "/home/keith";
 
 
   # Configure keymap in X11
@@ -154,6 +156,8 @@
       #withPrimus = true;
       #extraPkgs = pkgs: [ bumblebee glxinfo ];
     #};
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
   };
 
