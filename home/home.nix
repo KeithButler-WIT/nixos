@@ -103,6 +103,7 @@
       pkgs.swww
       pkgs.r2modman
       pkgs.bottles
+      pkgs.corefonts
 
       # TODO add to direnv in required projects
       pkgs.gum
@@ -164,6 +165,7 @@
 
       pkgs.protonup-qt
       pkgs.protonup-ng
+      pkgs.protontricks
 
       #pkgs.godot
       pkgs.aseprite
