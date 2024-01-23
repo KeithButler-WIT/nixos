@@ -23,17 +23,15 @@
     # ./features/spicetify # Requires spotify premium
   ];
 
-  # programs.nixvim.enable = true;
-
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = _: true;
     permittedInsecurePackages = [
-        "openssl-1.1.1u"
-        "python-2.7.18.6"
-        "nodejs-16.20.1"
-        "nodejs-16.20.2"
+      "openssl-1.1.1u"
+      "python-2.7.18.6"
+      "nodejs-16.20.1"
+      "nodejs-16.20.2"
     ];
   };
 
@@ -112,7 +110,6 @@
       pkgs.docker
       pkgs.nsxiv
       pkgs.numlockx
-      pkgs.flatpak # dosent work that well on non-nixos
 
       pkgs.flameshot
       pkgs.galculator
@@ -157,7 +154,7 @@
       pkgs.rclone-browser
 
       # TODO: Move into a flake in required folders
-      (pkgs.python310.withPackages(ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
+      (pkgs.python310.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
       pkgs.obs-studio
 
@@ -166,7 +163,7 @@
       #pkgs.godot
       pkgs.aseprite
       pkgs.godot_4
-      pkgs.unityhub
+      #pkgs.unityhub
       pkgs.blender
 
       pkgs.mullvad-vpn
@@ -178,7 +175,7 @@
       pkgs.xorg.libxcb
       pkgs.xorg.libXft
       pkgs.xorg.libXinerama
-	    pkgs.xorg.xinit
+      pkgs.xorg.xinit
       pkgs.xorg.xinput
 
       pkgs.gpodder
@@ -209,7 +206,6 @@
       #pkgs.fira-code-symbols
       #(pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "Hack" "OpenDyslexic" "JetBrainsMono" ]; })
       pkgs.nerdfonts
-      
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
       # # environment:
@@ -232,9 +228,9 @@
 
   };
 
-# wayland.windowManager.hyprland.enable = true;
-# wayland.windowManager.hyprland.systemdIntegration = true;
-# wayland.windowManager.hyprland.xwayland.enable = true;
+  # wayland.windowManager.hyprland.enable = true;
+  # wayland.windowManager.hyprland.systemdIntegration = true;
+  # wayland.windowManager.hyprland.xwayland.enable = true;
 
   programs.java.enable = true;
 
