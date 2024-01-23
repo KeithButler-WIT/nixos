@@ -2,11 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -26,10 +27,11 @@
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
-  
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
   # Configure network proxy if necessary
@@ -73,23 +75,32 @@
     ];
   };
 
+  # Enable the GNOME Desktop Environment.
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+
+
   # Enable the KDE Plasma Desktop Environment.
-  #services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
   programs.hyprland = {
     # Install the packages from nixpkgs
     enable = true;
+    # Use the flake
+    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     # Whether to enable XWayland
     xwayland.enable = true;
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.startx.enable = true;
+  # ervices.xserver.displayManager.startx.enable = true;
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "keith";
   services.getty.autologinUser = "keith";
-  #services.getty.loginProgram = "/home/keith";
-
+  # services.kmscon.enable = true;
+  # services.kmscon.autologinUser = "keith";
+  # services.kmscon.hwRender = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -136,25 +147,28 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   git
-   gcc
-   ripgrep
-   vim 
-   wget
-   steam-run
-   steamcmd
-   progress
-   rsync
-   gnumake
+    nixpkgs-fmt
+    btrfs-assistant
+    git
+    gcc
+    ripgrep
+    vim
+    wget
+    steam-run
+    steamcmd
+    progress
+    rsync
+    gnumake
+    gnupg
   ];
 
-  programs.java.enable = true; 
+  programs.java.enable = true;
   programs.steam = {
     enable = true;
     #package = pkgs.steam.override { 
     #  withJava = true; 
-      #withPrimus = true;
-      #extraPkgs = pkgs: [ bumblebee glxinfo ];
+    #withPrimus = true;
+    #extraPkgs = pkgs: [ bumblebee glxinfo ];
     #};
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
@@ -170,9 +184,10 @@
   };
 
   programs.dconf.enable = true;
+  #security.pam.services.login.enableKwallet = true;
 
-security.polkit.enable = true;
-security.polkit.extraConfig = ''
+  security.polkit.enable = true;
+  security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (
         subject.isInGroup("users")
@@ -189,21 +204,21 @@ security.polkit.extraConfig = ''
     })
   '';
 
-systemd = {
-  user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
       };
+    };
   };
-};
 
   # https://github.com/StevenBlack/hosts
   networking.stevenBlackHosts = {
@@ -214,10 +229,10 @@ systemd = {
   };
 
   # List services that you want to enable:
+  services.flatpak.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
