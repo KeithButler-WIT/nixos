@@ -3,21 +3,22 @@
 {
 
   home.packages = [
-      pkgs.github-desktop
+    pkgs.github-desktop
   ];
 
   programs.gh = {
     enable = true;
     extensions = [ pkgs.gh-eco ];
     gitCredentialHelper.hosts = [ "https://github.com" ];
-    settings = {  
+    settings = {
       version = 1; # https://github.com/cli/cli/issues/8462
-      git_protocol = "ssh";  
-      prompt = "enabled";  
-      aliases = {    
-        co = "pr checkout";    
-        pv = "pr view";  };
+      git_protocol = "ssh";
+      prompt = "enabled";
+      aliases = {
+        co = "pr checkout";
+        pv = "pr view";
       };
+    };
   };
 
   programs.git = {
@@ -27,7 +28,7 @@
       user = {
         useConfigOnly = true;
         name = "Keith Butler";
-        email= "keithbutler2001@gmail.com";
+        email = "keithbutler2001@gmail.com";
         signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNXXNh8eWgPtjc7+iiBFuM6mB+C+8m13wD4tHZFPtYm keithbutler2001@gmail.com";
       };
 
@@ -38,7 +39,7 @@
 
       init.defaultBranch = "main";
 
-      credential.helper= "/usr/bin/git-credential-manager";
+      credential.helper = "/usr/bin/git-credential-manager";
       credential.credentialStore = "gpg";
 
       safe.directory = "/opt/flutter";

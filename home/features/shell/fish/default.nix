@@ -3,11 +3,11 @@
 {
 
   home.packages = [
-        pkgs.zoxide
-        pkgs.curl
-        pkgs.man
-        pkgs.starship
-        pkgs.bat
+    pkgs.zoxide
+    pkgs.curl
+    pkgs.man
+    pkgs.starship
+    pkgs.bat
   ];
 
   programs.fish = {
@@ -123,38 +123,37 @@
       # Manually packaging and enable a plugin
     ];
 
-    shellAliases = {
-    };
+    shellAliases = { };
   };
 
   home.file.".config/macchina/themes/Berylilum.toml".text = ''
-      # Beryllium
-      # https://github.com/Macchina-CLI/macchina/blob/main/contrib/themes/Beryllium.toml
+    # Beryllium
+    # https://github.com/Macchina-CLI/macchina/blob/main/contrib/themes/Beryllium.toml
 
-      spacing         = 3
-      hide_ascii      = true
-      key_color       = "#7067CF"
-      separator       = ""
+    spacing         = 3
+    hide_ascii      = true
+    key_color       = "#7067CF"
+    separator       = ""
 
-      [box]
-      border          = "plain"
-      visible         = true
+    [box]
+    border          = "plain"
+    visible         = true
 
-      [palette]
-      glyph           = "○  "
-      visible         = true
+    [palette]
+    glyph           = "○  "
+    visible         = true
 
-      [bar]
-      glyph           = "○"
-      hide_delimiters = true
-      visible         = true
+    [bar]
+    glyph           = "○"
+    hide_delimiters = true
+    visible         = true
 
-      [box.inner_margin]
-      x               = 2
-      y               = 1
+    [box.inner_margin]
+    x               = 2
+    y               = 1
 
-      [custom_ascii]
-      color           = "#FF7001"
+    [custom_ascii]
+    color           = "#FF7001"
   '';
 
 }

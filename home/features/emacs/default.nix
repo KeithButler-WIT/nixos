@@ -3,9 +3,9 @@
 {
   # Was used to get emacs-git
   # nixpkgs.overlays = [
-    # (import (builtins.fetchTarball {
-    #   url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-    # }))
+  # (import (builtins.fetchTarball {
+  #   url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+  # }))
   # ];
   #
   # home = {
@@ -59,7 +59,9 @@
     package = pkgs.emacs28;
     extraPackages =
       (epkgs: [
-        epkgs.vterm epkgs.lsp-pyright epkgs.pdf-tools
+        epkgs.vterm
+        epkgs.lsp-pyright
+        epkgs.pdf-tools
 
         # Doom Emacs Deps
         pkgs.libpng
@@ -80,7 +82,7 @@
         pkgs.sqlite
         pkgs.editorconfig-core-c
         pkgs.emacs-all-the-icons-fonts
-      ] );
+      ]);
   };
 
   # home.file.".config/doom" = {

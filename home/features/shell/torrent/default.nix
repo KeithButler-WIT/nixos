@@ -3,11 +3,11 @@
 {
 
   home.packages = [
-      #pkgs.qbittorrent
-      #pkgs.jesec-rtorrent
-      pkgs.rtorrent
-      pkgs.pyrosimple
-      pkgs.flood
+    #pkgs.qbittorrent
+    #pkgs.jesec-rtorrent
+    pkgs.rtorrent
+    pkgs.pyrosimple
+    pkgs.flood
   ];
 
   #home.file.".config/rtorrent/rtorrent.rc".text = ''

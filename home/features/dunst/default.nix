@@ -297,11 +297,11 @@
         mouse_middle_click = "do_action, close_current";
         mouse_right_click = "close_all";
 
-    # Experimental features that may or may not work correctly. Do not expect them
-    # to have a consistent behaviour across releases.
+        # Experimental features that may or may not work correctly. Do not expect them
+        # to have a consistent behaviour across releases.
 
-};
-experimental = {
+      };
+      experimental = {
         # Calculate the dpi to use on a per-monitor basis.
         # If this setting is enabled the Xft.dpi value will be ignored and instead
         # dunst will attempt to calculate an appropriate dpi value for each monitor
@@ -340,70 +340,70 @@ experimental = {
         # Icon for notifications with critical urgency, uncomment to enable
         #default_icon = /path/to/icon
 
-      # Every section that isn't one of the above is interpreted as a rules to
-      # override settings for certain messages.
-      #
-      # Messages can be matched by
-      #    appname (discouraged, see desktop_entry)
-      #    body
-      #    category
-      #    desktop_entry
-      #    icon
-      #    match_transient
-      #    msg_urgency
-      #    stack_tag
-      #    summary
-      #
-      # and you can override the
-      #    background
-      #    foreground
-      #    format
-      #    frame_color
-      #    fullscreen
-      #    new_icon
-      #    set_stack_tag
-      #    set_transient
-      #    set_category
-      #    timeout
-      #    urgency
-      #    icon_position
-      #    skip_display
-      #    history_ignore
-      #    action_name
-      #    word_wrap
-      #    ellipsize
-      #    alignment
-      #    hide_text
-      #
-      # Shell-like globbing will get expanded.
-      #
-      # Instead of the appname filter, it's recommended to use the desktop_entry filter.
-      # GLib based applications export their desktop-entry name. In comparison to the appname,
-      # the desktop-entry won't get localized.
-      #
-      # SCRIPTING
-      # You can specify a script that gets run when the rule matches by
-      # setting the "script" option.
-      # The script will be called as follows:
-      #   script appname summary body icon urgency
-      # where urgency can be "LOW", "NORMAL" or "CRITICAL".
-      #
-      # NOTE: It might be helpful to run dunst -print in a terminal in order
-      # to find fitting options for rules.
+        # Every section that isn't one of the above is interpreted as a rules to
+        # override settings for certain messages.
+        #
+        # Messages can be matched by
+        #    appname (discouraged, see desktop_entry)
+        #    body
+        #    category
+        #    desktop_entry
+        #    icon
+        #    match_transient
+        #    msg_urgency
+        #    stack_tag
+        #    summary
+        #
+        # and you can override the
+        #    background
+        #    foreground
+        #    format
+        #    frame_color
+        #    fullscreen
+        #    new_icon
+        #    set_stack_tag
+        #    set_transient
+        #    set_category
+        #    timeout
+        #    urgency
+        #    icon_position
+        #    skip_display
+        #    history_ignore
+        #    action_name
+        #    word_wrap
+        #    ellipsize
+        #    alignment
+        #    hide_text
+        #
+        # Shell-like globbing will get expanded.
+        #
+        # Instead of the appname filter, it's recommended to use the desktop_entry filter.
+        # GLib based applications export their desktop-entry name. In comparison to the appname,
+        # the desktop-entry won't get localized.
+        #
+        # SCRIPTING
+        # You can specify a script that gets run when the rule matches by
+        # setting the "script" option.
+        # The script will be called as follows:
+        #   script appname summary body icon urgency
+        # where urgency can be "LOW", "NORMAL" or "CRITICAL".
+        #
+        # NOTE: It might be helpful to run dunst -print in a terminal in order
+        # to find fitting options for rules.
 
-      # Disable the transient hint so that idle_threshold cannot be bypassed from the
-      # client
-      #
+        # Disable the transient hint so that idle_threshold cannot be bypassed from the
+        # client
+        #
       };
-#transient_disable = {
+      #transient_disable = {
       #    match_transient = yes
       #    set_transient = no
       #
       # Make the handling of transient notifications more strict by making them not
       # be placed in history.
       #
-# };
-#transient_history_ignore = {
+      # };
+      #transient_history_ignore = {
       #    match_transient = yes
       #    history_ignore = yes
 
@@ -414,29 +414,29 @@ experimental = {
       # pushback: same as delay, but when switching into fullscreen, the notification will get
       #           withdrawn from screen again and will get delayed like a new notification
       #
-# };
-#fullscreen_delay_everything = {
+      # };
+      #fullscreen_delay_everything = {
       #    fullscreen = delay
       #
-# };
-#fullscreen_show_critical = {
+      # };
+      #fullscreen_show_critical = {
       #    msg_urgency = critical
       #    fullscreen = show
 
       #
-# };
-#espeak = {
+      # };
+      #espeak = {
       #    summary = "*";
       #    script = dunst_espeak.sh
 
       #
-# };
-#script-test = {
+      # };
+      #script-test = {
       #    summary = "*script*";
       #    script = dunst_test.sh
 
       #
-# };
+      # };
       ignore = {
         # This notification will not be displayed
         summary = "dvd";
@@ -447,42 +447,42 @@ experimental = {
         summary = "dvd";
         history_ignore = "yes";
       };
-#skip-display = {
+      #skip-display = {
       #    # This notification will not be displayed, but will be included in the history
       #    summary = "foobar";
       #    skip_display = yes
 
       #
-# };
-#signed_on = {
+      # };
+      #signed_on = {
       #    appname = Pidgin
       #    summary = "*signed on*";
       #    urgency = low
       #
       #
-# };
-#signed_off = {
+      # };
+      #signed_off = {
       #    appname = Pidgin
       #    summary = *signed off*
       #    urgency = low
       #
       #
-# };
-#says = {
+      # };
+      #says = {
       #    appname = Pidgin
       #    summary = *says*
       #    urgency = critical
       #
       #
-# };
-#twitter = {
+      # };
+      #twitter = {
       #    appname = Pidgin
       #    summary = *twitter.com*
       #    urgency = normal
       #
       #
-# };
-#stack-volumes = {
+      # };
+      #stack-volumes = {
       #    appname = "some_volume_notifiers";
       #    set_stack_tag = "volume";
       #

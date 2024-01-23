@@ -2,14 +2,14 @@
 
 {
 
-    programs.direnv = {
-        enable = true;
-        nix-direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
 
-        # enableFishIntegration = true;
-        # enableBashIntegration = true;
-        # enableNushellIntegration = true;
-        # enableZshIntegration = true;
-    };
+    # enableFishIntegration = true;
+    # enableBashIntegration = true;
+    # enableNushellIntegration = true;
+    # enableZshIntegration = true;
+  };
 
 }

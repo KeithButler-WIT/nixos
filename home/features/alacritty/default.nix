@@ -80,15 +80,15 @@
       };
 
       # key_bindings = {
-        # (Windows, Linux, and BSD only)
-        # { key = V; mods = Control|Shift; action = Paste };
-        # { key = C; mods = Control|Shift; action = Copy };
-        # { key = Insert; mods = Shift; action = PasteSelection };
-        # { key = Key0; mods = Control; action = ResetFontSize };
-        # { key = Equals; mods = Control; action = IncreaseFontSize };
-        # { key = Plus; mods = Control; action = IncreaseFontSize };
-        # { key = Minus; mods = Control; action = DecreaseFontSize };
-        # { key = Minus; mods = Control; action = DecreaseFontSize };
+      # (Windows, Linux, and BSD only)
+      # { key = V; mods = Control|Shift; action = Paste };
+      # { key = C; mods = Control|Shift; action = Copy };
+      # { key = Insert; mods = Shift; action = PasteSelection };
+      # { key = Key0; mods = Control; action = ResetFontSize };
+      # { key = Equals; mods = Control; action = IncreaseFontSize };
+      # { key = Plus; mods = Control; action = IncreaseFontSize };
+      # { key = Minus; mods = Control; action = DecreaseFontSize };
+      # { key = Minus; mods = Control; action = DecreaseFontSize };
       # };
     };
   };

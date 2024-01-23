@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 
 {
 
@@ -26,7 +26,7 @@
           ExtensionRecommendations = false;
           SkipOnboarding = true;
         };
-        ExtensionSettings = {};
+        ExtensionSettings = { };
       };
     };
     profiles.keith = {
@@ -54,7 +54,7 @@
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["@n"];
+            definedAliases = [ "@n" ];
           };
           "Flathub" = {
             urls = [
@@ -68,7 +68,7 @@
                 ];
               }
             ];
-            definedAliases = ["@flathub" "@fh"];
+            definedAliases = [ "@flathub" "@fh" ];
           };
         };
       };

@@ -48,9 +48,7 @@
         auto_update_interval_hours = 720;
       };
 
-      directories = {
-
-      };
+      directories = { };
     };
   };
 }
