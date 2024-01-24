@@ -5,6 +5,7 @@
   home.packages = [
     pkgs.gamemode
     pkgs.heroic
+    pkgs.lutris
     pkgs.protonup-qt
     pkgs.protonup-ng
     pkgs.protontricks

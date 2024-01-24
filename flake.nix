@@ -10,9 +10,10 @@
     hyprland.url = "github:hyprwm/Hyprland";
     devenv.url = "github:cachix/devenv/v0.6.3";
     hosts.url = github:StevenBlack/hosts;
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = inputs @ { nixpkgs, self, hosts, ... }:
+  outputs = { nixpkgs, self, hosts, ... } @ inputs:
     let
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
@@ -28,6 +29,7 @@
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;}; # Might be redundent
           modules = [
             hosts.nixosModule
             {

@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.nix-gaming.nixosModules.steamCompat
     ];
 
   # Bootloader.
@@ -26,6 +27,8 @@
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
+    substituters = [ "https://nix-gaming.cachix.org" ];
+    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
   };
 
   nix.gc = {
@@ -135,7 +138,7 @@
   users.users.keith = {
     isNormalUser = true;
     description = "Keith Butler";
-    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "audio" "video" "tty" "input" "storage" "scanner" "kvm" ];
     packages = with pkgs; [
       floorp
     ];
@@ -147,6 +150,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # inputs.nix-gaming.packages.${pkgs.system}.steam
     nixpkgs-fmt
     btrfs-assistant
     git
@@ -160,7 +164,28 @@
     rsync
     gnumake
     gnupg
+    conda
   ];
+
+  # Enable nix ld
+  programs.nix-ld = {
+    enable = true;
+    # Sets up all the libraries to load
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      fuse3
+      icu
+      zlib
+      nss
+      openssl
+      curl
+      expat
+      # ...
+    ];
+  };
+  services.envfs.enable = true;
+
 
   programs.java.enable = true;
   programs.steam = {
@@ -173,6 +198,12 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
+    extraCompatPackages = [
+      # add the packages that you would like to have in Steam's extra compatibility packages list
+      # pkgs.luxtorpeda
+      inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      # etc.
+    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
