@@ -204,8 +204,8 @@
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
       # # fonts?
       #pkgs.fira-code-symbols
-      #(pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "Hack" "OpenDyslexic" "JetBrainsMono" ]; })
-      pkgs.nerdfonts
+      (pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" ]; })
+      # pkgs.nerdfonts
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
       # # environment:
