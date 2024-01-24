@@ -98,12 +98,17 @@
 
   # Enable automatic login for the user.
   # ervices.xserver.displayManager.startx.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "keith";
+  services.xserver.displayManager.autoLogin = {
+    enable = true;
+    user = "keith";
+  };
+
   services.getty.autologinUser = "keith";
-  # services.kmscon.enable = true;
-  # services.kmscon.autologinUser = "keith";
-  # services.kmscon.hwRender = true;
+  # services.kmscon = {
+  #   enable = true;
+  #   autologinUser = "keith";
+  #   hwRender = true;
+  # };
 
   # Configure keymap in X11
   services.xserver = {
@@ -141,6 +146,7 @@
     extraGroups = [ "networkmanager" "wheel" "plugdev" "audio" "video" "tty" "input" "storage" "scanner" "kvm" ];
     packages = with pkgs; [
       floorp
+      conda
     ];
   };
 
@@ -164,7 +170,6 @@
     rsync
     gnumake
     gnupg
-    conda
   ];
 
   # Enable nix ld

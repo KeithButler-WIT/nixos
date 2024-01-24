@@ -9,13 +9,14 @@
       # # the Nix store. Activating the configuration will then make '~/.screenrc' a
       # # symlink to the Nix store copy.
       # TODO stop using stow
-      ".dmenurc".source = ~/.dotfiles/.dmenurc;
-      ".xinitrc".source = ~/.dotfiles/.xinitrc;
+      ".dmenurc".source = ./.dmenurc;
+      ".xinitrc".source = ./.xinitrc;
       # dunst
       ".config/keepassxc".source = ../keepassxc;
+      ".config/waybar".source = ./waybar;
       # openmw
       # ${config.xdg.configHome}."/picom".source = ~/.dotfiles/.config/picom;
-      ".config/picom".source = ~/.dotfiles/.config/picom;
+      ".config/picom".source = ./picom;
       # qtile
 
      ".Xresources".text = ''
