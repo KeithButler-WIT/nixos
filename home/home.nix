@@ -144,6 +144,7 @@
       # pkgs.librewolf
       # pkgs.icecat
       pkgs.floorp
+      (pkgs.xfce.thunar.override { thunarPlugins = [pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman]; })
       pkgs.gpodder
       pkgs.gparted
       pkgs.tor-browser-bundle-bin
@@ -160,8 +161,8 @@
 
       pkgs.go-sct
 
-      #pkgs.godot
-      pkgs.aseprite
+      # pkgs.godot
+      # pkgs.aseprite
       pkgs.godot_4
       #pkgs.unityhub
       pkgs.blender
