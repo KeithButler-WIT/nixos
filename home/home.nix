@@ -3,7 +3,6 @@
 {
 
   imports = [
-    inputs.xremap-flake.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     # inputs.nixvim.homeManagerModules.nixvim
 
@@ -138,7 +137,7 @@
       # Core Packages
       pkgs.libglvnd
       pkgs.mesa.drivers
-      pkgs.thunderbird
+      pkgs.thunderbirdw
       pkgs.keepassxc
       pkgs.libreoffice
       # pkgs.librewolf
