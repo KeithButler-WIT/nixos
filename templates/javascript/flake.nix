@@ -28,6 +28,7 @@
               dotenv.disableHint = true;
               languages.javascript.enable = true;
               languages.typescript.enable = true;
+              npm.install.enable = true;
             }
           ];
         };
