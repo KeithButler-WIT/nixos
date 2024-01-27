@@ -30,7 +30,19 @@
                 PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
               };
 
-              languages.rust.enable = true;
+              languages.rust = {
+                enable = true;
+                # https://devenv.sh/reference/options/#languagesrustchannel
+                # channel = "stable";
+                channel = "nightly";
+
+                components = [ "rustc" "cargo" "clippy" "rustfmt" "rust-analyzer" ];
+              };
+
+              pre-commit.hooks = {
+                rustfmt.enable = true;
+                clippy.enable = true;
+              };
             }
           ];
         };
