@@ -84,11 +84,18 @@
             description = "Haskell dev environment";
           };
 
+          texlive = {
+            inherit welcomeText;
+            path = ./templates/texlive;
+            description = "Texlive dev environment";
+          };
+
           js = javascript;
           ts = javascript;
           py = python;
           rs = rust;
           hs = haskell;
+          tx = texlive;
         };
     };
 }
