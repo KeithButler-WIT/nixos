@@ -29,8 +29,13 @@
               ];
 
               dotenv.disableHint = true;
-              languages.python.enable = true;
-              languages.python.venv.enable = true;
+              languages.python = {
+                enable = true;
+                version = "3.11.3";
+
+                venv.enable = true;
+                venv.requirements = ./requirements.txt;
+              };
             }
           ];
         };
