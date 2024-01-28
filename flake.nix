@@ -25,6 +25,14 @@
       };
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      # User Variables 
+      hostname = "nixos";
+      username = "keith";
+      gitUsername = "KeithButler-WIT";
+      gitEmail = "keithbutler2001@gmail.com";
+      browser = "floorp";
+      flakeDir = "/home/${username}/nixos";
     in
     {
       nixosConfigurations = {
