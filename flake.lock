@@ -8,16 +8,15 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1688058187,
-        "narHash": "sha256-ipDcc7qrucpJ0+0eYNlwnE+ISTcq4m03qW+CWUshRXI=",
+        "lastModified": 1706018268,
+        "narHash": "sha256-d24+re0t8b6HYGzAPZCIJed85n23RUFXQa2yuHoW0uQ=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "c8778e3dc30eb9043e218aaa3861d42d4992de77",
+        "rev": "ad0ae333b210e31237e1fc4a7ddab71a01785add",
         "type": "github"
       },
       "original": {
         "owner": "cachix",
-        "ref": "v0.6.3",
         "repo": "devenv",
         "type": "github"
       }
@@ -274,6 +273,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1706182238,
+        "narHash": "sha256-Ti7CerGydU7xyrP/ow85lHsOpf+XMx98kQnPoQCSi1g=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "f84eaffc35d1a655e84749228cde19922fcf55f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1678875422,
@@ -454,6 +468,7 @@
         "hyprland": "hyprland",
         "impermanence": "impermanence",
         "nix-gaming": "nix-gaming",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
         "sops-nix": "sops-nix"
       }
