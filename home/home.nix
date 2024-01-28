@@ -137,7 +137,7 @@
       # Core Packages
       pkgs.libglvnd
       pkgs.mesa.drivers
-      pkgs.thunderbirdw
+      pkgs.thunderbird
       pkgs.keepassxc
       pkgs.libreoffice
       # pkgs.librewolf
@@ -197,7 +197,7 @@
       pkgs.jetbrains.clion
       pkgs.jetbrains.rust-rover
       pkgs.vscode
-      pkgs.android-studio
+      #pkgs.android-studio
 
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
