@@ -46,6 +46,8 @@
 
       gpg.format = "ssh";
 
+      push.autoSetupRemote = true;
+
       # Fixed a fatal error of url hanging
       http.postBuffer = 2147483648;
       http.lowSpeedLimit = 0;
