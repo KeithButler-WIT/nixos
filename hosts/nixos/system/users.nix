@@ -6,7 +6,7 @@
     # initialPassword = "1234";
     isNormalUser = true;
     description = "Keith Butler";
-    extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "audio" "video" "tty" "input" "storage" "scanner" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "audio" "video" "tty" "input" "storage" "scanner" "lp" "kvm" ];
     packages = with pkgs; [
       floorp
       conda
