@@ -39,6 +39,9 @@
   nix = {
     package = pkgs.nix;
     settings.experimental-features = [ "nix-command" "flakes" ];
+    substituters = [ "https://cache.nixos.org" ];
+    trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+
   };
 
   # colorScheme = inputs.nix-colors.colorSchemes.onedark;
@@ -98,15 +101,14 @@
       #   import nix-build ${src}/release.nix
       pkgs.waybar
       pkgs.swww
-      pkgs.r2modman
       pkgs.bottles
       pkgs.corefonts
 
       # TODO add to direnv in required projects
       pkgs.gum
       pkgs.mermaid-cli
-      # TODO Check if installed / move to right place
       pkgs.docker
+
       pkgs.nsxiv
       pkgs.numlockx
 
@@ -143,7 +145,7 @@
       # pkgs.librewolf
       # pkgs.icecat
       pkgs.floorp
-      (pkgs.xfce.thunar.override { thunarPlugins = [pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman]; })
+      (pkgs.xfce.thunar.override { thunarPlugins = [ pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman ]; })
       pkgs.gpodder
       pkgs.gparted
       pkgs.tor-browser-bundle-bin
@@ -181,11 +183,12 @@
       pkgs.gpodder
       pkgs.ani-cli
       pkgs.mangal
+      pkgs.suwayomi-server
       #pkgs.tachidesk
 
       #pkgs.discord
+      #pkgs.betterdiscordctl
       pkgs.discord-screenaudio
-      pkgs.betterdiscordctl
       pkgs.signal-desktop
       pkgs.zoom-us
       pkgs.slack
