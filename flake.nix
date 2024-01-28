@@ -11,6 +11,14 @@
     devenv.url = "github:cachix/devenv/v0.6.3";
     hosts.url = github:StevenBlack/hosts;
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { nixpkgs, self, hosts, ... } @ inputs:
@@ -37,7 +45,7 @@
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;}; # Might be redundent
+          specialArgs = { inherit inputs; }; # Might be redundent
           modules = [
             hosts.nixosModule
             {
@@ -57,53 +65,7 @@
       # };
 
       # templates for devenv
-      templates =
-        let
-          welcomeText = ''
-            # `.devenv` and `direnv` should be added to `.gitignore`
-            ```sh
-              echo .devenv >> .gitignore
-              echo .direnv >> .gitignore
-            ```
-          '';
-        in
-        rec {
-          javascript = {
-            inherit welcomeText;
-            path = ./templates/javascript;
-            description = "Javascript / Typescript dev environment";
-          };
+      templates = ./templates;
 
-          python = {
-            inherit welcomeText;
-            path = ./templates/python;
-            description = "Python dev environment";
-          };
-
-          rust = {
-            inherit welcomeText;
-            path = ./templates/rust;
-            description = "Rust dev environment";
-          };
-
-          haskell = {
-            inherit welcomeText;
-            path = ./templates/haskell;
-            description = "Haskell dev environment";
-          };
-
-          texlive = {
-            inherit welcomeText;
-            path = ./templates/texlive;
-            description = "Texlive dev environment";
-          };
-
-          js = javascript;
-          ts = javascript;
-          py = python;
-          rs = rust;
-          hs = haskell;
-          tx = texlive;
-        };
     };
 }
