@@ -1,9 +1,16 @@
-{ pkgs, config, lib, cpuType, ... }:
+{ pkgs, config, lib, ... }:
 
 {
 
+  # Detect printers
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplip ];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -20,7 +27,7 @@
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    # media-session.enable = true;
     lowLatency = {
       # enable this module
       enable = true;
@@ -33,9 +40,16 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  programs.thunar.enable = true;
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
+  programs.xfconf.enable = true;
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   services.envfs.enable = true;
 
