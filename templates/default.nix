@@ -10,31 +10,31 @@ in
 rec {
   javascript = {
     inherit welcomeText;
-    path = ./templates/javascript;
+    path = ./javascript;
     description = "Javascript / Typescript dev environment";
   };
 
   python = {
     inherit welcomeText;
-    path = ./templates/python;
+    path = ./python;
     description = "Python dev environment";
   };
 
   rust = {
     inherit welcomeText;
-    path = ./templates/rust;
+    path = ./rust;
     description = "Rust dev environment";
   };
 
   haskell = {
     inherit welcomeText;
-    path = ./templates/haskell;
+    path = ./haskell;
     description = "Haskell dev environment";
   };
 
   texlive = {
     inherit welcomeText;
-    path = ./templates/texlive;
+    path = ./texlive;
     description = "Texlive dev environment";
   };
 
