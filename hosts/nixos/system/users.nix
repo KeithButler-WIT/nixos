@@ -1,11 +1,11 @@
-{ config, lib, pkgs, username, name, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${username} = {
+  users.users.${userSettings.username} = {
     # initialPassword = "1234";
     isNormalUser = true;
-    description = name;
+    description = userSettings.name;
     extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "audio" "video" "tty" "input" "storage" "scanner" "lp" "kvm" ];
     packages = with pkgs; [
       floorp

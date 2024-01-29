@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, userSettings, ... }:
 
 {
 
@@ -27,10 +27,10 @@
   # ervices.xserver.displayManager.startx.enable = true;
   services.xserver.displayManager.autoLogin = {
     enable = true;
-    user = "keith";
+    user = userSettings.username;
   };
 
-  services.getty.autologinUser = "keith";
+  services.getty.autologinUser = userSettings.username;
   # services.kmscon = {
   #   enable = true;
   #   autologinUser = "keith";

@@ -36,27 +36,32 @@
       };
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      timezone = "Europe/Dublin";
-      locale = "en_IE.UTF-8";
-
+      systemSettings = rec {
+        timezone = "Europe/Dublin";
+        locale = "en_IE.UTF-8";
+      };
       # User Variables 
-      hostname = "nixos";
-      username = "keith";
-      name = "Keith";
-      gitUsername = "KeithButler-WIT";
-      gitEmail = "keithbutler2001@gmail.com";
-      browser = "floorp";
-      editor = "emacs";
-      flakeDir = "/home/${username}/nixos";
+      userSettings = rec {
+        hostname = "nixos";
+        username = "keith";
+        name = "Keith";
+        gitUsername = "KeithButler-WIT";
+        gitEmail = "keithbutler2001@gmail.com";
+        browser = "floorp";
+        secondbrowser = "qutebrowser";
+        editor = "emacsclient";
+        flakeDir = "/home/${username}/nixos";
+        font = "";
+        fontpkg = "";
+        term = "kitty";
+      };
     in
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit timezone locale;
-            inherit username name;
-            inherit gitUsername gitEmail;
+            inherit userSettings systemSettings;
           }; # Might be redundent
           modules = [
             hosts.nixosModule
