@@ -54,12 +54,9 @@
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit timezone;
-            inherit locale;
-            inherit username;
-            inherit name;
-            inherit gitUsername;
-            inherit gitEmail;
+            inherit timezone locale;
+            inherit username name;
+            inherit gitUsername gitEmail;
           }; # Might be redundent
           modules = [
             hosts.nixosModule
@@ -79,8 +76,10 @@
       #   };
       # };
 
+      inherit self;
+
       # templates for devenv
-      templates = import ./templates;;
+      templates = import ./templates;
 
     };
 }
