@@ -8,7 +8,6 @@
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nur.url = "github:nix-community/NUR";
-    # nix-doom-emacs.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,7 +22,7 @@
     xremap-flake.url = "github:xremap/nix-flake";
     nix-colors.url = "github:misterio77/nix-colors";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
-    emacs-doom.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
+    nix-doom-emacs.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
   };
 
   outputs = { nixpkgs, nur, home-manager, ... }@inputs:
