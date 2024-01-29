@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     hyprland.url = "github:hyprwm/Hyprland";
     devenv.url = "github:cachix/devenv";
     hosts.url = github:StevenBlack/hosts;
@@ -36,19 +36,31 @@
       };
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      timezone = "Europe/Dublin";
+      locale = "en_IE.UTF-8";
 
       # User Variables 
       hostname = "nixos";
       username = "keith";
+      name = "Keith";
       gitUsername = "KeithButler-WIT";
       gitEmail = "keithbutler2001@gmail.com";
       browser = "floorp";
+      editor = "emacs";
       flakeDir = "/home/${username}/nixos";
     in
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Might be redundent
+          specialArgs = {
+            inherit inputs;
+            inherit timezone;
+            inherit locale;
+            inherit username;
+            inherit name;
+            inherit gitUsername;
+            inherit gitEmail;
+          }; # Might be redundent
           modules = [
             hosts.nixosModule
             {
@@ -68,7 +80,7 @@
       # };
 
       # templates for devenv
-      templates = ./templates;
+      templates = import ./templates;;
 
     };
 }
