@@ -576,6 +576,14 @@ https://protesilaos.com/emacs/dired-preview
 #+begin_src  emacs-lisp :results none :tangle packages.el
 (package! direnv)
 #+end_src
+
+#+begin_src  emacs-lisp :results none
+(use-package direnv
+ :config
+ (direnv-mode))
+#+end_src
+
+
 ** zoxide integration
 #+begin_src  emacs-lisp :results none :tangle packages.el
 (package! zoxide)
