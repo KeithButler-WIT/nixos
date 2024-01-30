@@ -7,6 +7,7 @@
     ./hardware/bluetooth.nix
     ./hardware/opengl.nix
     ./hardware/printing.nix
+    ./hardware/power.nix
 
 
     ./system.nix
