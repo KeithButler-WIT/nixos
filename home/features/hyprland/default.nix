@@ -68,7 +68,8 @@
     enable = true;
     settings = {
       default = {
-        path = "/home/keith/Pictures/Wallpapers";
+        # path = "/home/keith/Pictures/Wallpapers";
+        path = "/home/keith/Pictures/Stålenhag";
         duration = "1h";
       };
     };
