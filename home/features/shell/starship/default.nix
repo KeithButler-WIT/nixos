@@ -33,8 +33,8 @@
       directory = {
         style = "purple";
         truncate_to_repo = true;
-        truncation_length = 0;
-        truncation_symbol = "repo: ";
+        truncation_length = 2;
+        truncation_symbol = "../";
       };
 
       # Fourth param
