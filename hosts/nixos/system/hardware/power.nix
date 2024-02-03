@@ -1,15 +1,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  
+
   # https://nixos.wiki/wiki/Power_Management
   # https://nixos.wiki/wiki/Laptop
 
   powerManagement.enable = true;
 
   services.tlp = {
-    enable = false;
+    enable = true;
     settings = {
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;
+
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
@@ -27,6 +30,15 @@
 
     };
   };
+
+  # Disable KDE and GNOMEs power management
+  services.power-profiles-daemon.enable = false;
+
+  # Enable powertop
+  powerManagement.powertop.enable = true;
+
+  # Better scheduling for CPU cycles
+  services.system76-scheduler.settings.cfsProfiles.enable = true;
 
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
