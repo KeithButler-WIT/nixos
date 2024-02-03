@@ -10,7 +10,7 @@
     ./features/dunst
     ./features/emacs
     ./features/file
-    ./features/firefox
+    # ./features/firefox
     ./features/hyprland
     ./features/kitty # requires nixGL on non-nixos
     ./features/gtk
@@ -68,34 +68,6 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = [
-      # (pkgs.python3Packages.buildPythonPackage rec {
-      #   pname = "rimpy";
-      #   version = "1.2.6.29";
-      #   src = pkgs.fetchPypi {
-      #       inherit pname version;
-      #       sha256 = lib.fakeSha256;
-      #   };
-      #   format = "pyproject";
-      #   propagatedBuildInputs = with pkgs; [
-      #       python3Packages.setuptools
-      #       python3Packages.poetry-core
-      #       poetry
-      #   ];
-      #   doCheck = false;
-      #   })
-
-      # (pkgs.stdenv.mkDerivation rec {
-      #   name = "rimpy-${version}";
-      #   version = "1.2.6.29";
-
-      #   let src = pkgs.fetchFromGitHub {
-      #     owner  = "rimpy-custom";
-      #     repo   = "rimpy";
-      #     rev    = "88150c7b8a0664a70757ffd88b2ac12b84dd0604";
-      #     sha256 = "1mb3gfg01mj7ajjl1ylw24mnwamcnnifbxkakzal2j6ibqyqw6rq";
-      #   };
-      #   in
-      #   import nix-build ${src}/release.nix
       pkgs.waybar
       pkgs.swww
       pkgs.bottles
@@ -126,8 +98,9 @@
       pkgs.buku # browser indepenent bookmarks
       pkgs.bukubrow
 
-      pkgs.amdvlk
-      pkgs.mesa
+      # pkgs.amdvlk
+      # pkgs.mesa
+      # pkgs.mesa.drivers
       pkgs.egl-wayland
       pkgs.xss-lock
       pkgs.mcfly
@@ -135,14 +108,13 @@
 
       # Core Packages
       pkgs.libglvnd
-      pkgs.mesa.drivers
       pkgs.thunderbird
       pkgs.keepassxc
       pkgs.libreoffice
       # pkgs.librewolf
       # pkgs.icecat
       pkgs.floorp
-      (pkgs.xfce.thunar.override { thunarPlugins = [ pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman ]; })
+      # (pkgs.xfce.thunar.override { thunarPlugins = [ pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman ]; })
       pkgs.gpodder
       pkgs.gparted
       pkgs.tor-browser-bundle-bin
