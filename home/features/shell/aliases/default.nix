@@ -37,8 +37,8 @@
       #gitpkg="pacman -Q | grep -i '\-git' | wc -l"; # List amount of -git packages
       hm="home-manager";
       hms="home-manager --flake ~/nixos/home/ switch --impure";
-      g="git";
       upd="sudo nixos-rebuild --flake ~/nixos#nixos switch";
+      g="git";
 
       # Get fastest mirrors
       mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist";
@@ -47,7 +47,7 @@
       mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist";
 
       # Cleanup orphaned packages
-      cleanup="sudo pacman -Rns (pacman -Qtdq)";
+      # cleanup="sudo pacman -Rns (pacman -Qtdq)";
       nixclean="home-manager expire-generations 10; nix-store --gc; nix-store --optimise; nix-collect-garbage -d";
 
       # Get the error messages from journalctl
