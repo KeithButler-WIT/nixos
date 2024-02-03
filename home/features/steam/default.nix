@@ -3,7 +3,7 @@
 {
 
   home.packages = [
-    pkgs.gamemode
+    # pkgs.gamemode # GameMode depends on root-level capabilities that aren't available in a user-level Nix package installation.
     pkgs.heroic
     pkgs.lutris
     pkgs.protonup-qt
