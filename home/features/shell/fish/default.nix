@@ -21,7 +21,7 @@
       # Hide welcome message
       set fish_greeting
       set VIRTUAL_ENV_DISABLE_PROMPT "1"
-      set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+      set -x MANPAGER "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'"
 
       ## Export variable need for qt-theme
       if type "qtile" >> /dev/null 2>&1
@@ -54,8 +54,8 @@
 
       # Add ~/.config/.emacs.d/bin  to PATH
       if test -d ~/.config/emacs/bin
-            if not contains -- ~/.config/.emacs.d/bin $PATH
-                  set -p PATH ~/.config/.emacs.d/bin
+            if not contains -- ~/.config/emacs/bin $PATH
+                  set -p PATH ~/.config/emacs/bin
             end
       end
 
@@ -69,12 +69,6 @@
       ## Advanced command-not-found hook
       source /usr/share/doc/find-the-command/ftc.fish
 
-
-      ## Run fastfetch if session is interactive
-      # if status --is-interactive && type -q fastfetch
-            # ${pkgs.fastfetch}/bin/fastfetch --load-config neofetch
-      # end
-
       ${pkgs.macchina}/bin/macchina -t Berylilum
       # ${pkgs.macchina}/bin/macchina -t Helium
       # ${pkgs.macchina}/bin/macchina -t Hydrogen
@@ -87,8 +81,6 @@
                   tput clear;
             end
       end
-
-      ${pkgs.zoxide}/bin/zoxide init fish | source
 
 
       # if [ "$fish_key_bindings" = fish_vi_key_bindings ];
@@ -114,7 +106,14 @@
     '';
 
     interactiveShellInit = ''
+      ## Run fastfetch if session is interactive
+      # if status --is-interactive && type -q fastfetch
+            # ${pkgs.fastfetch}/bin/fastfetch --load-config neofetch
+      # end
+
       source ("starship" init fish --print-full-init | psub)
+
+      ${pkgs.zoxide}/bin/zoxide init fish | source
     '';
 
     plugins = [
