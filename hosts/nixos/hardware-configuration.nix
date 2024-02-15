@@ -24,10 +24,22 @@
   };
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.kernelParams = [ "nohibernate" "v4l2loopback" ];
   boot.zfs.forceImportRoot = false;
   boot.supportedFilesystems = [ "zfs" ];
   boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device = "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
+
+  boot.kernelParams = [
+    "nohibernate"
+    "v4l2loopback"
+    "quiet"
+    "splash"
+    "vga=current"
+    "rd.systemd.show_status=false"
+    "rd.udev.log_level=3"
+    "udev.log_priority=3"
+  ];
+  boot.consoleLogLevel = 0;
+  boot.initrd.verbose = false;
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/0D5D-3591";
