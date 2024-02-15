@@ -5,7 +5,9 @@
   # https://nixos.wiki/wiki/Power_Management
   # https://nixos.wiki/wiki/Laptop
 
-  powerManagement.enable = true;
+  # powerManagement.enable = true;
+  # Enable powertop
+  powerManagement.powertop.enable = true;
 
   services.tlp = {
     enable = true;
@@ -33,9 +35,6 @@
 
   # Disable KDE and GNOMEs power management
   services.power-profiles-daemon.enable = false;
-
-  # Enable powertop
-  powerManagement.powertop.enable = true;
 
   # Better scheduling for CPU cycles
   services.system76-scheduler.settings.cfsProfiles.enable = true;
