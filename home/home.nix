@@ -125,7 +125,7 @@
       pkgs.rclone-browser
 
       # TODO: Move into a flake in required folders
-      (pkgs.python310.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
+      (pkgs.python310.withPackages (ps: with ps; [ pytz numpy types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
       pkgs.obs-studio
 
@@ -136,6 +136,7 @@
       pkgs.godot_4
       #pkgs.unityhub
       pkgs.blender
+      pkgs.prismlauncher
 
       pkgs.mullvad-vpn
 
