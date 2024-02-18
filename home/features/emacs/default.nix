@@ -1,62 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
-  # Was used to get emacs-git
-  # nixpkgs.overlays = [
-  # (import (builtins.fetchTarball {
-  #   url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-  # }))
-  # ];
-  #
-  # home = {
-  #   sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
-  #   sessionVariables = {
-  #     DOOMDIR = "${config.xdg.configHome}/doom-config";
-  #     DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
-  #     # DOOMLOCALDIR = ./doom;
-  #     # DOOMLOCALDIR = "/home/keith/nixos/home/features/emacs/doom";
-  #   };
-  # };
-  #
-  # xdg = {
-  #   enable = true;
-  #   configFile = {
-  #     "doom-config/config.el".source = ./doom/config.el;
-  #     "doom-config/init.el".source = ./doom/init.el;
-  #     "doom-config/packages.el".source = ./doom/packages.el;
-  #     "doom-config/ding.mp3".source = ./doom/ding.mp3;
-  #     "emacs" = {
-  #       source = builtins.fetchGit "https://github.com/hlissner/doom-emacs";
-  #       onChange = "${pkgs.writeShellScript "doom-change" ''
-  #         export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
-  #         export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
-  #         if [ ! -d "$DOOMLOCALDIR" ]; then
-  #           ${config.xdg.configHome}/emacs/bin/doom -y install
-  #         else
-  #           ${config.xdg.configHome}/emacs/bin/doom -y sync -u
-  #         fi
-  #       ''}";
-  #     };
-  #   };
-  # };
 
-  # home.packages = with pkgs; [
-  #   # DOOM Emacs dependencies
-  #   binutils
-  #   (ripgrep.override { withPCRE2 = true; })
-  #   gnutls
-  #   fd
-  #   imagemagick
-  #   zstd
-  #   nodePackages.javascript-typescript-langserver
-  #   sqlite
-  #   editorconfig-core-c
-  #   emacs-all-the-icons-fonts
-  # ];
+  imports = [ inputs.nix-doom-emacs.hmModule ];
 
   programs.emacs = {
     enable = true;
     package = pkgs.emacs28;
+    # package = doom-emacs;
     extraPackages =
       (epkgs: [
         epkgs.vterm
@@ -82,6 +33,15 @@
         pkgs.sqlite
         pkgs.editorconfig-core-c
         pkgs.emacs-all-the-icons-fonts
+
+        # org-roam Deps
+        pkgs.dash
+        epkgs.f
+        epkgs.s
+        epkgs.emacsql
+        epkgs.emacsql-sqlite
+        epkgs.magit-section
+        epkgs.magit-filenotify
       ]);
   };
 
@@ -89,6 +49,12 @@
     source = ./doom;
     recursive = true;
   };
+
+  # # https://github.com/vlaci/nix-doom-emacs
+  # programs.doom-emacs = {
+  #   enable = true;
+  #   doomPrivateDir = ./doom;
+  # };
 
   # https://nixos.wiki/wiki/Emacs
   services.emacs.enable = true;
