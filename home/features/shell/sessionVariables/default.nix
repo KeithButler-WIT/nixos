@@ -49,6 +49,7 @@
     # Other program settings:
     QT_QPA_PLATFORMTHEME = "qt5ct";
     XDG_CURRENT_DESKTOP = "Unity";
+    _ZO_RESOLVE_SYMLINKS = "1";
     # DICS="/usr/share/stardict/dic/";
     # SUDO_ASKPASS="$HOME/.local/bin/dmenupass";
     FZF_DEFAULT_OPTS = "--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1";
