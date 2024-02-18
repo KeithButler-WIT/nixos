@@ -588,6 +588,11 @@ https://protesilaos.com/emacs/dired-preview
 #+begin_src  emacs-lisp :results none :tangle packages.el
 (package! zoxide)
 #+end_src
+
+#+begin_src  emacs-lisp :results none
+(map! :leader :desc "Zoxide travel" :n "z" #'zoxide-travel)
+#+end_src
+
 * org
 ** LaTeX Exporter
 #+begin_src  emacs-lisp :results none
