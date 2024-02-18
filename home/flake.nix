@@ -22,14 +22,16 @@
     xremap-flake.url = "github:xremap/nix-flake";
     nix-colors.url = "github:misterio77/nix-colors";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
-    nix-doom-emacs.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
+    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
+    # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
   outputs = { nixpkgs, nur, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       homeConfigurations."keith" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
