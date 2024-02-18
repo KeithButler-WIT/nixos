@@ -114,12 +114,16 @@
       source ("starship" init fish --print-full-init | psub)
 
       ${pkgs.zoxide}/bin/zoxide init fish | source
+      alias cd "z" # Temp fix
+      alias cdi "zi" # Temp fix
     '';
 
     plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
-      # { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+      { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
       # Manually packaging and enable a plugin
+
     ];
 
     shellAliases = { };
