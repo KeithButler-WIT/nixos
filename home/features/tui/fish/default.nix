@@ -8,6 +8,7 @@
     pkgs.man
     pkgs.starship
     pkgs.bat
+    pkgs.mcfly
   ];
 
   programs.fish = {

@@ -10,9 +10,9 @@
     # inputs.nix-gaming.packages.${pkgs.system}.steam
     cachix
     nixpkgs-fmt
-    btrfs-assistant
     git
     gcc
+    grc
     ripgrep
     vim
     wget
@@ -22,11 +22,31 @@
     rsync
     gnumake
     gnupg
-    wget
     curl
     htop
     btop
     gnumake
+    xdragon
+
+    w3m
+    ripgrep
+    entr
+
+    # System management
+    htop
+    btop
+
+    killall
+    zip
+    unzip
+    light
+    pass
+    yt-dlp
+    feh
+    wget
+    gnupg
+    trash-cli
+    ncdu # disk space management
   ];
 
   # Enable nix ld

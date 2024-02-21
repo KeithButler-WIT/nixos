@@ -12,4 +12,7 @@
   boot.initrd.luks.devices."luks-ee0c8b1c-e042-492a-960d-df1fed98ec91".device = "/dev/disk/by-uuid/ee0c8b1c-e042-492a-960d-df1fed98ec91";
   networking.hostId = "934bebc5";
 
+  # empty out /tmp on boot
+  boot.tmp.cleanOnBoot = true;
+
 }

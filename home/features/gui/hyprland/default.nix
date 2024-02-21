@@ -3,17 +3,17 @@
 {
 
   home.packages = [
-    pkgs.pyprland
+    pkgs.blueman
     pkgs.kitty
     pkgs.grimblast
     pkgs.waybar
     pkgs.wofi
-    pkgs.nwg-bar
     pkgs.nwg-drawer
     pkgs.nwg-launchers
     pkgs.nwg-look
     pkgs.pavucontrol
     pkgs.swaylock
+    pkgs.swww
     pkgs.xfce.thunar
     pkgs.xfce.thunar-volman
     pkgs.xfce.thunar-archive-plugin
@@ -78,7 +78,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     enableNvidiaPatches = false;
-    plugins = [ ];
+    systemdIntegration = true;
+    xwayland.enable = true;
+    plugins = [ split-monitor-workspaces ];
     settings = { };
     extraConfig = ''
       # See https://wiki.hyprland.org/Configuring/Monitors/
@@ -91,11 +93,12 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      # exec-once = waybar & hyprpaper
+      # exec-once = ${pkgs.waybar}/bin/waybar
+      # exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
 
       # Add networkmanager applet to tray in waybar
-      exec-once = nm-applet --indicator
-      exec-once = blueman-applet
+      exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+      exec-once = ${pkgs.blueman}/bin/blueman-applet
 
       # Set keyboard layout
       # exec-once = .local/bin/garuda-locale.sh
@@ -105,7 +108,7 @@
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
-      kb_layout = us
+          kb_layout = us
           kb_variant =
           kb_model =
           kb_options =
@@ -140,9 +143,9 @@
 
           rounding = 10
           blur {
-          enabled = true
-          size = 5
-          passes = 1
+            enabled = true
+            size = 5
+            passes = 1
           }
 
           drop_shadow = true
@@ -208,22 +211,22 @@
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $mainMod SHIFT, R, exec, hyprctl reload
-      bind = $mainMod, 36, exec, kitty
-      bind = $mainMod, T, exec, kitty
+      bind = $mainMod, 36, exec, ${pkgs.kitty}/bin/kitty
+      bind = $mainMod, T, exec, ${pkgs.kitty}/bin/kitty
       bind = $mainMod, Q, killactive,
-      bind = $mainMod SHIFT, E, exec, nwg-bar -t bar.json
+      bind = $mainMod SHIFT, E, exec, ${pkgs.nwg-bar}/bin/nwg-bar -t bar.json
       bind = $mainMod, N, exec, thunar
       bind = $mainMod SHIFT, 65, togglefloating,
-      bind = $mainMod, D, exec, wofi --show drun --allow-images
-      bind = $mainMod SHIFT, D, exec, nwg-drawer
+      bind = $mainMod, D, exec, ${pkgs.wofi}/bin/wofi --show drun --allow-images
+      bind = $mainMod SHIFT, D, exec, ${pkgs.nwg-drawer}/bin/nwg-drawer
       # bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, ESCAPE, exec, ~/.config/hypr/scripts/lock.sh
-      bind = $mainMod SHIFT, ESCAPE, exec, wlogout
+      bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
 
       # Mainmod + Function keys
       bind = $mainMod, F1, exec, floorp
-      bind = $mainMod, F2, exec, thunderbird
+      bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
       # bind = $mainMod, F3, exec, thunar
       # bind = $mainMod, F4, exec, geany
       # bind = $mainMod, F5, exec, github-desktop
@@ -233,7 +236,7 @@
       # bind = $mainMod, F9, exec, meld
       # bind = $mainMod, F10, exec, joplin-desktop
       # bind = $mainMod, F11, exec, snapper-tools
-      bind = $mainMod, F12, exec, galculator
+      bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
 
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l
@@ -286,11 +289,11 @@
       bindm = $mainMod, mouse:273, resizewindow
 
       #background
-      exec-once = wpaperd
+      exec-once = ${pkgs.wpaperd}/bin/wpaperd
       exec-once = ~/.config/hypr/scripts/sleep.sh
 
       #status bar
-      exec-once = waybar
+      exec-once = ${pkgs.waybar}/bin/waybar
       layerrule = blur , waybar
       layerrule = ignorezero , waybar
 
@@ -299,7 +302,7 @@
       bind = ,123, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
       bind = ,121, exec, pactl set-sink-volume @DEFAULT_SINK@ 0%
       # other bindings
-      bind = $mainMod, O, exec, firedragon
+      #bind = $mainMod, O, exec, firedragon
       bind = $mainMod, F, fullscreen
       bind = $mainMod SHIFT, F, fakefullscreen
       bind = ,232,exec,brightnessctl -c backlight set 5%-
@@ -357,9 +360,9 @@
       #window rules with evaluation
       windowrulev2 = opacity 0.85 0.85,floating:1
 
-      exec-once = mako
+      exec-once = ${pkgs.mako}/bin/mako
       exec-once =/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-      exec-once = emacs --daemon
+      #exec-once = emacs --daemon
       # experimental(might work might won't)
 
       #pre executions (under development)
@@ -367,29 +370,29 @@
       exec-once=copyq
 
       #video play paues bindings
-      bind=,172,exec,playerctl play-pause
-      bind=,171,exec,playerctl next
-      bind=,173,exec,playerctl previous
+      bind=,172,exec,${pkgs.playerctl}/bin/playerctl play-pause
+      bind=,171,exec,${pkgs.playerctl}/bin/playerctl next
+      bind=,173,exec,${pkgs.playerctl}/bin/playerctl previous
 
       # Use gtk-settings
       exec-once = apply-gsettings
 
       # colour-temperature setting depending on the time [https://github.com/d4l3k/go-sct]
-      exec-once = waysct
+      exec-once = ${pkgs.waysct}/bin/waysct
       exec-once = thunar --daemon # auto mount removeable media
-      # exec-once = xremap ~/.config/xremap/config.yaml
-      exec-once = rclone --vfs-cache-mode writes mount OneDrive: ~/Onedrive
-      exec-once = rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive
+      # exec-once = ${pkgs.xremap}/bin/xremap ~/.config/xremap/config.yaml
+      exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive
+      exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive
 
       # -----------------------------------------------------
       # Scratch Pads
       # -----------------------------------------------------
 
-      exec-once = pypr
+      exec-once = ${pkgs.pyprland}/bin/pypr
 
-      bind = $mainMod SHIFT, RETURN, exec, pypr toggle term && hyprctl dispatch bringactivetotop
-      bind = $mainMod, V,exec,pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-      bind = $mainMod, P,exec,pypr toggle keepass && hyprctl dispatch bringactivetotop
+      bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
+      bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
+      bind = $mainMod, P,exec,${pkgs.pyprland}/bin/pypr toggle keepass && hyprctl dispatch bringactivetotop
       $scratchpadsize = size 80% 85%
 
       $scratchpad = class:^(scratchpad)$

@@ -6,20 +6,9 @@
     inputs.nix-colors.homeManagerModules.default
     # inputs.nixvim.homeManagerModules.nixvim
 
-    ./features/alacritty # requires nixGL on non-nixos
-    ./features/dunst
-    ./features/emacs
+    ./features/gui
+    ./features/tui
     ./features/file
-    # ./features/firefox
-    ./features/hyprland
-    ./features/kitty # requires nixGL on non-nixos
-    ./features/gtk
-    # ./features/mako
-    ./features/qutebrowser
-    ./features/shell
-    ./features/steam
-    ./features/vm
-    # ./features/spicetify # Requires spotify premium
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -55,7 +44,6 @@
   home.username = "keith";
   home.homeDirectory = "/home/keith";
   home = {
-
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
     # introduces backwards incompatible changes.
@@ -68,109 +56,16 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = [
-      pkgs.waybar
-      pkgs.swww
-      pkgs.bottles
-      pkgs.corefonts
-
       # TODO add to direnv in required projects
-      pkgs.gum
-      pkgs.mermaid-cli
-      pkgs.docker
 
-      pkgs.nsxiv
-      pkgs.numlockx
-
-      pkgs.flameshot
-      pkgs.galculator
-      pkgs.gparted
-      pkgs.kdeconnect
-      pkgs.kleopatra
-      #pkgs.conda
-      pkgs.pavucontrol
-      pkgs.piper
-      # pkgs.r2modman
-      pkgs.scrcpy
-      #pkgs.vlc
-
-      pkgs.wallust # better pywal
-
-      pkgs.buku # browser indepenent bookmarks
-      pkgs.bukubrow
-
-      # pkgs.amdvlk
-      # pkgs.mesa
-      # pkgs.mesa.drivers
-      pkgs.egl-wayland
-      pkgs.xss-lock
-      pkgs.mcfly
+      pkgs.nixpkgs-fmt
       pkgs.shfmt
 
-      # Core Packages
-      pkgs.libglvnd
-      pkgs.thunderbird
-      pkgs.keepassxc
-      pkgs.libreoffice
-      # pkgs.librewolf
-      # pkgs.icecat
-      pkgs.floorp
-      # (pkgs.xfce.thunar.override { thunarPlugins = [ pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman ]; })
-      pkgs.gpodder
-      pkgs.gparted
-      pkgs.tor-browser-bundle-bin
-      pkgs.rsync
-      pkgs.grsync
-
-      pkgs.rclone
-      pkgs.rclone-browser
+      #pkgs.egl-wayland
+      #pkgs.xss-lock # X i3lock
 
       # TODO: Move into a flake in required folders
       (pkgs.python310.withPackages (ps: with ps; [ pytz numpy types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
-
-      pkgs.obs-studio
-
-      pkgs.go-sct
-
-      # pkgs.godot
-      # pkgs.aseprite
-      pkgs.godot_4
-      #pkgs.unityhub
-      pkgs.blender
-      pkgs.prismlauncher
-
-      pkgs.mullvad-vpn
-
-      # Xorg
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xorg.libX11
-      pkgs.xorg.libX11.dev
-      pkgs.xorg.libxcb
-      pkgs.xorg.libXft
-      pkgs.xorg.libXinerama
-      pkgs.xorg.xinit
-      pkgs.xorg.xinput
-
-      pkgs.gpodder
-      pkgs.ani-cli
-      pkgs.mangal
-      pkgs.suwayomi-server
-      #pkgs.tachidesk
-
-      #pkgs.discord
-      #pkgs.betterdiscordctl
-      pkgs.discord-screenaudio
-      pkgs.signal-desktop
-      pkgs.zoom-us
-      pkgs.slack
-
-      pkgs.cava
-
-      # pkgs.jetbrains.idea-ultimate
-      pkgs.jetbrains.idea-community
-      pkgs.jetbrains.clion
-      pkgs.jetbrains.rust-rover
-      pkgs.vscode
-      #pkgs.android-studio
 
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
@@ -179,6 +74,8 @@
       #pkgs.fira-code-symbols
       (pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" ]; })
       # pkgs.nerdfonts
+      pkgs.corefonts
+
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
       # # environment:
@@ -186,24 +83,7 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
     ];
-
-    # You can also manage environment variables but you will have to manually
-    # source
-    #
-    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  /etc/profiles/per-user/keith/etc/profile.d/hm-session-vars.sh
-    #
-    # if you don't want to manage your shell through Home Manager.
-
-
   };
-
-  # wayland.windowManager.hyprland.enable = true;
-  # wayland.windowManager.hyprland.systemdIntegration = true;
-  # wayland.windowManager.hyprland.xwayland.enable = true;
 
   programs.java.enable = true;
 
