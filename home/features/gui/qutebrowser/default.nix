@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.qutebrowser = with config.colorScheme.colors; {
+  programs.qutebrowser = with config.colorScheme.palette; {
     enable = true;
     settings = {
       colors = {

@@ -3,7 +3,7 @@
 {
   services.dunst = {
     enable = true;
-    settings = with config.colorScheme.colors; {
+    settings = with config.colorScheme.palette; {
       global = {
         ### Display ###
 

@@ -48,7 +48,7 @@
       mouse.hide_when_typing = true;
 
 
-      colors = with config.colorScheme.colors; {
+      colors = with config.colorScheme.palette; {
         bright = {
           black = "0x${base00}";
           blue = "0x${base0D}";

@@ -75,15 +75,15 @@
       }
 
       element-text selected {
-          text-color:#${config.colorScheme.colors.base00};
+          text-color:#${config.colorScheme.palette.base00};
       }
 
       prompt {
-          text-color:#${config.colorScheme.colors.base0F};
+          text-color:#${config.colorScheme.palette.base0F};
       }
 
       entry {
-          text-color:#${config.colorScheme.colors.base0A};
+          text-color:#${config.colorScheme.palette.base0A};
       }
 
       /* vim: ft=sass
@@ -93,108 +93,108 @@
       #!/usr/bin/env python3
 
       colors = {
-          "00": "${config.colorScheme.colors.base00}",
-          "01": "${config.colorScheme.colors.base01}",
-          "02": "${config.colorScheme.colors.base02}",
-          "03": "${config.colorScheme.colors.base03}",
-          "04": "${config.colorScheme.colors.base04}",
-          "05": "${config.colorScheme.colors.base05}",
-          "06": "${config.colorScheme.colors.base06}",
-          "07": "${config.colorScheme.colors.base07}",
-          "08": "${config.colorScheme.colors.base08}",
-          "09": "${config.colorScheme.colors.base09}",
-          "10": "${config.colorScheme.colors.base0A}",
-          "11": "${config.colorScheme.colors.base0B}",
-          "12": "${config.colorScheme.colors.base0C}",
-          "13": "${config.colorScheme.colors.base0D}",
-          "14": "${config.colorScheme.colors.base0E}",
-          "15": "${config.colorScheme.colors.base0F}"
+          "00": "${config.colorScheme.palette.base00}",
+          "01": "${config.colorScheme.palette.base01}",
+          "02": "${config.colorScheme.palette.base02}",
+          "03": "${config.colorScheme.palette.base03}",
+          "04": "${config.colorScheme.palette.base04}",
+          "05": "${config.colorScheme.palette.base05}",
+          "06": "${config.colorScheme.palette.base06}",
+          "07": "${config.colorScheme.palette.base07}",
+          "08": "${config.colorScheme.palette.base08}",
+          "09": "${config.colorScheme.palette.base09}",
+          "10": "${config.colorScheme.palette.base0A}",
+          "11": "${config.colorScheme.palette.base0B}",
+          "12": "${config.colorScheme.palette.base0C}",
+          "13": "${config.colorScheme.palette.base0D}",
+          "14": "${config.colorScheme.palette.base0E}",
+          "15": "${config.colorScheme.palette.base0F}"
       }'';
 
     ".cache/nix-colors/colors".text = ''
-      #${config.colorScheme.colors.base00}
-      #${config.colorScheme.colors.base01}
-      #${config.colorScheme.colors.base02}
-      #${config.colorScheme.colors.base03}
-      #${config.colorScheme.colors.base04}
-      #${config.colorScheme.colors.base05}
-      #${config.colorScheme.colors.base06}
-      #${config.colorScheme.colors.base07}
-      #${config.colorScheme.colors.base08}
-      #${config.colorScheme.colors.base09}
-      #${config.colorScheme.colors.base0A}
-      #${config.colorScheme.colors.base0B}
-      #${config.colorScheme.colors.base0C}
-      #${config.colorScheme.colors.base0D}
-      #${config.colorScheme.colors.base0E}
-      #${config.colorScheme.colors.base0F}
+      #${config.colorScheme.palette.base00}
+      #${config.colorScheme.palette.base01}
+      #${config.colorScheme.palette.base02}
+      #${config.colorScheme.palette.base03}
+      #${config.colorScheme.palette.base04}
+      #${config.colorScheme.palette.base05}
+      #${config.colorScheme.palette.base06}
+      #${config.colorScheme.palette.base07}
+      #${config.colorScheme.palette.base08}
+      #${config.colorScheme.palette.base09}
+      #${config.colorScheme.palette.base0A}
+      #${config.colorScheme.palette.base0B}
+      #${config.colorScheme.palette.base0C}
+      #${config.colorScheme.palette.base0D}
+      #${config.colorScheme.palette.base0E}
+      #${config.colorScheme.palette.base0F}
     '';
 
     ".cache/nix-colors/colors-hyprland.conf".text = ''
-      $background = rgb(${config.colorScheme.colors.base00})
-      $foreground = rgb(${config.colorScheme.colors.base00})
-      $color0 = rgb(${config.colorScheme.colors.base00})
-      $color1 = rgb(${config.colorScheme.colors.base01})
-      $color2 = rgb(${config.colorScheme.colors.base02})
-      $color3 = rgb(${config.colorScheme.colors.base03})
-      $color4 = rgb(${config.colorScheme.colors.base04})
-      $color5 = rgb(${config.colorScheme.colors.base05})
-      $color6 = rgb(${config.colorScheme.colors.base06})
-      $color7 = rgb(${config.colorScheme.colors.base07})
-      $color8 = rgb(${config.colorScheme.colors.base08})
-      $color9 = rgb(${config.colorScheme.colors.base09})
-      $color10 = rgb(${config.colorScheme.colors.base0A})
-      $color11 = rgb(${config.colorScheme.colors.base0B})
-      $color12 = rgb(${config.colorScheme.colors.base0C})
-      $color13 = rgb(${config.colorScheme.colors.base0D})
-      $color14 = rgb(${config.colorScheme.colors.base0E})
-      $color15 = rgb(${config.colorScheme.colors.base0F})
+      $background = rgb(${config.colorScheme.palette.base00})
+      $foreground = rgb(${config.colorScheme.palette.base00})
+      $color0 = rgb(${config.colorScheme.palette.base00})
+      $color1 = rgb(${config.colorScheme.palette.base01})
+      $color2 = rgb(${config.colorScheme.palette.base02})
+      $color3 = rgb(${config.colorScheme.palette.base03})
+      $color4 = rgb(${config.colorScheme.palette.base04})
+      $color5 = rgb(${config.colorScheme.palette.base05})
+      $color6 = rgb(${config.colorScheme.palette.base06})
+      $color7 = rgb(${config.colorScheme.palette.base07})
+      $color8 = rgb(${config.colorScheme.palette.base08})
+      $color9 = rgb(${config.colorScheme.palette.base09})
+      $color10 = rgb(${config.colorScheme.palette.base0A})
+      $color11 = rgb(${config.colorScheme.palette.base0B})
+      $color12 = rgb(${config.colorScheme.palette.base0C})
+      $color13 = rgb(${config.colorScheme.palette.base0D})
+      $color14 = rgb(${config.colorScheme.palette.base0E})
+      $color15 = rgb(${config.colorScheme.palette.base0F})
     '';
 
     ".cache/nix-colors/colors-waybar.css".text = ''
-      @define-color foreground #${config.colorScheme.colors.base00};
-      @define-color background #${config.colorScheme.colors.base00};
-      @define-color cursor #${config.colorScheme.colors.base0F};
+      @define-color foreground #${config.colorScheme.palette.base00};
+      @define-color background #${config.colorScheme.palette.base00};
+      @define-color cursor #${config.colorScheme.palette.base0F};
 
-      @define-color color0 #${config.colorScheme.colors.base00};
-      @define-color color1 #${config.colorScheme.colors.base01};
-      @define-color color2 #${config.colorScheme.colors.base02};
-      @define-color color3 #${config.colorScheme.colors.base03};
-      @define-color color4 #${config.colorScheme.colors.base04};
-      @define-color color5 #${config.colorScheme.colors.base05};
-      @define-color color6 #${config.colorScheme.colors.base06};
-      @define-color color7 #${config.colorScheme.colors.base07};
-      @define-color color8 #${config.colorScheme.colors.base08};
-      @define-color color9 #${config.colorScheme.colors.base09};
-      @define-color color10 #${config.colorScheme.colors.base0A};
-      @define-color color11 #${config.colorScheme.colors.base0B};
-      @define-color color12 #${config.colorScheme.colors.base0C};
-      @define-color color13 #${config.colorScheme.colors.base0D};
-      @define-color color14 #${config.colorScheme.colors.base0E};
-      @define-color color15 #${config.colorScheme.colors.base0F};
+      @define-color color0 #${config.colorScheme.palette.base00};
+      @define-color color1 #${config.colorScheme.palette.base01};
+      @define-color color2 #${config.colorScheme.palette.base02};
+      @define-color color3 #${config.colorScheme.palette.base03};
+      @define-color color4 #${config.colorScheme.palette.base04};
+      @define-color color5 #${config.colorScheme.palette.base05};
+      @define-color color6 #${config.colorScheme.palette.base06};
+      @define-color color7 #${config.colorScheme.palette.base07};
+      @define-color color8 #${config.colorScheme.palette.base08};
+      @define-color color9 #${config.colorScheme.palette.base09};
+      @define-color color10 #${config.colorScheme.palette.base0A};
+      @define-color color11 #${config.colorScheme.palette.base0B};
+      @define-color color12 #${config.colorScheme.palette.base0C};
+      @define-color color13 #${config.colorScheme.palette.base0D};
+      @define-color color14 #${config.colorScheme.palette.base0E};
+      @define-color color15 #${config.colorScheme.palette.base0F};
     '';
 
     ".cache/nix-colors/colors-wlogout.css".text = ''
-      @define-color foreground #${config.colorScheme.colors.base00};
-      @define-color background #${config.colorScheme.colors.base00};
-      @define-color cursor #${config.colorScheme.colors.base0F};
+      @define-color foreground #${config.colorScheme.palette.base00};
+      @define-color background #${config.colorScheme.palette.base00};
+      @define-color cursor #${config.colorScheme.palette.base0F};
 
-      @define-color color0 #${config.colorScheme.colors.base00};
-      @define-color color1 #${config.colorScheme.colors.base01};
-      @define-color color2 #${config.colorScheme.colors.base02};
-      @define-color color3 #${config.colorScheme.colors.base03};
-      @define-color color4 #${config.colorScheme.colors.base04};
-      @define-color color5 #${config.colorScheme.colors.base05};
-      @define-color color6 #${config.colorScheme.colors.base06};
-      @define-color color7 #${config.colorScheme.colors.base07};
-      @define-color color8 #${config.colorScheme.colors.base08};
-      @define-color color9 #${config.colorScheme.colors.base09};
-      @define-color color10 #${config.colorScheme.colors.base0A};
-      @define-color color11 #${config.colorScheme.colors.base0B};
-      @define-color color12 #${config.colorScheme.colors.base0C};
-      @define-color color13 #${config.colorScheme.colors.base0D};
-      @define-color color14 #${config.colorScheme.colors.base0E};
-      @define-color color15 #${config.colorScheme.colors.base0F};
+      @define-color color0 #${config.colorScheme.palette.base00};
+      @define-color color1 #${config.colorScheme.palette.base01};
+      @define-color color2 #${config.colorScheme.palette.base02};
+      @define-color color3 #${config.colorScheme.palette.base03};
+      @define-color color4 #${config.colorScheme.palette.base04};
+      @define-color color5 #${config.colorScheme.palette.base05};
+      @define-color color6 #${config.colorScheme.palette.base06};
+      @define-color color7 #${config.colorScheme.palette.base07};
+      @define-color color8 #${config.colorScheme.palette.base08};
+      @define-color color9 #${config.colorScheme.palette.base09};
+      @define-color color10 #${config.colorScheme.palette.base0A};
+      @define-color color11 #${config.colorScheme.palette.base0B};
+      @define-color color12 #${config.colorScheme.palette.base0C};
+      @define-color color13 #${config.colorScheme.palette.base0D};
+      @define-color color14 #${config.colorScheme.palette.base0E};
+      @define-color color15 #${config.colorScheme.palette.base0F};
     '';
 
   };
