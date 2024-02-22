@@ -78,9 +78,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     enableNvidiaPatches = false;
-    systemdIntegration = true;
+    systemd.enable = true;
     xwayland.enable = true;
-    plugins = [ split-monitor-workspaces ];
+    plugins = [ ];
     settings = { };
     extraConfig = ''
       # See https://wiki.hyprland.org/Configuring/Monitors/
@@ -366,8 +366,8 @@
       # experimental(might work might won't)
 
       #pre executions (under development)
-      exec-once=exec xrdb -load ~/.Xresources
-      exec-once=copyq
+      exec-once=exec ${pkgs.xorg.xrdb}/bin/xrdb -load ~/.Xresources
+      exec-once= ${pkgs.copyq}/bin/copyq
 
       #video play paues bindings
       bind=,172,exec,${pkgs.playerctl}/bin/playerctl play-pause
@@ -378,9 +378,9 @@
       exec-once = apply-gsettings
 
       # colour-temperature setting depending on the time [https://github.com/d4l3k/go-sct]
-      exec-once = ${pkgs.waysct}/bin/waysct
+      exec-once = ${pkgs.go-sct}/bin/waysct
       exec-once = thunar --daemon # auto mount removeable media
-      # exec-once = ${pkgs.xremap}/bin/xremap ~/.config/xremap/config.yaml
+      # exec-once = xremap ~/.config/xremap/config.yaml
       exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive
       exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive
 

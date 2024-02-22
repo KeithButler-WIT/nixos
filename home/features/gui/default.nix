@@ -45,8 +45,6 @@
     pkgs.gpodder
     pkgs.gparted
 
-    pkgs.go-sct # Lower blue light depending on the time
-
     # Game Dev
     # pkgs.godot
     # pkgs.aseprite
