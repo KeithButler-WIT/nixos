@@ -51,9 +51,10 @@
         secondbrowser = "qutebrowser";
         editor = "emacsclient";
         flakeDir = "/home/${username}/nixos";
-        font = "";
+        font = "jetbrains mono nerd font";
         fontpkg = "";
         term = "kitty";
+        gpuType = "amd";
       };
     in
     {
