@@ -50,19 +50,25 @@
   services.envfs.enable = true;
 
   # List services that you want to enable:
-  services.flatpak.enable = true;
-
-  # hardware.bluetooth.enable = true; # enables support for Bluetooth
-  # hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  # services.blueman.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  security.pam.services.kwallet = {
-    name = "kwallet";
-    enableKwallet = true;
+  services.fstrim.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal
+    ];
+    configPackages = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal
+    ];
   };
+
 
   # Enable nix ld
   programs.nix-ld.enable = true;
