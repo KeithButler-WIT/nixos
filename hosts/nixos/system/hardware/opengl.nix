@@ -2,6 +2,7 @@
 
 {
 
+  # TODO: Maybe remove this
   hardware.opengl = {
     driSupport = true; # This is already enabled by default
     driSupport32Bit = true; # For 32 bit applications
