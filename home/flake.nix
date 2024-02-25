@@ -30,6 +30,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      inherit (import ../options.nix) systemSettings userSettings;
     in
     {
       homeConfigurations."keith" = home-manager.lib.homeManagerConfiguration {
@@ -37,7 +38,10 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit userSettings systemSettings;
+        };
 
         modules = [
           nur.nixosModules.nur

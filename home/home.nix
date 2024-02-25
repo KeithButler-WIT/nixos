@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, userSettings, ... }:
 
 {
 
@@ -41,8 +41,8 @@
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "keith";
-  home.homeDirectory = "/home/keith";
+  home.username = userSettings.username;
+  home.homeDirectory = "/home/${userSettings.username}";
   home = {
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
