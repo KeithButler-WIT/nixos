@@ -2,14 +2,14 @@
 
 {
   imports = [
-    # You can also split up your configuration and import pieces of it here:
     ./hardware/amdgpu.nix
+    ./hardware/nvidia.nix
     ./hardware/bluetooth.nix
     ./hardware/opengl.nix
     ./hardware/printing.nix
     ./hardware/power.nix
 
-
+    ./flatpak.nix
     ./system.nix
     ./users.nix
     ./steam.nix
