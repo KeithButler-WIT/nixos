@@ -10,7 +10,7 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
   # services.btrfs.autoScrub = {
@@ -29,14 +29,14 @@
   boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device = "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
 
   boot.kernelParams = [
-    "nohibernate"
+    # "nohibernate"
     "v4l2loopback"
-    "quiet"
+    # "quiet"
     "splash"
     "vga=current"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_level=3"
-    "udev.log_priority=3"
+    # "rd.systemd.show_status=false"
+    # "rd.udev.log_level=3"
+    # "udev.log_priority=3"
   ];
   boot.consoleLogLevel = 0;
   boot.initrd.verbose = false;
