@@ -16,6 +16,7 @@
       initial_session = {
         # Auto Login
         command = "startplasma-wayland";
+        # command = "Hyprland";
         user = "keith";
       };
       default_session = {
@@ -43,14 +44,14 @@
   services.getty.autologinUser = userSettings.username;
   # services.kmscon = {
   #   enable = true;
-  #   autologinUser = "keith";
+  #   autologinUser = userSettings.username;
   #   hwRender = true;
   # };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
 }
