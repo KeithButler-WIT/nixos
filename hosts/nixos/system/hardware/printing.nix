@@ -1,16 +1,24 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, userSettings, ... }:
 
 {
 
   # Detect printers
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
+  services = {
+    printing.enable = true;
+    printing.drivers = [ pkgs.hplip ];
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    ipp-usb.enable = true;
   };
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplip ];
-
+  # hardware.sane = {
+  #   enable = true;
+  #   extraBackends = [ pkgs.sane-airscan ];
+  #   disabledDefaultBackends = [ "escl" ];
+  # };
+  programs.system-config-printer.enable = true;
+  users.users.${userSettings.username}.extraGroups = [ "scanner" "lp" ];
 
 }
