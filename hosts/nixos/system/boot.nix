@@ -1,10 +1,11 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; };
 
   systemd.services.zfs-mount.enable = true;
   # boot.supportedFilesystems = [ "zfs" ];
@@ -13,6 +14,8 @@
   networking.hostId = "934bebc5";
 
   # empty out /tmp on boot
-  boot.tmp.cleanOnBoot = true;
+  # boot.tmp.cleanOnBoot = true;
+  boot.tmp.useTmpfs = true;
+  boot.tmp.tmpfsSize = "25%";
 
 }
