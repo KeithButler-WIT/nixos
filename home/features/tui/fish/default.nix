@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
 
@@ -96,8 +96,8 @@
 
       # >>> conda initialize >>>
       # !! Contents within this block are managed by 'conda init' !!
-      #if test -f /home/keith/miniconda3/bin/conda
-      #      eval /home/keith/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+      #if test -f /home/${userSettings.username}/miniconda3/bin/conda
+      #      eval /home/${userSettings.username}/miniconda3/bin/conda "shell.fish" "hook" $argv | source
       #end
       # <<< conda initialize <<<
 

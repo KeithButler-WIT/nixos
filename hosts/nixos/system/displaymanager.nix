@@ -22,7 +22,7 @@
         # Auto Login
         command = "startplasma-wayland";
         # command = "Hyprland";
-        user = "keith";
+        user = userSettings.username;
       };
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --cmd startplasma-wayland";

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
 
@@ -22,8 +22,8 @@
 
 
     ## Instance layout (base paths)
-    ## method.insert = cfg.basedir,  private|const|string, (cat,"/home/keith/rtorrent/")
-    method.insert = cfg.basedir,  private|const|string, (cat,"/run/media/keith/1TB-BACKUP/rtorrent/")
+    ## method.insert = cfg.basedir,  private|const|string, (cat,"/home/${userSettings.username}/rtorrent/")
+    method.insert = cfg.basedir,  private|const|string, (cat,"/run/media/${userSettings.username}/1TB-BACKUP/rtorrent/")
     method.insert = cfg.download, private|const|string, (cat,(cfg.basedir),"download/")
     method.insert = cfg.logs,     private|const|string, (cat,(cfg.basedir),"log/")
     method.insert = cfg.logfile,  private|const|string, (cat,(cfg.logs),"rtorrent-",(system.time),".log")
@@ -143,8 +143,8 @@
     log.add_output = "info", "log"
     #log.add_output = "tracker_debug", "log"
 
-    network.scgi.open_local = /home/keith/.local/share/rtorrent/rpc.socket
-    schedule2 = scgi_permission,0,0,"execute.nothrow=chmod,\"g+w,o=\",/home/keith/.local/share/rtorrent/rpc.socket"
+    network.scgi.open_local = /home/${userSettings.username}/.local/share/rtorrent/rpc.socket
+    schedule2 = scgi_permission,0,0,"execute.nothrow=chmod,\"g+w,o=\",/home/${userSettings.username}/.local/share/rtorrent/rpc.socket"
 
     ### END of rtorrent.rc ###
   '';

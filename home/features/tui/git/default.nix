@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
 
@@ -27,8 +27,8 @@
     extraConfig = {
       user = {
         useConfigOnly = true;
-        name = "Keith Butler";
-        email = "keithbutler2001@gmail.com";
+        name = userSettings.fullName;
+        email = userSettings.gitEmail;
         signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNXXNh8eWgPtjc7+iiBFuM6mB+C+8m13wD4tHZFPtYm keithbutler2001@gmail.com";
       };
 

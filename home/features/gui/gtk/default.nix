@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
   qt = {
@@ -30,7 +30,7 @@
       size = 11;
     };
     gtk2.extraConfig = "
-include '/home/keith/.gtkrc-2.0.mine'
+include '/home/${userSettings.username}/.gtkrc-2.0.mine'
 gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=1

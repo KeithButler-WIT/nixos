@@ -10,6 +10,7 @@
     hostname = "nixos";
     username = "keith";
     name = "Keith";
+    fullName = "Keith Butler";
     gitUsername = "KeithButler-WIT";
     gitEmail = "keithbutler2001@gmail.com";
     browser = "floorp";

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
 
@@ -8,10 +8,10 @@
       personal = {
         location = {
           sourceDirectories = [ config.home.homeDirectory ];
-          repositories = [ "/run/media/keith/4TB-BACKUP/backup" ];
+          repositories = [ "/run/media/${userSettings.username}/4TB-BACKUP/backup" ];
           excludeHomeManagerSymlinks = true;
           # extraConfig = {
-          # before_backup = "${pkgs.util-linux}/bin/findmnt /run/media/keith/4TB-BACKUP > /dev/null || exit 75";
+          # before_backup = "${pkgs.util-linux}/bin/findmnt /run/media/${userSettings.username}/4TB-BACKUP > /dev/null || exit 75";
           # };
         };
         consistency.checks = [

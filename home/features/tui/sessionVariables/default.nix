@@ -13,7 +13,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/keith/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/${userSettings.username}/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {

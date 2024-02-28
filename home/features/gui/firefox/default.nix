@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, userSettings, ... }:
 
 {
 
@@ -29,10 +29,10 @@
         ExtensionSettings = { };
       };
     };
-    profiles.keith = {
+    profiles.${userSettings.username} = {
       id = 0;
       isDefault = true;
-      name = "keith";
+      name = ${userSettings.username};
       search = {
         force = true;
         default = "DuckDuckGo";

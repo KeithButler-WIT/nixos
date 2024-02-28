@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, userSettings, ... }:
 
 {
 
@@ -73,8 +73,8 @@
     enable = true;
     settings = {
       default = {
-        # path = "/home/keith/Pictures/Wallpapers";
-        path = "/home/keith/Pictures/Stålenhag";
+        # path = "/home/${userSettings.username}/Pictures/Wallpapers";
+        path = "/home/${userSettings.username}/Pictures/Stålenhag";
         duration = "1h";
       };
     };
