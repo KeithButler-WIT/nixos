@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, userSettings, ... }:
 
 {
   # Allow unfree packages
@@ -83,7 +83,7 @@
 
   programs.dconf.enable = true;
   programs.virt-manager.enable = true;
-
   virtualisation.libvirtd.enable = true;
+  users.users.${userSettings.username}.extraGroups = [ "libvirtd" ];
 
 }
