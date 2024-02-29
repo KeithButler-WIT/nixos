@@ -5,7 +5,9 @@
 
     sudo nixos-rebuild switch --flake 'github:keithbutler-wit/nixos#nixos'
 
-    sh <(curl -L https://raw.githubusercontent.com/iynaix/dotfiles/main/install.sh)
+## Installing a new system
+
+    sh <(curl -L https://raw.githubusercontent.com/keithbutler-wit/nixos/main/install.sh)
 
 ## Source
 
