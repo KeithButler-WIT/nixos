@@ -1,13 +1,18 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
 
   home.packages = [
-    #pkgs.virt-manager
-    #pkgs.libvirt
-    #pkgs.libvirt-glib
     pkgs.quickemu
     pkgs.quickgui
   ];
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+  };
+
 
 }
