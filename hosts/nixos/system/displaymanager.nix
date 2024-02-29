@@ -14,6 +14,21 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa
+    kate
+    kwrited
+    konsole
+    kwalletmanager
+    kwallet
+    kmail
+  ]
+  ++
+  [
+    # pkgs.libsForQt5.plasma-browser-integration
+    pkgs.libsForQt5.konsole
+    pkgs.libsForQt5.oxygen
+  ];
 
   # Enable tuigreet login manager
   services.greetd = {
