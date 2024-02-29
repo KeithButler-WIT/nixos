@@ -16,9 +16,11 @@
     browser = "floorp";
     secondbrowser = "qutebrowser";
     editor = "emacsclient";
+    alternateEditor = "nvim";
+    mail = "thunderbird";
     flakeDir = "/home/${username}/nixos";
     font = "jetbrains mono nerd font";
-    fontpkg = "";
+    fontpkg = "jetbrains-mono";
     term = "kitty";
     gpuType = "amd";
   };

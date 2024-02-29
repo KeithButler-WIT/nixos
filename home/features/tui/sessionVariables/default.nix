@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userSettings, ... }:
 
 {
   # home.sessionPath = [
@@ -17,12 +17,12 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    EDITOR = "nvim";
-    ALTERNATE_EDITOR = "nvim";
-    TERMINAL = "kitty";
-    TERMINAL_PROG = "kitty";
-    BROWSER = "floorp";
-    MAIL = "thunderbird";
+    EDITOR = userSettings.editor;
+    ALTERNATE_EDITOR = userSettings.alternateEditor;
+    TERMINAL = userSettings.term;
+    TERMINAL_PROG = userSettings.term;
+    BROWSER = userSettings.browser;
+    MAIL = userSettings.mail;
 
 
     # ~/ Clean-up:
@@ -58,7 +58,7 @@
 
     # Other program settings:
     QT_QPA_PLATFORMTHEME = "qt5ct";
-    XDG_CURRENT_DESKTOP = "Unity";
+    # XDG_CURRENT_DESKTOP = "Unity";
     _ZO_RESOLVE_SYMLINKS = "1";
     # DICS="/usr/share/stardict/dic/";
     # SUDO_ASKPASS="$HOME/.local/bin/dmenupass";
