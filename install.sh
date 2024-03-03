@@ -166,7 +166,7 @@ fi
 sudo mount --mkdir -t zfs zroot/persist /mnt/persist
 
 while true; do
-    read -rp "Which host to install? (desktop / framework / xps / vm / vm-amd) " host
+    read -rp "Which host to install? (desktop / nixos / vm) " host
     case $host in
         desktop|nixos|vm ) break;;
         * ) echo "Invalid host. Please select a valid host.";;
