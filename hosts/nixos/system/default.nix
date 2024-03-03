@@ -19,5 +19,6 @@
     ./displaymanager.nix
     ./services.nix
     ./boot.nix
+    ./vm.nix
   ];
 }

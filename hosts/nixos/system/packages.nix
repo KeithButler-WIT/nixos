@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, userSettings, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Allow unfree packages
@@ -7,7 +7,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # inputs.nix-gaming.packages.${pkgs.system}.steam
     cachix
     curl
     nixpkgs-fmt
@@ -80,10 +79,5 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  programs.dconf.enable = true;
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd.enable = true;
-  users.users.${userSettings.username}.extraGroups = [ "libvirtd" ];
 
 }
