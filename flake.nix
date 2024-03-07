@@ -24,7 +24,7 @@
 
   };
 
-  outputs = { nixpkgs, self, hosts, ... } @ inputs:
+  outputs = { nixpkgs, self, hosts, hyprland, ... } @ inputs:
     let
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
@@ -48,7 +48,7 @@
           modules = [
             hosts.nixosModule
             {
-              networking.stevenBlackHosts.enable = true;
+              # networking.stevenBlackHosts.enable = true;
             }
             ./hosts/nixos/configuration.nix
           ];
