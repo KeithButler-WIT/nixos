@@ -41,7 +41,7 @@
         user = userSettings.username;
       };
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --cmd startplasma-wayland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --cmd Hyprland";
         user = "greeter";
       };
     };
