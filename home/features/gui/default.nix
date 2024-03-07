@@ -4,6 +4,7 @@
 
   imports = [
     ./alacritty # requires nixGL on non-nixos
+    ./discord
     ./dunst
     # ./firefox
     ./hyprland
@@ -14,7 +15,6 @@
     ./qutebrowser
     ./steam
     ./vm
-    # ./spicetify # Requires spotify premium
   ];
 
   home.packages = [
@@ -61,9 +61,6 @@
     pkgs.suwayomi-server
 
     # Socials
-    # pkgs.discord
-    # pkgs.betterdiscordctl
-    pkgs.discord-screenaudio
     pkgs.signal-desktop
     pkgs.zoom-us
     pkgs.slack
