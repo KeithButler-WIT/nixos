@@ -31,6 +31,7 @@
 
   # https://github.com/StevenBlack/hosts
   networking.stevenBlackHosts = {
+    enable = true;
     blockFakenews = true;
     blockGambling = true;
     blockPorn = false;
