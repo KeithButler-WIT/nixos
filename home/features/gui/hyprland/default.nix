@@ -23,6 +23,7 @@
     pkgs.xfce.thunar-volman
     pkgs.xfce.thunar-archive-plugin
     pkgs.xfce.thunar-media-tags-plugin
+    # pkgs.wayland-egl
   ];
 
   home.file.".config/hypr/pyprland.json".text = ''
@@ -86,7 +87,10 @@
     enableNvidiaPatches = false;
     systemd.enable = true;
     xwayland.enable = true;
-    plugins = [ ];
+    plugins = [
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      # "/absolute/path/to/plugin.so"
+    ];
     settings = { };
     extraConfig = ''
       # See https://wiki.hyprland.org/Configuring/Monitors/
