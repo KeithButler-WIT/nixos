@@ -20,11 +20,11 @@
   home.packages = [
     pkgs.bottles
     pkgs.nsxiv
-    pkgs.flameshot
+    # pkgs.flameshot
     pkgs.galculator
-    pkgs.kdeconnect
-    pkgs.kleopatra
-    pkgs.piper
+    # pkgs.kdeconnect
+    # pkgs.kleopatra
+    # pkgs.piper
     # pkgs.r2modman
     # pkgs.vlc
 
@@ -32,17 +32,15 @@
     # pkgs.librewolf
     # pkgs.icecat
     pkgs.floorp
-    pkgs.tor-browser-bundle-bin
     pkgs.buku # browser indepenent bookmarks
     pkgs.bukubrow
 
     # pkgs.btrfs-assistant
 
     pkgs.thunderbird
-    pkgs.mullvad-vpn
     pkgs.keepassxc
     # (pkgs.xfce.thunar.override { thunarPlugins = [ pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman ]; })
-    pkgs.gpodder
+    # pkgs.gpodder
     pkgs.gparted
 
     # Game Dev
@@ -66,9 +64,9 @@
     pkgs.slack
 
     # pkgs.jetbrains.idea-ultimate
-    pkgs.jetbrains.idea-community
-    pkgs.jetbrains.clion
-    pkgs.jetbrains.rust-rover
+    # pkgs.jetbrains.idea-community
+    # pkgs.jetbrains.clion
+    # pkgs.jetbrains.rust-rover
     pkgs.vscode
     # pkgs.android-studio
     pkgs.libreoffice
@@ -76,7 +74,7 @@
     pkgs.scrcpy
 
     pkgs.rclone-browser
-    pkgs.grsync
+    # pkgs.grsync
 
   ];
 
