@@ -4,9 +4,9 @@
 
   home.packages = with pkgs; [
     discord-screenaudio
-    (discord.override {
-      withVencord = true;
-    })
+    # (discord.override {
+    # withVencord = true;
+    # })
   ];
 
   xdg.configFile."Vencord/themes/custom.css".text = ''
