@@ -10,9 +10,6 @@
     # Include the results of the hardware scan.
     ./system
     ./hardware-configuration.nix
-
-    inputs.nix-gaming.nixosModules.steamCompat
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
   time.hardwareClockInLocalTime = true;

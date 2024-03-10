@@ -1,11 +1,10 @@
-{ pkgs, config, lib, userSettings, ... }:
+{ pkgs, config, lib, userSettings, inputs, ... }:
 
 {
 
-  nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" "https://devenv.cachix.org" ];
-    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
-  };
+  imports = [
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
+  ];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -54,21 +53,9 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.mullvad-vpn.enable = true;
+
   services.fstrim.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal
-    ];
-    configPackages = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal
-    ];
-  };
-
 
   # Enable nix ld
   programs.nix-ld.enable = true;

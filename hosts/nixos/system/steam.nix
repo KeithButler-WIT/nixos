@@ -2,13 +2,19 @@
 
 {
 
-  nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" ];
-    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
-  };
+  imports = [
+    inputs.nix-gaming.nixosModules.steamCompat
+  ];
 
-  programs.gamemode.enable = true;
-  programs.gamemode.settings.general.inhibit_screensaver = 0; # If you don't have a screensaver installed
+  # nix.settings = {
+  #   substituters = [ "https://nix-gaming.cachix.org" ];
+  #   trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
+  # };
+
+  programs.gamemode = {
+    enable = true;
+    settings.general.inhibit_screensaver = 0; # If you don't have a screensaver installed
+  };
 
   programs.steam = {
     enable = true;
