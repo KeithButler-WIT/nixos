@@ -32,9 +32,14 @@
     ripgrep
     entr
 
+    # Home Backup
+    pika-backup
+
     # System management
     htop
     btop
+
+    stack
 
     killall
     zip
