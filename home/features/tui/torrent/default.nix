@@ -8,6 +8,8 @@
     pkgs.rtorrent
     pkgs.pyrosimple
     pkgs.flood
+    pkgs.mullvad-vpn
+    # pkgs.tor-browser-bundle-bin
   ];
 
   #home.file.".config/rtorrent/rtorrent.rc".text = ''
