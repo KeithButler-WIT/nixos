@@ -24,7 +24,7 @@
 
   home.packages = [
     #pkgs.gum
-    pkgs.mermaid-cli
+    # pkgs.mermaid-cli
     #pkgs.docker
 
     #pkgs.conda
