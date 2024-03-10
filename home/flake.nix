@@ -26,6 +26,20 @@
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+    catppuccin-cava = {
+      url = "github:catppuccin/cava";
+      flake = false;
+    };
+    catppuccin-starship = {
+      url = "github:catppuccin/starship";
+      flake = false;
+    };
+
   };
 
   outputs = { nixpkgs, nur, home-manager, hyprland, ... }@inputs:

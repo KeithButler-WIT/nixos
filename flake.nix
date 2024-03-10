@@ -2,6 +2,8 @@
   description = "Keith's dotfiles managed via NixOS and home-manager";
 
   inputs = {
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -12,7 +14,7 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
     devenv.url = "github:cachix/devenv";
-    hosts.url = github:StevenBlack/hosts;
+    hosts.url = "github:StevenBlack/hosts";
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -20,6 +22,19 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+    catppuccin-cava = {
+      url = "github:catppuccin/cava";
+      flake = false;
+    };
+    catppuccin-starship = {
+      url = "github:catppuccin/starship";
+      flake = false;
     };
 
   };
@@ -36,6 +51,7 @@
       };
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      # unstable = nixpkgs-unstable.legacyPackages.${system};
       inherit (import ./options.nix) systemSettings userSettings;
     in
     {
@@ -47,9 +63,10 @@
           }; # Might be redundent
           modules = [
             hosts.nixosModule
-            {
-              # networking.stevenBlackHosts.enable = true;
-            }
+            # nixpkgs.nixosModules.notDetected
+            # {
+            #   networking.stevenBlackHosts.enable = true;
+            # }
             ./hosts/nixos/configuration.nix
           ];
         };
@@ -66,7 +83,9 @@
       inherit self;
 
       # templates for devenv
-      templates = import ./templates;
+      templates = import
+        ./templates;
 
     };
 }
+
