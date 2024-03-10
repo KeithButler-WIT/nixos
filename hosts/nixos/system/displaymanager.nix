@@ -2,33 +2,33 @@
 
 {
 
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
+  # nix.settings = {
+  #   substituters = [ "https://hyprland.cachix.org" ];
+  #   trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  # };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    elisa
-    kate
-    kwrited
-    konsole
-    kwalletmanager
-    kwallet
-    kmail
-  ]
-  ++
-  [
-    # pkgs.libsForQt5.plasma-browser-integration
-    pkgs.libsForQt5.konsole
-    pkgs.libsForQt5.oxygen
-  ];
+  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.desktopManager.plasma6.enable = true;
+  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #   elisa
+  #   kate
+  #   kwrited
+  #   konsole
+  #   kwalletmanager
+  #   kwallet
+  #   kmail
+  # ]
+  # ++
+  # [
+  #   # pkgs.libsForQt5.plasma-browser-integration
+  #   pkgs.libsForQt5.konsole
+  #   pkgs.libsForQt5.oxygen
+  # ];
 
   # Enable tuigreet login manager
   services.greetd = {
@@ -53,6 +53,22 @@
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     # Whether to enable XWayland
     xwayland.enable = true;
+  };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [
+      # pkgs.xdg-desktop-portal-hyprland
+      # pkgs.xdg-desktop-portal-gtk
+      # pkgs.xdg-desktop-portal
+    ];
+    # configPackages = [
+      #   pkgs.xdg-desktop-portal-hyprland
+      #   pkgs.xdg-desktop-portal-gtk
+      #   pkgs.xdg-desktop-portal
+    # ];
+
   };
 
   # Enable automatic login for the user.
