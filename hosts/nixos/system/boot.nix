@@ -14,8 +14,8 @@
   networking.hostId = "934bebc5";
 
   # empty out /tmp on boot
-  # boot.tmp.cleanOnBoot = true;
-  boot.tmp.useTmpfs = true;
-  boot.tmp.tmpfsSize = "25%";
+  boot.tmp.cleanOnBoot = true;
+  #boot.tmp.useTmpfs = true;
+  #boot.tmp.tmpfsSize = "25%";
 
 }
