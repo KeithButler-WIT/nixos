@@ -12,3 +12,7 @@
 ## Source
 
 https://github.com/iynaix/dotfiles
+
+## TODO
+
+* Enable firewall
