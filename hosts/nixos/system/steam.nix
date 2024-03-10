@@ -2,9 +2,9 @@
 
 {
 
-  imports = [
-    inputs.nix-gaming.nixosModules.steamCompat
-  ];
+  # imports = [
+  #   inputs.nix-gaming.nixosModules.steamCompat
+  # ];
 
   # nix.settings = {
   #   substituters = [ "https://nix-gaming.cachix.org" ];
