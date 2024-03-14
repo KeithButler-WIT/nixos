@@ -27,7 +27,9 @@
     btop
     gnumake
     xdragon
-
+    wallust # better pywal
+    # cava
+    numlockx
     w3m
     ripgrep
     entr
@@ -53,6 +55,14 @@
     trash-cli
     ncdu # disk space management
     xorg.xhost # needed to run gparted on wayland
+
+    rsync
+    rclone
+
+    inkscape
+
+    ghc
+
   ];
 
   # Enable nix ld
