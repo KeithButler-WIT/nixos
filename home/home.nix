@@ -26,18 +26,19 @@
   #targets.genericLinux.enable = true; # Enable this on non nixos
 
   nix = {
-    package = pkgs.nix;
+    # package = pkgs.nix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
-      substituters = [
+      trusted-users = [ userSettings.username ];
+      extra-substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
         "https://devenv.cachix.org"
         "https://nix-gaming.cachix.org"
         "https://hyprland.cachix.org"
       ];
-      trusted-public-keys = [
+      extra-trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
@@ -47,16 +48,14 @@
       # substituters = [ "https://cache.nixos.org" "https://tomodachi94.cachix.org" ];
       # trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "tomodachi94.cachix.org-1:E1WFk+SYPtq3FFO+NvDgsyciIHg8nHxB/z7qNfojxpI=" ];
     };
+    gc = {
+      automatic = true;
+      frequency = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
-  # colorScheme = inputs.nix-colors.colorSchemes.onedark;
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
-  # colorScheme = inputs.nix-colors.colorSchemes.dracula;
-  # colorScheme = inputs.nix-colors.colorSchemes.nord;
-  # colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
-  # colorScheme = inputs.nix-colors.colorSchemes.solarized;
-  # colorScheme = inputs.nix-colors.colorSchemes.tango;
-  # colorScheme = inputs.nix-colors.colorSchemes.nova;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -80,9 +79,7 @@
       pkgs.nixpkgs-fmt
       pkgs.shfmt
 
-      #pkgs.egl-wayland
-      #pkgs.xss-lock # X i3lock
-
+      pkgs.egl-wayland
       # TODO: Move into a flake in required folders
       # (pkgs.python310.withPackages (ps: with ps; [ pytz numpy types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
@@ -90,7 +87,7 @@
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
       # # fonts?
-      #pkgs.fira-code-symbols
+      pkgs.fira-code-symbols
       (pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
       # pkgs.nerdfonts
       pkgs.corefonts
@@ -107,20 +104,13 @@
 
   programs.java.enable = true;
 
-  services.mpd = {
-    enable = true;
-    musicDirectory = "~/Music";
-  };
+  # services.mpd = {
+  #   enable = true;
+  #   musicDirectory = "~/Music";
+  # };
 
   services.syncthing.enable = true;
   # services.syncthing.tray.enable = true;
-
-  nix.gc = {
-    automatic = true;
-    frequency = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
 
   services.home-manager.autoUpgrade.frequency = "monthly";
 

@@ -16,6 +16,10 @@
     devenv.url = "github:cachix/devenv";
     hosts.url = "github:StevenBlack/hosts";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-colors.url = "github:misterio77/nix-colors";
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
+    xremap-flake.url = "github:xremap/nix-flake";
 
     impermanence.url = "github:nix-community/impermanence";
 
@@ -39,7 +43,7 @@
 
   };
 
-  outputs = { nixpkgs, self, hosts, hyprland, ... } @ inputs:
+  outputs = { nixpkgs, self, hosts, hyprland, home-manager, ... } @ inputs:
     let
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
@@ -68,6 +72,20 @@
             #   networking.stevenBlackHosts.enable = true;
             # }
             ./hosts/nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.keith = import ./home/home.nix;
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit userSettings systemSettings;
+              };
+
+            }
           ];
         };
       };
