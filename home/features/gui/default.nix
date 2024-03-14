@@ -7,9 +7,9 @@
     ./discord
     ./dunst
     # ./firefox
+    ./gtk
     ./hyprland
     ./kitty # requires nixGL on non-nixos
-    ./gtk
     # ./mako
     ./mpv
     ./qutebrowser
@@ -17,66 +17,64 @@
     ./vm
   ];
 
-  home.packages = [
-    pkgs.bottles
-    pkgs.nsxiv
+  home.packages = with pkgs; [
+    bottles
+    nsxiv
     # pkgs.flameshot
-    pkgs.galculator
+    galculator
     # pkgs.kdeconnect
     # pkgs.kleopatra
     # pkgs.piper
-    # pkgs.r2modman
+    r2modman
     # pkgs.vlc
 
     # Browsers
     # pkgs.librewolf
     # pkgs.icecat
-    pkgs.floorp
-    pkgs.buku # browser indepenent bookmarks
-    pkgs.bukubrow
+    floorp
+    buku # browser indepenent bookmarks
+    bukubrow
 
     # pkgs.btrfs-assistant
 
-    pkgs.thunderbird
-    pkgs.keepassxc
+    thunderbird
+    keepassxc
     # (pkgs.xfce.thunar.override { thunarPlugins = [ pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman ]; })
     # pkgs.gpodder
-    pkgs.gparted
+    # pkgs.gparted
 
     # Game Dev
     # pkgs.godot
     # pkgs.aseprite
-    pkgs.godot_4
+    godot_4
     #pkgs.unityhub
-    pkgs.blender
-    pkgs.obs-studio
+    blender
+    obs-studio
 
-    pkgs.prismlauncher
+    prismlauncher
 
     # Weeb Stuff
-    pkgs.ani-cli
-    pkgs.mangal
-    pkgs.suwayomi-server
+    ani-cli
+    mangal
+    suwayomi-server
 
     # Socials
-    pkgs.signal-desktop
-    pkgs.zoom-us
-    pkgs.slack
+    signal-desktop
+    zoom-us
+    slack
 
     # pkgs.jetbrains.idea-ultimate
     # pkgs.jetbrains.idea-community
     # pkgs.jetbrains.clion
     # pkgs.jetbrains.rust-rover
-    pkgs.vscode
+    vscode
     # pkgs.android-studio
-    pkgs.libreoffice
+    libreoffice
 
-    pkgs.scrcpy
+    scrcpy
 
-    pkgs.rclone-browser
-    # pkgs.grsync
-
+    rclone-browser
+    xdotool
   ];
-
 
 }
