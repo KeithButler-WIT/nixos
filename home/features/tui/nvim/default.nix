@@ -15,7 +15,7 @@
 
       extraPackages = with pkgs; [
         luajitPackages.lua-lsp
-        rnix-lsp
+        #rnix-lsp
 
         xclip
         wl-clipboard
