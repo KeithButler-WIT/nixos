@@ -14,7 +14,6 @@
     # dunst
     ".config/keepassxc".source = ./keepassxc;
     ".config/waybar".source = ./waybar;
-    # openmw
     # ${config.xdg.configHome}."/picom".source = ~/.dotfiles/.config/picom;
     ".config/picom".source = ./picom;
     # qtile
