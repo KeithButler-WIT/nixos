@@ -39,7 +39,6 @@
 
     thunderbird
     keepassxc
-    # (pkgs.xfce.thunar.override { thunarPlugins = [ pkgs.xfce.thunar-archive-plugin pkgs.xfce.thunar-volman ]; })
     # pkgs.gpodder
     # pkgs.gparted
 
