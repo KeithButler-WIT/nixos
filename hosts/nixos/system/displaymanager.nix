@@ -36,8 +36,8 @@
     settings = {
       initial_session = {
         # Auto Login
-        command = "startplasma-wayland";
-        # command = "Hyprland";
+        # command = "startplasma-wayland";
+        command = "Hyprland";
         user = userSettings.username;
       };
       default_session = {
@@ -64,9 +64,9 @@
       # pkgs.xdg-desktop-portal
     ];
     # configPackages = [
-      #   pkgs.xdg-desktop-portal-hyprland
-      #   pkgs.xdg-desktop-portal-gtk
-      #   pkgs.xdg-desktop-portal
+    #   pkgs.xdg-desktop-portal-hyprland
+    #   pkgs.xdg-desktop-portal-gtk
+    #   pkgs.xdg-desktop-portal
     # ];
 
   };
