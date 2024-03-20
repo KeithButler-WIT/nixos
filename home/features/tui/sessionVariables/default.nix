@@ -29,8 +29,8 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_CACHE_HOME = "$HOME/.cache";
-    XINITRC = "$XDG_CONFIG_HOME/x11/xinitrc";
-    #XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"; # This line will break some DMs.
+    # XINITRC = "$XDG_CONFIG_HOME/x11/xinitrc";
+    # XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"; # This line will break some DMs.
     NOTMUCH_CONFIG = "$XDG_CONFIG_HOME/notmuch-config";
     # GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0";
     WGETRC = "$XDG_CONFIG_HOME/wget/wgetrc";
@@ -57,7 +57,7 @@
     ROC_ENABLE_PRE_VEGA = "1";
 
     # Other program settings:
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    # QT_QPA_PLATFORMTHEME = "qt5ct";
     # XDG_CURRENT_DESKTOP = "Unity";
     _ZO_RESOLVE_SYMLINKS = "1";
     # DICS="/usr/share/stardict/dic/";
@@ -76,6 +76,31 @@
     # MOZ_USE_XINPUT2="1"; # Mozilla smooth scrolling/touchpads.
     # AWT_TOOLKIT="MToolkit wmname LG3D"; # May have to install wmname
     _JAVA_AWT_WM_NONREPARENTING = 1; # Fix for Java applications in dwm
+
+    NIXOS_OZONE_WL = "1";
+    __GL_GSYNC_ALLOWED = "0";
+    __GL_VRR_ALLOWED = "0";
+    _JAVA_AWT_WM_NONEREPARENTING = "1";
+    SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+    DISABLE_QT5_COMPAT = "0";
+    GDK_BACKEND = "wayland";
+    ANKI_WAYLAND = "1";
+    DIRENV_LOG_FORMAT = "";
+    WLR_DRM_NO_ATOMIC = "1";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_QPA_PLATFORM = "xcb";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_STYLE_OVERRIDE = "kvantum";
+    MOZ_ENABLE_WAYLAND = "1";
+    WLR_BACKEND = "vulkan";
+    WLR_RENDERER = "vulkan";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    XDG_SESSION_TYPE = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    GTK_THEME = "Catppuccin-Mocha-Compact-Lavender-Dark";
+
   };
 
 }
