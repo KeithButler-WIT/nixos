@@ -10,13 +10,13 @@
     pkgs.noto-fonts-emoji
   ];
 
-  # qt = {
-  #   enable = true;
-  #   style = {
-  #     name = "adwaita-dark";
-  #     package = pkgs.adwaita-qt;
-  #   };
-  # };
+  qt = {
+    enable = true;
+    # style = {
+    # name = "adwaita-dark";
+    # package = pkgs.adwaita-qt;
+    # };
+  };
 
   gtk = {
     enable = true;
