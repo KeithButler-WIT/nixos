@@ -13,6 +13,10 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     devenv.url = "github:cachix/devenv";
     hosts.url = "github:StevenBlack/hosts";
     nix-gaming.url = "github:fufexan/nix-gaming";
