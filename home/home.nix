@@ -80,16 +80,14 @@
       pkgs.shfmt
 
       pkgs.egl-wayland
+      pkgs.python311
+      pkgs.toybox
+
       # TODO: Move into a flake in required folders
       # (pkgs.python310.withPackages (ps: with ps; [ pytz numpy types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
       pkgs.fira-code-symbols
       (pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
-      # pkgs.nerdfonts
       pkgs.corefonts
       pkgs.noto-fonts
 
