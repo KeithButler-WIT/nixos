@@ -3,6 +3,7 @@
 {
 
   #security.pam.services.login.enableKwallet = true;
+  security.pam.services.swaylock = { };
 
   security.polkit.enable = true;
   security.polkit.extraConfig = ''
@@ -37,5 +38,5 @@
       };
     };
   };
-  
+
 }
