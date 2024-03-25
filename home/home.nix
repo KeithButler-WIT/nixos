@@ -80,7 +80,9 @@
       pkgs.shfmt
 
       pkgs.egl-wayland
-      pkgs.python311
+      # pkgs.python311
+      (pkgs.python311.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 ]))
+
       pkgs.toybox
 
       # TODO: Move into a flake in required folders
