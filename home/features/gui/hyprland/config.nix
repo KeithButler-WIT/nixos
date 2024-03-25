@@ -59,9 +59,26 @@
 
   services.kanshi = {
     enable = true;
+    systemdTarget = "hyprland-session.target";
     profiles = {
-      undocked = { outputs = [{ criteria = "eDP-1"; }]; };
-      docked = { outputs = [{ criteria = "eDP-1"; status = "disable"; } { criteria = "HDMI-A-1"; }]; };
+      undocked = {
+        outputs = [{
+          criteria = "eDP-1";
+          position = "0,0";
+          mode = "1920x1080@60Hz";
+        }];
+      };
+      docked = {
+        outputs = [{
+          criteria = "eDP-1";
+          status = "disable";
+        }
+          {
+            criteria = "HDMI-A-1";
+            position = "0,0";
+            mode = "1920x1080@60Hz";
+          }];
+      };
     };
   };
 
@@ -81,6 +98,7 @@
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor= eDP-1, 1920x1080@60.04500, 0x0, 1.00
       monitor= HDMI-A-1, 1920x1080@60.04500, 0x-1080, 1.00
+      # monitor= auto,1920x1080@60,auto,auto
       exec-once = ${pkgs.kanshi}/bin/kanshi
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -380,31 +398,31 @@
       # Scratch Pads
       # -----------------------------------------------------
 
-      #exec-once = ${pkgs.pyprland}/bin/pypr
+      exec-once = ${pkgs.pyprland}/bin/pypr
 
-      #bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
-      #bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-      #bind = $mainMod, P,exec,${pkgs.pyprland}/bin/pypr toggle keepass && hyprctl dispatch bringactivetotop
-      #$scratchpadsize = size 80% 85%
+      bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
+      bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
+      bind = $mainMod, P,exec,${pkgs.pyprland}/bin/pypr toggle keepass && hyprctl dispatch bringactivetotop
+      $scratchpadsize = size 80% 85%
 
-      #$scratchpad = class:^(scratchpad)$
-      #windowrulev2 = float,$scratchpad
-      #windowrulev2 = $scratchpadsize,$scratchpad
-      #windowrulev2 = workspace special silent,$scratchpad
-      #windowrulev2 = center,$scratchpad
+      $scratchpad = class:^(scratchpad)$
+      windowrulev2 = float,$scratchpad
+      windowrulev2 = $scratchpadsize,$scratchpad
+      windowrulev2 = workspace special silent,$scratchpad
+      windowrulev2 = center,$scratchpad
 
-      #$keepass = class:^(keepassxc)$
-      #windowrulev2 = float,$keepassxc
-      #windowrulev2 = $scratchpadsize,$scratchpad
-      #windowrulev2 = workspace special silent,$scratchpad
-      #windowrulev2 = center,$scratchpad
+      $keepass = class:^(keepassxc)$
+      windowrulev2 = float,$keepassxc
+      windowrulev2 = $scratchpadsize,$scratchpad
+      windowrulev2 = workspace special silent,$scratchpad
+      windowrulev2 = center,$scratchpad
 
-      #$pavucontrol = class:^(pavucontrol)$
-      #windowrulev2 = float,$pavucontrol
-      #windowrulev2 = size 86% 40%,$pavucontrol
-      #windowrulev2 = move 50% 6%,$pavucontrol
-      #windowrulev2 = workspace special silent,$pavucontrol
-      #windowrulev2 = opacity 0.80,$pavucontrol
+      $pavucontrol = class:^(pavucontrol)$
+      windowrulev2 = float,$pavucontrol
+      windowrulev2 = size 86% 40%,$pavucontrol
+      windowrulev2 = move 50% 6%,$pavucontrol
+      windowrulev2 = workspace special silent,$pavucontrol
+      windowrulev2 = opacity 0.80,$pavucontrol
 
 
       # -----------------------------------------------------
