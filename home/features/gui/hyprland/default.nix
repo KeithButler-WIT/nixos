@@ -27,8 +27,7 @@
 
     pkgs.swayidle
     pkgs.swaylock
-
+    pkgs.brightnessctl
   ];
-
 
 }
