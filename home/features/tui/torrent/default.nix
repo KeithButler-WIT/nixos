@@ -12,7 +12,10 @@
     # pkgs.tor-browser-bundle-bin
   ];
 
-  #home.file.".config/rtorrent/rtorrent.rc".text = ''
+  # File just needs to exist
+  home.file.".local/share/rtorrent/rpc.socket".text = ''
+  '';
+
   home.file.".rtorrent.rc".text = ''
     #############################################################################
     # A minimal rTorrent configuration that provides the basic features
