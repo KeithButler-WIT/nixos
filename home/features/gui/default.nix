@@ -59,7 +59,7 @@
 
     # Socials
     signal-desktop
-    zoom-us
+    # zoom-us
     slack
 
     # pkgs.jetbrains.idea-ultimate
