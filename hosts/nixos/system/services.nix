@@ -56,7 +56,7 @@
     gnome.totem # video/audio
     evince # pdf
     gnome-epub-thumbnailer # epub/mobi
-    mcomix # cbr
+    # mcomix # cbr
     # folderpreview # folders
     f3d # 3d files
   ];
