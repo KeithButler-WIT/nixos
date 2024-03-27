@@ -25,9 +25,11 @@
     # pkgs.xfce.thunar-media-tags-plugin
     # pkgs.wayland-egl
 
-    pkgs.swayidle
-    pkgs.swaylock
+    #pkgs.swayidle
+    #pkgs.swaylock
     pkgs.brightnessctl
+    pkgs.hypridle
+    pkgs.hyprlock
   ];
 
 }
