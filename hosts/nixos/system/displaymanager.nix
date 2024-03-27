@@ -8,7 +8,7 @@
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  # services.xserver.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
   # environment.plasma6.excludePackages = with pkgs.kdePackages; [
   #   elisa
   #   kate
@@ -24,27 +24,6 @@
   #   pkgs.libsForQt5.konsole
   #   pkgs.libsForQt5.oxygen
   # ];
-
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gedit # text editor
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    epiphany # web browser
-    geary # email reader
-    # evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
-
 
   # Enable tuigreet login manager
   services.greetd = {
@@ -79,27 +58,15 @@
       # pkgs.xdg-desktop-portal-gtk
       # pkgs.xdg-desktop-portal
     ];
-    # configPackages = [
-    #   pkgs.xdg-desktop-portal-hyprland
-    #   pkgs.xdg-desktop-portal-gtk
-    #   pkgs.xdg-desktop-portal
-    # ];
-
   };
 
   # Enable automatic login for the user.
-  # ervices.xserver.displayManager.startx.enable = true;
   services.xserver.displayManager.autoLogin = {
     enable = true;
     user = userSettings.username;
   };
 
   services.getty.autologinUser = userSettings.username;
-  # services.kmscon = {
-  #   enable = true;
-  #   autologinUser = userSettings.username;
-  #   hwRender = true;
-  # };
 
   # Configure keymap in X11
   services.xserver.xkb = {
