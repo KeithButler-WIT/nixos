@@ -72,6 +72,7 @@
           modules = [
             hosts.nixosModule
             ./hosts/nixos/configuration.nix
+            ./nixosModules
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -89,14 +90,14 @@
           ];
         };
       };
-      # homeConfigurations = {
-      #   keith = inputs.home-manager.lib.homeManagerConfiguration {
-      #     inherit pkgs;
-      #     modules = [
-      #       ./home/home.nix
-      #     ];
-      #   };
-      # };
+      homeConfigurations = {
+        keith = inputs.home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/home.nix
+          ];
+        };
+      };
 
       inherit self;
 
