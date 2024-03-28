@@ -71,10 +71,6 @@
           }; # Might be redundent
           modules = [
             hosts.nixosModule
-            # nixpkgs.nixosModules.notDetected
-            # {
-            #   networking.stevenBlackHosts.enable = true;
-            # }
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {

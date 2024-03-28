@@ -64,6 +64,8 @@
     ghc
     borgmatic
 
+    pavucontrol
+
   ];
 
   # Enable nix ld

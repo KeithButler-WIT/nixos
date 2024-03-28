@@ -5,10 +5,7 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     # inputs.nixvim.homeManagerModules.nixvim
-
-    ./features/gui
-    ./features/tui
-    ./features/file
+    ./features
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];

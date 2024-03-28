@@ -9,16 +9,15 @@
     ./hardware/printing.nix
     ./hardware/power.nix
 
-    ./flatpak.nix
     ./system.nix
     ./users.nix
-    ./steam.nix
     ./polkit.nix
     ./packages.nix
     ./users.nix
     ./displaymanager.nix
     ./services.nix
     ./boot.nix
-    ./vm.nix
   ];
+
+  
 }
