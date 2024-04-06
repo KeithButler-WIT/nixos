@@ -62,7 +62,7 @@
         modules = [
           nur.nixosModules.nur
           ./home.nix
-          ../homeManagerModules
+          ../modules/home-manager
         ];
       };
     };

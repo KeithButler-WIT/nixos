@@ -72,7 +72,7 @@
           modules = [
             hosts.nixosModule
             ./hosts/nixos/configuration.nix
-            ./nixosModules
+            ./modules/nixos
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
