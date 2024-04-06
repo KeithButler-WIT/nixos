@@ -10,6 +10,7 @@
     ./logitech.nix
     ./nix-ld.nix
     ./plasma6.nix
+    ./plex.nix
     ./power-management.nix
     ./printer.nix
     ./ssh.nix
@@ -27,6 +28,7 @@
   logitech.enable = lib.mkDefault true;
   nix-ld.enable = lib.mkDefault true;
   plasma6.enable = lib.mkDefault false;
+  plex.enable = lib.mkDefault false;
   power-management.enable = lib.mkDefault true;
   printer.enable = lib.mkDefault true;
   ssh.enable = lib.mkDefault true;

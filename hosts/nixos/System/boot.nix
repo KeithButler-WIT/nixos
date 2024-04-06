@@ -31,14 +31,28 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
 
-  # fileSystems."/run/media/keith/1TB-BACKUP" = {
-  #   device = "zfs-1TB-BACKUP";
-  #   fsType = "zfs";
-  # };
-  # fileSystems."/run/media/keith/game_drive" = {
-  #   device = "game-drive";
-  #   fsType = "zfs";
-  # };
+  fileSystems."/run/media/keith/1TB-BACKUP" = {
+    device = "zfs-1TB-BACKUP";
+    fsType = "zfs";
+    options = [
+      # If you don't have this options attribute, it'll default to "defaults" 
+      # boot options for fstab. Search up fstab mount options you can use
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "x-gvfs-show" # Shows in file managers
+    ];
+  };
+  fileSystems."/run/media/keith/game_drive" = {
+    device = "game-drive";
+    fsType = "zfs";
+    options = [
+      # If you don't have this options attribute, it'll default to "defaults" 
+      # boot options for fstab. Search up fstab mount options you can use
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "x-gvfs-show" # Shows in file managers
+    ];
+  };
 
 
 
