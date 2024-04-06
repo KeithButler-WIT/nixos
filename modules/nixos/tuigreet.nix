@@ -15,7 +15,7 @@
         initial_session = lib.mkIf config.autologin.enable {
           # Auto Login
           # command = "startplasma-wayland";
-          command = "Hyprland";
+          command = "Hyprland"; # TODO: change depending on enabled window manager
           user = userSettings.username;
         };
         default_session = {
