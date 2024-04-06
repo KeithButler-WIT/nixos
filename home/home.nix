@@ -70,27 +70,29 @@
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    packages = [
+    packages = with pkgs; [
       # TODO add to direnv in required projects
 
-      pkgs.nixpkgs-fmt
-      pkgs.shfmt
+      nixpkgs-fmt
+      shfmt
 
-      pkgs.egl-wayland
+      egl-wayland
       # pkgs.python311
-      (pkgs.python311.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 ]))
+      (python311.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 ]))
 
-      pkgs.toybox
+      toybox
 
       # TODO: Move into a flake in required folders
       # (pkgs.python310.withPackages (ps: with ps; [ pytz numpy types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
-      pkgs.fira-code-symbols
-      (pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
-      pkgs.corefonts
-      pkgs.noto-fonts
+      fira-code-symbols
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
+      corefonts
+      noto-fonts
 
-      pkgs.v4l-utils
+      v4l-utils
+
+      termusic
 
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
