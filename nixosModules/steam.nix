@@ -2,15 +2,17 @@
 
 {
 
+  imports = [
+    # inputs.nix-gaming.nixosModules.steamCompat
+    inputs.nix-gaming.nixosModules.platformOptimizations
+  ];
+
   options = {
     steam.enable =
       lib.mkEnableOption "enables steam";
   };
 
   config = lib.mkIf config.steam.enable {
-    # imports = [
-    #   inputs.nix-gaming.nixosModules.steamCompat
-    # ];
 
     # nix.settings = {
     #   substituters = [ "https://nix-gaming.cachix.org" ];
@@ -24,20 +26,20 @@
 
     programs.steam = {
       enable = true;
-      #package = pkgs.steam.override { 
-      #  withJava = true; 
-      #withPrimus = true;
-      #extraPkgs = pkgs: [ bumblebee glxinfo ];
-      #};
+      # package = pkgs.steam.override {
+      #   withJava = true;
+      #   withPrimus = true;
+      #   #extraPkgs = pkgs: [ bumblebee glxinfo ];
+      # };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable = true;
       extraCompatPackages = [
         # add the packages that you would like to have in Steam's extra compatibility packages list
-        # pkgs.luxtorpeda
         pkgs.proton-ge-bin
         # etc.
       ];
+      platformOptimizations.enable = true;
     };
   };
 
