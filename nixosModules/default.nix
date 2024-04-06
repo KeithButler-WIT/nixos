@@ -1,4 +1,4 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -9,10 +9,10 @@
     ./vm.nix
   ];
 
-  flatpak.enable = true;
-  plasma6.enable = false;
-  steam.enable = true;
-  thunar.enable = true;
-  vm.enable = true;
+  flatpak.enable = lib.mkDefault true;
+  plasma6.enable = lib.mkDefault false;
+  steam.enable = lib.mkDefault true;
+  thunar.enable = lib.mkDefault true;
+  vm.enable = lib.mkDefault true;
 
 }
