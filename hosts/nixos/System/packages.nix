@@ -66,25 +66,9 @@
 
     pavucontrol
 
+    floorp
+    conda
   ];
-
-  # Enable nix ld
-  programs.nix-ld = {
-    enable = true;
-    # Sets up all the libraries to load
-    libraries = with pkgs; [
-      stdenv.cc.cc
-      zlib
-      fuse3
-      icu
-      zlib
-      nss
-      openssl
-      curl
-      expat
-      # ...
-    ];
-  };
 
   programs.java.enable = true;
 

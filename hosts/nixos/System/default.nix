@@ -4,10 +4,7 @@
   imports = [
     ./hardware/amdgpu.nix
     ./hardware/nvidia.nix
-    ./hardware/bluetooth.nix
     ./hardware/opengl.nix
-    ./hardware/printing.nix
-    ./hardware/power.nix
 
     ./system.nix
     ./users.nix
