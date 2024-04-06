@@ -27,8 +27,12 @@
       # enable this module
       enable = false;
       # defaults (no need to be set unless modified)
-      quantum = 64;
-      rate = 48000;
+      # quantum = 64;
+      # rate = 48000;
+      # rate = 192000;
+      # quantum = 512;
+      # min-quantum = 32;
+      # max-quantum = 4096;
     };
   };
 
