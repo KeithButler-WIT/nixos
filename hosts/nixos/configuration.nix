@@ -14,7 +14,9 @@
   time.hardwareClockInLocalTime = true;
 
   bluetooth.enable = true;
+  flatpak.enable = true;
   printer.enable = true;
+  steam.enable = true;
   vm.enable = true;
 
   # This value determines the NixOS release from which the default

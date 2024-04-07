@@ -23,7 +23,7 @@
   autologin.enable = lib.mkDefault false;
   autoUpgrade.enable = lib.mkDefault false;
   bluetooth.enable = lib.mkDefault false;
-  flatpak.enable = lib.mkDefault true;
+  flatpak.enable = lib.mkDefault false;
   hyprland.enable = lib.mkDefault false;
   logitech.enable = lib.mkDefault true;
   nix-ld.enable = lib.mkDefault true;
@@ -32,9 +32,9 @@
   power-management.enable = lib.mkDefault true;
   printer.enable = lib.mkDefault true;
   ssh.enable = lib.mkDefault true;
-  steam.enable = lib.mkDefault true;
+  steam.enable = lib.mkDefault false;
   thunar.enable = lib.mkDefault true;
-  tuigreet.enable = lib.mkDefault true;
+  tuigreet.enable = lib.mkDefault false;
   vm.enable = lib.mkDefault false;
 
 }
