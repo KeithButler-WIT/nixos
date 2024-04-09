@@ -29,7 +29,7 @@
   nix-ld.enable = lib.mkDefault true;
   plasma6.enable = lib.mkDefault false;
   plex.enable = lib.mkDefault false;
-  power-management.enable = lib.mkDefault true;
+  power-management.enable = lib.mkDefault false;
   printer.enable = lib.mkDefault true;
   ssh.enable = lib.mkDefault true;
   steam.enable = lib.mkDefault false;

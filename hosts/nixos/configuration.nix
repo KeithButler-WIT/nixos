@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -15,6 +15,7 @@
 
   bluetooth.enable = true;
   flatpak.enable = true;
+  # power-management = true;
   printer.enable = true;
   steam.enable = true;
   vm.enable = true;
