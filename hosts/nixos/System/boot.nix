@@ -58,22 +58,23 @@
   systemd.services.zfs-import.enable = true;
   systemd.services.zfs-mount.enable = false;
 
-  fileSystems."/run/media/keith/1TB-BACKUP" = {
-    device = "zfs-1TB-BACKUP/fs1";
-    # device = "/dev/disk/by-uuid/16684118747979654910";
-    fsType = "zfs";
-    options = [
-      # If you don't have this options attribute, it'll default to "defaults" 
-      # boot options for fstab. Search up fstab mount options you can use
-      "users" # Allows any user to mount and unmount
-      "nofail" # Prevent system from failing if this drive doesn't mount
-      "x-gvfs-show" # Shows in file managers
-    ];
-  };
-  fileSystems."/run/media/keith/game_drive" = {
-    device = "game_drive/fs1";
-    # device = "/dev/disk/by-uuid/1833100989279534287";
-    fsType = "zfs";
+  # fileSystems."/run/media/keith/1TB-BACKUP" = {
+  #   device = "zfs-1TB-BACKUP/fs1";
+  #   # device = "/dev/disk/by-uuid/16684118747979654910";
+  #   fsType = "zfs";
+  #   options = [
+  #     # If you don't have this options attribute, it'll default to "defaults" 
+  #     # boot options for fstab. Search up fstab mount options you can use
+  #     "users" # Allows any user to mount and unmount
+  #     "nofail" # Prevent system from failing if this drive doesn't mount
+  #     "x-gvfs-show" # Shows in file managers
+  #   ];
+  # };
+
+  fileSystems."/run/media/keith/game-drive" = {
+    # device = "game-drive/fs1";
+    device = "/dev/disk/by-uuid/253c00e5-e419-4d05-80d1-cd98584bae1b";
+    fsType = "ext4";
     options = [
       # If you don't have this options attribute, it'll default to "defaults" 
       # boot options for fstab. Search up fstab mount options you can use
