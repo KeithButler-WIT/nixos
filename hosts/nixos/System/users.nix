@@ -6,7 +6,10 @@
     initialPassword = "1234";
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "audio" "video" "tty" "input" "storage" "scanner" "lp" "kvm" "nixconfig" "dialout" ];
+    extraGroups =
+      [ "networkmanager" "wheel" "disk" "docker" "plugdev" "audio" "video" "tty" "input" "storage" "lp" "nixconfig" "dialout" ]
+      ++ [ "kvm" ] # TODO: add if check
+      ++ [ "scanner" ];
     packages = with pkgs; [
     ];
     openssh.authorizedKeys.keys = lib.mkIf config.ssh.enable [
