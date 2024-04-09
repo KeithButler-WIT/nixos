@@ -13,8 +13,8 @@
   ];
 
   # File just needs to exist
-  home.file.".local/share/rtorrent/rpc.socket".text = ''
-  '';
+  # home.file.".local/share/rtorrent/rpc.socket".text = ''
+  # '';
 
   home.file.".rtorrent.rc".text = ''
     #############################################################################
