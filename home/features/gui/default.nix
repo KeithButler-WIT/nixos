@@ -6,7 +6,6 @@
     ./alacritty # requires nixGL on non-nixos
     ./discord
     ./dunst
-    # ./firefox
     ./gtk
     ./hyprland
     ./kitty # requires nixGL on non-nixos
