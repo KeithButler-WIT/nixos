@@ -95,7 +95,8 @@
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
       monitor =
-      path = screenshot # only png supported for now
+      path = /home/keith/Pictures/Stålenhag/*
+      # path = screenshot # only png supported for now
       color = rgba(25, 20, 20, 1.0)
 
       # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
@@ -215,13 +216,11 @@
             # Execute your favorite apps at launch
             # exec-once = ${pkgs.waybar}/bin/waybar
             # exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
+            exec-once = signal-desktop
 
             # Add networkmanager applet to tray in waybar
             exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
             # exec-once = ${pkgs.blueman}/bin/blueman-applet
-
-            # Set keyboard layout
-            # exec-once = .local/bin/garuda-locale.sh
 
             # Source a file (multi-file configs)
             # source = ~/.config/hypr/myColors.conf
@@ -346,7 +345,7 @@
             # Mainmod + Function keys
             bind = $mainMod, F1, exec, floorp
             bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
-            # bind = $mainMod, F3, exec, thunar
+            bind = $mainMod, F3, exec, lf
             # bind = $mainMod, F4, exec, geany
             # bind = $mainMod, F5, exec, github-desktop
             # bind = $mainMod, F6, exec, gparted
