@@ -30,44 +30,40 @@
     wallust # better pywal
     # cava
     numlockx
-    w3m
-    ripgrep
-    entr
 
     # Home Backup
     pika-backup
+
+    stack
+    rclone
+    inkscape
+    ghc
+    borgmatic
+    pavucontrol
+    floorp
+    conda
+    yt-dlp
+    light
 
     # System management
     htop
     btop
 
-    stack
+    w3m
+    ripgrep
+    entr
 
     killall
     zip
     unzip
-    light
     pass
-    yt-dlp
     feh
     wget
     gnupg
     trash-cli
     ncdu # disk space management
     xorg.xhost # needed to run gparted on wayland
-
     rsync
-    rclone
-
-    inkscape
-
-    ghc
-    borgmatic
-
-    pavucontrol
-
-    floorp
-    conda
   ];
 
   programs.java.enable = true;
