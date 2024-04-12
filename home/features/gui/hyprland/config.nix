@@ -216,7 +216,8 @@
             # Execute your favorite apps at launch
             # exec-once = ${pkgs.waybar}/bin/waybar
             # exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-            exec-once = signal-desktop
+            exec-once = ${pkgs.vesktop}/bin/vesktop
+            exec-once = ${pkgs.signal-desktop}/bin/signal-desktop
 
             # Add networkmanager applet to tray in waybar
             exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
@@ -314,12 +315,6 @@
             # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
             # Example windowrule v1
             # windowrule = float, ^(kitty)$
-            # windowrule = float, ^(garuda-assistant)$
-            # windowrule = float, ^(garuda-boot-options)$
-            # windowrule = float, ^(garuda-gamer)$
-            # windowrule = float, ^(garuda-network-assistant)$
-            # windowrule = float, ^(garuda-settings-manager)$
-            # windowrule = float, ^(garuda-welcome)$
 
             # Example windowrule v2
             # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
@@ -343,10 +338,10 @@
             bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
 
             # Mainmod + Function keys
-            bind = $mainMod, F1, exec, floorp
+            bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
             bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
-            bind = $mainMod, F3, exec, lf
-            # bind = $mainMod, F4, exec, geany
+            bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.lf}/bin/lf
+            bind = $mainMod, F4, exec, ${pkgs.vesktop}/bin/vesktop
             # bind = $mainMod, F5, exec, github-desktop
             # bind = $mainMod, F6, exec, gparted
             # bind = $mainMod, F7, exec, inkscape
