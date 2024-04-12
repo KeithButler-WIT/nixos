@@ -3,7 +3,6 @@
 {
 
   imports = [
-    ./alacritty # requires nixGL on non-nixos
     ./discord
     ./dunst
     ./gtk

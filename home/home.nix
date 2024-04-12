@@ -107,6 +107,7 @@
   };
 
   lf.enable = true;
+  torrent.enable = true;
 
   programs.java.enable = true;
 

@@ -10,7 +10,6 @@
     ./emacs
     ./fish
     ./git
-    #./lf
     ./nvim
     #./ncmpcpp
     ./sessionVariables
