@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userSettings, ... }:
 
 {
 
@@ -33,7 +33,7 @@
   '';
 
   boot.kernelParams = [
-    # "nohibernate"
+    "nohibernate" # Needed for zfs
     "v4l2loopback"
     # "quiet"
     # "splash"
@@ -50,7 +50,7 @@
   boot.supportedFilesystems = [ "zfs" ];
 
   # boot.zfs.enabled = true;
-  # boot.zfs.extraPools = [ "zfs-1TB-BACKUP" "game_drive" ];
+  # boot.zfs.extraPools = [ "zfs-1TB-BACKUP" ];
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
 
@@ -58,7 +58,7 @@
   systemd.services.zfs-import.enable = true;
   systemd.services.zfs-mount.enable = false;
 
-  # fileSystems."/run/media/keith/1TB-BACKUP" = {
+  # fileSystems."/run/media/${userSettings.username}/1TB-BACKUP" = {
   #   device = "zfs-1TB-BACKUP/fs1";
   #   # device = "/dev/disk/by-uuid/16684118747979654910";
   #   fsType = "zfs";
@@ -71,7 +71,9 @@
   #   ];
   # };
 
-  fileSystems."/run/media/keith/game-drive" = {
+  # FIXME: Breaks updates
+  # TODO move into home folder
+  fileSystems."/run/media/${userSettings.username}/game-drive" = {
     # device = "game-drive/fs1";
     device = "/dev/disk/by-uuid/253c00e5-e419-4d05-80d1-cd98584bae1b";
     fsType = "ext4";
