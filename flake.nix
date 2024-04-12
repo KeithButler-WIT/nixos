@@ -77,7 +77,10 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.keith = import ./home/home.nix;
+              home-manager.users.keith.imports = [
+                ./home/home.nix
+                ./modules/home-manager
+              ];
 
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
@@ -85,6 +88,7 @@
                 inherit inputs;
                 inherit userSettings systemSettings;
               };
+
 
             }
           ];
@@ -95,6 +99,7 @@
           inherit pkgs;
           modules = [
             ./home/home.nix
+            ./modules/home-manager
           ];
         };
       };
