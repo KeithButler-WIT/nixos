@@ -26,11 +26,12 @@
 
     programs.steam = {
       enable = true;
-      # package = pkgs.steam.override {
-      #   withJava = true;
-      #   withPrimus = true;
-      #   #extraPkgs = pkgs: [ bumblebee glxinfo ];
-      # };
+      package = pkgs.steam.override {
+        # withJava = true;
+        # withPrimus = true;
+        extraPkgs = pkgs: [ pkgs.ncurses6 ];
+        # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
+      };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable = true;
