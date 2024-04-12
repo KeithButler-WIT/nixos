@@ -7,7 +7,8 @@
     isNormalUser = true;
     description = userSettings.name;
     extraGroups =
-      [ "networkmanager" "wheel" "disk" "docker" "plugdev" "audio" "video" "tty" "input" "storage" "lp" "nixconfig" "dialout" ]
+      [ "networkmanager" "wheel" "disk" "plugdev" "audio" "video" "tty" "input" "storage" "lp" "nixconfig" "dialout" ]
+      ++ [ "docker" ]
       ++ [ "kvm" ] # TODO: add if check
       ++ [ "scanner" ];
     packages = with pkgs; [
