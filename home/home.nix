@@ -103,6 +103,8 @@
     ];
   };
 
+  lf.enable = true;
+
   programs.java.enable = true;
 
   # services.mpd = {
