@@ -11,6 +11,10 @@
     ./System
   ];
 
+  #nixpkgs.config.allowBroken = true; # FIXME: Temp fix
+  #nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.nvidia.acceptLicense = true;
+
   time.hardwareClockInLocalTime = true;
 
   bluetooth.enable = true;
