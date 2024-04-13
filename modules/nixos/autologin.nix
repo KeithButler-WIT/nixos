@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.autologin.enable {
     # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin = {
+    services.displayManager.autoLogin = {
       enable = true;
       user = userSettings.username;
     };
