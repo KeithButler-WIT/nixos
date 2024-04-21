@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, userSettings, ... }:
 
 {
 
@@ -38,7 +38,7 @@
       profiles.${userSettings.username} = {
         id = 0;
         isDefault = true;
-        name = ${userSettings.username};
+        name = userSettings.username;
         search = {
           force = true;
           default = "DuckDuckGo";
