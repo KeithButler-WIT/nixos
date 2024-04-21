@@ -70,7 +70,7 @@
             status = "enable";
           }
           {
-            criteria = "HDMI-A-1";
+            criteria = "*";
             position = "0,0";
             mode = "1920x1080@60Hz";
             status = "enable";
@@ -142,10 +142,11 @@
 
     label {
       monitor =
-      text = Hi there, $USER
+      text = Welcome back, $USER
       color = rgba(200, 200, 200, 1.0)
       font_size = 25
-      font_family = Noto Sans
+      # font_family = Noto Sans
+      font_family = ${userSettings.font}
 
       position = 0, 80
       halign = center
@@ -216,8 +217,10 @@
             # Execute your favorite apps at launch
             # exec-once = ${pkgs.waybar}/bin/waybar
             # exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-            exec-once = ${pkgs.vesktop}/bin/vesktop
-            exec-once = ${pkgs.signal-desktop}/bin/signal-desktop
+            exec-once = [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
+            # exec-once = [workspace 1 silent] ${pkgs.steam}/bin/steam
+            exec-once = [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
+            exec-once = [workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird
 
             # Add networkmanager applet to tray in waybar
             exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
