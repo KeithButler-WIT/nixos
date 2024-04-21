@@ -45,9 +45,11 @@
       flake = false;
     };
 
+    ormolu.url = "github:tweag/ormolu";
+
   };
 
-  outputs = { nixpkgs, self, hosts, hyprland, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, self, hosts, hyprland, home-manager, ormolu, ... } @ inputs:
     let
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
@@ -88,9 +90,8 @@
                 inherit inputs;
                 inherit userSettings systemSettings;
               };
-
-
             }
+            # ormolu.packages.${system}.default # Haskell formatter
           ];
         };
       };
