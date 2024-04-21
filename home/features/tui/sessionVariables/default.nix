@@ -24,6 +24,8 @@
     BROWSER = userSettings.browser;
     MAIL = userSettings.mail;
 
+    # TODO: move into nh module
+    FLAKE = "/home/${userSettings.username}/nixos"; # for nh
 
     # ~/ Clean-up:
     XDG_CONFIG_HOME = "$HOME/.config";
