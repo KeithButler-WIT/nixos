@@ -5,6 +5,7 @@
     ./autologin.nix
     ./autoUpgrade.nix
     ./bluetooth.nix
+    ./docker.nix
     ./flatpak.nix
     ./hyprland.nix
     ./logitech.nix
@@ -23,6 +24,7 @@
   autologin.enable = lib.mkDefault false;
   autoUpgrade.enable = lib.mkDefault false;
   bluetooth.enable = lib.mkDefault false;
+  docker.enable = lib.mkDefault false;
   flatpak.enable = lib.mkDefault false;
   hyprland.enable = lib.mkDefault false;
   logitech.enable = lib.mkDefault true;
