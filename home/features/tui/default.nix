@@ -17,11 +17,7 @@
     ./fzf
     ./starship
     ./tealdeer
-    ./torrent
     ./xremap
-  ];
-
-  home.packages = [
   ];
 
 }
