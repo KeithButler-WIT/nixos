@@ -18,13 +18,13 @@
   time.hardwareClockInLocalTime = true;
 
   bluetooth.enable = true;
+  docker.enable = true;
   flatpak.enable = true;
-  # power-management = true;
+  # power-management = false;
   printer.enable = true;
+  plex.enable = true;
   steam.enable = true;
   vm.enable = true;
-
-  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
