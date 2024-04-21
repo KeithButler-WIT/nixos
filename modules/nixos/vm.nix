@@ -18,6 +18,8 @@
       win-virtio
       win-spice
       gnome.adwaita-icon-theme
+      quickemu
+      quickgui
     ];
 
     programs.dconf.enable = true;

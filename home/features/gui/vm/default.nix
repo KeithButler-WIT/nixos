@@ -2,11 +2,6 @@
 
 {
 
-  home.packages = [
-    pkgs.quickemu
-    pkgs.quickgui
-  ];
-
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
