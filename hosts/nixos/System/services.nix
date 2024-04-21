@@ -45,7 +45,10 @@
 
   # List services that you want to enable:
 
-  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
 
   services.fstrim.enable = true;
 
