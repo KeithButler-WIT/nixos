@@ -4,6 +4,7 @@
 
   home.packages = [
     pkgs.github-desktop
+    pkgs.delta
   ];
 
   programs.gh = {
@@ -52,6 +53,18 @@
       http.postBuffer = 2147483648;
       http.lowSpeedLimit = 0;
       http.lowSpeedTime = 999999;
+
+      # https://github.com/dandavison/delta
+      core.pager = "${pkgs.delta}/bin/delta";
+      interactive.diffFilter = "${pkgs.delta}/bin/delta - -color-only";
+      delta.navigate = true; # use n and N to move between diff sections
+      delta.side-by-side = true;
+      # delta detects terminal colors automatically; set one of these to disable auto-detection
+      # dark = true
+      # light = true
+      merge.conflictstyle = "diff3";
+      diff.colorMoved = "default";
+
     };
     lfs.enable = true;
     aliases = {
