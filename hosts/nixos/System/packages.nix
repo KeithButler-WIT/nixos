@@ -34,6 +34,7 @@
     # Home Backup
     pika-backup
 
+    haskell-language-server
     stack
     rclone
     inkscape
