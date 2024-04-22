@@ -46,6 +46,7 @@
     };
 
     ormolu.url = "github:tweag/ormolu";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
 
   };
 
