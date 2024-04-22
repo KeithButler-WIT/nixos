@@ -13,7 +13,7 @@
       ++ [ "scanner" ];
     packages = with pkgs; [
     ];
-    openssh.authorizedKeys.keys = lib.mkIf config.ssh.enable [
+    openssh.authorizedKeys.keys = lib.mkIf config.modules.services.ssh.enable [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNXXNh8eWgPtjc7+iiBFuM6mB+C+8m13wD4tHZFPtYm keithbutler2001@gmail.com"
     ];
   };

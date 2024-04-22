@@ -1,13 +1,13 @@
 { pkgs, config, lib, ... }:
 
-{
+with lib;
+let cfg = config.modules.services.power-management;
+in {
 
-  options = {
-    power-management.enable =
-      lib.mkEnableOption "enables power-management";
-  };
+  options.modules.services.power-management.enable =
+    mkEnableOption "enables power-management";
 
-  config = lib.mkIf config.power-management.enable {
+  config = mkIf cfg.enable {
     # https://nixos.wiki/wiki/Power_Management
     # https://nixos.wiki/wiki/Laptop
 

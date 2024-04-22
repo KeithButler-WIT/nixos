@@ -18,11 +18,15 @@
   time.hardwareClockInLocalTime = true;
 
   bluetooth.enable = true;
-  docker.enable = true;
+  modules = {
+    services = {
+      docker.enable = true;
+      plex.enable = true;
+      # power-management = false;
+      printer.enable = true;
+    };
+  };
   flatpak.enable = true;
-  # power-management = false;
-  printer.enable = true;
-  plex.enable = true;
   steam.enable = true;
   vm.enable = true;
 

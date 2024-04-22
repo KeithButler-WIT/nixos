@@ -80,9 +80,6 @@
   #   musicDirectory = "~/Music";
   # };
 
-  services.syncthing.enable = true;
-  # services.syncthing.tray.enable = true;
-
   services.home-manager.autoUpgrade.frequency = "monthly";
 
   # Let Home Manager install and manage itself.

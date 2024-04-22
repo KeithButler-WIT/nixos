@@ -1,13 +1,13 @@
 { pkgs, config, lib, userSettings, ... }:
 
-{
+with lib;
+let cfg = config.modules.services.plex;
+in {
 
-  options = {
-    plex.enable =
-      lib.mkEnableOption "enables plex";
-  };
+  options.modules.services.plex.enable =
+    mkEnableOption "enables plex";
 
-  config = lib.mkIf config.plex.enable {
+  config = mkIf cfg.enable {
     services.plex = {
       enable = true;
       openFirewall = true;
