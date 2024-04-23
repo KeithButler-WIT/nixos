@@ -3,6 +3,7 @@
 with lib;
 let cfg = config.modules.hardware.amd;
 in {
+
   options.modules.hardware.amd.enable =
     mkEnableOption "enables amd";
 
