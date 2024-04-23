@@ -13,29 +13,26 @@ in {
   ];
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.blueman
-      pkgs.kitty
-      pkgs.grimblast
-      pkgs.waybar
-      pkgs.wofi
-      pkgs.nwg-drawer
-      pkgs.nwg-launchers
-      pkgs.nwg-look
-      pkgs.pavucontrol
-      pkgs.swaylock
-      pkgs.swww
-      # pkgs.xfce.thunar
-      # pkgs.xfce.thunar-volman
-      # pkgs.xfce.thunar-archive-plugin
-      # pkgs.xfce.thunar-media-tags-plugin
-      # pkgs.wayland-egl
-
-      #pkgs.swayidle
-      #pkgs.swaylock
-      pkgs.brightnessctl
-      pkgs.hypridle
-      pkgs.hyprlock
+    home.packages = with pkgs; [
+      wallust # better pywal
+      blueman
+      kitty
+      grimblast
+      waybar
+      wofi
+      nwg-drawer
+      nwg-launchers
+      nwg-look
+      pavucontrol
+      swww
+      # xfce.thunar
+      # xfce.thunar-volman
+      # xfce.thunar-archive-plugin
+      # xfce.thunar-media-tags-plugin
+      # wayland-egl
+      brightnessctl
+      hypridle
+      hyprlock
     ];
   };
 

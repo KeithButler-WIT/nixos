@@ -7,9 +7,11 @@
     ./polkit.nix
     ./packages.nix
     ./users.nix
-    ./services.nix
     ./boot.nix
   ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true; # TODO: check if needed
@@ -23,5 +25,21 @@
     variant = "";
   };
 
+  services.envfs.enable = true;
+
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
+  programs.fuse.userAllowOther = true;
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
 }

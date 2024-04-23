@@ -49,7 +49,6 @@
       protonup-qt
       protonup-ng
       protontricks
-      # proton-ge
       winetricks
       protontricks
       #wine-staging
@@ -57,6 +56,8 @@
       #wine-tkg
       # (openmw.overrideAttrs (_: rec { dontWrapQtApps = false; }))
       openmw
+      steam-run
+      steamcmd
     ];
   };
 
