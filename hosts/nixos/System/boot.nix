@@ -25,7 +25,6 @@
   #boot.tmp.useTmpfs = true;
   #boot.tmp.tmpfsSize = "25%";
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
   boot.extraModprobeConfig = ''

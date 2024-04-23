@@ -7,6 +7,8 @@ in {
     mkEnableOption "enables amd";
 
   config = mkIf cfg.enable {
+    boot.initrd.kernelModules = [ "amdgpu" ];
+
     services.xserver.enable = true;
     services.xserver.videoDrivers = [ "amdgpu" ];
     hardware.opengl = {
