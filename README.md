@@ -5,13 +5,13 @@
 
 |                |                                                          |
 |----------------|----------------------------------------------------------|
-| **Shell:**     | zsh + zgenom                                             |
-| **DM:**        | greetd + tuigreetd                           |
-| **WM:**        | Hyprland + waybar                                          |
-| **Editor:**    | [Doom Emacs][doom-emacs]                                 |
-| **Terminal:**  | kitty                                                       |
-| **Launcher:**  | rofi                                                     |
-| **Browser:**   | floorp                                                  |
+| **Shell:**     | fish |
+| **DM:**        | greetd + tuigreetd |
+| **WM:**        | Hyprland + waybar |
+| **Editor:**    | [Doom Emacs][doom-emacs] |
+| **Terminal:**  | kitty |
+| **Launcher:**  | rofi |
+| **Browser:**   | floorp |
 | **GTK Theme:** | [Ant Dracula](https://github.com/EliverLara/Ant-Dracula) |
 
 ## Quick Start
@@ -24,7 +24,7 @@
     sh <(curl -L https://raw.githubusercontent.com/keithbutler-wit/nixos/main/install.sh)
 ```
 
-2. Building
+1. Building
 
 ```sh
     sudo nixos-rebuild switch --flake 'github:keithbutler-wit/nixos#nixos'
