@@ -3,7 +3,7 @@
 {
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = true; # TODO: check if needed
 
   hyprland.enable = true;
   # plasma6.enable = true;

@@ -45,26 +45,26 @@
   boot.consoleLogLevel = 0;
   boot.initrd.verbose = false;
 
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.zfs.forceImportRoot = false;
-  boot.supportedFilesystems = [ "zfs" ];
-
   # boot.zfs.enabled = true;
   # boot.zfs.extraPools = [ "zfs-1TB-BACKUP" ];
-  services.zfs.autoScrub.enable = true;
-  services.zfs.trim.enable = true;
 
-  systemd.services.zfs.enable = true;
-  systemd.services.zfs-import.enable = true;
-  systemd.services.zfs-mount.enable = false;
+  # Modules
+  modules.hardware = {
+    audio.enable = true;
+    amd.enable = true;
+    bluetooth.enable = true;
+    fs = {
+      enable = true;
+      ssd.enable = true;
+      zfs.enable = true;
+    };
+  };
 
   # fileSystems."/run/media/${userSettings.username}/1TB-BACKUP" = {
   #   device = "zfs-1TB-BACKUP/fs1";
   #   # device = "/dev/disk/by-uuid/16684118747979654910";
   #   fsType = "zfs";
   #   options = [
-  #     # If you don't have this options attribute, it'll default to "defaults" 
-  #     # boot options for fstab. Search up fstab mount options you can use
   #     "users" # Allows any user to mount and unmount
   #     "nofail" # Prevent system from failing if this drive doesn't mount
   #     "x-gvfs-show" # Shows in file managers

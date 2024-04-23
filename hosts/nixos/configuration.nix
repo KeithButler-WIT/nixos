@@ -17,7 +17,6 @@
 
   time.hardwareClockInLocalTime = true;
 
-  bluetooth.enable = true;
   modules = {
     services = {
       docker.enable = true;

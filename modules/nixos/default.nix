@@ -2,9 +2,13 @@
 
 {
   imports = [
+    ./hardware/amd.nix
+    ./hardware/audio.nix
+    ./hardware/bluetooth.nix
+    ./hardware/fs.nix
+    ./hardware/nvidia.nix
     ./autologin.nix
     ./autoUpgrade.nix
-    ./bluetooth.nix
     ./services/docker.nix
     ./emacs.nix
     ./flatpak.nix
@@ -24,7 +28,6 @@
 
   autologin.enable = lib.mkDefault false;
   autoUpgrade.enable = lib.mkDefault false;
-  bluetooth.enable = lib.mkDefault false;
   emacs.enable = lib.mkDefault true;
   flatpak.enable = lib.mkDefault false;
   hyprland.enable = lib.mkDefault false;
@@ -38,6 +41,17 @@
       power-management.enable = lib.mkDefault false;
       printer.enable = lib.mkDefault true;
       ssh.enable = lib.mkDefault true;
+    };
+    hardware = {
+      audio.enable = lib.mkDefault false;
+      amd.enable = lib.mkDefault false;
+      bluetooth.enable = lib.mkDefault false;
+      nvidia.enable = lib.mkDefault false;
+      fs = {
+        enable = lib.mkDefault false;
+        ssd.enable = lib.mkDefault false;
+        zfs.enable = lib.mkDefault false;
+      };
     };
   };
   steam.enable = lib.mkDefault false;

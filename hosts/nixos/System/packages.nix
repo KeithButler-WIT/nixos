@@ -67,8 +67,6 @@
     rsync
   ];
 
-  programs.java.enable = true;
-
   programs.fuse.userAllowOther = true;
 
   # Some programs need SUID wrappers, can be configured further or are

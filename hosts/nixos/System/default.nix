@@ -2,10 +2,6 @@
 
 {
   imports = [
-    ./hardware/amdgpu.nix
-    ./hardware/nvidia.nix
-    ./hardware/opengl.nix
-
     ./system.nix
     ./users.nix
     ./polkit.nix
@@ -16,5 +12,5 @@
     ./boot.nix
   ];
 
-  
+
 }
