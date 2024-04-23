@@ -185,11 +185,6 @@
 
   programs.java.enable = true;
 
-  # services.mpd = {
-  #   enable = true;
-  #   musicDirectory = "~/Music";
-  # };
-
   services.home-manager.autoUpgrade.frequency = "monthly";
 
   # Let Home Manager install and manage itself.

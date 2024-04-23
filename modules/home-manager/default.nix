@@ -14,6 +14,7 @@
     ./services/borgmatic.nix
     ./services/dunst.nix
     ./services/mako.nix
+    ./services/mpd.nix
     ./services/ssh.nix
     ./services/syncthing.nix
     ./services/xremap.nix
@@ -74,6 +75,7 @@
       borgmatic.enable = lib.mkDefault false;
       dunst.enable = lib.mkDefault false;
       mako.enable = lib.mkDefault false;
+      mpd.enable = lib.mkDefault false;
       ssh.enable = lib.mkDefault true;
       syncthing.enable = lib.mkDefault true;
       xremap.enable = lib.mkDefault true;
