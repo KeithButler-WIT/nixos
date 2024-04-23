@@ -1,13 +1,13 @@
 { pkgs, config, lib, ... }:
 
-{
+with lib;
+let cfg = config.modules.services.syncthing;
+in {
 
-  options = {
-    modules.services.syncthing.enable =
-      lib.mkEnableOption "enables syncthing";
-  };
+  options.modules.services.syncthing.enable =
+    mkEnableOption "enables syncthing";
 
-  config = lib.mkIf config.modules.services.syncthing.enable {
+  config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
       # openDefaultPorts = true;

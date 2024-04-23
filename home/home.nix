@@ -5,7 +5,6 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     # inputs.nixvim.homeManagerModules.nixvim
-    ./features
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -67,11 +66,122 @@
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
     stateVersion = "23.05"; # Please read the comment before changing.
-
   };
 
-  lf.enable = true;
-  torrent.enable = true;
+  home.packages = with pkgs; [
+    # TODO add to direnv in required projects
+
+    nixpkgs-fmt
+    shfmt
+
+    egl-wayland
+    # pkgs.python311
+    (python311.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 ]))
+
+    toybox
+
+    # TODO: Move into a flake in required folders
+    # (pkgs.python310.withPackages (ps: with ps; [ pytz numpy types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
+
+    fira-code-symbols
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
+    corefonts
+    noto-fonts
+
+    v4l-utils
+
+    termusic
+
+    # # You can also create simple shell scripts directly inside your
+    # # configuration. For example, this adds a command 'my-hello' to your
+    # # environment:
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #   echo "Hello, ${config.home.username}!"
+    # '')
+
+    bottles
+    nsxiv
+    # pkgs.flameshot
+    galculator
+    # pkgs.kdeconnect
+    # pkgs.kleopatra
+    # pkgs.piper
+    r2modman
+    # pkgs.vlc
+
+    # Browsers
+    # pkgs.librewolf
+    # pkgs.icecat
+    floorp
+    buku # browser indepenent bookmarks
+    bukubrow
+
+    # pkgs.btrfs-assistant
+
+    thunderbird
+    keepassxc
+    # pkgs.gpodder
+    # pkgs.gparted
+
+    # Game Dev
+    # pkgs.godot
+    # pkgs.aseprite
+    godot_4
+    #pkgs.unityhub
+    blender
+    obs-studio
+
+    prismlauncher
+
+    # Weeb Stuff
+    ani-cli
+    mangal
+    suwayomi-server
+
+    # Socials
+    signal-desktop
+    # zoom-us
+    slack
+
+    # pkgs.jetbrains.idea-ultimate
+    # pkgs.jetbrains.idea-community
+    # pkgs.jetbrains.clion
+    # pkgs.jetbrains.rust-rover
+    vscode
+    # pkgs.android-studio
+    libreoffice
+
+    scrcpy
+
+    rclone-browser
+    xdotool
+  ];
+
+  modules = {
+    lf.enable = true;
+    torrent.enable = true;
+    hyprland.enable = true;
+    browsers = {
+      qutebrowser.enable = true;
+    };
+    editors = {
+      emacs.enable = true;
+      neovim.enable = true;
+    };
+    gaming = {
+      discord.enable = true;
+    };
+    media = { };
+    services = {
+      borgmatic.enable = true;
+      dunst.enable = true;
+    };
+    shell = { };
+    term = {
+      kitty.enable = true;
+    };
+    vm.enable = true;
+  };
 
   programs.java.enable = true;
 

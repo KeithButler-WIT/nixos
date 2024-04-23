@@ -1,12 +1,12 @@
 { pkgs, config, lib, ... }:
 
-{
+with lib;
+let cfg = config.modules.services.ssh;
+in {
 
-  options = {
-    lf.enable =
-      lib.mkEnableOption "enables lf";
-  };
+  options.modules.services.ssh.enable =
+    mkEnableOption "enables ssh";
 
-  config = lib.mkIf config.lf.enable { };
+  config = mkIf cfg.enable { };
 
 }

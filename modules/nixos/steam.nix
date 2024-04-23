@@ -42,6 +42,22 @@
       ];
       platformOptimizations.enable = true;
     };
+    environment.systemPackages = with pkgs; [
+      # pkgs.gamemode # GameMode depends on root-level capabilities that aren't available in a user-level Nix package installation.
+      heroic
+      lutris
+      protonup-qt
+      protonup-ng
+      protontricks
+      # proton-ge
+      winetricks
+      protontricks
+      #wine-staging
+      #wine-osu
+      #wine-tkg
+      # (openmw.overrideAttrs (_: rec { dontWrapQtApps = false; }))
+      openmw
+    ];
   };
 
 }

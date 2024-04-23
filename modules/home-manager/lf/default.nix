@@ -1,13 +1,13 @@
 { pkgs, config, lib, ... }:
 
-{
+with lib;
+let cfg = config.modules.lf;
+in {
 
-  options = {
-    lf.enable =
-      lib.mkEnableOption "enables lf";
-  };
+  options.modules.lf.enable =
+    lib.mkEnableOption "enables lf";
 
-  config = lib.mkIf config.lf.enable {
+  config = lib.mkIf cfg.enable {
     xdg.configFile."lf/icons".source = ./icons;
 
     programs.lf = {

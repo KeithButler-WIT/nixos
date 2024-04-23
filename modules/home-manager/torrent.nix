@@ -1,13 +1,13 @@
 { pkgs, config, lib, userSettings, ... }:
 
-{
+with lib;
+let cfg = config.modules.torrent;
+in {
 
-  options = {
-    torrent.enable =
-      lib.mkEnableOption "enables torrent";
-  };
+  options.modules.torrent.enable =
+    mkEnableOption "enables torrent";
 
-  config = lib.mkIf config.torrent.enable {
+  config = mkIf cfg.enable {
     home.packages = [
       #pkgs.qbittorrent
       #pkgs.jesec-rtorrent
@@ -159,7 +159,6 @@
 
       ### END of rtorrent.rc ###
     '';
-
   };
 
 }
