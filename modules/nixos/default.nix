@@ -16,7 +16,7 @@
     ./logitech.nix
     ./nix-ld.nix
     ./plasma6.nix
-    ./services/plex.nix
+    ./services/streaming.nix
     ./services/power-management.nix
     ./services/printer.nix
     ./services/ssh.nix
@@ -37,7 +37,7 @@
   modules = {
     services = {
       docker.enable = lib.mkDefault false;
-      plex.enable = lib.mkDefault false;
+      streaming.enable = lib.mkDefault false;
       power-management.enable = lib.mkDefault false;
       printer.enable = lib.mkDefault true;
       ssh.enable = lib.mkDefault true;

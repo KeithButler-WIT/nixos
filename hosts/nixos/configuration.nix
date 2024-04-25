@@ -20,7 +20,7 @@
   modules = {
     services = {
       docker.enable = true;
-      plex.enable = true;
+      streaming.enable = true;
       # power-management = false;
       printer.enable = true;
     };
