@@ -173,7 +173,7 @@
     };
     media = { };
     services = {
-      borgmatic.enable = true;
+      borgmatic.enable = false;
       dunst.enable = true;
     };
     shell = { };
