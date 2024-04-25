@@ -1,13 +1,14 @@
 { pkgs, config, lib, inputs, userSettings, ... }:
 
-{
+with lib;
+let cfg = config.modules.editors.emacs;
+in {
 
-  options = {
-    emacs.enable =
-      lib.mkEnableOption "enables emacs";
-  };
+  options.modules.editors.emacs.enable =
+    mkEnableOption "enables emacs";
 
-  config = lib.mkIf config.emacs.enable {
+
+  config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
     users.users.${userSettings.username}.packages = with pkgs; [

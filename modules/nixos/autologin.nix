@@ -1,13 +1,13 @@
 { pkgs, config, lib, userSettings, ... }:
 
-{
+with lib;
+let cfg = config.modules.autologin;
+in {
 
-  options = {
-    autologin.enable =
-      lib.mkEnableOption "enables autologin";
-  };
+  options.modules.autologin.enable =
+    mkEnableOption "enables autologin";
 
-  config = lib.mkIf config.autologin.enable {
+  config = lib.mkIf cfg.enable {
     # Enable automatic login for the user.
     services.displayManager.autoLogin = {
       enable = true;

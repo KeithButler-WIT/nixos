@@ -1,13 +1,14 @@
 { pkgs, config, lib, ... }:
 
-{
+with lib;
+let cfg = config.modules.desktop.plasma6;
+in {
 
-  options = {
-    plasma6.enable =
-      lib.mkEnableOption "enables plasma6";
-  };
+  options.modules.desktop.plasma6.enable =
+    mkEnableOption "enables plasma6";
 
-  config = lib.mkIf config.plasma6.enable {
+
+  config = lib.mkIf cfg.enable {
     # Enable the X11 windowing system.
     services.xserver.enable = true;
     # Enable the KDE Plasma Desktop Environment.

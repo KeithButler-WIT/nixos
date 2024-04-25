@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, userSettings, ... }:
 
 with lib;
 let cfg = config.modules.services.docker;
@@ -14,6 +14,8 @@ in {
       distrobox
       docker
     ];
+
+    users.users.${userSettings.username}.extraGroups = [ "docker" ];
 
   };
 

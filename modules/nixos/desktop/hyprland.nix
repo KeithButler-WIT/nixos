@@ -1,18 +1,19 @@
 { pkgs, config, lib, inputs, ... }:
 
-{
+with lib;
+let cfg = config.modules.desktop.hyprland;
+in {
 
   # imports = [
   #   ./autologin.nix
   #   ./tuigreet.nix
   # ];
 
-  options = {
-    hyprland.enable =
-      lib.mkEnableOption "enables hyprland";
-  };
+  options.modules.desktop.hyprland.enable =
+    mkEnableOption "enables hyprland";
 
-  config = lib.mkIf config.hyprland.enable {
+
+  config = lib.mkIf cfg.enable {
     programs.hyprland = {
       enable = true;
       # Use the flake
@@ -31,8 +32,8 @@
       ];
     };
 
-    tuigreet.enable = true;
-    autologin.enable = true;
+    modules.desktop.tuigreet.enable = true;
+    modules.autologin.enable = true;
   };
 
 }

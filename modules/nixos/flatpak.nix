@@ -1,13 +1,14 @@
 { pkgs, config, lib, ... }:
 
-{
+with lib;
+let cfg = config.modules.flatpak;
+in {
 
-  options = {
-    flatpak.enable =
-      lib.mkEnableOption "enables flatpak";
-  };
+  options.modules.flatpak.enable =
+    mkEnableOption "enables flatpak";
 
-  config = lib.mkIf config.flatpak.enable {
+
+  config = lib.mkIf cfg.enable {
     services.flatpak.enable = true;
     systemd.services.flatpak-repo = {
       wantedBy = [ "multi-user.target" ];

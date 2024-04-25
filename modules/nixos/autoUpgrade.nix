@@ -1,13 +1,13 @@
 { pkgs, config, lib, inputs, ... }:
 
-{
+with lib;
+let cfg = config.modules.autoUpgrade;
+in {
 
-  options = {
-    autoUpgrade.enable =
-      lib.mkEnableOption "enables autoUpgrade";
-  };
+  options.modules.autoUpgrade.enable =
+    mkEnableOption "enables autoUpgrade";
 
-  config = lib.mkIf config.autoUpgrade.enable {
+  config = lib.mkIf cfg.enable {
     system.autoUpgrade = {
       enable = true;
       flake = inputs.self.outPath;

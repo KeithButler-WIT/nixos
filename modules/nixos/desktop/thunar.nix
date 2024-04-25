@@ -1,13 +1,13 @@
 { pkgs, config, lib, ... }:
 
-{
+with lib;
+let cfg = config.modules.desktop.thunar;
+in {
 
-  options = {
-    thunar.enable =
-      lib.mkEnableOption "enables thunar";
-  };
+  options.modules.desktop.thunar.enable =
+    mkEnableOption "enables thunar";
 
-  config = lib.mkIf config.thunar.enable {
+  config = lib.mkIf cfg.enable {
     programs.xfconf.enable = true;
     programs.thunar = {
       enable = true;

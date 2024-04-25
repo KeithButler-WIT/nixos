@@ -1,13 +1,14 @@
 { pkgs, config, lib, inputs, ... }:
 
-{
+with lib;
+let cfg = config.modules.nix-ld;
+in {
 
-  options = {
-    nix-ld.enable =
-      lib.mkEnableOption "enables nix-ld";
-  };
+  options.modules.nix-ld.enable =
+    mkEnableOption "enables nix-ld";
 
-  config = lib.mkIf config.nix-ld.enable {
+
+  config = lib.mkIf cfg.enable {
     # Enable nix ld
     programs.nix-ld = {
       enable = true;

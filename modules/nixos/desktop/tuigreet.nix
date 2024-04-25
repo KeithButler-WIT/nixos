@@ -1,21 +1,23 @@
 { pkgs, config, lib, userSettings, ... }:
 
-{
+with lib;
+let cfg = config.modules.desktop.tuigreet;
+in {
 
-  options = {
-    tuigreet.enable =
-      lib.mkEnableOption "enables tuigreet";
-  };
+  options.modules.desktop.tuigreet.enable =
+    mkEnableOption "enables tuigreet";
 
-  config = lib.mkIf config.tuigreet.enable {
+
+  config = lib.mkIf cfg.enable {
     # Enable tuigreet login manager
     services.greetd = {
       enable = true;
       settings = {
-        initial_session = lib.mkIf config.autologin.enable {
+        # TODO: mkif plasma
+        initial_session = lib.mkIf config.modules.autologin.enable {
           # Auto Login
           # command = "startplasma-wayland";
-          command = lib.mkIf config.hyprland.enable "Hyprland";
+          command = lib.mkIf config.modules.desktop.hyprland.enable "Hyprland";
           user = userSettings.username;
         };
         default_session = {

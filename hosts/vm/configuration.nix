@@ -8,16 +8,17 @@
 
   imports = [
     ./hardware-configuration.nix
-    ./System
+    ./boot.nix
+    ./users.nix
     ../.
   ];
 
   modules = {
     autologin.enable = true;
-    autoUpgrade.enable = true;
-    flatpak.enable = true;
-    nix-ld.enable = true;
-    vm.enable = true;
+    # autoUpgrade.enable = true;
+    # flatpak.enable = true;
+    # nix-ld.enable = true;
+    # vm.enable = true;
     desktop = {
       enable = true;
       hyprland.enable = true;
@@ -26,34 +27,34 @@
       tuigreet.enable = true;
     };
     editors = {
-      emacs.enable = true;
+      # emacs.enable = true;
     };
     gaming = {
-      steam.enable = true;
+      # steam.enable = true;
     };
     services = {
-      docker.enable = true;
+      # docker.enable = true;
       # firewall.enable = true;
-      mullvad-vpn.enable = true;
-      power-management.enable = true;
-      printer.enable = true;
-      ssh.enable = true;
+      # mullvad-vpn.enable = true;
+      # power-management.enable = true;
+      # printer.enable = true;
+      # ssh.enable = true;
       streaming = {
-        enable = true;
+        # enable = true;
         # plex.enable = true;
-        jellyfin.enable = true;
+        # jellyfin.enable = true;
       };
     };
     hardware = {
-      audio.enable = true;
+      # audio.enable = true;
       amd.enable = true;
-      bluetooth.enable = true;
+      # bluetooth.enable = true;
       # nvidia.enable = true;
       logitech.enable = true;
       fs = {
         enable = true;
-        ssd.enable = true;
-        zfs.enable = true;
+        # ssd.enable = true;
+        # zfs.enable = true;
       };
     };
   };

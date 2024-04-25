@@ -1,18 +1,19 @@
 { pkgs, config, lib, inputs, ... }:
 
-{
+with lib;
+let cfg = config.modules.hardware.bluetooth;
+in {
 
   imports = [
     # inputs.nix-gaming.nixosModules.steamCompat
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
 
-  options = {
-    steam.enable =
-      lib.mkEnableOption "enables steam";
-  };
+  options.modules.gaming.steam.enable =
+    mkEnableOption "enables steam";
 
-  config = lib.mkIf config.steam.enable {
+
+  config = lib.mkIf cfg.enable {
 
     # nix.settings = {
     #   substituters = [ "https://nix-gaming.cachix.org" ];
@@ -42,6 +43,7 @@
       ];
       platformOptimizations.enable = true;
     };
+
     environment.systemPackages = with pkgs; [
       # pkgs.gamemode # GameMode depends on root-level capabilities that aren't available in a user-level Nix package installation.
       heroic

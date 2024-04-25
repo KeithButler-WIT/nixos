@@ -1,13 +1,14 @@
 { config, lib, pkgs, userSettings, ... }:
 
-{
+with lib;
+let cfg = config.modules.vm;
+in {
 
-  options = {
-    vm.enable =
-      lib.mkEnableOption "enables vms";
-  };
+  options.modules.vm.enable =
+    mkEnableOption "enables vm";
 
-  config = lib.mkIf config.vm.enable {
+
+  config = lib.mkIf cfg.enable {
     # Install necessary packages
     environment.systemPackages = with pkgs; [
       virt-manager

@@ -1,6 +1,55 @@
-{ config, lib, pkgs, userSettings, systemSettings, ... }:
+{ pkgs, lib, systemSettings, userSettings, ... }:
 
 {
+
+  environment.systemPackages = with pkgs; [
+    cachix
+    curl
+    nixpkgs-fmt
+    git
+    gcc
+    grc
+    ripgrep
+    vim
+    wget
+    progress
+    rsync
+    gnumake
+    gnupg
+    curl
+    gnumake
+    xdragon
+    # cava
+    numlockx
+    yt-dlp
+    light
+    # System management
+    htop
+    btop
+    w3m
+    entr
+    killall
+    zip
+    unzip
+    pass
+    feh
+    gnupg
+    trash-cli
+    ncdu # disk space management
+    xorg.xhost # needed to run gparted on wayland
+    rsync
+  ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  time.hardwareClockInLocalTime = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
 
   nix = {
     settings = {
@@ -28,13 +77,40 @@
     };
   };
 
+  systemd = {
+    services.clear-log = {
+      description = "Clear >1 month-old logs every week";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.systemd}/bin/journalctl --vacuum-time=21d";
+      };
+    };
+    timers.clear-log = {
+      wantedBy = [ "timers.target" ];
+      partOf = [ "clear-log.service" ];
+      timerConfig.OnCalendar = "weekly UTC";
+    };
+  };
+
+  services.envfs.enable = true;
+
+  programs.fuse.userAllowOther = true;
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   networking.hostName = userSettings.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+  # Set your time zone.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -48,13 +124,6 @@
     blockSocial = false;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
-
-  # Set your time zone.
   time.timeZone = systemSettings.timezone;
 
   # Select internationalisation properties.
