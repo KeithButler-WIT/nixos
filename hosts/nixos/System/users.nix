@@ -8,9 +8,7 @@
     description = userSettings.name;
     extraGroups =
       [ "networkmanager" "wheel" "disk" "plugdev" "video" "tty" "input" "storage" "lp" "nixconfig" "dialout" ]
-      ++ [ "docker" ]
-      ++ [ "kvm" ] # TODO: add if check
-      ++ [ "scanner" ];
+      ++ [ "docker" ];
     packages = with pkgs; [
       # Home Backup
       pika-backup
