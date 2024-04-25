@@ -95,6 +95,34 @@
             # ormolu.packages.${system}.default # Haskell formatter
           ];
         };
+        vm = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            inherit userSettings systemSettings;
+          }; # Might be redundent
+          modules = [
+            hosts.nixosModule
+            ./hosts/nixos/configuration.nix
+            ./modules/nixos
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.keith.imports = [
+                ./home/home.nix
+                ./modules/home-manager
+              ];
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit userSettings systemSettings;
+              };
+            }
+          ];
+        };
+
       };
       homeConfigurations = {
         keith = inputs.home-manager.lib.homeManagerConfiguration {
