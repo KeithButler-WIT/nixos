@@ -37,10 +37,14 @@
   modules = {
     services = {
       docker.enable = lib.mkDefault false;
-      streaming.enable = lib.mkDefault false;
       power-management.enable = lib.mkDefault false;
       printer.enable = lib.mkDefault true;
       ssh.enable = lib.mkDefault true;
+      streaming = {
+        enable = lib.mkDefault false;
+        plex.enable = lib.mkDefault false;
+        jellyfin.enable = lib.mkDefault false;
+      };
     };
     hardware = {
       audio.enable = lib.mkDefault false;

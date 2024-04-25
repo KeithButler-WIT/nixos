@@ -20,9 +20,13 @@
   modules = {
     services = {
       docker.enable = true;
-      streaming.enable = true;
       # power-management = false;
       printer.enable = true;
+      streaming = {
+        enable = true;
+        plex.enable = false;
+        jellyfin.enable = true;
+      };
     };
   };
   flatpak.enable = true;
