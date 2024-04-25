@@ -343,7 +343,7 @@ in {
           background = "#${base08}";
           foreground = "#${base00}";
           frame_color = "#${base02}";
-          timeout = 0;
+          timeout = 30;
           # Icon for notifications with critical urgency, uncomment to enable
           #default_icon = /path/to/icon
 
