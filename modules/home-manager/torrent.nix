@@ -8,13 +8,14 @@ in {
     mkEnableOption "enables torrent";
 
   config = mkIf cfg.enable {
-    home.packages = [
-      #pkgs.qbittorrent
-      #pkgs.jesec-rtorrent
-      pkgs.pyrosimple
-      pkgs.flood
-      pkgs.mullvad-vpn
-      # pkgs.tor-browser-bundle-bin
+    home.packages = with pkgs; [
+      #qbittorrent
+      #jesec-rtorrent
+      pyrosimple
+      flood
+      mullvad-vpn
+      # tor-browser-bundle-bin
+      mediainfo
     ];
 
     # File just needs to exist
