@@ -76,6 +76,7 @@
             hosts.nixosModule
             ./hosts/nixos/configuration.nix
             ./modules/nixos
+            ./hosts/common
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

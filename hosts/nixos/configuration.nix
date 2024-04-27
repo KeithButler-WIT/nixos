@@ -8,13 +8,12 @@
 
   imports = [
     ./hardware-configuration.nix
-    ./System
-    ../.
+    ./boot.nix
   ];
 
   modules = {
     autologin.enable = true;
-    autoUpgrade.enable = true;
+    # autoUpgrade.enable = true;
     flatpak.enable = true;
     nix-ld.enable = true;
     vm.enable = true;

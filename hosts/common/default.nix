@@ -1,9 +1,9 @@
-{ pkgs, config, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
   imports = [
-    ./boot.nix
+    ./packages.nix
     ./polkit.nix
     ./users.nix
   ];

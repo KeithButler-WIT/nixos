@@ -7,10 +7,8 @@
 {
 
   imports = [
-    ./hardware-configuration.nix
+    # ./hardware-configuration.nix
     ./boot.nix
-    ./users.nix
-    ../.
   ];
 
   modules = {
