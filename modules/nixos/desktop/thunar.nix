@@ -32,6 +32,8 @@ in {
       # mcomix # cbr
       # folderpreview # folders
       f3d # 3d files
+
+      archiver
     ];
   };
 
