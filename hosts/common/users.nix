@@ -9,15 +9,6 @@
     extraGroups =
       [ "networkmanager" "wheel" "disk" "plugdev" "video" "tty" "input" "storage" "lp" "nixconfig" "dialout" ];
     packages = with pkgs; [
-      # Home Backup
-      pika-backup
-      haskell-language-server
-      stack
-      rclone
-      inkscape
-      ghc
-      floorp
-      conda
     ];
     openssh.authorizedKeys.keys = lib.mkIf config.modules.services.ssh.enable [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNXXNh8eWgPtjc7+iiBFuM6mB+C+8m13wD4tHZFPtYm keithbutler2001@gmail.com"
