@@ -16,6 +16,16 @@ in {
         enable = true;
         openFirewall = true;
       };
+      services.radarr = {
+        enable = true;
+        openFirewall = true;
+        user = userSettings.username;
+      };
+      services.sonarr = {
+        enable = true;
+        openFirewall = true;
+        user = userSettings.username;
+      };
     }
 
     (mkIf (cfg.plex.enable) {
