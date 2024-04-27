@@ -15,8 +15,16 @@ in {
       ## Emacs itself
       binutils # native-comp needs 'as', provided by this
       # 28.2 + native-comp
-      ((emacsPackagesFor emacsNativeComp).emacsWithPackages
-        (epkgs: [ epkgs.vterm ]))
+      ((emacsPackagesFor emacs-unstable).emacsWithPackages
+        (epkgs: [
+          epkgs.vterm
+          epkgs.f
+          epkgs.s
+          epkgs.emacsql
+          epkgs.emacsql-sqlite
+          epkgs.magit-section
+          epkgs.magit-filenotify
+        ]))
 
       ## Doom dependencies
       git
@@ -42,13 +50,16 @@ in {
       # :lang beancount
       # beancount
       fava # HACK Momentarily broken on nixos-unstable
+
+      # org-roam deps
+      dash
     ];
 
     # env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 
     # modules.shell.zsh.rcFiles = [ "${configDir}/emacs/aliases.zsh" ];
 
-    fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
+    fonts.packages = [ pkgs.emacs-all-the-icons-fonts ];
 
     system.userActivationScripts = {
       installDoomEmacs = ''
