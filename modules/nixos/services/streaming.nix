@@ -12,6 +12,7 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
+      # TODO: remove every user = userSettings.username;
       services.jellyseerr = {
         enable = true;
         openFirewall = true;
@@ -22,6 +23,11 @@ in {
         user = userSettings.username;
       };
       services.sonarr = {
+        enable = true;
+        openFirewall = true;
+        user = userSettings.username;
+      };
+      services.jackett = {
         enable = true;
         openFirewall = true;
         user = userSettings.username;

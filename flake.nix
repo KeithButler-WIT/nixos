@@ -52,6 +52,8 @@
 
   outputs = { nixpkgs, self, hosts, hyprland, home-manager, ormolu, ... } @ inputs:
     let
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
+
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
       commonInherits = {
@@ -62,19 +64,29 @@
       };
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      lib = nixpkgs.lib.extend
+        (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
+
       # unstable = nixpkgs-unstable.legacyPackages.${system};
       inherit (import ./options.nix) systemSettings userSettings;
     in
     {
+      lib = lib.my;
+
+      nixosModules =
+        { dotfiles = import ./.; } // mapModulesRec ./modules/nixos import;
+
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
+            inherit lib;
             inherit inputs;
             inherit userSettings systemSettings;
           }; # Might be redundent
           modules = [
             hosts.nixosModule
-            ./hosts/nixos/configuration.nix
+            ./hosts/nixos
             ./modules/nixos
             ./hosts/common
             home-manager.nixosModules.home-manager
@@ -82,7 +94,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.keith.imports = [
-                ./home/home.nix
+                # ./home/home.nix
+                ./hosts/common/home.nix
+                ./hosts/nixos/home.nix
                 ./modules/home-manager
               ];
 
@@ -103,14 +117,16 @@
           }; # Might be redundent
           modules = [
             hosts.nixosModule
-            ./hosts/nixos/configuration.nix
+            ./hosts/nixos
             ./modules/nixos
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.keith.imports = [
-                ./home/home.nix
+                # ./home/home.nix
+                ./hosts/common/home.nix
+                # ./hosts/vm/home.nix
                 ./modules/home-manager
               ];
 
@@ -129,7 +145,8 @@
         keith = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home/home.nix
+            # ./home/home.nix
+            ./hosts/nixos/home.nix
             ./modules/home-manager
           ];
         };

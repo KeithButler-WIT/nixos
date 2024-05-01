@@ -1,6 +1,7 @@
 { config, lib, pkgs, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.shell.git;
 in {
 

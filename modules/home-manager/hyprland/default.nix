@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.hyprland;
 in {
 
@@ -33,6 +34,8 @@ in {
       brightnessctl
       hypridle
       hyprlock
+
+      galculator
     ];
   };
 

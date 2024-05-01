@@ -12,7 +12,6 @@
     ".dmenurc".source = ./.dmenurc;
     ".xinitrc".source = ./.xinitrc;
     # dunst
-    ".config/keepassxc".source = ./keepassxc;
     ".config/waybar".source = ./waybar;
     # ${config.xdg.configHome}."/picom".source = ~/.dotfiles/.config/picom;
     ".config/picom".source = ./picom;

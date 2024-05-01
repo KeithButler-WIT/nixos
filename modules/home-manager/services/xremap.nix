@@ -1,6 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.services.xremap;
 in {
 
