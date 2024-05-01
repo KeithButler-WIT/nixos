@@ -1,6 +1,7 @@
 { pkgs, config, lib, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.desktop.browsers.firefox;
 in {
 

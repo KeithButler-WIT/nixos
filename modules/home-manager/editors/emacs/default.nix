@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.editors.emacs;
 in {
 
