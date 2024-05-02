@@ -1,11 +1,12 @@
 { pkgs, config, lib, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.services.printer;
 in {
 
   options.modules.services.printer.enable =
-    mkEnableOption "enables printer";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # Detect printers

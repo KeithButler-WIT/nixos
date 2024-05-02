@@ -1,11 +1,12 @@
 { pkgs, config, lib, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.services.power-management;
 in {
 
   options.modules.services.power-management.enable =
-    mkEnableOption "enables power-management";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # https://nixos.wiki/wiki/Power_Management

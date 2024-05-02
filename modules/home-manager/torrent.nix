@@ -6,7 +6,7 @@ let cfg = config.modules.torrent;
 in {
 
   options.modules.torrent.enable =
-    mkEnableOption "enables torrent";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

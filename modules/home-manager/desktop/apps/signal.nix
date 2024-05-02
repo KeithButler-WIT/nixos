@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.signal;
 in {
 
   options.modules.desktop.apps.signal.enable =
-    mkEnableOption "enables signal";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

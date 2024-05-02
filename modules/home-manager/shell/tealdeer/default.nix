@@ -6,7 +6,7 @@ let cfg = config.modules.shell.tealdeer;
 in {
 
   options.modules.shell.tealdeer.enable =
-    mkEnableOption "enables tealdeer";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.tealdeer = {

@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.obs;
 in {
 
   options.modules.desktop.apps.obs.enable =
-    mkEnableOption "enables obs";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

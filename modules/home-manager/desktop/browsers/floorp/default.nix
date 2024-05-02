@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.browsers.floorp;
 in {
 
   options.modules.desktop.browsers.floorp.enable =
-    mkEnableOption "enables floorp";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

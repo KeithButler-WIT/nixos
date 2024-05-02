@@ -6,7 +6,7 @@ let cfg = config.modules.services.dunst;
 in {
 
   options.modules.services.dunst.enable =
-    mkEnableOption "enables dunst";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     services.dunst = {

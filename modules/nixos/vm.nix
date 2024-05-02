@@ -1,11 +1,12 @@
 { config, lib, pkgs, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.vm;
 in {
 
   options.modules.vm.enable =
-    mkEnableOption "enables vm";
+    mkBoolOpt false;
 
 
   config = lib.mkIf cfg.enable {
@@ -23,7 +24,7 @@ in {
       quickgui
     ];
 
-    programs.dconf.enable = true;
+    # programs.dconf.enable = true;
     programs.virt-manager.enable = true;
     # Manage the virtualisation services
     virtualisation = {

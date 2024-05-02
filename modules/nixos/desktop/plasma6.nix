@@ -1,11 +1,12 @@
 { pkgs, config, lib, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.desktop.plasma6;
 in {
 
   options.modules.desktop.plasma6.enable =
-    mkEnableOption "enables plasma6";
+    mkBoolOpt false;
 
 
   config = lib.mkIf cfg.enable {

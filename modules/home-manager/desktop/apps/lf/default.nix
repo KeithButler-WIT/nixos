@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.lf;
 in {
 
   options.modules.desktop.apps.lf.enable =
-    lib.mkEnableOption "enables lf";
+    mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     xdg.configFile."lf/icons".source = ./icons;

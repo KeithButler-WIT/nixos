@@ -1,10 +1,11 @@
 { pkgs, config, lib, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.hardware.nvidia;
 in {
   options.modules.hardware.nvidia.enable =
-    mkEnableOption "enables nvidia";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     services.xserver.videoDrivers = [ "nvidia" ];

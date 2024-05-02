@@ -1,11 +1,12 @@
 { pkgs, config, lib, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.desktop.thunar;
 in {
 
   options.modules.desktop.thunar.enable =
-    mkEnableOption "enables thunar";
+    mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     programs.xfconf.enable = true;

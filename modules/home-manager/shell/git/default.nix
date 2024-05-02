@@ -6,7 +6,7 @@ let cfg = config.modules.shell.git;
 in {
 
   options.modules.shell.git.enable =
-    mkEnableOption "enables git";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = [

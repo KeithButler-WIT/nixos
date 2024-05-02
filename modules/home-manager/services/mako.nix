@@ -6,7 +6,7 @@ let cfg = config.modules.services.mako;
 in {
 
   options.modules.services.mako.enable =
-    mkEnableOption "enables mako";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     services.mako = with config.colorScheme.palette; {

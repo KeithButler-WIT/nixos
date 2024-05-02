@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.pass;
 in {
 
   options.modules.desktop.apps.pass.enable =
-    mkEnableOption "enables keepassxc and pass";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

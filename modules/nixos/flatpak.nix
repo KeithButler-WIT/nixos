@@ -1,11 +1,12 @@
 { pkgs, config, lib, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.flatpak;
 in {
 
   options.modules.flatpak.enable =
-    mkEnableOption "enables flatpak";
+    mkBoolOpt false;
 
 
   config = lib.mkIf cfg.enable {

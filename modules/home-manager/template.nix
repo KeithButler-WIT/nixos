@@ -2,11 +2,11 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.ssh;
+let cfg = config.modules.temp;
 in {
 
-  options.modules.services.ssh.enable =
-    mkEnableOption "enables ssh";
+  options.modules.temp.enable =
+    mkBoolOpt false;
 
   config = mkIf cfg.enable { };
 

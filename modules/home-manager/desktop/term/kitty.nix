@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.term.kitty;
 in {
 
   options.modules.desktop.term.kitty.enable =
-    mkEnableOption "enables kitty";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.kitty = {

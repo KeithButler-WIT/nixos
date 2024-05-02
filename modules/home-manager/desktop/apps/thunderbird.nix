@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.thunderbird;
 in {
 
   options.modules.desktop.apps.thunderbird.enable =
-    mkEnableOption "enables thunderbird";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

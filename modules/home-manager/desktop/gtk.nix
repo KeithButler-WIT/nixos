@@ -72,19 +72,19 @@ in {
       };
 
       gtk2.extraConfig = "
-      include '/home/${userSettings.username}/.gtkrc-2.0.mine'
-      gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
-      gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
-      gtk-button-images=1
-      gtk-menu-images=1
-      gtk-enable-event-sounds=1
-      gtk-enable-input-feedback-sounds=0
-      gtk-xft-antialias=1
-      gtk-xft-hinting=1
-      gtk-xft-hintstyle='hintmedium'
-      gtk-xft-rgba='none'
-      gtk-modules='canberra-gtk-module:gail:atk-bridge'
-    ";
+        include '/home/${userSettings.username}/.gtkrc-2.0.mine'
+        gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
+        gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+        gtk-button-images=1
+        gtk-menu-images=1
+        gtk-enable-event-sounds=1
+        gtk-enable-input-feedback-sounds=0
+        gtk-xft-antialias=1
+        gtk-xft-hinting=1
+        gtk-xft-hintstyle='hintmedium'
+        gtk-xft-rgba='none'
+        gtk-modules='canberra-gtk-module:gail:atk-bridge'
+      ";
       gtk3.extraConfig = {
         gtk-button-images = 1;
         gtk-enable-event-sounds = 1;

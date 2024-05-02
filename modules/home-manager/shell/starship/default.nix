@@ -6,7 +6,7 @@ let cfg = config.modules.shell.starship;
 in {
 
   options.modules.shell.starship.enable =
-    mkEnableOption "enables starship";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.starship = {

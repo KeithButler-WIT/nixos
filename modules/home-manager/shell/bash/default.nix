@@ -6,7 +6,7 @@ let cfg = config.modules.shell.bash;
 in {
 
   options.modules.shell.bash.enable =
-    mkEnableOption "enables bash";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = [

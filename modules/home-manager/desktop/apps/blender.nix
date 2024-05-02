@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.blender;
 in {
 
   options.modules.desktop.apps.blender.enable =
-    mkEnableOption "enables blender";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

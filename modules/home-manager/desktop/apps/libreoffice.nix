@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.libreoffice;
 in {
 
   options.modules.desktop.apps.libreoffice.enable =
-    mkEnableOption "enables libreoffice";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

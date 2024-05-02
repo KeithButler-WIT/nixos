@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.gaming.minecraft;
 in {
 
   options.modules.desktop.gaming.minecraft.enable =
-    mkEnableOption "enables minecraft";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

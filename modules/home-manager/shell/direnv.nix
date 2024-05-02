@@ -6,7 +6,7 @@ let cfg = config.modules.shell.direnv;
 in {
 
   options.modules.shell.direnv.enable =
-    mkEnableOption "enables direnv";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.direnv = {

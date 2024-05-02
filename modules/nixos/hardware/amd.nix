@@ -1,11 +1,12 @@
 { config, pkgs, lib, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.hardware.amd;
 in {
 
   options.modules.hardware.amd.enable =
-    mkEnableOption "enables amd";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     boot.initrd.kernelModules = [ "amdgpu" ];

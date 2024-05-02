@@ -1,6 +1,7 @@
 { pkgs, config, lib, inputs, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.desktop.hyprland;
 in {
 
@@ -10,30 +11,31 @@ in {
   # ];
 
   options.modules.desktop.hyprland.enable =
-    mkEnableOption "enables hyprland";
+    mkBoolOpt false;
 
 
   config = lib.mkIf cfg.enable {
-    programs.hyprland = {
-      enable = true;
-      # Use the flake
-      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-      # Whether to enable XWayland
-      xwayland.enable = true;
-    };
+    # programs.hyprland = {
+    # enable = true;
+    # Use the flake
+    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    # Whether to enable XWayland
+    #   xwayland.enable = true;
+    # };
     xdg.portal = {
       enable = true;
       wlr.enable = true;
       xdgOpenUsePortal = true;
-      extraPortals = [
-        # pkgs.xdg-desktop-portal-hyprland
-        # pkgs.xdg-desktop-portal-gtk
-        # pkgs.xdg-desktop-portal
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal
       ];
+      config.common.default = "*";
     };
 
-    modules.desktop.tuigreet.enable = true;
-    modules.autologin.enable = true;
+    # modules.desktop.tuigreet.enable = mkDefault true;
+    # modules.autologin.enable = mkDefault true;
   };
 
 }

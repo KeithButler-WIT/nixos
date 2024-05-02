@@ -1,11 +1,12 @@
 { pkgs, config, lib, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.desktop.tuigreet;
 in {
 
   options.modules.desktop.tuigreet.enable =
-    mkEnableOption "enables tuigreet";
+    mkBoolOpt false;
 
 
   config = lib.mkIf cfg.enable {

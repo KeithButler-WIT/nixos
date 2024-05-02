@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.term.alacritty;
 in {
 
   options.modules.desktop.term.alacritty.enable =
-    mkEnableOption "enables alacritty";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # requires extra setup on non-Nixos

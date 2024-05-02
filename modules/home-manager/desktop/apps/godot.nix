@@ -6,11 +6,11 @@ let cfg = config.modules.desktop.apps.godot;
 in {
 
   options.modules.desktop.apps.godot.enable =
-    mkEnableOption "enables godot";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      aseprite
+      # aseprite
       godot_4
     ];
   };

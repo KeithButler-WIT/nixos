@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.media.ncmpcpp;
 in {
 
   options.modules.desktop.media.ncmpcpp.enable =
-    mkEnableOption "enables ncmpcpp";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.ncmpcpp = {

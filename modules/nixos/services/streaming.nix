@@ -1,13 +1,14 @@
 { pkgs, config, lib, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.services.streaming;
 in {
 
   options.modules.services.streaming = {
-    enable = mkEnableOption "enables streaming";
-    plex.enable = mkEnableOption "enables plex";
-    jellyfin.enable = mkEnableOption "enables jellyfin";
+    enable = mkBoolOpt false;
+    plex.enable = mkBoolOpt false;
+    jellyfin.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable (mkMerge [

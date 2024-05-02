@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.zoom;
 in {
 
   options.modules.desktop.apps.zoom.enable =
-    mkEnableOption "enables zoom";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

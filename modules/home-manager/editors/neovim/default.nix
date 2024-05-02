@@ -6,7 +6,7 @@ let cfg = config.modules.editors.neovim;
 in {
 
   options.modules.editors.neovim.enable =
-    mkEnableOption "enables neovim";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.neovim =

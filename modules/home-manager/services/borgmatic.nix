@@ -6,7 +6,7 @@ let cfg = config.modules.services.borgmatic;
 in {
 
   options.modules.services.borgmatic.enable =
-    mkEnableOption "enables borgmatic";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.borgmatic = {

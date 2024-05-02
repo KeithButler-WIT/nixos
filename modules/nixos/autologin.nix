@@ -1,11 +1,12 @@
 { pkgs, config, lib, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.autologin;
 in {
 
   options.modules.autologin.enable =
-    mkEnableOption "enables autologin";
+    mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     # Enable automatic login for the user.

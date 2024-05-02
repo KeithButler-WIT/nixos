@@ -6,7 +6,7 @@ let cfg = config.modules.nh;
 in {
 
   options.modules.nh.enable =
-    mkEnableOption "enables nh";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

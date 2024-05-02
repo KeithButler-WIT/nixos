@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.browsers.qutebrowser;
 in {
 
   options.modules.desktop.browsers.qutebrowser.enable =
-    mkEnableOption "enables qutebrowser";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.qutebrowser = with config.colorScheme.palette; {

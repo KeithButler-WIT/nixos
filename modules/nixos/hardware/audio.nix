@@ -1,10 +1,11 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.hardware.audio;
 in {
   options.modules.hardware.audio.enable =
-    mkEnableOption "enables audio";
+    mkBoolOpt false;
 
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency

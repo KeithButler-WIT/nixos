@@ -1,11 +1,12 @@
 { pkgs, config, lib, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.services.firewall;
 in {
 
   options.modules.services.firewall.enable =
-    mkEnableOption "enables firewall";
+    mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     # Open ports in the firewall.

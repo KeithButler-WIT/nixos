@@ -6,7 +6,7 @@ let cfg = config.modules.hyprland;
 in {
 
   options.modules.hyprland.enable =
-    mkEnableOption "enables hyprland";
+    mkBoolOpt false;
 
   imports = [
     ./config.nix

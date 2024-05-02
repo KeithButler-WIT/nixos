@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.media.mpv;
 in {
 
   options.modules.desktop.media.mpv.enable =
-    mkEnableOption "enables mpv";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.mpv = {

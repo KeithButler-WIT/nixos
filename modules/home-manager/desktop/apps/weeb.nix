@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.apps.weeb;
 in {
 
   options.modules.desktop.apps.weeb.enable =
-    mkEnableOption "enables weeb stuff";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

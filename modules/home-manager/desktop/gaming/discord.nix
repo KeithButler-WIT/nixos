@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.gaming.discord;
 in {
 
   options.modules.desktop.gaming.discord.enable =
-    mkEnableOption "enables discord";
+    mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

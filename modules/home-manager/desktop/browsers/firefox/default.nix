@@ -6,7 +6,7 @@ let cfg = config.modules.desktop.browsers.firefox;
 in {
 
   options.modules.desktop.browsers.firefox.enable =
-    mkEnableOption "enables firefox";
+    mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     programs.firefox = {
