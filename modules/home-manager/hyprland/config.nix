@@ -1,5 +1,6 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 
+lib.mkIf config.modules.hyprland.enable
 {
 
   home.file.".config/hypr/pyprland.json".text = ''
