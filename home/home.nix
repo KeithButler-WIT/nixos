@@ -2,72 +2,6 @@
 
 {
 
-  imports = [
-    inputs.nix-colors.homeManagerModules.default
-    # inputs.nixvim.homeManagerModules.nixvim
-  ];
-
-  #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true;
-    permittedInsecurePackages = [
-      "openssl-1.1.1u"
-      "python-2.7.18.6"
-      "nodejs-16.20.1"
-      "nodejs-16.20.2"
-    ];
-  };
-
-  #targets.genericLinux.enable = true; # Enable this on non nixos
-
-  nix = {
-    # package = pkgs.nix;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
-      trusted-users = [ userSettings.username ];
-      extra-substituters = [
-        "https://cache.nixos.org/"
-        "https://nix-community.cachix.org"
-        "https://devenv.cachix.org"
-        "https://nix-gaming.cachix.org"
-        "https://hyprland.cachix.org"
-      ];
-      extra-trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      ];
-      # substituters = [ "https://cache.nixos.org" "https://tomodachi94.cachix.org" ];
-      # trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "tomodachi94.cachix.org-1:E1WFk+SYPtq3FFO+NvDgsyciIHg8nHxB/z7qNfojxpI=" ];
-    };
-    gc = {
-      automatic = true;
-      frequency = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
-
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = userSettings.username;
-  home.homeDirectory = "/home/${userSettings.username}";
-  home = {
-    # This value determines the Home Manager release that your configuration is
-    # compatible with. This helps avoid breakage when a new Home Manager release
-    # introduces backwards incompatible changes.
-    #
-    # You should not change this value, even if you update Home Manager. If you do
-    # want to update the value, then make sure to first check the Home Manager
-    # release notes.
-    stateVersion = "23.05"; # Please read the comment before changing.
-  };
-
   home.packages = with pkgs; [
     # TODO add to direnv in required projects
 
@@ -83,11 +17,6 @@
     # TODO: Move into a flake in required folders
     # (pkgs.python310.withPackages (ps: with ps; [ pytz numpy types-beautifulsoup4 beautifulsoup4 requests black pyside6 pylint pillow pywlroots pyflakes poetry-core ]))
 
-    fira-code-symbols
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
-    corefonts
-    noto-fonts
-
     v4l-utils
 
     termusic
@@ -99,49 +28,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    bottles
     nsxiv
-    # pkgs.flameshot
-    galculator
-    # pkgs.kdeconnect
-    # pkgs.kleopatra
-    # pkgs.piper
-    r2modman
-    # pkgs.vlc
-
-    # Browsers
-    # pkgs.librewolf
-    # pkgs.icecat
-    floorp
-    buku # browser indepenent bookmarks
-    bukubrow
-
-    # pkgs.btrfs-assistant
-
-    thunderbird
-    keepassxc
-    # pkgs.gpodder
-    # pkgs.gparted
-
-    # Game Dev
-    # pkgs.godot
-    # pkgs.aseprite
-    godot_4
-    #pkgs.unityhub
-    blender
-    obs-studio
-
-    prismlauncher
-
-    # Weeb Stuff
-    ani-cli
-    mangal
-    suwayomi-server
-
-    # Socials
-    signal-desktop
-    # zoom-us
-    slack
 
     # pkgs.jetbrains.idea-ultimate
     # pkgs.jetbrains.idea-community
@@ -149,7 +36,6 @@
     # pkgs.jetbrains.rust-rover
     vscode
     # pkgs.android-studio
-    libreoffice
 
     scrcpy
 
@@ -158,36 +44,72 @@
   ];
 
   modules = {
-    lf.enable = true;
     torrent.enable = true;
-    hyprland.enable = true;
-    browsers = {
-      qutebrowser.enable = true;
+    nh.enable = true;
+    # hyprland.enable = true;
+    desktop = {
+      browsers = {
+        # firefox.enable = true;
+        floorp.enable = true;
+        qutebrowser.enable = true;
+      };
+      apps = {
+        lf.enable = true;
+        blender.enable = true;
+        bottles.enable = true;
+        godot.enable = true;
+        libreoffice.enable = true;
+        obs.enable = true;
+        pass.enable = true;
+        signal.enable = true;
+        slack.enable = true;
+        thunderbird.enable = true;
+        unity.enable = true;
+        weeb.enable = true;
+        # zoom.enable = true;
+      };
+      gaming = {
+        discord.enable = true;
+        minecraft.enable = true;
+        r2modman.enable = true;
+      };
+      media = {
+        mpv.enable = true;
+        # ncmpcpp.enable = true;
+      };
+      term = {
+        kitty.enable = true;
+        # alacritty.enable = true;
+      };
+      # vm.enable = true;
+      gtk.enable = true;
     };
     editors = {
       emacs.enable = true;
       neovim.enable = true;
     };
-    gaming = {
-      discord.enable = true;
+    shell = {
+      bash.enable = true;
+      fish.enable = true;
+      fzf.enable = true;
+      git.enable = true;
+      starship.enable = true;
+      tealdeer.enable = true;
+      direnv.enable = true;
     };
-    media = { };
     services = {
-      borgmatic.enable = false;
+      # borgmatic.enable = true;
       dunst.enable = true;
+      # mako.enable = true;
+      # mpd.enable = true;
+      ssh.enable = true;
+      syncthing.enable = true;
+      xremap.enable = true;
     };
-    shell = { };
-    term = {
-      kitty.enable = true;
-    };
-    vm.enable = true;
   };
 
   programs.java.enable = true;
 
   services.home-manager.autoUpgrade.frequency = "monthly";
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
 }
