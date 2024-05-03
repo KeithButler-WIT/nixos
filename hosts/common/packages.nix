@@ -14,23 +14,19 @@
     vim
     wget
     gnumake
+    zip
     unzip
 
     cachix
     curl
     nixpkgs-fmt
-    git
     gcc
     grc
     ripgrep
-    vim
-    wget
     progress
     rsync
-    gnumake
     gnupg
     curl
-    gnumake
     xdragon
     # cava
     numlockx
@@ -42,8 +38,6 @@
     w3m
     entr
     killall
-    zip
-    unzip
     pass
     feh
     gnupg
