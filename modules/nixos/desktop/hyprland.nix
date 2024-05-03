@@ -5,11 +5,6 @@ with lib.my;
 let cfg = config.modules.desktop.hyprland;
 in {
 
-  # imports = [
-  #   ./autologin.nix
-  #   ./tuigreet.nix
-  # ];
-
   options.modules.desktop.hyprland.enable =
     mkBoolOpt false;
 
@@ -27,9 +22,9 @@ in {
       wlr.enable = true;
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal
+        # xdg-desktop-portal-hyprland
+        # xdg-desktop-portal-gtk
+        # xdg-desktop-portal
       ];
       config.common.default = "*";
     };
