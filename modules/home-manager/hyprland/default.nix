@@ -8,11 +8,6 @@ in {
   options.modules.hyprland.enable =
     mkBoolOpt false;
 
-  imports = [
-    ./config.nix
-    ./variables.nix
-  ];
-
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       wallust # better pywal
