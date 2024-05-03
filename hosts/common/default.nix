@@ -11,8 +11,9 @@
     ./users.nix
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  home-manager.backupFileExtension = "backup";
+
+  programs.dconf.enable = true;
 
   time.hardwareClockInLocalTime = true;
 

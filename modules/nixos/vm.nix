@@ -24,7 +24,6 @@ in {
       quickgui
     ];
 
-    # programs.dconf.enable = true;
     programs.virt-manager.enable = true;
     # Manage the virtualisation services
     virtualisation = {
