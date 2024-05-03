@@ -2,7 +2,20 @@
 
 {
 
+  nixpkgs.config = {
+    allowBroken = false;
+    allowUnfree = true;
+  };
+
   environment.systemPackages = with pkgs; [
+    bind
+    cached-nix-shell
+    git
+    vim
+    wget
+    gnumake
+    unzip
+
     cachix
     curl
     nixpkgs-fmt
