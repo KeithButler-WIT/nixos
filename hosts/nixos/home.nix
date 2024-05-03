@@ -1,5 +1,6 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 
+with lib.my;
 {
 
   home.packages = with pkgs; [
@@ -81,7 +82,7 @@
         kitty.enable = true;
         # alacritty.enable = true;
       };
-      vm.enable = true;
+      # vm.enable = true;
       gtk.enable = true;
     };
     editors = {
@@ -98,7 +99,7 @@
       direnv.enable = true;
     };
     services = {
-      borgmatic.enable = true;
+      # borgmatic.enable = true;
       dunst.enable = true;
       # mako.enable = true;
       # mpd.enable = true;

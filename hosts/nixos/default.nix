@@ -4,6 +4,7 @@
 
 { config, pkgs, lib, ... }:
 
+with lib.my;
 {
 
   imports = [
@@ -24,11 +25,24 @@
       thunar.enable = true;
       tuigreet.enable = true;
     };
-    editors = {
-      emacs.enable = true;
-    };
+    # dev = { };
+    # editors = {
+    #   emacs.enable = true;
+    # };
     gaming = {
       steam.enable = true;
+    };
+    hardware = {
+      audio.enable = true;
+      amd.enable = true;
+      bluetooth.enable = true;
+      # nvidia.enable = true;
+      logitech.enable = true;
+      fs = {
+        enable = true;
+        ssd.enable = true;
+        zfs.enable = true;
+      };
     };
     services = {
       docker.enable = true;
@@ -41,18 +55,6 @@
         enable = true;
         # plex.enable = true;
         jellyfin.enable = true;
-      };
-    };
-    hardware = {
-      audio.enable = true;
-      amd.enable = true;
-      bluetooth.enable = true;
-      # nvidia.enable = true;
-      logitech.enable = true;
-      fs = {
-        enable = true;
-        ssd.enable = true;
-        zfs.enable = true;
       };
     };
   };
