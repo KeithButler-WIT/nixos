@@ -74,8 +74,14 @@
     {
       lib = lib.my;
 
-      nixosModules =
-        { dotfiles = import ./.; } // mapModulesRec ./modules/nixos import;
+      # nixosModules =
+      #   { } // mapModulesRec ./modules/nixos import;
+
+      # homeModules =
+      #   { } // mapModulesRec ./modules/home-manager import;
+
+      # nixosConfigurations =
+      #   mapHosts ./hosts { };
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
@@ -86,9 +92,9 @@
           }; # Might be redundent
           modules = [
             hosts.nixosModule
-            ./hosts/nixos
-            ./modules/nixos
-            ./hosts/common
+            ./hosts/nixos/default.nix
+            ./hosts/common/default.nix
+            # ./.
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -97,8 +103,7 @@
                 # ./home/home.nix
                 ./hosts/common/home.nix
                 ./hosts/nixos/home.nix
-                ./modules/home-manager
-              ];
+              ] ++ (lib.my.mapModulesRec' (toString ./modules/home-manager) import);
 
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
@@ -107,50 +112,50 @@
                 inherit userSettings systemSettings;
               };
             }
-            # ormolu.packages.${system}.default # Haskell formatter
-          ];
+          ] ++ (lib.my.mapModulesRec' (toString ./modules/nixos) import);
         };
-        vm = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            inherit userSettings systemSettings;
-          }; # Might be redundent
-          modules = [
-            hosts.nixosModule
-            ./hosts/nixos
-            ./modules/nixos
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.keith.imports = [
-                # ./home/home.nix
-                ./hosts/common/home.nix
-                # ./hosts/vm/home.nix
-                ./modules/home-manager
-              ];
+        # vm = nixpkgs.lib.nixosSystem {
+        #   specialArgs = {
+        #     inherit inputs;
+        #     inherit userSettings systemSettings;
+        #   }; # Might be redundent
+        #   modules = [
+        #     hosts.nixosModule
+        #     ./hosts/nixos
+        #     ./modules/nixos
+        #     home-manager.nixosModules.home-manager
+        #     {
+        #       home-manager.useGlobalPkgs = true;
+        #       home-manager.useUserPackages = true;
+        #       home-manager.users.keith.imports = [
+        #         # ./home/home.nix
+        #         ./hosts/common/home.nix
+        #         # ./hosts/vm/home.nix
+        #       ] ++ (mapModulesRec (toString ./modules/home-manager) import);
 
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                inherit userSettings systemSettings;
-              };
-            }
-          ];
-        };
+        #       # Optionally, use home-manager.extraSpecialArgs to pass
+        #       # arguments to home.nix
+        #       home-manager.extraSpecialArgs = {
+        #         inherit inputs;
+        #         inherit userSettings systemSettings;
+        #       };
+        #     }
+        #   ] ++ (mapModulesRec (toString ./modules/nixos) import);
+        # };
 
       };
-      homeConfigurations = {
-        keith = inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            # ./home/home.nix
-            ./hosts/nixos/home.nix
-            ./modules/home-manager
-          ];
-        };
-      };
+
+      # homeConfigurations = {
+      #   keith = inputs.home-manager.lib.homeManagerConfiguration {
+      #     inherit pkgs;
+      #     # inherit userSettings systemSettings;
+      #     modules = [
+      #       # ./home/home.nix
+      #       ./hosts/common/home.nix
+      #       ./hosts/nixos/home.nix
+      #     ] ++ (lib.my.mapModulesRec' (toString ./modules/home-manager) import);
+      #   };
+      # };
 
       inherit self;
 
