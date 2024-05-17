@@ -45,9 +45,10 @@ with lib.my;
   ];
 
   modules = {
-    torrent.enable = true;
+    just.enable = true;
     nh.enable = true;
     hyprland.enable = true;
+    torrent.enable = true;
     desktop = {
       browsers = {
         # firefox.enable = true;
