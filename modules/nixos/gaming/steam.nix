@@ -31,7 +31,11 @@ in {
       package = pkgs.steam.override {
         # withJava = true;
         # withPrimus = true;
-        extraPkgs = pkgs: [ pkgs.ncurses6 ];
+        extraPkgs = pkgs: [
+          pkgs.ncurses6
+          pkgs.libGLU
+          pkgs.harfbuzz
+        ];
         # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
       };
       remotePlay.openFirewall = true;

@@ -38,6 +38,10 @@ in {
         # libpython3
         # libc
 
+        libGLU
+        ncurses6
+        harfbuzz
+
         libGL
         libappindicator-gtk3
         libdrm
