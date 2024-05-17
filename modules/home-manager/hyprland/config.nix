@@ -217,7 +217,7 @@ lib.mkIf config.modules.hyprland.enable
       # Execute your favorite apps at launch
       # exec-once = ${pkgs.waybar}/bin/waybar
       # exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-      exec-once = [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
+      # exec-once = [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
       # exec-once = [workspace 1 silent] ${pkgs.steam}/bin/steam
       # exec-once = [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
       exec-once = [workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird
