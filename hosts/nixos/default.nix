@@ -17,6 +17,7 @@ with lib.my;
     # autoUpgrade.enable = true;
     flatpak.enable = true;
     nix-ld.enable = true;
+    stylix.enable = true;
     # vm.enable = true;
     desktop = {
       enable = true;

@@ -117,7 +117,7 @@ in {
           #  * foreground: use the same color as the foreground;
           #  * frame: use the same color as the frame;
           #  * anything else will be interpreted as a X color.
-          separator_color = "frame";
+          # separator_color = "frame";
 
           # Sort messages by urgency.
           sort = "yes";
@@ -131,7 +131,7 @@ in {
 
           ### Text ###
 
-          font = "Monospace 11";
+          # font = "Monospace 11";
 
           # The spacing between lines.  If the height is smaller than the
           # font height, it will get raised to the font height.
@@ -323,8 +323,8 @@ in {
         urgency_low = {
           # IMPORTANT: colors have to be defined in quotation marks.
           # Otherwise the "#" and following would be interpreted as a comment.
-          background = "#${base00}";
-          foreground = "#${base05}";
+          # background = "#${base00}";
+          # foreground = "#${base05}";
           timeout = 6;
           # Icon for notifications with low urgency, uncomment to enable
           #default_icon = /path/to/icon
@@ -334,16 +334,16 @@ in {
         urgency_normal = {
           #background = "#6790eb";
           #foreground = "#425164";
-          background = "#${base00}";
-          foreground = "#${base05}";
+          # background = "#${base00}";
+          # foreground = "#${base05}";
           timeout = 6;
           # Icon for notifications with normal urgency, uncomment to enable
           #default_icon = /path/to/icon
         };
         urgency_critical = {
-          background = "#${base08}";
-          foreground = "#${base00}";
-          frame_color = "#${base02}";
+          # background = "#${base08}";
+          # foreground = "#${base00}";
+          # frame_color = "#${base02}";
           timeout = 30;
           # Icon for notifications with critical urgency, uncomment to enable
           #default_icon = /path/to/icon

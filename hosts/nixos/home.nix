@@ -47,6 +47,7 @@ with lib.my;
   modules = {
     just.enable = true;
     nh.enable = true;
+    # stylix.enable = true;
     hyprland.enable = true;
     torrent.enable = true;
     desktop = {
@@ -84,7 +85,7 @@ with lib.my;
         # alacritty.enable = true;
       };
       # vm.enable = true;
-      gtk.enable = true;
+      # gtk.enable = true;
     };
     editors = {
       emacs.enable = true;

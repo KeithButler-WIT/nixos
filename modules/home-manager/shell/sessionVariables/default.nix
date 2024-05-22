@@ -33,7 +33,7 @@
     _ZO_RESOLVE_SYMLINKS = "1";
     # DICS="/usr/share/stardict/dic/";
     # SUDO_ASKPASS="$HOME/.local/bin/dmenupass";
-    FZF_DEFAULT_OPTS = "--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1";
+    # FZF_DEFAULT_OPTS = "--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1";
     # LESS=-R;
     # LESS_TERMCAP_mb="$(printf '%b' '[1;31m')";
     # LESS_TERMCAP_md="$(printf '%b' '[1;36m')";

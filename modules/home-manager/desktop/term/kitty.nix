@@ -12,10 +12,10 @@ in {
     programs.kitty = {
       enable = true;
       font = {
-        name = "JetBrainsMono Nerd Font";
+        # name = "JetBrainsMono Nerd Font";
         # name = "jetbrains mono nerd font";
         # package = pkgs.jetbrains-mono;
-        size = 12;
+        # size = 12;
       };
       settings = {
         shell = "fish";
@@ -26,7 +26,7 @@ in {
         # url_color = "#0087bd";
         url_style = "dotted";
         confirm_os_window_close = 0;
-        background_opacity = "0.95";
+        # background_opacity = "0.95";
         scrollback_lines = 10000;
         enable_audio_bell = false;
         mouse_hide_wait = 60;

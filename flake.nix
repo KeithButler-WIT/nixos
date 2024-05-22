@@ -48,6 +48,9 @@
     ormolu.url = "github:tweag/ormolu";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
+    # https://www.youtube.com/watch?v=ljHkWgBaQWU
+    stylix.url = "github:danth/stylix";
+
   };
 
   outputs = { nixpkgs, self, hosts, hyprland, home-manager, ormolu, ... } @ inputs:
@@ -95,11 +98,13 @@
             ./hosts/nixos/default.nix
             ./hosts/common/default.nix
             # ./.
+            inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.keith.imports = [
+                # inputs.stylix.homeManagerModules.stylix
                 # ./home/home.nix
                 ./hosts/common/home.nix
                 ./hosts/nixos/home.nix

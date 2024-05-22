@@ -172,6 +172,9 @@ in {
       '';
 
     };
+
+    # TODO: add pyrosimple config
+
   };
 
 }
