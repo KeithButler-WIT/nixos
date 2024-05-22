@@ -35,6 +35,7 @@ in {
           pkgs.ncurses6
           pkgs.libGLU
           pkgs.harfbuzz
+          pkgs.bubblewrap
         ];
         # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
       };
