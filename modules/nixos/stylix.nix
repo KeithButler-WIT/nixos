@@ -14,16 +14,26 @@ in {
       image = ../home-manager/hyprland/wallpaper.jpg;
       fonts = {
         monospace = {
-          name = "jetbrains mono nerd font";
-          package = pkgs.jetbrains-mono;
+          name = "JetBrainsMono Nerd Font Mono";
+          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
         };
-        # sansSerif = {
-        #   name = "jetbrains mono nerd font";
-        #   package = pkgs.jetbrains-mono;
-        # };
-        # emoji = {
-        #   name = "jetbrains mono nerd font";
-        #   package = pkgs.jetbrains-mono;
+        sansSerif = {
+          package = pkgs.dejavu_fonts;
+          name = "DejaVu Sans";
+        };
+        serif = {
+          package = pkgs.dejavu_fonts;
+          name = "DejaVu Serif";
+        };
+        emoji = {
+          name = "Nerd Fonts Symbols Only";
+          package = pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; };
+        };
+        # sizes = {
+        #   applications = 12;
+        #   terminal = 15;
+        #   desktop = 10;
+        #   popups = 10;
         # };
       };
       cursor = {
@@ -31,7 +41,6 @@ in {
         package = pkgs.nordzy-cursor-theme;
         size = 24;
       };
-      polarity = "dark";
       opacity = {
         applications = 0.95;
         desktop = 0.95;
@@ -41,6 +50,7 @@ in {
       targets = {
         grub.useImage = true;
       };
+      polarity = "dark";
     };
   };
 
