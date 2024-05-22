@@ -47,6 +47,7 @@
     torrent.enable = true;
     nh.enable = true;
     # hyprland.enable = true;
+    waybar.enable = true;
     desktop = {
       browsers = {
         # firefox.enable = true;

@@ -50,6 +50,7 @@ with lib.my;
     # stylix.enable = true;
     hyprland.enable = true;
     torrent.enable = true;
+    waybar.enable = true;
     desktop = {
       browsers = {
         # firefox.enable = true;

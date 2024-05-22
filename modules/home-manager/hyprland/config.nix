@@ -43,7 +43,6 @@ lib.mkIf config.modules.hyprland.enable
   home.file.".config/hypr/wallpaper.jpg".source = ./wallpaper.jpg;
   #home.file.".config/hypr/scripts/lock.sh".source = ./scripts/lock.sh;
   #home.file.".config/hypr/scripts/sleep.sh".source = ./scripts/sleep.sh;
-  #home.file.".config/waybar".source= ./waybar;
   #home.file.".config/wlogout".source= ./wlogout;
   #home.file.".config/wofi".source= ./wofi;
 
@@ -215,7 +214,6 @@ lib.mkIf config.modules.hyprland.enable
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      # exec-once = ${pkgs.waybar}/bin/waybar
       # exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
       # exec-once = [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
       # exec-once = [workspace 1 silent] ${pkgs.steam}/bin/steam
@@ -409,7 +407,6 @@ lib.mkIf config.modules.hyprland.enable
       exec-once = hypridle #~/.config/hypr/scripts/sleep.sh
 
       #status bar
-      exec-once = ${pkgs.waybar}/bin/waybar
       layerrule = blur , waybar
       layerrule = ignorezero , waybar
 
