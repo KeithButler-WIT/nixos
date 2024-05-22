@@ -103,9 +103,10 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.keith.imports = [
+              home-manager.users.${userSettings.username}.imports = [
                 # inputs.stylix.homeManagerModules.stylix
                 # ./home/home.nix
+                # ./home/${userSettings.username}.nix
                 ./hosts/common/home.nix
                 ./hosts/nixos/home.nix
               ] ++ (lib.my.mapModulesRec' (toString ./modules/home-manager) import);
