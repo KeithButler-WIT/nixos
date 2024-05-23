@@ -1,6 +1,6 @@
 { lib, config, ... }:
 
-lib.mkIf config.modules.hyprland.enable
+lib.mkIf config.modules.desktop.hyprland.enable
 {
 
   # home.sessionVariables = {

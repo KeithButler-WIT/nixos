@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.hyprland;
+let cfg = config.modules.desktop.hyprland;
 in {
 
-  options.modules.hyprland.enable =
+  options.modules.desktop.hyprland.enable =
     mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -19,8 +19,6 @@ in {
       swww
       # wayland-egl
       brightnessctl
-      hypridle
-      hyprlock
 
       galculator
 

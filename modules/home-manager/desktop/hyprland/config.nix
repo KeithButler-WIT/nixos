@@ -1,7 +1,15 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 
-lib.mkIf config.modules.hyprland.enable
+lib.mkIf config.modules.desktop.hyprland.enable
 {
+
+  modules.desktop = {
+    wpaperd.enable = lib.mkDefault true;
+    kanshi.enable = lib.mkDefault true;
+    hyprlock.enable = lib.mkDefault true;
+    hypridle.enable = lib.mkDefault true;
+    tofi.enable = lib.mkDefault true;
+  };
 
   home.file.".config/hypr/pyprland.json".text = ''
     {
@@ -45,230 +53,6 @@ lib.mkIf config.modules.hyprland.enable
   #home.file.".config/hypr/scripts/sleep.sh".source = ./scripts/sleep.sh;
   #home.file.".config/wlogout".source= ./wlogout;
   #home.file.".config/wofi".source= ./wofi;
-
-  programs.wpaperd = {
-    enable = true;
-    settings = {
-      default = {
-        # path = "/home/${userSettings.username}/Pictures/Wallpapers";
-        path = "/home/${userSettings.username}/Pictures/Stålenhag";
-        duration = "1h";
-      };
-    };
-  };
-
-  services.kanshi = {
-    enable = true;
-    systemdTarget = "hyprland-session.target";
-    profiles = {
-      docked = {
-        outputs = [
-          {
-            criteria = "eDP-1";
-            position = "0,1080";
-            mode = "1920x1080@60Hz";
-            status = "enable";
-          }
-          {
-            criteria = "*";
-            position = "0,0";
-            mode = "1920x1080@60Hz";
-            status = "enable";
-          }
-        ];
-      };
-      undocked = {
-        outputs = [
-          {
-            criteria = "eDP-1";
-            position = "0,0";
-            mode = "1920x1080@60Hz";
-            status = "enable";
-          }
-        ];
-      };
-    };
-  };
-
-  # https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/
-  # TODO: Get config
-  home.file.".config/hypr/hyprlock.conf".text = ''
-    background {
-      monitor =
-      path = /home/keith/Pictures/Stålenhag/*
-      # path = screenshot # only png supported for now
-      color = rgba(25, 20, 20, 1.0)
-
-      # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
-      blur_passes = 0 # 0 disables blurring
-      blur_size = 7
-      noise = 0.0117
-      contrast = 0.8916
-      brightness = 0.8172
-      vibrancy = 0.1696
-      vibrancy_darkness = 0.0
-    }
-
-    input-field {
-      monitor =
-      size = 200, 50
-      outline_thickness = 3
-      dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
-      dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
-      dots_center = false
-      dots_rounding = -1 # -1 default circle, -2 follow input-field rounding
-      outer_color = rgb(151515)
-      inner_color = rgb(200, 200, 200)
-      font_color = rgb(10, 10, 10)
-      fade_on_empty = true
-      fade_timeout = 1000 # Milliseconds before fade_on_empty is triggered.
-      placeholder_text = <i>Input Password...</i> # Text rendered in the input box when it's empty.
-      hide_input = false
-      rounding = -1 # -1 means complete rounding (circle/oval)
-      check_color = rgb(204, 136, 34)
-      fail_color = rgb(204, 34, 34) # if authentication failed, changes outer_color and fail message color
-      fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i> # can be set to empty
-      fail_transition = 300 # transition time in ms between normal outer_color and fail_color
-      capslock_color = -1
-      numlock_color = -1
-      bothlock_color = -1 # when both locks are active. -1 means don't change outer color (same for above)
-      invert_numlock = false # change color if numlock is off
-      swap_font_color = false # see below
-
-      position = 0, -20
-      halign = center
-      valign = center
-    }
-
-    label {
-      monitor =
-      text = Welcome back, $USER
-      color = rgba(200, 200, 200, 1.0)
-      font_size = 25
-      # font_family = Noto Sans
-      font_family = ${userSettings.font}
-
-      position = 0, 80
-      halign = center
-      valign = center
-    }
-  '';
-
-  # https://wiki.hyprland.org/Hypr-Ecosystem/hypridle/
-  home.file.".config/hypr/hypridle.conf".text = ''
-    general {
-      lock_cmd = pidof hyprlock || hyprlock       # avoid starting multiple hyprlock instances.
-      before_sleep_cmd = loginctl lock-session    # lock before suspend.
-      after_sleep_cmd = hyprctl dispatch dpms on  # to avoid having to press a key twice to turn on the display.
-    }
-
-    listener {
-      timeout = 300                                # 5min.
-      on-timeout = brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
-      on-resume = brightnessctl -r                 # monitor backlight restor.
-    }
-
-    # turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
-    listener {
-      timeout = 300                                          # 5min.
-      on-timeout = brightnessctl -sd rgb:kbd_backlight set 0 # turn off keyboard backlight.
-      on-resume = brightnessctl -rd rgb:kbd_backlight        # turn on keyboard backlight.
-    }
-
-    listener {
-      timeout = 600                                 # 10min
-      on-timeout = loginctl lock-session            # lock screen when timeout has passed
-    }
-
-    listener {
-      timeout = 630                                 # 10.5min
-      on-timeout = hyprctl dispatch dpms off        # screen off when timeout has passed
-      on-resume = hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
-    }
-
-    listener {
-      timeout = 1800                                # 30min
-      on-timeout = systemctl suspend                # suspend pc
-    }
-  '';
-
-  programs.tofi = {
-    enable = true;
-    settings = {
-      width = "40%";
-      height = "30%";
-      border-width = 1;
-      outline-width = 1;
-      padding-left = "0%";
-      padding-top = "0%";
-      result-spacing = 25;
-      num-results = 5;
-      # font = "monospace";
-      # background-color = "#000A";
-    };
-  };
-
-  home.file.".config/tofi/themes/soy-milk".text = ''
-    # Font
-    font = Fredoka One
-    font-size = 20
-
-    # Window Style
-    horizontal = true
-    anchor = top
-    width = 100%
-    height = 48
-
-    outline-width = 0
-    border-width = 0
-    min-input-width = 120
-    result-spacing = 30
-    padding-top = 8
-    padding-bottom = 0
-    padding-left = 20
-    padding-right = 0
-
-    # Text style
-    prompt-text = "Can I have a"
-    prompt-padding = 30
-
-    background-color = #fff0dc
-    text-color = #4280a0
-
-    prompt-background = #eebab1
-    prompt-background-padding = 4, 10
-    prompt-background-corner-radius = 12
-
-    input-color = #e1666a
-    input-background = #f4cf42
-    input-background-padding = 4, 10
-    input-background-corner-radius = 12
-
-    alternate-result-background = #b8daf3
-    alternate-result-background-padding = 4, 10
-    alternate-result-background-corner-radius = 12
-
-    selection-color = #f0d2af
-    selection-background = #da5d64
-    selection-background-padding = 4, 10
-    selection-background-corner-radius = 12
-    selection-match-color = #fff
-
-    clip-to-padding = false
-  '';
-
-  home.file.".config/tofi/themes/fullscreen".text = ''
-    width = 100%
-    height = 100%
-    border-width = 0
-    outline-width = 0
-    padding-left = 35%
-    padding-top = 35%
-    result-spacing = 25
-    num-results = 5
-    font = monospace
-    background-color = #000A
-  '';
 
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
@@ -412,7 +196,7 @@ lib.mkIf config.modules.hyprland.enable
       bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun # -c ~/.config/tofi/themes/fullscreen
       # bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-      bind = $mainMod, ESCAPE, exec, hyprlock
+      bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
       bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
       
       # Mainmod + Function keys
@@ -475,7 +259,7 @@ lib.mkIf config.modules.hyprland.enable
 
       #background
       exec-once = ${pkgs.wpaperd}/bin/wpaperd
-      exec-once = hypridle #~/.config/hypr/scripts/sleep.sh
+      exec-once = ${pkgs.hypridle}/bin/hypridle #~/.config/hypr/scripts/sleep.sh
 
       #status bar
       layerrule = blur , waybar

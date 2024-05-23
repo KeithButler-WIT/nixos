@@ -48,10 +48,10 @@ with lib.my;
     just.enable = true;
     nh.enable = true;
     # stylix.enable = true;
-    hyprland.enable = true;
     torrent.enable = true;
     waybar.enable = true;
     desktop = {
+      hyprland.enable = true;
       browsers = {
         # firefox.enable = true;
         floorp.enable = true;
