@@ -61,9 +61,7 @@ lib.mkIf config.modules.desktop.hyprland.enable
     systemd.enable = true;
     xwayland.enable = true;
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      # "/absolute/path/to/plugin.so"
-      # "/home/keith/.local/share/hyprload/hyprload.so"
+      # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
     settings = { };
     extraConfig = ''
@@ -381,18 +379,6 @@ lib.mkIf config.modules.desktop.hyprland.enable
       windowrulev2 = move 50% 6%,$pavucontrol
       windowrulev2 = workspace special silent,$pavucontrol
       windowrulev2 = opacity 0.80,$pavucontrol
-
-      # -----------------------------------------------------
-      # Plugins
-      # -----------------------------------------------------
-
-      # exec-once=$HOME/.local/share/hyprload/hyprload.sh
-
-      # plugin {
-      #     split-monitor-workspaces {
-      #         count = 10
-      #     }
-      # }
     '';
   };
 
