@@ -192,6 +192,84 @@ lib.mkIf config.modules.hyprland.enable
     }
   '';
 
+  programs.tofi = {
+    enable = true;
+    settings = {
+      width = "40%";
+      height = "30%";
+      border-width = 1;
+      outline-width = 1;
+      padding-left = "0%";
+      padding-top = "0%";
+      result-spacing = 25;
+      num-results = 5;
+      # font = "monospace";
+      # background-color = "#000A";
+    };
+  };
+
+  home.file.".config/tofi/themes/soy-milk".text = ''
+    # Font
+    font = Fredoka One
+    font-size = 20
+
+    # Window Style
+    horizontal = true
+    anchor = top
+    width = 100%
+    height = 48
+
+    outline-width = 0
+    border-width = 0
+    min-input-width = 120
+    result-spacing = 30
+    padding-top = 8
+    padding-bottom = 0
+    padding-left = 20
+    padding-right = 0
+
+    # Text style
+    prompt-text = "Can I have a"
+    prompt-padding = 30
+
+    background-color = #fff0dc
+    text-color = #4280a0
+
+    prompt-background = #eebab1
+    prompt-background-padding = 4, 10
+    prompt-background-corner-radius = 12
+
+    input-color = #e1666a
+    input-background = #f4cf42
+    input-background-padding = 4, 10
+    input-background-corner-radius = 12
+
+    alternate-result-background = #b8daf3
+    alternate-result-background-padding = 4, 10
+    alternate-result-background-corner-radius = 12
+
+    selection-color = #f0d2af
+    selection-background = #da5d64
+    selection-background-padding = 4, 10
+    selection-background-corner-radius = 12
+    selection-match-color = #fff
+
+    clip-to-padding = false
+  '';
+
+  home.file.".config/tofi/themes/fullscreen".text = ''
+    width = 100%
+    height = 100%
+    border-width = 0
+    outline-width = 0
+    padding-left = 35%
+    padding-top = 35%
+    result-spacing = 25
+    num-results = 5
+    font = monospace
+    background-color = #000A
+  '';
+
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -330,22 +408,19 @@ lib.mkIf config.modules.hyprland.enable
       bind = $mainMod, Q, killactive,
       bind = $mainMod, N, exec, thunar
       bind = $mainMod SHIFT, 65, togglefloating,
-      bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run -c ~/.config/tofi/themes/soy-milk
-      bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun -c ~/.config/tofi/themes/fullscreen
+      bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run # -c ~/.config/tofi/themes/soy-milk
+      bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun # -c ~/.config/tofi/themes/fullscreen
       # bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, ESCAPE, exec, hyprlock
       bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
       
       # Mainmod + Function keys
-      # bind = $mainMod, F1, exec, ${pkgs.discord}/bin/discord
+      # bind = $mainMod, F1, exec, ${pkgs.vesktop}/bin/vesktop
       # bind = $mainMod, F1, exec, ${pkgs.steam}/bin/steam
       bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
       bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
       bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.lf}/bin/lf
-      bind = $mainMod, F4, exec, ${pkgs.vesktop}/bin/vesktop
-      # bind = $mainMod, F5, exec, ${pkgs.github-desktop}/bin/github-desktop
-      # bind = $mainMod, F6, exec,  ${pkgs.gparted}/bin/gparted
       bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
 
       # Move focus with mainMod + arrow keys
