@@ -190,8 +190,8 @@ lib.mkIf config.modules.desktop.hyprland.enable
       bind = $mainMod, Q, killactive,
       bind = $mainMod, N, exec, thunar
       bind = $mainMod SHIFT, 65, togglefloating,
-      bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run # -c ~/.config/tofi/themes/soy-milk
-      bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun # -c ~/.config/tofi/themes/fullscreen
+      bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/soy-milk
+      bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
       # bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
