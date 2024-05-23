@@ -328,28 +328,24 @@ lib.mkIf config.modules.hyprland.enable
       bind = $mainMod, 36, exec, ${pkgs.kitty}/bin/kitty
       bind = $mainMod, T, exec, ${pkgs.kitty}/bin/kitty
       bind = $mainMod, Q, killactive,
-      bind = $mainMod SHIFT, E, exec, ${pkgs.nwg-bar}/bin/nwg-bar -t bar.json
       bind = $mainMod, N, exec, thunar
       bind = $mainMod SHIFT, 65, togglefloating,
-      bind = $mainMod, D, exec, ${pkgs.wofi}/bin/wofi --show drun --allow-images
-      bind = $mainMod SHIFT, D, exec, ${pkgs.nwg-drawer}/bin/nwg-drawer
+      bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run -c ~/.config/tofi/themes/soy-milk
+      bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun -c ~/.config/tofi/themes/fullscreen
       # bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, ESCAPE, exec, hyprlock
       bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
       
       # Mainmod + Function keys
+      # bind = $mainMod, F1, exec, ${pkgs.discord}/bin/discord
+      # bind = $mainMod, F1, exec, ${pkgs.steam}/bin/steam
       bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
       bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
       bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.lf}/bin/lf
       bind = $mainMod, F4, exec, ${pkgs.vesktop}/bin/vesktop
-      # bind = $mainMod, F5, exec, github-desktop
-      # bind = $mainMod, F6, exec, gparted
-      # bind = $mainMod, F7, exec, inkscape
-      # bind = $mainMod, F8, exec, blender
-      # bind = $mainMod, F9, exec, meld
-      # bind = $mainMod, F10, exec, joplin-desktop
-      # bind = $mainMod, F11, exec, snapper-tools
+      # bind = $mainMod, F5, exec, ${pkgs.github-desktop}/bin/github-desktop
+      # bind = $mainMod, F6, exec,  ${pkgs.gparted}/bin/gparted
       bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
 
       # Move focus with mainMod + arrow keys
@@ -415,7 +411,7 @@ lib.mkIf config.modules.hyprland.enable
       bind = ,123, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
       bind = ,121, exec, pactl set-sink-volume @DEFAULT_SINK@ 0%
       # other bindings
-      #bind = $mainMod, O, exec, firedragon
+      #bind = $mainMod, O, exec, floorp
       bind = $mainMod, F, fullscreen
       bind = $mainMod SHIFT, F, fakefullscreen
       bind = ,232,exec,brightnessctl -c backlight set 5%-
