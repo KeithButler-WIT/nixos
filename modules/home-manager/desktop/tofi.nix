@@ -16,12 +16,13 @@ in
       settings = {
         width = "40%";
         height = "30%";
-        border-width = 1;
-        outline-width = 1;
+        border-width = 2;
+        outline-width = 0;
         padding-left = "0%";
         padding-top = "0%";
         result-spacing = 25;
         num-results = 5;
+        terminal = "kitty";
         # font = "monospace";
         # background-color = "#000A";
       };
