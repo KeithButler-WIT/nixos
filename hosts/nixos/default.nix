@@ -18,7 +18,7 @@ with lib.my;
     flatpak.enable = true;
     nix-ld.enable = true;
     stylix.enable = true;
-    # vm.enable = true;
+    vm.enable = true;
     desktop = {
       enable = true;
       hyprland.enable = true;
@@ -46,7 +46,7 @@ with lib.my;
       };
     };
     services = {
-      docker.enable = true;
+      # docker.enable = true;
       # firewall.enable = true;
       mullvad-vpn.enable = true;
       power-management.enable = true;
