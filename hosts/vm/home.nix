@@ -4,14 +4,17 @@ with lib.my;
 {
 
   modules = {
-    # torrent.enable = true;
+    just.enable = true;
     nh.enable = true;
-    hyprland.enable = true;
+    # stylix.enable = true;
+    # torrent.enable = true;
+    waybar.enable = true;
     desktop = {
+      hyprland.enable = true;
       browsers = {
         # firefox.enable = true;
-        floorp.enable = true;
-        # qutebrowser.enable = true;
+        # floorp.enable = true;
+        qutebrowser.enable = true;
       };
       apps = {
         # lf.enable = true;
@@ -42,7 +45,7 @@ with lib.my;
         # alacritty.enable = true;
       };
       # vm.enable = true;
-      gtk.enable = true;
+      # gtk.enable = true;
     };
     editors = {
       # emacs.enable = true;
