@@ -88,26 +88,27 @@ in {
             ];
             #max-length = 200
             interval = 1;
-            on-click = pkgs.writeShellScript "OCV" ''
+            on-click = (pkgs.writeShellScript "OCV" ''
               #!/bin/bash
 
-              yad --width=400 --height=200 \
+              ${pkgs.yad}/bin/yad --width=400 --height=200 \
               --center \
               --fixed \
               --title="Calendar" \
               --no-buttons \
-              yad \
+              --timeout=20 \
+              --timeout-indicator=bottom \
+              ${pkgs.yad}/bin/yad \
               --calendar
-
-            '';
+            '');
           };
           cpu = {
             format = "🖳{usage}%";
-            on-click = "kitty btop -p 1";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop -p 1";
           };
           memory = {
             format = "🖴 {: >3}%";
-            on-click = "kitty btop -p 1";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop -p 1";
           };
           temperature = {
             thermal-zone = 7; # Check with: # cat /sys/class/hwmon/hwmon*/temp1_input
@@ -123,21 +124,21 @@ in {
               ""
               ""
             ];
-            on-scroll-down = "brightnessctl -c backlight set 1%-";
-            on-scroll-up = "brightnessctl -c backlight set +1%";
-            on-click = pkgs.writeShellScript "backlight-hint" ''
+            on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl -c backlight set 1%-";
+            on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl -c backlight set +1%";
+            on-click = (pkgs.writeShellScript "backlight-hint" ''
               #!/bin/bash
 
-              yad --width=100 --height=100 \
+              ${pkgs.yad}/bin/yad --width=100 --height=100 \
               --center \
               --fixed \
               --title="Backlight" \
               --no-buttons \
               --timeout=10 \
               --timeout-indicator=bottom \
-              yad \
+              ${pkgs.yad}/bin/yad \
               --text="\nScroll your mouse wheel to change \n      the backlight of the monitor." \
-            '';
+            '');
           };
           battery = {
             states = {
@@ -171,12 +172,13 @@ in {
           };
           "custom/power" = {
             format = "⏻";
-            on-click = "nwgbar";
+            # TODO: change to the other one
+            # on-click = "${pkgs.nwgbar}/bin/nwgbar";
             tooltip = false;
           };
           "custom/launcher" = {
             format = "";
-            on-click = "exec nwg-drawer -c 7 -is 70 -spacing 23";
+            # on-click = "exec nwg-drawer -c 7 -is 70 -spacing 23";
             tooltip = false;
           };
           "custom/network_traffic" = {
@@ -221,34 +223,6 @@ in {
          * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
          *
          * =========================================================================== */
-
-        /* -----------------------------------------------------------------------------
-         * Keyframes
-         * -------------------------------------------------------------------------- */
-
-
-        /*
-          Polar Night
-          nord0  #2e3440
-          nord1  #3b4252
-          nord2  #434c5e
-          nord3  #4c566a
-          Snow Storm
-          nord4  #d8dee9
-          nord5  #e5e9f0
-          nord6  #eceff4
-          Frost
-          nord7  #8fbcbb
-          nord8  #88c0d0
-          nord9  #81a1c1
-          nord10 #5e81ac
-          Aurora
-          nord11 #bf616a
-          nord12 #d08770
-          nord13 #ebcb8b
-          nord14 #a3be8c
-          nord15 #b48ead
-        */
 
         /* -----------------------------------------------------------------------------
          * Base styles
