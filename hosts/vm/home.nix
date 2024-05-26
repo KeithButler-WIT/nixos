@@ -45,7 +45,7 @@ with lib.my;
         # alacritty.enable = true;
       };
       # vm.enable = true;
-      # gtk.enable = true;
+      gtk.enable = true;
     };
     editors = {
       # emacs.enable = true;
