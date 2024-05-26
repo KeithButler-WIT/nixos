@@ -7,6 +7,7 @@ lib.mkIf config.modules.desktop.hyprland.enable
     wpaperd.enable = lib.mkDefault true;
     kanshi.enable = lib.mkDefault true;
     hyprlock.enable = lib.mkDefault true;
+    # hyprpaper.enable = lib.mkDefault true;
     hypridle.enable = lib.mkDefault true;
     tofi.enable = lib.mkDefault true;
   };
@@ -57,9 +58,10 @@ lib.mkIf config.modules.desktop.hyprland.enable
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     systemd.enable = true;
     xwayland.enable = true;
+    systemd.enableXdgAutostart = true;
     plugins = [
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
@@ -83,7 +85,7 @@ lib.mkIf config.modules.desktop.hyprland.enable
 
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 2;
+        border_size = 3;
         # "col.active_border" = "rgba (33 ccffee) rgba (8 f00ffee) 45 deg";
         # "col.inactive_border" = "rgba (595959 aa)";
 
@@ -143,7 +145,7 @@ lib.mkIf config.modules.desktop.hyprland.enable
         disable_splash_rendering = true;
       };
     };
-    
+
     extraConfig = ''
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor= eDP-1, 1920x1080@60.04500, 0x0, 1.00
@@ -255,7 +257,6 @@ lib.mkIf config.modules.desktop.hyprland.enable
 
       #background
       exec-once = ${pkgs.wpaperd}/bin/wpaperd
-      exec-once = ${pkgs.hypridle}/bin/hypridle #~/.config/hypr/scripts/sleep.sh
 
       #status bar
       layerrule = blur , waybar
