@@ -127,35 +127,39 @@
             }
           ] ++ (lib.my.mapModulesRec' (toString ./modules/nixos) import);
         };
-        # vm = nixpkgs.lib.nixosSystem {
-        #   specialArgs = {
-        #     inherit inputs;
-        #     inherit userSettings systemSettings;
-        #   }; # Might be redundent
-        #   modules = [
-        #     hosts.nixosModule
-        #     ./hosts/nixos
-        #     ./modules/nixos
-        #     home-manager.nixosModules.home-manager
-        #     {
-        #       home-manager.useGlobalPkgs = true;
-        #       home-manager.useUserPackages = true;
-        #       home-manager.users.keith.imports = [
-        #         # ./home/home.nix
-        #         ./hosts/common/home.nix
-        #         # ./hosts/vm/home.nix
-        #       ] ++ (mapModulesRec (toString ./modules/home-manager) import);
+        vm = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit lib;
+            inherit inputs;
+            inherit userSettings systemSettings;
+          }; # Might be redundent
+          modules = [
+            hosts.nixosModule
+            ./hosts/nixos/default.nix
+            ./hosts/common/default.nix
+            # ./.
+            inputs.stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${userSettings.username}.imports = [
+                # inputs.stylix.homeManagerModules.stylix
+                # ./home/home.nix
+                # ./home/${userSettings.username}.nix
+                ./hosts/common/home.nix
+                ./hosts/vm/home.nix
+              ] ++ (lib.my.mapModulesRec' (toString ./modules/home-manager) import);
 
-        #       # Optionally, use home-manager.extraSpecialArgs to pass
-        #       # arguments to home.nix
-        #       home-manager.extraSpecialArgs = {
-        #         inherit inputs;
-        #         inherit userSettings systemSettings;
-        #       };
-        #     }
-        #   ] ++ (mapModulesRec (toString ./modules/nixos) import);
-        # };
-
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit userSettings systemSettings;
+              };
+            }
+          ] ++ (lib.my.mapModulesRec' (toString ./modules/nixos) import);
+        };
       };
 
       # homeConfigurations = {
