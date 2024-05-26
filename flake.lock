@@ -243,54 +243,6 @@
         "type": "github"
       }
     },
-    "catppuccin-bat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1714038927,
-        "narHash": "sha256-Q5B4NDrfCIK3UAMs94vdXnR42k4AXCqZz6sRn8bzmf4=",
-        "owner": "catppuccin",
-        "repo": "bat",
-        "rev": "d714cc1d358ea51bfc02550dabab693f70cccea0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "bat",
-        "type": "github"
-      }
-    },
-    "catppuccin-cava": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716595578,
-        "narHash": "sha256-1+CCUaf8U/NH/eHuYRbQo8inbhSMJ3vji6UH52hrF1s=",
-        "owner": "catppuccin",
-        "repo": "cava",
-        "rev": "6ec25ba688e30f3e5d6004ef6a295e6ba90c64d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "cava",
-        "type": "github"
-      }
-    },
-    "catppuccin-starship": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716565281,
-        "narHash": "sha256-KzXO4dqpufxTew064ZLp3zKIXBwbF8Bi+I0Xa63j/lI=",
-        "owner": "catppuccin",
-        "repo": "starship",
-        "rev": "ca2fb0600730fd3958a2cb4d4ca97c401877b365",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "starship",
-        "type": "github"
-      }
-    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -461,11 +413,11 @@
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
-        "lastModified": 1716714348,
-        "narHash": "sha256-BKe2l6j185w6NCD5o2WbT3v6Ul8CYIUGlmI04MbS6QE=",
+        "lastModified": 1716743184,
+        "narHash": "sha256-/SUTE2dhBz3iNX+UkmDTWJX08Fd6G+800D+WVCT4ogQ=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "929e09706815a9e10cc749393eaa5895761de32a",
+        "rev": "98aa2d306590b9ad5d62fea389b06a8651b406b5",
         "type": "github"
       },
       "original": {
@@ -1274,11 +1226,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716711219,
-        "narHash": "sha256-TnZETiQPXbyT5mdCHMOyrJnx2+BwroMBRrguciz1vEo=",
+        "lastModified": 1716736760,
+        "narHash": "sha256-h3RmnNknKYtVA+EvUSra6QAwfZjC2q1G8YA7W0gat8Y=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "05e6ba83eb3585ce0aff7b41e4bd0e317d05ad4a",
+        "rev": "5d151429e1e79107acf6d06dcc5ace4e642ec239",
         "type": "github"
       },
       "original": {
@@ -2926,9 +2878,6 @@
     },
     "root": {
       "inputs": {
-        "catppuccin-bat": "catppuccin-bat",
-        "catppuccin-cava": "catppuccin-cava",
-        "catppuccin-starship": "catppuccin-starship",
         "devenv": "devenv",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
@@ -3074,11 +3023,11 @@
         "nixpkgs": "nixpkgs_16"
       },
       "locked": {
-        "lastModified": 1716456264,
-        "narHash": "sha256-s9Tyj5pEivl/AsvrpkUkfR1Iu3zHfXpviPfe4HbPJ5I=",
+        "lastModified": 1716744577,
+        "narHash": "sha256-YvYYKLuf+SNj129k6SS/bhVybaLYgUlnznTa7rKv904=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "290c8aef476ce98fff9cefc059284429d561a085",
+        "rev": "00a11ba2f0b52f761c0bc77daebb00cb4d44ba09",
         "type": "github"
       },
       "original": {

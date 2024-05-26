@@ -38,26 +38,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin-bat = {
-      url = "github:catppuccin/bat";
-      flake = false;
-    };
-    catppuccin-cava = {
-      url = "github:catppuccin/cava";
-      flake = false;
-    };
-    catppuccin-starship = {
-      url = "github:catppuccin/starship";
-      flake = false;
-    };
-
     # Haskell thing
     ormolu.url = "github:tweag/ormolu";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     # https://www.youtube.com/watch?v=ljHkWgBaQWU
     stylix.url = "github:danth/stylix";
-
   };
 
   outputs = { nixpkgs, self, hosts, hyprland, home-manager, ormolu, ... } @ inputs:
