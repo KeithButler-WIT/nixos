@@ -66,6 +66,8 @@ in {
       openmw
       steam-run
       steamcmd
+      steam-tui
+      mangohud
     ];
   };
 
