@@ -10,7 +10,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.github-desktop
+      # pkgs.github-desktop
       pkgs.delta
     ];
 
