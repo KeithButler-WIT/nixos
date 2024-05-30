@@ -32,7 +32,7 @@ in {
       # hyprpaper.enable = lib.mkDefault true;
       hypridle.enable = lib.mkDefault true;
       tofi.enable = lib.mkDefault true;
-      # eww.enable = lib.mkDefault true; # TODO Fix eww
+      eww.enable = lib.mkDefault true; # TODO Fix eww
       waybar.enable = lib.mkDefault true;
     };
 

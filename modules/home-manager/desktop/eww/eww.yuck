@@ -16,7 +16,6 @@
 (defvar music_reveal false)
 (defvar wifi_rev false)
 (defvar time_rev false)
-(deflisten workspace "scripts/workspace")
 
 (defvar eww "eww -c $HOME/.config/eww")
 
@@ -51,8 +50,22 @@
         )))))
 
 
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
 (defwidget workspaces []
-  (literal :content workspace))
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+    (box :space-evenly true
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.id}")
+          )
+        )
+      )
+    )
+  )
+)
 
 
 (defwidget bat []
@@ -187,7 +200,7 @@
 
 (defwidget bar_1 []
   (box :class "bar_class"
-    :orientation "h"
+    :orientation "v"
     (right)
     (center)
     (left)
@@ -205,6 +218,7 @@
   (bar_1))
 
 (defwidget system []
+  ; :monitor 0
   (box :class "sys_win" :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 0
     (box :class "sys_bat_box" :orientation "h" :space-evenly "false"
       (circular-progress :value battery
@@ -266,6 +280,7 @@
         :wrap false)))))
 
 (defwidget cal []
+  ; :monitor 0
   (box :class "cal" :orientation "v"
     (box :class "cal-in"
       (calendar :class "cal"
@@ -273,6 +288,7 @@
       :year calendar_year))))
 
 (defwindow calendar
+  ; :monitor 0
   :geometry (geometry :x "-20px"
     :y "7%"
     :anchor "top right"
@@ -283,6 +299,7 @@
 
 
 (defwidget audio []
+  ; :monitor 0
   (box :class "audio-box" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
     (box :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
       (box :class "speaker_icon" :orientation "v")
@@ -311,6 +328,7 @@
           :min 0))))))
 
 (defwindow audio_ctl
+  ; :monitor 0
   :geometry (geometry :x "-20px"
     :y "7%"
     :anchor "top right"
@@ -320,6 +338,7 @@
 
 
 (defwindow system
+  ; :monitor 0
   :geometry (geometry :x "-20px"
     :y "7%"
     :anchor "top right"
@@ -331,6 +350,7 @@
 
 ;;  Music
 (defwidget music_pop []
+  ; :monitor 0
   (box :class "music_pop" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
     (box :class "music_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
     (box :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"

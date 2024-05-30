@@ -11,6 +11,9 @@ in
     mkBoolOpt false;
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+    ];
+
     programs.eww = {
       enable = true;
       configDir = ./eww;
