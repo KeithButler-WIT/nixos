@@ -11,7 +11,7 @@ in {
   config = mkIf cfg.enable {
     stylix = {
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-      image = ../home-manager/desktop/hyprland/wallpaper.jpg;
+      image = ../../wallpaper.jpg;
       fonts = {
         monospace = {
           name = "JetBrainsMono Nerd Font Mono";
