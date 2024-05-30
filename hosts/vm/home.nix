@@ -8,9 +8,9 @@ with lib.my;
     nh.enable = true;
     # stylix.enable = true;
     # torrent.enable = true;
-    waybar.enable = true;
     desktop = {
       hyprland.enable = true;
+      waybar.enable = true;
       browsers = {
         # firefox.enable = true;
         # floorp.enable = true;

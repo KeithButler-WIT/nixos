@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.waybar;
+let cfg = config.modules.desktop.waybar;
 in {
 
-  options.modules.waybar.enable =
+  options.modules.desktop.waybar.enable =
     mkBoolOpt false;
 
   config = mkIf cfg.enable {

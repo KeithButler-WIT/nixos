@@ -10,10 +10,6 @@
     # # symlink to the Nix store copy.
     # TODO stop using stow
     ".xinitrc".source = ./.xinitrc;
-    # ".config/waybar/scripts" = {
-    #   source = ./waybar/scripts;
-    #   recursive = true;
-    # };
     # ${config.xdg.configHome}."/picom".source = ~/.dotfiles/.config/picom;
     ".config/picom".source = ./picom;
 
