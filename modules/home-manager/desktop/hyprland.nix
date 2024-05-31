@@ -34,6 +34,8 @@ in {
       tofi.enable = lib.mkDefault true;
       eww.enable = lib.mkDefault true; # TODO Fix eww
       waybar.enable = lib.mkDefault true;
+      waybar.horizontal.enable = lib.mkDefault true;
+      # waybar.vertical.enable = lib.mkDefault true;
     };
 
     home.file.".config/hypr/pyprland.json".text = ''

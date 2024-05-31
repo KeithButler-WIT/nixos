@@ -51,7 +51,7 @@ with lib.my;
     torrent.enable = true;
     desktop = {
       hyprland.enable = true;
-      waybar.enable = true;
+      # waybar.enable = true;
       browsers = {
         # firefox.enable = true;
         floorp.enable = true;
