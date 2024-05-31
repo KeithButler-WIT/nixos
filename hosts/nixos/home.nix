@@ -47,7 +47,6 @@ with lib.my;
   modules = {
     just.enable = true;
     nh.enable = true;
-    # stylix.enable = true;
     torrent.enable = true;
     desktop = {
       hyprland.enable = true;
@@ -59,6 +58,7 @@ with lib.my;
       };
       apps = {
         lf.enable = true;
+        nemo.enable = true;
         blender.enable = true;
         bottles.enable = true;
         godot.enable = true;
