@@ -19,7 +19,7 @@
     desktop = {
       enable = true;
       hyprland.enable = true;
-      thunar.enable = true;
+      # thunar.enable = true;
       tuigreet.enable = true;
     };
     # dev = { };

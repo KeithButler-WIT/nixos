@@ -18,6 +18,7 @@
     editor = "emacsclient";
     alternateEditor = "nvim";
     mail = "thunderbird";
+    fileManager = "nemo";
     flakeDir = "/home/${username}/nixos";
     font = "jetbrains mono nerd font";
     fontpkg = "jetbrains-mono";

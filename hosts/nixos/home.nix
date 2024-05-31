@@ -59,6 +59,7 @@ with lib.my;
       apps = {
         lf.enable = true;
         nemo.enable = true;
+        # dolphin.enable = true;
         blender.enable = true;
         bottles.enable = true;
         godot.enable = true;
@@ -91,7 +92,7 @@ with lib.my;
     editors = {
       emacs.enable = true;
       neovim.enable = true;
-      helix.enable = true;
+      # helix.enable = true;
     };
     shell = {
       bash.enable = true;

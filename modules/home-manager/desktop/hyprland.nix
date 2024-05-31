@@ -201,7 +201,7 @@ in {
         bind = $mainMod, 36, exec, ${pkgs.kitty}/bin/kitty
         bind = $mainMod, T, exec, ${pkgs.kitty}/bin/kitty
         bind = $mainMod, Q, killactive,
-        bind = $mainMod, N, exec, thunar
+        bind = $mainMod, N, exec, ${userSettings.fileManager}
         bind = $mainMod SHIFT, 65, togglefloating,
         bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/soy-milk
         bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
@@ -327,12 +327,12 @@ in {
 
         # other blurings
         blurls = wofi
-        blurls = thunar
+        blurls = ${userSettings.fileManager}
         blurls = gedit
         blurls = gtk-layer-shell # for nwg-drawer
         blurls = catfish
         # window rules
-        windowrule = opacity 0.85 override 0.85 override,^(thunar)$
+        #windowrule = opacity 0.85 override 0.85 override,^(thunar)$
         windowrule = opacity 0.85 override 0.85 override,^(gedit)$
         windowrule = opacity 0.85 override 0.85 override,^(catfish)$
         #window rules with evaluation
@@ -357,7 +357,6 @@ in {
 
         # colour-temperature setting depending on the time [https://github.com/d4l3k/go-sct]
         exec-once = ${pkgs.go-sct}/bin/waysct
-        exec-once = thunar --daemon # auto mount removeable media
         # exec-once = xremap ~/.config/xremap/config.yaml
         exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive
         exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive
