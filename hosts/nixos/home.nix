@@ -91,6 +91,7 @@ with lib.my;
     editors = {
       emacs.enable = true;
       neovim.enable = true;
+      helix.enable = true;
     };
     shell = {
       bash.enable = true;
