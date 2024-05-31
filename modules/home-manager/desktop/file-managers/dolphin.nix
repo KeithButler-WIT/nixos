@@ -5,6 +5,7 @@ with lib.my;
 let cfg = config.modules.desktop.apps.dolphin;
 in {
 
+  #TODO: Fix module path
   options.modules.desktop.apps.dolphin.enable =
     mkBoolOpt false;
 
