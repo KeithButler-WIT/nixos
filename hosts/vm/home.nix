@@ -9,12 +9,12 @@ with lib.my;
     desktop = {
       hyprland.enable = true;
       # waybar.enable = true;
-      browsers = {
-        qutebrowser.enable = true;
-      };
+      # browsers = {
+      # qutebrowser.enable = true;
+      # };
       apps = {
         lf.enable = true;
-        nemo.enable = true;
+        # nemo.enable = true;
       };
       term = {
         kitty.enable = true;
@@ -30,13 +30,13 @@ with lib.my;
       fzf.enable = true;
       git.enable = true;
       starship.enable = true;
-      tealdeer.enable = true;
-      direnv.enable = true;
+      # tealdeer.enable = true;
+      # direnv.enable = true;
     };
     services = {
       dunst.enable = true;
       # ssh.enable = true;
-      xremap.enable = true;
+      # xremap.enable = true;
     };
   };
 

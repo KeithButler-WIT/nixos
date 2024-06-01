@@ -24,7 +24,7 @@
     #   emacs.enable = true;
     # };
     hardware = {
-      audio.enable = true;
+      # audio.enable = true;
       amd.enable = true;
       # logitech.enable = true;
       fs = {
