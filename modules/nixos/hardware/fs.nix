@@ -34,7 +34,11 @@ in {
         boot.zfs.forceImportRoot = false; # TODO: check if needed 
         boot.loader.grub.copyKernels = true;
         boot.supportedFilesystems = [ "zfs" ];
-        boot.zfs.devNodes = "/dev/disk/by-partuuid";
+        boot.zfs = {
+          devNodes = lib.mkDefault "/dev/disk/by-id";
+          package = pkgs.zfs_unstable;
+          # requestEncryptionCredentials = cfg.encryption;
+        };
         services.zfs.autoScrub.enable = true;
         systemd.services.zfs.enable = true;
         systemd.services.zfs-import.enable = true;
