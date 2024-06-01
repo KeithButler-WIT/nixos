@@ -147,6 +147,12 @@
           ] ++ (lib.my.mapModulesRec' (toString ./modules/nixos) import);
         };
       };
+      iso = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/iso/default.nix
+        ];
+      };
 
       # homeConfigurations = {
       #   keith = inputs.home-manager.lib.homeManagerConfiguration {
