@@ -15,28 +15,6 @@ function yesno() {
     done
 }
 
-function prompt_for_password() {
-    while true; do
-        # Prompt for password
-        read -rs -p "Enter root password: " password
-        printf "\n"
-
-        # Prompt for password confirmation
-        read -rs -p "Confirm root password: " confirm_password
-        printf "\n"
-
-        # Check if passwords match
-        if [ "$password" == "$confirm_password" ]; then
-            break
-        else
-            echo "Passwords do not match. Please try again."
-        fi
-    done
-
-    # Return the entered password
-    echo "$password"
-}
-
 cat << Introduction
 This script will format the *entire* disk with a 1GB boot partition
 (labelled NIXBOOT), 16GB of swap, then allocating the rest to ZFS.
@@ -166,13 +144,13 @@ fi
 sudo mount --mkdir -t zfs zroot/persist /mnt/persist
 
 while true; do
-    read -rp "Which host to install? (desktop / nixos / vm) " host
+    read -rp "Which host to install? (nixos / vm) " host
     case $host in
-        desktop|nixos|vm ) break;;
+        nixos|vm ) break;;
         * ) echo "Invalid host. Please select a valid host.";;
     esac
 done
 
 read -rp "Enter git rev for flake (default: main): " git_rev
 echo "Installing NixOS"
-sudo nixos-install --no-root-password --flake "github:keithbutler-wit/nixos/${git_rev:-main}#$host"
+sudo nixos-install --no-root-password --flake "github:iynaix/dotfiles/${git_rev:-main}#$host"
