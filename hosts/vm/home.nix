@@ -14,6 +14,7 @@ with lib.my;
       };
       apps = {
         lf.enable = true;
+        nemo.enable = true;
       };
       term = {
         kitty.enable = true;

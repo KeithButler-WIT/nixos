@@ -73,6 +73,11 @@
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
     corefonts
     noto-fonts
+
+    nixpkgs-fmt
+    shfmt
+    toybox
+    egl-wayland
   ];
 
   # Let Home Manager install and manage itself.
