@@ -17,6 +17,7 @@
     desktop = {
       enable = true;
       hyprland.enable = true;
+      tuigreet.enable = true;
       # thunar.enable = true;
     };
     # dev = { };

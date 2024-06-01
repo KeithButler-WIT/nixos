@@ -26,7 +26,7 @@ in {
     ];
 
     modules.desktop = {
-      tuigreet.enable = true;
+      # tuigreet.enable = true;
       wpaperd.enable = lib.mkDefault true;
       kanshi.enable = lib.mkDefault true;
       hyprlock.enable = lib.mkDefault true;
