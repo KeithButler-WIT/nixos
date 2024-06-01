@@ -4,7 +4,7 @@ with lib.my;
 {
 
   modules = {
-    just.enable = true;
+    # just.enable = true;
     nh.enable = true;
     desktop = {
       hyprland.enable = true;
@@ -35,7 +35,7 @@ with lib.my;
     };
     services = {
       dunst.enable = true;
-      ssh.enable = true;
+      # ssh.enable = true;
       xremap.enable = true;
     };
   };

@@ -14,7 +14,7 @@
 
   modules = {
     autologin.enable = true;
-    nix-ld.enable = true;
+    # nix-ld.enable = true;
     stylix.enable = true;
     desktop = {
       enable = true;
@@ -29,16 +29,16 @@
     hardware = {
       audio.enable = true;
       amd.enable = true;
-      logitech.enable = true;
+      # logitech.enable = true;
       fs = {
         enable = true;
         ssd.enable = true;
         zfs.enable = true;
       };
     };
-    services = {
-      ssh.enable = true;
-    };
+    # services = {
+      # ssh.enable = true;
+    # };
   };
 
 }
