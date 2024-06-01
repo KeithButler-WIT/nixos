@@ -36,6 +36,12 @@
 git clone https://github.com/keithbutler-wit/nixos
 ```
 
+### Build-Ios
+
+```sh
+nix build ".#nixosConfigurations.minimal-iso-unstable.config.system.build.isoImage"
+```
+
 ## Source
 
 <https://github.com/iynaix/dotfiles>
