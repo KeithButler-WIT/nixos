@@ -10,8 +10,6 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; }; # Not needed while steam.platformOptimizations is enabled
-
   modules = {
     autologin.enable = true;
     # nix-ld.enable = true;
@@ -20,7 +18,6 @@
       enable = true;
       hyprland.enable = true;
       # thunar.enable = true;
-      tuigreet.enable = true;
     };
     # dev = { };
     # editors = {
@@ -37,8 +34,33 @@
       };
     };
     # services = {
-      # ssh.enable = true;
+    # ssh.enable = true;
     # };
+  };
+
+  boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; }; # Not needed while steam.platformOptimizations is enabled
+
+  boot.zfs.devNodes = "/dev/disk/by-partuuid";
+
+  services = {
+    qemuGuest.enable = true;
+    spice-vdagentd.enable = true;
+    spice-webdavd.enable = true;
+  };
+
+  # fix for spice-vdagentd not starting in wms
+  systemd.user.services.spice-agent = {
+    enable = true;
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${lib.getExe' pkgs.spice-vdagent "spice-vdagent"} -x";
+    };
+    unitConfig = {
+      ConditionVirtualization = "vm";
+      Description = "Spice guest session agent";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
   };
 
 }

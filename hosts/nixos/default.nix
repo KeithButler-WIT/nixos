@@ -24,7 +24,7 @@ with lib.my;
       hyprland.enable = true;
       # plasma6.enable = true;
       # thunar.enable = true;
-      tuigreet.enable = true;
+      # tuigreet.enable = true;
     };
     # dev = { };
     # editors = {
