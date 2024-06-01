@@ -2,11 +2,6 @@
 
 {
 
-  nixpkgs.config = {
-    allowBroken = false;
-    allowUnfree = true;
-  };
-
   environment.systemPackages = with pkgs; [
     bind
     cached-nix-shell

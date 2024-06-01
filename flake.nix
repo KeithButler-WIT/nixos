@@ -48,111 +48,31 @@
 
   outputs = { nixpkgs, self, hosts, hyprland, home-manager, ormolu, ... } @ inputs:
     let
-      inherit (lib.my) mapModules mapModulesRec mapHosts;
-
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
       commonInherits = {
         inherit (nixpkgs) lib;
         inherit self inputs nixpkgs;
+        inherit (import ./options.nix) systemSettings userSettings;
         user = "keith";
         system = "x86_64-linux";
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        specialArgs = {
+          inherit self inputs;
+        };
       };
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-
-      lib = nixpkgs.lib.extend
-        (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
 
       # unstable = nixpkgs-unstable.legacyPackages.${system};
       inherit (import ./options.nix) systemSettings userSettings;
     in
     {
-      lib = lib.my;
 
-      # nixosModules =
-      #   { } // mapModulesRec ./modules/nixos import;
-
-      # homeModules =
-      #   { } // mapModulesRec ./modules/home-manager import;
-
-      # nixosConfigurations =
-      #   mapHosts ./hosts { };
-
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit lib;
-            inherit inputs;
-            inherit userSettings systemSettings;
-          }; # Might be redundent
-          modules = [
-            hosts.nixosModule
-            ./hosts/nixos/default.nix
-            ./hosts/common/default.nix
-            # ./.
-            inputs.stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${userSettings.username}.imports = [
-                # inputs.stylix.homeManagerModules.stylix
-                # ./home/home.nix
-                # ./home/${userSettings.username}.nix
-                ./hosts/common/home.nix
-                ./hosts/nixos/home.nix
-              ] ++ (lib.my.mapModulesRec' (toString ./modules/home-manager) import);
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                inherit userSettings systemSettings;
-              };
-            }
-          ] ++ (lib.my.mapModulesRec' (toString ./modules/nixos) import);
-        };
-        vm = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit lib;
-            inherit inputs;
-            inherit userSettings systemSettings;
-          }; # Might be redundent
-          modules = [
-            hosts.nixosModule
-            ./hosts/nixos/default.nix
-            ./hosts/common/default.nix
-            # ./.
-            inputs.stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${userSettings.username}.imports = [
-                # inputs.stylix.homeManagerModules.stylix
-                # ./home/home.nix
-                # ./home/${userSettings.username}.nix
-                ./hosts/common/home.nix
-                ./hosts/vm/home.nix
-              ] ++ (lib.my.mapModulesRec' (toString ./modules/home-manager) import);
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                inherit userSettings systemSettings;
-              };
-            }
-          ] ++ (lib.my.mapModulesRec' (toString ./modules/nixos) import);
-        };
-      };
-      iso = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/iso/default.nix
-        ];
-      };
+      nixosConfigurations = (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
 
       # homeConfigurations = {
       #   keith = inputs.home-manager.lib.homeManagerConfiguration {
