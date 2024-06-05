@@ -11,48 +11,48 @@ in {
   config = mkIf cfg.enable {
     programs.emacs = {
       enable = true;
-      package = pkgs.emacs28;
+      package = pkgs.emacs;
       # package = doom-emacs;
       # extraPackages = with pkgs; [
-        ## Emacs itself
-        # binutils # native-comp needs 'as', provided by this
-        #   # 28.2 + native-comp
-        #   # ((emacsPackagesFor emacs-unstable).emacsWithPackages
-        #   #   (epkgs: [
-        #   #     epkgs.vterm
-        #   #     epkgs.f
-        #   #     epkgs.s
-        #   #     epkgs.emacsql
-        #   #     epkgs.emacsql-sqlite
-        #   #     epkgs.magit-section
-        #   #     epkgs.magit-filenotify
-        #   #   ]))
+      ## Emacs itself
+      # binutils # native-comp needs 'as', provided by this
+      #   # 28.2 + native-comp
+      #   # ((emacsPackagesFor emacs-unstable).emacsWithPackages
+      #   #   (epkgs: [
+      #   #     epkgs.vterm
+      #   #     epkgs.f
+      #   #     epkgs.s
+      #   #     epkgs.emacsql
+      #   #     epkgs.emacsql-sqlite
+      #   #     epkgs.magit-section
+      #   #     epkgs.magit-filenotify
+      #   #   ]))
 
-        #   ## Doom dependencies
-        # git
-        #   (ripgrep.override { withPCRE2 = true; })
-        #   gnutls # for TLS connectivity
+      #   ## Doom dependencies
+      # git
+      #   (ripgrep.override { withPCRE2 = true; })
+      #   gnutls # for TLS connectivity
 
-        ## Optional dependencies
-        # fd # faster projectile indexing
-        # imagemagick # for image-dired
-        #   # (mkIf (config.programs.gnupg.agent.enable)
-        #   #   pinentry_emacs) # in-emacs gnupg prompts
-        # zstd # for undo-fu-session/undo-tree compression
+      ## Optional dependencies
+      # fd # faster projectile indexing
+      # imagemagick # for image-dired
+      #   # (mkIf (config.programs.gnupg.agent.enable)
+      #   #   pinentry_emacs) # in-emacs gnupg prompts
+      # zstd # for undo-fu-session/undo-tree compression
 
-        ## Module dependencies
-        # :checkers spell
-        # (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-        # :tools editorconfig
-        # editorconfig-core-c # per-project style config
-        # :tools lookup & :lang org +roam
-        # sqlite
-        #   # :lang latex & :lang org (latex previews)
-        #   texlive.combined.scheme-medium
-        #   fava
+      ## Module dependencies
+      # :checkers spell
+      # (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+      # :tools editorconfig
+      # editorconfig-core-c # per-project style config
+      # :tools lookup & :lang org +roam
+      # sqlite
+      #   # :lang latex & :lang org (latex previews)
+      #   texlive.combined.scheme-medium
+      #   fava
 
-        # org-roam deps
-        # dash
+      # org-roam deps
+      # dash
       # ];
     };
 
@@ -62,8 +62,11 @@ in {
     };
 
     # https://nixos.wiki/wiki/Emacs
-    services.emacs.enable = true;
-    services.emacs.client.enable = true;
+    services.emacs = {
+      enable = true;
+      client.enable = true;
+      package = pkgs.emacs;
+    };
 
     # fonts.packages = [ pkgs.emacs-all-the-icons-fonts ];
 
