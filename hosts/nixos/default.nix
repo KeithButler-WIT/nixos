@@ -25,18 +25,18 @@ with lib.my;
       # plasma6.enable = true;
       # thunar.enable = true;
       tuigreet.enable = true;
+      gaming = {
+        steam.enable = true;
+      };
     };
     # dev = { };
     # editors = {
     #   emacs.enable = true;
     # };
-    gaming = {
-      steam.enable = true;
-    };
     hardware = {
       audio.enable = true;
       amd.enable = true;
-      bluetooth.enable = true;
+      # bluetooth.enable = true;
       # nvidia.enable = true;
       logitech.enable = true;
       fs = {
@@ -46,7 +46,7 @@ with lib.my;
       };
     };
     services = {
-      # docker.enable = true;
+      docker.enable = true;
       # firewall.enable = true;
       mullvad-vpn.enable = true;
       power-management.enable = true;

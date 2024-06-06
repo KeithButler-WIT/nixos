@@ -2,7 +2,7 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.hardware.bluetooth;
+let cfg = config.modules.desktop.gaming.steam;
 in {
 
   imports = [
@@ -10,7 +10,7 @@ in {
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
 
-  options.modules.gaming.steam.enable =
+  options.modules.desktop.gaming.steam.enable =
     mkBoolOpt false;
 
 
