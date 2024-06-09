@@ -18,6 +18,8 @@ with lib.my;
     scrcpy
     rclone-browser
     xdotool
+
+    bitwarden
   ];
 
   modules = {
