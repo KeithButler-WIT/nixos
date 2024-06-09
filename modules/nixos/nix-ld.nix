@@ -42,6 +42,8 @@ in {
         ncurses6
         harfbuzz
 
+        gss
+
         libGL
         libappindicator-gtk3
         libdrm

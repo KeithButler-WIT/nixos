@@ -46,7 +46,12 @@ with lib.my;
       };
     };
     services = {
-      docker.enable = true;
+      containers = {
+        enable = true;
+        distrobox.enable = true;
+        # docker.enable = true;
+        podman.enable = true;
+      };
       # firewall.enable = true;
       mullvad-vpn.enable = true;
       power-management.enable = true;
@@ -65,7 +70,7 @@ with lib.my;
     haskell-language-server
     stack
     rclone
-    inkscape
+    # inkscape
     ghc
     conda
 

@@ -2,16 +2,20 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.docker;
+let cfg = config.modules.services.containers;
 in {
 
-  options.modules.services.docker = {
+  options.modules.services.containers = {
     enable = mkBoolOpt false;
+    distrobox.enable = mkBoolOpt false;
+    docker.enable = mkBoolOpt false;
+    podman.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       distrobox
+      boxbuddy
       # docker
       # docker-compose # start group of containers for dev
       dive # look into docker image layers
