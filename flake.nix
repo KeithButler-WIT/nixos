@@ -30,6 +30,8 @@
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
     xremap-flake.url = "github:xremap/nix-flake";
+
+    matugen.url = "github:InioX/matugen?ref=v2.2.0";
     ags.url = "github:Aylur/ags";
 
     impermanence.url = "github:nix-community/impermanence";

@@ -35,8 +35,8 @@ in {
       tofi.enable = lib.mkDefault true;
       eww.enable = lib.mkDefault true; # TODO Fix eww
       ags.enable = lib.mkDefault true;
-      waybar.enable = lib.mkDefault true;
-      waybar.horizontal.enable = lib.mkDefault true;
+      # waybar.enable = lib.mkDefault true;
+      # waybar.horizontal.enable = lib.mkDefault true;
       # waybar.vertical.enable = lib.mkDefault true;
     };
 
@@ -272,6 +272,9 @@ in {
 
         #background
         exec-once = ${pkgs.wpaperd}/bin/wpaperd
+
+        # exec-once = waybar
+        exec-once = ags
 
         #status bar
         layerrule = blur , waybar
