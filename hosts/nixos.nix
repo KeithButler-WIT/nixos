@@ -24,6 +24,7 @@ let
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user}.imports = [
+            inputs.ags.homeManagerModules.default
             # inputs.stylix.homeManagerModules.stylix
             # ./home/home.nix
             # ./home/${userSettings.username}.nix
