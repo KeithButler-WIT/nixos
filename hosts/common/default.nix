@@ -13,6 +13,17 @@
 
   home-manager.backupFileExtension = "backup";
 
+  environment.systemPackages = with pkgs; [
+    man-pages
+    man-pages-posix
+  ];
+
+  documentation = {
+    enable = true;
+    man.enable = true;
+    dev.enable = true;
+  };
+
   programs.dconf.enable = true;
 
   time.hardwareClockInLocalTime = true;
