@@ -80,7 +80,8 @@ with lib.my;
         fhsPkgs.libogg
       ];
     })
-
   ];
+
+  services.gvfs.enable = true;
 
 }
