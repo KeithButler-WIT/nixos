@@ -13,7 +13,7 @@ in {
       pkgs.zoxide
       pkgs.curl
       pkgs.man
-      pkgs.starship
+      #pkgs.starship
       pkgs.bat
       pkgs.mcfly
     ];
@@ -114,7 +114,7 @@ in {
               # ${pkgs.fastfetch}/bin/fastfetch --load-config neofetch
         # end
 
-        source ("starship" init fish --print-full-init | psub)
+        #source ("starship" init fish --print-full-init | psub)
 
         ${pkgs.zoxide}/bin/zoxide init fish | source
         alias cd "z" # Temp fix

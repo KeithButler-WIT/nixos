@@ -77,12 +77,15 @@ with lib.my;
     shell = {
       bash.enable = true;
       fish.enable = true;
-      # nushell.enable = true;
+      nu.enable = true;
       fzf.enable = true;
       git.enable = true;
       starship.enable = true;
       tealdeer.enable = true;
       direnv.enable = true;
+      eza.enable = true;
+      zoxide.enable = true;
+      thefuck.enable = true;
     };
     services = {
       # borgmatic.enable = true;
