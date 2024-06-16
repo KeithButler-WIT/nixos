@@ -20,6 +20,7 @@ with lib.my;
     xdotool
 
     bitwarden
+    bitwarden-cli
   ];
 
   modules = {
