@@ -395,6 +395,10 @@ in {
         windowrulev2 = move 50% 6%,$pavucontrol
         windowrulev2 = workspace special silent,$pavucontrol
         windowrulev2 = opacity 0.80,$pavucontrol
+
+
+        exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+        env = XDG_CURRENT_DESKTOP,Hyprland
       '';
     };
 
