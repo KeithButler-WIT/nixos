@@ -22,9 +22,9 @@ in {
       wlr.enable = true;
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [
-        # xdg-desktop-portal-hyprland
-        # xdg-desktop-portal-gtk
-        # xdg-desktop-portal
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal
       ];
       config.common.default = "*";
     };
