@@ -34,6 +34,8 @@
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
     ags.url = "github:Aylur/ags";
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
     impermanence.url = "github:nix-community/impermanence";
 
     sops-nix = {
