@@ -18,10 +18,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
-    };
+    # split-monitor-workspaces = {
+    #   url = "github:Duckonaut/split-monitor-workspaces";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     devenv.url = "github:cachix/devenv";
     hosts.url = "github:StevenBlack/hosts";
@@ -34,24 +34,24 @@
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
     ags.url = "github:Aylur/ags";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    impermanence.url = "github:nix-community/impermanence";
+    # impermanence.url = "github:nix-community/impermanence";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # sops-nix = {
+    #   url = "github:Mic92/sops-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Haskell thing
-    ormolu.url = "github:tweag/ormolu";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    # ormolu.url = "github:tweag/ormolu";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     # https://www.youtube.com/watch?v=ljHkWgBaQWU
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = { nixpkgs, self, hosts, hyprland, home-manager, ormolu, ... } @ inputs:
+  outputs = { nixpkgs, self, hosts, hyprland, home-manager, ... } @ inputs:
     let
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
