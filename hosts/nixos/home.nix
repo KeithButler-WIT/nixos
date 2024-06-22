@@ -18,9 +18,6 @@ with lib.my;
     scrcpy
     rclone-browser
     xdotool
-
-    bitwarden
-    bitwarden-cli
   ];
 
   modules = {
@@ -36,9 +33,12 @@ with lib.my;
         qutebrowser.enable = true;
       };
       apps = {
+        bitwarden.enable = true;
+        yazi.enable = true;
         lf.enable = true;
         nemo.enable = true;
         # dolphin.enable = true;
+        
         blender.enable = true;
         bottles.enable = true;
         godot.enable = true;
@@ -52,7 +52,7 @@ with lib.my;
         weeb.enable = true;
         # zoom.enable = true;
       };
-      # file-managers = { lf.enable = true; nemo.enable = true; dolphin.enable = true; };
+      # file-managers = { yazi.enable = true; lf.enable = true; nemo.enable = true; dolphin.enable = true; };
       gaming = {
         discord.enable = true;
         minecraft.enable = true;
