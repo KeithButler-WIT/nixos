@@ -78,7 +78,7 @@
 
     nixpkgs-fmt
     shfmt
-    toybox
+    coreutils-full
     egl-wayland
   ];
 
