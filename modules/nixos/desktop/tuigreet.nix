@@ -18,7 +18,7 @@ in {
         initial_session = lib.mkIf config.modules.autologin.enable {
           # Auto Login
           # command = "startplasma-wayland";
-          command = lib.mkIf config.modules.desktop.hyprland.enable "Hyprland";
+          command = lib.mkIf config.modules.desktop.hyprland.enable "dbus-run-session Hyprland";
           user = userSettings.username;
         };
         default_session = {
