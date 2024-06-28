@@ -31,6 +31,8 @@ with lib.my;
         # firefox.enable = true;
         floorp.enable = true;
         qutebrowser.enable = true;
+        # tor.enable = true;
+        # chromium.enable = true;
       };
       apps = {
         bitwarden.enable = true;
@@ -38,7 +40,7 @@ with lib.my;
         lf.enable = true;
         nemo.enable = true;
         # dolphin.enable = true;
-        
+
         blender.enable = true;
         bottles.enable = true;
         godot.enable = true;
