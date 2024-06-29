@@ -30,9 +30,9 @@ with lib.my;
       };
     };
     # dev = { };
-    # editors = {
-    #   emacs.enable = true;
-    # };
+    editors = {
+      emacs.enable = true;
+    };
     hardware = {
       audio.enable = true;
       amd.enable = true;
