@@ -11,6 +11,12 @@ in {
   config = mkIf cfg.enable {
     programs.nushell = {
       enable = true;
+      # functions = {
+      #   gitignore = "${pkgs.curl}/bin/curl -sL https://www.gitignore.io/api/$argv";
+      #   yy = ''
+      #   '';
+      # };
+
     };
   };
 

@@ -23,6 +23,14 @@ in {
 
       functions = {
         gitignore = "${pkgs.curl}/bin/curl -sL https://www.gitignore.io/api/$argv";
+        yy = ''
+          	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+          	yazi $argv --cwd-file="$tmp"
+          	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+          		cd -- "$cwd"
+          	end
+          	rm -f -- "$tmp"
+        '';
       };
 
       shellInit = ''
