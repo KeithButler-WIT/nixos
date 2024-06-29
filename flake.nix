@@ -36,6 +36,10 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+
     # impermanence.url = "github:nix-community/impermanence";
 
     # sops-nix = {
