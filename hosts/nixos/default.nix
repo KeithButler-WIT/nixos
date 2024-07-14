@@ -15,6 +15,7 @@ with lib.my;
   modules = {
     autologin.enable = true;
     # autoUpgrade.enable = true;
+    # doas.enable = true;
     flatpak.enable = true;
     nix-ld.enable = true;
     stylix.enable = true;
