@@ -24,6 +24,11 @@ in {
         extraPackages = with pkgs; [
           luajitPackages.lua-lsp
           #rnix-lsp
+          haskell-language-server
+          cmake-language-server
+          markdown-oxide
+          vim-language-server
+          csharp-ls
 
           xclip
           wl-clipboard
@@ -84,6 +89,10 @@ in {
               p.tree-sitter-lua
               p.tree-sitter-python
               p.tree-sitter-json
+              p.tree-sitter-rust
+              p.tree-sitter-fish
+              p.tree-sitter-java
+              p.tree-sitter-haskell
             ]));
             config = toLuaFile ./plugin/treesitter.lua;
           }
