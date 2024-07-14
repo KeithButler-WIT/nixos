@@ -20,7 +20,7 @@ in {
       freetype # font
       libgsf # odf
       nufraw-thumbnailer # raw
-      gnome.totem # video/audio
+      totem # video/audio
       evince # pdf
       gnome-epub-thumbnailer # epub/mobi
       # mcomix # cbr
