@@ -12,7 +12,7 @@ in {
     programs.kitty = {
       enable = true;
       font = {
-        # name = "JetBrainsMono Nerd Font";
+        name = "JetBrainsMono Nerd Font";
         # name = "jetbrains mono nerd font";
         # package = pkgs.jetbrains-mono;
         # size = 12;
