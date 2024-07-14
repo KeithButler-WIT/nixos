@@ -47,12 +47,12 @@ with lib.my;
       };
     };
     services = {
-      containers = {
-        enable = true;
-        distrobox.enable = true;
+      # containers = {
+        # enable = true;
+        # distrobox.enable = true;
         # docker.enable = true;
-        podman.enable = true;
-      };
+        # podman.enable = true;
+      # };
       # firewall.enable = true;
       mullvad-vpn.enable = true;
       power-management.enable = true;
