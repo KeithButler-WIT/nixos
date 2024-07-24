@@ -42,7 +42,7 @@ with lib.my;
         # dolphin.enable = true;
 
         blender.enable = true;
-        bottles.enable = true;
+        # bottles.enable = true;
         godot.enable = true;
         libreoffice.enable = true;
         obs.enable = true;
@@ -50,7 +50,7 @@ with lib.my;
         signal.enable = true;
         slack.enable = true;
         thunderbird.enable = true;
-        unity.enable = true;
+        # unity.enable = true;
         weeb.enable = true;
         # zoom.enable = true;
       };
