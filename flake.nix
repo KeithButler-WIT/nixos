@@ -2,8 +2,7 @@
   description = "Keith's dotfiles managed via NixOS and home-manager";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -55,7 +54,7 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = { nixpkgs, self, hosts, hyprland, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, nixpkgs-stable, self, hosts, hyprland, home-manager, ... } @ inputs:
     let
       forAllSystems = function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
