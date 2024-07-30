@@ -48,10 +48,10 @@ with lib.my;
     };
     services = {
       # containers = {
-        # enable = true;
-        # distrobox.enable = true;
-        # docker.enable = true;
-        # podman.enable = true;
+      # enable = true;
+      # distrobox.enable = true;
+      # docker.enable = true;
+      # podman.enable = true;
       # };
       # firewall.enable = true;
       mullvad-vpn.enable = true;
@@ -68,19 +68,12 @@ with lib.my;
 
   environment.systemPackages = with pkgs; [
     pika-backup
-    haskell-language-server
-    stack
+    # haskell-language-server # TODO: move to devshell
+    # ghc
+    # stack
     rclone
-    # inkscape
-    ghc
-    conda
-
-    (unityhub.override {
-      extraPkgs = fhsPkgs: [
-        fhsPkgs.harfbuzz
-        fhsPkgs.libogg
-      ];
-    })
+    # inkscape # TODO: make module
+    # conda # TODO: make module
   ];
 
   services.gvfs.enable = true;

@@ -10,7 +10,12 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      unityhub
+      (unityhub.override {
+        extraPkgs = fhsPkgs: [
+          fhsPkgs.harfbuzz
+          fhsPkgs.libogg
+        ];
+      })
     ];
   };
 
