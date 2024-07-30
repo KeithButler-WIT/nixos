@@ -10,6 +10,9 @@
     useOSProber = true;
     zfsSupport = true;
   };
+  # boot.loader.efistub = {
+  #   enable = true;
+  # }
 
   # empty out /tmp on boot
   boot.tmp.cleanOnBoot = true;
