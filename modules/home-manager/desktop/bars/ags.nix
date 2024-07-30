@@ -11,6 +11,10 @@ in {
     vertical.enable = mkBoolOpt false;
   };
 
+  imports = [
+    inputs.ags.homeManagerModules.default
+  ];
+
   config = mkIf cfg.enable (mkMerge [
     { }
 
@@ -35,14 +39,13 @@ in {
 
       programs.ags = {
         enable = true;
-
         configDir = ./ags;
-
         extraPackages = with pkgs; [
           # gtksourceview
           # webkitgtk
           accountsservice
         ];
+        package = inputs.ags.packages."${pkgs.system}".ags;
       };
 
     })
