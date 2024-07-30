@@ -30,7 +30,7 @@ in
 
     home.file.".config/tofi/themes/soy-milk".text = ''
       # Font
-      font = Fredoka One
+      font = JetBrainsMono Nerd Font Mono
       font-size = 20
 
       # Window Style
@@ -86,7 +86,7 @@ in
       padding-top = 35%
       result-spacing = 25
       num-results = 5
-      font = monospace
+      font = JetBrainsMono Nerd Font Mono
       background-color = #000A
     '';
   };
