@@ -11,12 +11,12 @@ in {
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      font = {
-        name = "JetBrainsMono Nerd Font";
+      # font = {
+        # name = "JetBrainsMono Nerd Font";
         # name = "jetbrains mono nerd font";
         # package = pkgs.jetbrains-mono;
         # size = 12;
-      };
+      # };
       settings = {
         shell = "fish";
         bold_font = "auto";
