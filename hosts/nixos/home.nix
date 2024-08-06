@@ -28,19 +28,15 @@ with lib.my;
       hyprland.enable = true;
       # waybar.enable = true;
       browsers = {
+        default = "floorp";
         # firefox.enable = true;
         floorp.enable = true;
-        qutebrowser.enable = true;
+        # qutebrowser.enable = true;
         # tor.enable = true;
         # chromium.enable = true;
       };
       apps = {
         bitwarden.enable = true;
-        yazi.enable = true;
-        lf.enable = true;
-        nemo.enable = true;
-        # dolphin.enable = true;
-
         blender.enable = true;
         # bottles.enable = true;
         godot.enable = true;
@@ -50,25 +46,35 @@ with lib.my;
         signal.enable = true;
         slack.enable = true;
         thunderbird.enable = true;
-        # unity.enable = true;
+        # unity3d.enable = true;
+        # ue.enable = true;
         weeb.enable = true;
         # zoom.enable = true;
-      };
-      # file-managers = { yazi.enable = true; lf.enable = true; nemo.enable = true; dolphin.enable = true; };
-      gaming = {
         discord.enable = true;
-        minecraft.enable = true;
+        prismlauncher.enable = true;
         r2modman.enable = true;
       };
+      file-managers = {
+        default = "yazi";
+        yazi.enable = true;
+        lf.enable = true;
+        # nemo.enable = true;
+        # dolphin.enable = true;
+      };
       media = {
-        mpv.enable = true;
+        video = {
+          enable = true;
+          capture.enable = true;
+          # editor.enable = true;
+          player.enable = true;
+          tools.enable = true;
+        };
         # ncmpcpp.enable = true;
       };
       term = {
         kitty.enable = true;
         # alacritty.enable = true;
       };
-      vm.enable = true;
       gtk.enable = true;
     };
     editors = {

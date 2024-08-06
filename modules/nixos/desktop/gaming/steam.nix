@@ -1,4 +1,4 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, inputs, userSettings, ... }:
 
 with lib;
 with lib.my;
@@ -21,10 +21,22 @@ in {
     #   trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
     # };
 
+    # TODO: move to own module
+    # For openmw-tes3mp
+    # services.logmein-hamachi.enable = true;
+    # programs.haguichi.enable = true;
+
+    programs.gamescope.enable = true;
     programs.gamemode = {
       enable = true;
-      settings.general.inhibit_screensaver = 0; # If you don't have a screensaver installed
+      settings = {
+        general = {
+          inhibit_screensaver = 0;
+          renice = 10;
+        };
+      };
     };
+    users.users.${userSettings.username}.extraGroups = [ "gamemode" ];
 
     programs.steam = {
       enable = true;
@@ -51,7 +63,6 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      # pkgs.gamemode # GameMode depends on root-level capabilities that aren't available in a user-level Nix package installation.
       heroic
       lutris
       protonup-qt
@@ -59,16 +70,16 @@ in {
       protontricks
       winetricks
       protontricks
-      #wine-staging
-      #wine-osu
-      #wine-tkg
-      # (openmw.overrideAttrs (_: rec { dontWrapQtApps = false; }))
       openmw
+      openmw-tes3mp
       steam-run
       steamcmd
       steam-tui
       mangohud
     ];
+
+    # Better for steam proton games
+    systemd.extraConfig = "DefaultLimitNOFILE=1048576";
   };
 
 }

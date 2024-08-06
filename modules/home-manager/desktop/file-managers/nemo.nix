@@ -2,11 +2,11 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.nemo;
+let cfg = config.modules.desktop.file-managers.nemo;
 in {
 
   #TODO: Fix module path
-  options.modules.desktop.apps.nemo.enable =
+  options.modules.desktop.file-managers.nemo.enable =
     mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {

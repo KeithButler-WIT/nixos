@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.lf;
+let cfg = config.modules.desktop.file-managers.lf;
 in {
 
-  options.modules.desktop.apps.lf.enable =
+  options.modules.desktop.file-managers.lf.enable =
     mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {

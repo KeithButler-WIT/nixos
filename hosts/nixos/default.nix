@@ -37,7 +37,7 @@ with lib.my;
     hardware = {
       audio.enable = true;
       amd.enable = true;
-      # bluetooth.enable = true;
+      bluetooth.enable = true;
       # nvidia.enable = true;
       logitech.enable = true;
       fs = {

@@ -3,7 +3,7 @@
 with lib;
 with lib.my;
 let
-  cfg = config.modules.desktop.apps.yazi;
+  cfg = config.modules.desktop.file-managers.yazi;
   plugins-repo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
@@ -13,8 +13,7 @@ let
 in
 {
 
-  #TODO: Fix module path
-  options.modules.desktop.apps.yazi.enable =
+  options.modules.desktop.file-managers.yazi.enable =
     mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -134,6 +133,7 @@ in
         #   };
       };
 
+      # FIXME: keymap breaking all other keybinds
       # keymap = {
       #   manager.keymap = [
       #     {

@@ -12,6 +12,8 @@ in {
     home.packages = with pkgs; [
       # aseprite
       godot_4
+      godot_4-export-templates
+      gdtoolkit_4
     ];
   };
 

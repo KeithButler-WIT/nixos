@@ -2,11 +2,11 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.dolphin;
+let cfg = config.modules.desktop.file-managers.dolphin;
 in {
 
   #TODO: Fix module path
-  options.modules.desktop.apps.dolphin.enable =
+  options.modules.desktop.file-managers.dolphin.enable =
     mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {

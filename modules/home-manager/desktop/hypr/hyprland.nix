@@ -288,7 +288,7 @@ in {
         # other bindings
         #bind = $mainMod, O, exec, floorp
         bind = $mainMod, F, fullscreen
-        bind = $mainMod SHIFT, F, fakefullscreen
+        #bind = $mainMod SHIFT, F, fakefullscreen
         bind = ,232,exec,brightnessctl -c backlight set 5%-
         bind = ,233,exec,brightnessctl -c backlight set +5%
         bind = $mainMod SHIFT,C, exec, killall -9 wpaperd && wpaperd

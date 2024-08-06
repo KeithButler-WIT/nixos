@@ -22,6 +22,7 @@ in {
         vimdiffAlias = true;
 
         extraPackages = with pkgs; [
+          nixd
           luajitPackages.lua-lsp
           #rnix-lsp
           haskell-language-server

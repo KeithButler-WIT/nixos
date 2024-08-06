@@ -42,6 +42,10 @@ in {
         ncurses6
         harfbuzz
 
+        # tes3mp
+        luajit
+        boost
+
         gss
 
         libGL

@@ -2,15 +2,15 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.gaming.minecraft;
+let cfg = config.modules.desktop.apps.r2modman;
 in {
 
-  options.modules.desktop.gaming.minecraft.enable =
+  options.modules.desktop.apps.r2modman.enable =
     mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      prismlauncher
+      r2modman
     ];
   };
 

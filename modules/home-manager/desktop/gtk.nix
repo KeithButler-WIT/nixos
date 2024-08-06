@@ -11,10 +11,10 @@ in {
   config = mkIf cfg.enable {
     fonts.fontconfig.enable = true;
     # home.packages = [
-    # pkgs.nerdfonts
-    # (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    # pkgs.twemoji-color-font
-    # pkgs.noto-fonts-emoji
+    #   pkgs.nerdfonts
+    #   (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    #   pkgs.twemoji-color-font
+    #   pkgs.noto-fonts-emoji
     # ];
 
     qt = {
