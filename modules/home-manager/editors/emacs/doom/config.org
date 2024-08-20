@@ -1258,9 +1258,9 @@ So these packages help alot when righting reports.
 #+end_src
 
 #+begin_src  emacs-lisp :results none
-(require 'vterm-module)
-(setq vterm-shell "/bin/fish")          ;; default shell
-(setq vterm-always-compile-module t)    ;; skip asking to compile
-(setq vterm-max-scrollback 100000)
-(setq vterm-kill-buffer-on-exit t)
+;;(require 'vterm-module)
+;;(setq vterm-shell "/bin/fish")          ;; default shell
+;;(setq vterm-always-compile-module t)    ;; skip asking to compile
+;;(setq vterm-max-scrollback 100000)
+;;(setq vterm-kill-buffer-on-exit t)
 #+end_src
