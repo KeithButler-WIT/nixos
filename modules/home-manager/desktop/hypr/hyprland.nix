@@ -209,7 +209,7 @@ in {
         bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/soy-milk
         bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
         # bind = $mainMod, P, pseudo, # dwindle
-        bind = $mainMod, J, togglesplit, # dwindle
+        bind = $mainMod, O, togglesplit, # dwindle
         bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
         bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
       
@@ -226,6 +226,10 @@ in {
         bind = $mainMod, right, movefocus, r
         bind = $mainMod, up, movefocus, u
         bind = $mainMod, down, movefocus, d
+        bind = $mainMod, H, movefocus, l
+        bind = $mainMod, L, movefocus, r
+        bind = $mainMod, K, movefocus, u
+        bind = $mainMod, J, movefocus, d
 
         # Switch workspaces with mainMod + [0-9]
         bind = $mainMod, 1, workspace, 1
