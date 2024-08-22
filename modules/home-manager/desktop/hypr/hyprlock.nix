@@ -66,8 +66,7 @@ in
         color = rgba(200, 200, 200, 1.0)
         font_size = 25
         # font_family = Noto Sans
-        font_family = ${userSettings.font}
-
+        font_family = jetbrains mono nerd font
         position = 0, 80
         halign = center
         valign = center
