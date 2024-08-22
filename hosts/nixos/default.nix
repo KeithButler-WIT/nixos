@@ -19,7 +19,7 @@ with lib.my;
     flatpak.enable = true;
     nix-ld.enable = true;
     stylix.enable = true;
-    vm.enable = true;
+    # vm.enable = true;
     desktop = {
       enable = true;
       hyprland.enable = true;
@@ -47,6 +47,7 @@ with lib.my;
       };
     };
     services = {
+      backup.enable = true;
       # containers = {
       # enable = true;
       # distrobox.enable = true;
@@ -67,11 +68,10 @@ with lib.my;
   };
 
   environment.systemPackages = with pkgs; [
-    pika-backup
+    # pika-backup
     # haskell-language-server # TODO: move to devshell
     # ghc
     # stack
-    rclone
     # inkscape # TODO: make module
     # conda # TODO: make module
   ];

@@ -13,17 +13,9 @@
     fullName = "Keith Butler";
     gitUsername = "KeithButler-WIT";
     gitEmail = "keithbutler2001@gmail.com";
-    browser = "floorp";
-    secondbrowser = "qutebrowser";
-    editor = "emacsclient";
-    alternateEditor = "nvim";
-    mail = "thunderbird";
-    fileManager = "nemo";
     flakeDir = "/home/${username}/nixos";
-    font = "jetbrains mono nerd font";
-    fontpkg = "jetbrains-mono";
-    term = "kitty";
-    gpuType = "amd";
+    #font = "jetbrains mono nerd font";
+    #fontpkg = "jetbrains-mono";
   };
 
 }

@@ -100,6 +100,8 @@ in {
       };
     };
 
+    home.sessionVariables.TERMINAL = "alacritty";
+    home.sessionVariables.TERMINAL_PROG = "alacritty";
   };
 
 }

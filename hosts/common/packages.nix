@@ -40,6 +40,7 @@
     ncdu # disk space management
     xorg.xhost # needed to run gparted on wayland
     rsync
+    rclone
   ];
 
 }

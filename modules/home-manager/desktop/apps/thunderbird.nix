@@ -12,6 +12,8 @@ in {
     home.packages = with pkgs; [
       thunderbird
     ];
+
+    home.sessionVariables.MAIL = "thunderbird";
   };
 
 }

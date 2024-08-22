@@ -74,7 +74,7 @@ in {
       openmw-tes3mp
       steam-run
       steamcmd
-      steam-tui
+      # steam-tui
       mangohud
     ];
 

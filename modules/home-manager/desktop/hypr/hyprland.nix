@@ -203,7 +203,7 @@ in {
         bind = $mainMod, 36, exec, ${pkgs.kitty}/bin/kitty
         bind = $mainMod, T, exec, ${pkgs.kitty}/bin/kitty
         bind = $mainMod, Q, killactive,
-        bind = $mainMod, N, exec, ${userSettings.fileManager}
+        bind = $mainMod, N, exec, ${config.modules.desktop.file-managers.default}
         bind = $mainMod SHIFT, N, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.yazi}/bin/yazi
         bind = $mainMod SHIFT, 65, togglefloating,
         bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/soy-milk
@@ -333,7 +333,7 @@ in {
 
         # other blurings
         blurls = wofi
-        blurls = ${userSettings.fileManager}
+        blurls = ${config.modules.desktop.file-managers.default}
         blurls = gedit
         blurls = gtk-layer-shell # for nwg-drawer
         blurls = catfish
@@ -399,7 +399,20 @@ in {
 
 
         exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        env = XDG_CURRENT_DESKTOP,Hyprland
+
+        env = XDG_CURRENT_DESKTOP,Hyprland 
+        env = XDG_SESSION_TYPE,wayland 
+        env = XDG_SESSION_DESKTOP,Hyprland
+
+        env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+        env = QT_QPA_PLATFORM,wayland;xcb
+        env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+        env = QT_QPA_PLATFORMTHEME,qt5ct
+
+        env = GDK_BACKEND,wayland,x11,*
+        env = QT_QPA_PLATFORM,wayland;xcb
+        env = SDL_VIDEODRIVER,wayland
+        env = CLUTTER_BACKEND,wayland
       '';
     };
 

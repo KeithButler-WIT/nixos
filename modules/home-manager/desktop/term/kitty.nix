@@ -34,6 +34,9 @@ in {
       shellIntegration.enableFishIntegration = true;
       theme = "Catppuccin-Mocha";
     };
+
+    home.sessionVariables.TERMINAL = "kitty";
+    home.sessionVariables.TERMINAL_PROG = "kitty";
   };
 
 }

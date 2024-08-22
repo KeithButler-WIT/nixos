@@ -17,13 +17,6 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    EDITOR = userSettings.editor;
-    ALTERNATE_EDITOR = userSettings.alternateEditor;
-    TERMINAL = userSettings.term;
-    TERMINAL_PROG = userSettings.term;
-    BROWSER = userSettings.browser;
-    MAIL = userSettings.mail;
-
     OpenGL_GL_PREFERENCE = "GLVND";
     ROC_ENABLE_PRE_VEGA = "1";
 

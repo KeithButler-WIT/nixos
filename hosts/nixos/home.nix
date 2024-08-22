@@ -21,7 +21,7 @@ with lib.my;
   ];
 
   modules = {
-    just.enable = true;
+    # just.enable = true;
     nh.enable = true;
     torrent.enable = true;
     desktop = {
@@ -41,10 +41,9 @@ with lib.my;
         # bottles.enable = true;
         godot.enable = true;
         libreoffice.enable = true;
-        obs.enable = true;
         pass.enable = true;
         signal.enable = true;
-        slack.enable = true;
+        # slack.enable = true;
         thunderbird.enable = true;
         # unity3d.enable = true;
         # ue.enable = true;
@@ -57,7 +56,7 @@ with lib.my;
       file-managers = {
         default = "yazi";
         yazi.enable = true;
-        lf.enable = true;
+        # lf.enable = true;
         # nemo.enable = true;
         # dolphin.enable = true;
       };
@@ -78,6 +77,8 @@ with lib.my;
       gtk.enable = true;
     };
     editors = {
+      default = "nvim";
+      alternate = "emacsclient";
       emacs.enable = true;
       neovim.enable = true;
       # helix.enable = true;
