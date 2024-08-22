@@ -104,6 +104,7 @@ in {
             disable_while_typing = true;
           };
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+          # kb_options = "ctrl:nocaps";
         };
 
         general = {
@@ -214,8 +215,6 @@ in {
         bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
       
         # Mainmod + Function keys
-        # bind = $mainMod, F1, exec, ${pkgs.vesktop}/bin/vesktop
-        # bind = $mainMod, F1, exec, ${pkgs.steam}/bin/steam
         bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
         bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
         bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.lf}/bin/lf
@@ -379,7 +378,7 @@ in {
 
         bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
         bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-        bind = $mainMod, P,exec,${pkgs.pyprland}/bin/pypr toggle keepass && hyprctl dispatch bringactivetotop
+        #bind = $mainMod, P,exec,${pkgs.pyprland}/bin/pypr toggle keepass && hyprctl dispatch bringactivetotop
         $scratchpadsize = size 80% 85%
 
         $scratchpad = class:^(scratchpad)$
@@ -401,6 +400,9 @@ in {
         windowrulev2 = workspace special silent,$pavucontrol
         windowrulev2 = opacity 0.80,$pavucontrol
 
+        # -----------------------------------------------------
+        # Env Variables
+        # -----------------------------------------------------
 
         exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
