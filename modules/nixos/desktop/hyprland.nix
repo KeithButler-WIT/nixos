@@ -10,23 +10,24 @@ in {
 
 
   config = lib.mkIf cfg.enable {
-    # programs.hyprland = {
-    # enable = true;
-    # Use the flake
-    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    # Whether to enable XWayland
-    #   xwayland.enable = true;
-    # };
+    #programs.hyprland = {
+    #  enable = true;
+    #  package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    #  xwayland.enable = true;
+    #};
     xdg.portal = {
       enable = true;
       wlr.enable = true;
       xdgOpenUsePortal = true;
+      config = {
+        common.default = ["gtk"];
+        hyprland.default = ["gtk" "hyprland"];
+      };
       extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
         xdg-desktop-portal
       ];
-      config.common.default = "*";
     };
 
     # modules.desktop.tuigreet.enable = mkDefault true;

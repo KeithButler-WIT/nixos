@@ -60,11 +60,15 @@
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
       commonInherits = {
         inherit (nixpkgs) lib;
-        inherit self inputs nixpkgs;
+        inherit self inputs nixpkgs nixpkgs-stable;
         inherit (import ./options.nix) systemSettings userSettings;
         user = "keith";
         system = "x86_64-linux";
         pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-stable = import inputs.nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;
         };
@@ -74,6 +78,7 @@
       };
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
 
       # unstable = nixpkgs-unstable.legacyPackages.${system};
       inherit (import ./options.nix) systemSettings userSettings;

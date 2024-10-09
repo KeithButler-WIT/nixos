@@ -36,17 +36,14 @@
   - [[#org-agenda][org-agenda]]
   - [[#org-roam][org-roam]]
   - [[#org-ref][org-ref]]
-  - [[#org-pomodoro][org-pomodoro]]
   - [[#org-appear][org-appear]]
   - [[#org-publish][org-Publish]]
   - [[#org-auto-tangle][org-auto-tangle]]
-  - [[#openwith][openwith]]
 - [[#languanges][Languanges]]
   - [[#org-babel-do-load-languages][Org-babel-do-load-languages]]
   - [[#programming][Programming]]
   - [[#design][Design]]
 - [[#applications][Applications]]
-  - [[#erc][ERC]]
   - [[#vterm][Vterm]]
 #+END_QUOTE
 
@@ -318,13 +315,13 @@ This code is written to the init.el to select which modules to load. Written her
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
        (java +meghanada) ; the poster child for carpal tunnel syndrome
-       (javascript
-        +lsp)              ;all(hope(abandon(ye(who(enter(here))))))
+       ;;(javascript
+       ;; +lsp)              ;all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        kotlin            ; a better, slicker Java(Script)
        latex             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
-       ledger            ; be audit you can be
+       ;;ledger            ; be audit you can be
        (lua +lsp)        ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
@@ -364,14 +361,14 @@ This code is written to the init.el to select which modules to load. Written her
        ;;zig               ; C, but simpler
 
        :email
-       (mu4e +org +gmail)
+       ;;(mu4e +org +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 
        :app
        calendar
        ;;emms
-       everywhere        ; *leave* Emacs!? You must be joking
+       ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        (rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought

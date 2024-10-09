@@ -17,6 +17,7 @@ in
         default = {
           # path = "/home/${userSettings.username}/Pictures/Wallpapers";
           path = "/home/${userSettings.username}/Pictures/Stålenhag";
+          #path = "/home/${userSettings.username}/Pictures";
           duration = "1h";
         };
       };

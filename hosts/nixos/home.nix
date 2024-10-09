@@ -6,7 +6,7 @@ with lib.my;
   home.packages = with pkgs; [
     # TODO add to direnv in required projects
     # pkgs.python311
-    (python311.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 ]))
+    (python3.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 wxpython]))
 
     v4l-utils
 
@@ -18,12 +18,17 @@ with lib.my;
     scrcpy
     rclone-browser
     xdotool
+
+    wine
+    #TODO: remove
+    ntlmrecon
   ];
 
   modules = {
     # just.enable = true;
     nh.enable = true;
     torrent.enable = true;
+    tmux.enable = true;
     desktop = {
       hyprland.enable = true;
       # waybar.enable = true;
@@ -97,7 +102,7 @@ with lib.my;
       thefuck.enable = true;
     };
     services = {
-      # borgmatic.enable = true;
+      borgmatic.enable = true;
       dunst.enable = true;
       # mako.enable = true;
       # mpd.enable = true;

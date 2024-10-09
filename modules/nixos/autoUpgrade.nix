@@ -15,9 +15,10 @@ in {
       flags = [
         "--update-input"
         "nixpkgs"
+        "--commit-lock-file"
         "-L"
       ];
-      dates = "09:00";
+      dates = "daily";
       randomizedDelaySec = "45min";
     };
   };

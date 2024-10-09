@@ -14,6 +14,8 @@ export type Market =
 
 const WP = `${Utils.HOME}/.config/background`
 const Cache = `${Utils.HOME}/Pictures/Wallpapers/Bing`
+//const WP = `${Utils.HOME}/Pictures/Stålenhag`
+//const Cache = `${Utils.HOME}/Pictures/Wallpapers/Bing`
 
 class Wallpaper extends Service {
     static {

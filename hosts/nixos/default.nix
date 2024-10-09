@@ -12,10 +12,18 @@ with lib.my;
     ./boot.nix
   ];
 
+  #services.samba.enableWinbindd = true;
+  #services.samba.nsswins = true;
+
+  hardware.graphics.enable = true;
+
   modules = {
     autologin.enable = true;
-    # autoUpgrade.enable = true;
+    autoUpgrade.enable = true;
     # doas.enable = true;
+    sudo-rs.enable = true;
+    nh.enable = true;
+    # gc.enable = true;
     flatpak.enable = true;
     nix-ld.enable = true;
     stylix.enable = true;
@@ -47,7 +55,7 @@ with lib.my;
       };
     };
     services = {
-      backup.enable = true;
+      # backup.enable = true;
       # containers = {
       # enable = true;
       # distrobox.enable = true;
@@ -55,6 +63,7 @@ with lib.my;
       # podman.enable = true;
       # };
       # firewall.enable = true;
+      # flood.enable = true;
       mullvad-vpn.enable = true;
       power-management.enable = true;
       printer.enable = true;

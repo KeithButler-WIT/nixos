@@ -57,7 +57,7 @@
       apps = {
         lf.enable = true;
         blender.enable = true;
-        bottles.enable = true;
+        # bottles.enable = true;
         godot.enable = true;
         libreoffice.enable = true;
         obs.enable = true;

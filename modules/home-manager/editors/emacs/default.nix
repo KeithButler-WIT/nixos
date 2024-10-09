@@ -29,6 +29,11 @@ in
       ripgrep
       gnutls # for TLS connectivity
 
+      xclip
+      xorg.xwininfo
+      graphviz
+      cmake
+
       ## Optional dependencies
       fd # faster projectile indexing
       imagemagick # for image-dired

@@ -14,6 +14,7 @@ let
         inherit inputs;
         inherit userSettings systemSettings;
         inherit host user;
+        isVm = host == "vm";
       };
       modules = [
         ./${host}/default.nix

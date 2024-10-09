@@ -32,7 +32,7 @@ in {
         mouse_hide_wait = 60;
       };
       shellIntegration.enableFishIntegration = true;
-      theme = "Catppuccin-Mocha";
+      themeFile = "Catppuccin-Mocha";
     };
 
     home.sessionVariables.TERMINAL = "kitty";

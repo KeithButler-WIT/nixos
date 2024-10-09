@@ -17,6 +17,7 @@ in {
       mullvad-vpn
       # tor-browser-bundle-bin
       mediainfo
+      qbittorrent
     ];
 
     # File just needs to exist
@@ -64,13 +65,18 @@ in {
 
         ## Tracker-less torrent and UDP tracker support
         ## (conservative settings for 'private' trackers, change for 'public')
+        dht = auto
         dht.mode.set = auto
+        # dht.mode.set = on
         dht.port.set = 6881
         protocol.pex.set = yes
 
+        # adding new dht server
+        # schedule2 = dht_node, 30, 0, "dht.add_node=router.bittorrent.com:6881"
+
         # DHT nodes for bootstrapping
-        #dht.add_bootstrap = dht.transmissionbt.com:6881
-        #dht.add_bootstrap = dht.libtorrent.org:25401
+        # dht.add_node = dht.transmissionbt.com:6881
+        # dht.add_node = dht.libtorrent.org:25401
 
         trackers.use_udp.set = yes
 
@@ -78,9 +84,9 @@ in {
         ## Peer settings
         throttle.max_uploads.set = 100
         throttle.max_uploads.global.set = 250
-        throttle.min_peers.normal.set = 20
-        throttle.max_peers.normal.set = 60
-        throttle.min_peers.seed.set = 30
+        throttle.min_peers.normal.set = 5
+        throttle.max_peers.normal.set = 50
+        throttle.min_peers.seed.set = 2
         throttle.max_peers.seed.set = 80
         trackers.numwant.set = 80
 
@@ -116,7 +122,7 @@ in {
         system.cwd.set = (directory.default)
         network.http.dns_cache_timeout.set = 25
         schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace, 1000M))
-        pieces.hash.on_completion.set = yes
+        pieces.hash.on_completion.set = no
         #view.sort_current = seeding, greater=d.ratio=
         #keys.layout.set = qwerty
         #network.http.capath.set = "/etc/ssl/certs"

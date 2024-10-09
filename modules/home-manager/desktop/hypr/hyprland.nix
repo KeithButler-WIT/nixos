@@ -10,30 +10,27 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      wallust # better pywal
-      blueman
-      kitty
-      grimblast
+      #wallust # better pywal
       pavucontrol
-      swww
       # wayland-egl
       brightnessctl
-
       galculator
 
-      tofi
+      libnotify
       xwayland
+
+      xwaylandvideobridge
     ];
 
     modules.desktop = {
       # tuigreet.enable = true;
-      wpaperd.enable = lib.mkDefault true;
+      # wpaperd.enable = lib.mkDefault true;
       kanshi.enable = lib.mkDefault true;
       hyprlock.enable = lib.mkDefault true;
       # hyprpaper.enable = lib.mkDefault true;
       hypridle.enable = lib.mkDefault true;
       tofi.enable = lib.mkDefault true;
-      eww.enable = lib.mkDefault true; # TODO Fix eww
+      # eww.enable = lib.mkDefault true; # TODO Fix eww
       ags.enable = lib.mkDefault true;
       # waybar.enable = lib.mkDefault true;
       # waybar.horizontal.enable = lib.mkDefault true;
@@ -76,12 +73,6 @@ in {
       #     "Duckonaut/split-monitor-workspaces",
       # ]
     '';
-
-    home.file.".config/hypr/wallpaper.jpg".source = ../../../../wallpaper.jpg;
-    #home.file.".config/hypr/scripts/lock.sh".source = ./scripts/lock.sh;
-    #home.file.".config/hypr/scripts/sleep.sh".source = ./scripts/sleep.sh;
-    #home.file.".config/wlogout".source= ./wlogout;
-    #home.file.".config/wofi".source= ./wofi;
 
     systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
     wayland.windowManager.hyprland = {
@@ -216,8 +207,8 @@ in {
       
         # Mainmod + Function keys
         bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
-        bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
-        bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.lf}/bin/lf
+        # bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
+        # bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.yazi}/bin/yazi
         bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
 
         # Move focus with mainMod + arrow keys
@@ -275,12 +266,12 @@ in {
         bindm = $mainMod, mouse:273, resizewindow
 
         #background
-        exec-once = ${pkgs.wpaperd}/bin/wpaperd
-
-        # exec-once = waybar
-        exec-once = ags
+        # exec-once = ${pkgs.wpaperd}/bin/wpaperd # stylix handles the wallpaper
+        # bind = $mainMod SHIFT,C, exec, killall -9 wpaperd && wpaperd
 
         #status bar
+        exec-once = ags
+        # exec-once = waybar
         layerrule = blur , waybar
         layerrule = ignorezero , waybar
 
@@ -289,12 +280,10 @@ in {
         bind = ,123, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
         bind = ,121, exec, pactl set-sink-volume @DEFAULT_SINK@ 0%
         # other bindings
-        #bind = $mainMod, O, exec, floorp
         bind = $mainMod, F, fullscreen
         #bind = $mainMod SHIFT, F, fakefullscreen
         bind = ,232,exec,brightnessctl -c backlight set 5%-
         bind = ,233,exec,brightnessctl -c backlight set +5%
-        bind = $mainMod SHIFT,C, exec, killall -9 wpaperd && wpaperd
 
         # Screenshots:
 
@@ -304,10 +293,10 @@ in {
         # $mainMod+Print: Current window
         # $mainMod+Shfit+Print: Current output
 
-        bind = ,Print, exec, grimblast save screen && notify-send Screenshot captured
-        bind = SHIFT, Print, exec, grimblast save area && notify-send Selected\ area captured
-        bind = $mainMod, Print, exec, grimblast save active && notify-send Active\ window captured
-        bind = $mainMod SHIFT, Print, exec, grimblast output active && notify-send Output captured
+        bind = ,Print, exec, ${pkgs.grimblast}/bin/grimblast save screen && ${pkgs.libnotify}/bin/notify-send Screenshot captured
+        bind = SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast save area && ${pkgs.libnotify}/bin/notify-send Selected\ area captured
+        bind = $mainMod, Print, exec, ${pkgs.grimblast}/bin/grimblast save active && ${pkgs.libnotify}/bin/notify-send Active\ window captured
+        bind = $mainMod SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast output active && ${pkgs.libnotify}/bin/notify-send Output captured
 
         # for resizing window
         # will switch to a submap called resize
@@ -353,7 +342,7 @@ in {
         # experimental(might work might won't)
 
         #pre executions (under development)
-        exec-once=exec ${pkgs.xorg.xrdb}/bin/xrdb -load ~/.Xresources
+        #exec-once=exec ${pkgs.xorg.xrdb}/bin/xrdb -load ~/.Xresources
         exec-once= ${pkgs.copyq}/bin/copyq
 
         #video play/pause bindings
@@ -401,10 +390,23 @@ in {
         windowrulev2 = opacity 0.80,$pavucontrol
 
         # -----------------------------------------------------
+        # xwaylandvideobridge workaround
+        # -----------------------------------------------------
+
+        windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
+        windowrulev2 = noanim, class:^(xwaylandvideobridge)$
+        windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
+        windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
+        windowrulev2 = noblur, class:^(xwaylandvideobridge)$
+
+        # -----------------------------------------------------
         # Env Variables
         # -----------------------------------------------------
 
         exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+        # exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+        exec-once = dbus-update-activation-environment --systemd --all
+        exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
         env = XDG_CURRENT_DESKTOP,Hyprland 
         env = XDG_SESSION_TYPE,wayland 

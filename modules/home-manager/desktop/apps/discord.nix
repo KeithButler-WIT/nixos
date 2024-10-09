@@ -10,13 +10,14 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      discord-screenaudio
-      # (pkgs.discord.override {
+      discord
+      # discord-screenaudio
+      # (discord.override {
       #   # remove any overrides that you don't want
       #   withOpenASAR = true;
       #   withVencord = true;
       # })
-      vesktop
+      # vesktop
     ];
 
     xdg.configFile."Vencord/themes/custom.css".text = ''
