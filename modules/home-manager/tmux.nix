@@ -12,7 +12,7 @@ in {
     programs.tmux = {
       enable = true;
       sensibleOnTop = true;
-      shell = "\${pkgs.fish}/bin/fish";
+      shell = "${pkgs.fish}/bin/fish";
       mouse = true;
       plugins = with pkgs; [
         tmuxPlugins.cpu

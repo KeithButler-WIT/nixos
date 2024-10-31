@@ -15,58 +15,6 @@
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
 
-  # boot = {
-  #   # booting with zfs
-  #   supportedFilesystems = [ "zfs" ];
-  #   # kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  #   zfs = {
-  #     devNodes = lib.mkDefault "/dev/disk/by-id";
-  #     package = pkgs.zfs_unstable;
-  #     # requestEncryptionCredentials = cfg.encryption;
-  #   };
-  # };
-
-  # standardized filesystem layout
-  # fileSystems = {
-  #   # boot partition
-  #   "/boot" = {
-  #     device = "/dev/disk/by-label/NIXBOOT";
-  #     fsType = "vfat";
-  #   };
-
-  #   # zfs datasets
-  #   "/" = {
-  #     device = "zroot/root";
-  #     fsType = "zfs";
-  #     neededForBoot = true;
-  #     # neededForBoot = !persistCfg.tmpfs;
-  #   };
-
-  #   "/nix" = {
-  #     device = "zroot/nix";
-  #     fsType = "zfs";
-  #   };
-
-  #   "/tmp" = {
-  #     device = "zroot/tmp";
-  #     fsType = "zfs";
-  #   };
-
-  #   "/persist" = {
-  #     device = "zroot/persist";
-  #     fsType = "zfs";
-  #     neededForBoot = true;
-  #   };
-
-  #   "/persist/cache" = {
-  #     device = "zroot/cache";
-  #     fsType = "zfs";
-  #     neededForBoot = true;
-  #   };
-  # };
-
-  # systemd.services.systemd-udev-settle.enable = false;
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/487106e6-1c6d-48fc-9b42-4ed75085bce6";

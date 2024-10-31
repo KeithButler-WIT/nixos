@@ -23,62 +23,7 @@
   ];
   boot.kernelModules = [ "kvm-amd" ];
 
-  # boot = {
-  #   # booting with zfs
-  #   supportedFilesystems = [ "zfs" ];
-  #   # kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  #   zfs = {
-  #     devNodes = lib.mkDefault "/dev/disk/by-id";
-  #     package = pkgs.zfs_unstable;
-  #     # requestEncryptionCredentials = cfg.encryption;
-  #   };
-  # };
-
   networking.hostId = "cb52f555";
-
-  # standardized filesystem layout
-  fileSystems = {
-    # boot partition
-    "/boot" = {
-      device = "/dev/disk/by-label/NIXBOOT";
-      fsType = "vfat";
-    };
-
-    # zfs datasets
-    "/" = {
-      device = "zroot/root";
-      fsType = "zfs";
-      neededForBoot = true;
-      # neededForBoot = !persistCfg.tmpfs;
-    };
-
-    "/nix" = {
-      device = "zroot/nix";
-      fsType = "zfs";
-    };
-
-    "/tmp" = {
-      device = "zroot/tmp";
-      fsType = "zfs";
-    };
-
-    "/persist" = {
-      device = "zroot/persist";
-      fsType = "zfs";
-      neededForBoot = true;
-    };
-
-    "/persist/cache" = {
-      device = "zroot/cache";
-      fsType = "zfs";
-      neededForBoot = true;
-    };
-  };
-
-  systemd.services.systemd-udev-settle.enable = false;
-
-  # 16GB swap
-  swapDevices = [{ device = "/dev/disk/by-label/SWAP"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

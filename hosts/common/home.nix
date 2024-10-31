@@ -73,10 +73,12 @@
   };
 
   home.packages = with pkgs; [
-    fira-code-symbols
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
+    fira-code-symbols
     corefonts
     noto-fonts
+    roboto
+    lato
 
     nixpkgs-fmt
     shfmt
