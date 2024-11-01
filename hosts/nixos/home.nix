@@ -21,7 +21,6 @@ with lib.my;
 
     wine
     #TODO: remove
-    lazygit
     ntlmrecon
   ];
 

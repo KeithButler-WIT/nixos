@@ -9,9 +9,10 @@ in {
     mkBoolOpt false;
 
   config = mkIf cfg.enable {
-    home.packages = [
-      # pkgs.github-desktop
-      pkgs.delta
+    home.packages = with pkgs; [
+      # github-desktop
+      delta
+      lazygit
     ];
 
     programs.gh = {
@@ -72,6 +73,12 @@ in {
         merge.conflictstyle = "diff3";
         diff.colorMoved = "default";
 
+        core.compression = 0; # Quick fix for Fatal: early EOF’ Error
+        core.packedGitLimit = "512m"; 
+        core.packedGitWindowSize = "512m"; 
+        pack.deltaCacheSize = "2047m";
+        pack.packSizeLimit = "2047m";
+        pack.windowMemory = "2047m";
       };
       lfs.enable = true;
       aliases = {
