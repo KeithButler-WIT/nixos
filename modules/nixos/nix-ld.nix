@@ -173,7 +173,6 @@ in {
         fontconfig
         freetype
         dbus
-        alsaLib
         expat
       ];
     };
