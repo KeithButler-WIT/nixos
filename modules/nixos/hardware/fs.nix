@@ -34,7 +34,7 @@ in {
           # booting with zfs
           supportedFilesystems.zfs = true;
           # kernelPackages = pkgs.linuxPackages_xanmod_latest;
-          kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
+          # kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
           zfs = {
             devNodes =
               if isVm then
