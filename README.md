@@ -21,19 +21,19 @@
 1. Getting:
 
 ```sh
-    sh <(curl -L https://raw.githubusercontent.com/keithbutler-wit/nixos/main/install.sh)
+sh <(curl -L https://raw.githubusercontent.com/keithbutler-wit/nixos/main/install.sh)
 ```
 
 1. Building
 
 ```sh
-    sudo nixos-rebuild switch --flake 'github:keithbutler-wit/nixos#nixos'
+sudo nixos-rebuild switch --flake 'github:keithbutler-wit/nixos#nixos'
 ```
 
 ### Non-Nixos
 
 ```sh
-git clone https://github.com/keithbutler-wit/nixos
+git clone git@github.com:KeithButler-WIT/nixos.git
 ```
 
 ### Build-Ios
