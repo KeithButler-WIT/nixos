@@ -49,8 +49,8 @@ in
       };
 
       initLua = ''
-        			require("full-border"):setup()
-        			require("starship"):setup()
+        require("full-border"):setup()
+        require("starship"):setup()
       '';
 
       settings = {
