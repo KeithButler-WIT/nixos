@@ -65,7 +65,7 @@ with lib.my;
       # firewall.enable = true;
       # flood.enable = true;
       mullvad-vpn.enable = true;
-      power-management.enable = true;
+      # power-management.enable = true;
       printer.enable = true;
       ssh.enable = true;
       streaming = {
