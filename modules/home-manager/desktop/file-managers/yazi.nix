@@ -38,20 +38,20 @@ in
       shellWrapperName = "y";
 
       plugins = {
-        chmod = "${plugins-repo}/chmod.yazi";
-        full-border = "${plugins-repo}/full-border.yazi";
-        starship = pkgs.fetchFromGitHub {
-          owner = "Rolv-Apneseth";
-          repo = "starship.yazi";
-          rev = "0a141f6dd80a4f9f53af8d52a5802c69f5b4b618";
-          sha256 = "sha256-OL4kSDa1BuPPg9N8QuMtl+MV/S24qk5R1PbO0jgq2rA=";
-        };
+        #chmod = "${plugins-repo}/chmod.yazi";
+        #full-border = "${plugins-repo}/full-border.yazi";
+        #starship = pkgs.fetchFromGitHub {
+        #  owner = "Rolv-Apneseth";
+        #  repo = "starship.yazi";
+        #  rev = "0a141f6dd80a4f9f53af8d52a5802c69f5b4b618";
+        #  sha256 = "sha256-OL4kSDa1BuPPg9N8QuMtl+MV/S24qk5R1PbO0jgq2rA=";
+        #};
       };
 
-      initLua = ''
-        require("full-border"):setup()
-        require("starship"):setup()
-      '';
+      #initLua = ''
+      #  require("full-border"):setup()
+      #  require("starship"):setup()
+      #'';
 
       settings = {
         manager = {
