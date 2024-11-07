@@ -116,10 +116,10 @@ in {
             size = 5;
             passes = 1;
           };
-          drop_shadow = true;
-          shadow_range = 4;
-          shadow_render_power = 3;
-          # "col.shadow" = "rgba (1 a1a1aee)";
+          # "col.shadow" = "rgba(1e1e2e99)";
+          # drop_shadow = true;
+          # shadow_range = 4;
+          # shadow_render_power = 3;
         };
 
         animations = {
