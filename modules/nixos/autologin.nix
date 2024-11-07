@@ -15,7 +15,7 @@ in {
       user = userSettings.username;
     };
 
-    services.getty.autologinUser = userSettings.username;
+    # services.getty.autologinUser = userSettings.username;
 
   };
 
