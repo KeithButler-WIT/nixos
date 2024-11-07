@@ -34,42 +34,41 @@ in {
           inhibit_screensaver = 0;
           renice = 10;
         };
+        custom = {
+          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+        };
       };
     };
     users.users.${userSettings.username}.extraGroups = [ "gamemode" ];
 
     programs.steam = {
       enable = true;
-      package = pkgs.steam.override {
-        # withJava = true;
-        # withPrimus = true;
-        extraPkgs = pkgs: [
-          pkgs.ncurses6
-          pkgs.libGLU
-          pkgs.harfbuzz
-          pkgs.bubblewrap
-        ];
+      extraPackages = with pkgs; [
+        gamescope
+      ];
         # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
-      };
+      localNetworkGameTransfers.openFirewall = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable = true;
-      extraCompatPackages = [
-        # add the packages that you would like to have in Steam's extra compatibility packages list
-        pkgs.proton-ge-bin
-        # etc.
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
       ];
       platformOptimizations.enable = true;
+      extest.enable = true; # to translate X11 input events to uinput events
+      protontricks.enable = true;
     };
+
+    hardware.steam-hardware.enable = true;
 
     environment.systemPackages = with pkgs; [
       heroic
       lutris
       protonup-qt
       protonup-ng
-      protontricks
+      wine
       winetricks
-      protontricks
       openmw
       openmw-tes3mp
       steam-run
