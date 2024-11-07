@@ -12,14 +12,13 @@ with lib.my;
 
     nsxiv
 
-    vscode
-    jetbrains-toolbox
+    # vscode
+    # jetbrains-toolbox
 
     scrcpy
     rclone-browser
     xdotool
 
-    wine
     #TODO: remove
     ntlmrecon
   ];
@@ -42,7 +41,7 @@ with lib.my;
       };
       apps = {
         bitwarden.enable = true;
-        blender.enable = true;
+        # blender.enable = true;
         # bottles.enable = true;
         godot.enable = true;
         libreoffice.enable = true;
