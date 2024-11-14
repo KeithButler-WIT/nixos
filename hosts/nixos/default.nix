@@ -38,7 +38,11 @@ with lib.my;
         steam.enable = true;
       };
     };
-    # dev = { };
+    dev = {
+      # haskell = true;
+      # rust = true;
+      python = true;
+    };
     editors = {
       emacs.enable = true;
     };
@@ -84,6 +88,8 @@ with lib.my;
     # inkscape # TODO: make module
     # conda # TODO: make module
     crun
+    libsForQt5.qt5.qtwayland
+    kdePackages.qtwayland
   ];
 
   services.gvfs.enable = true;

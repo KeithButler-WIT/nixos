@@ -4,10 +4,6 @@ with lib.my;
 {
 
   home.packages = with pkgs; [
-    # TODO add to direnv in required projects
-    # pkgs.python311
-    (python3.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 wxpython]))
-
     v4l-utils
 
     nsxiv
