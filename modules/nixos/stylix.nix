@@ -11,6 +11,8 @@ in {
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
+      # package = inputs.stylix.nixosModules.stylix;
+      # package = inputs.stylix.packages."${pkgs.system}".stylix;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       image = ../../wallpaper.jpg;
       fonts = {

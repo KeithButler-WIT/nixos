@@ -51,7 +51,9 @@
     # ormolu.url = "github:tweag/ormolu";
 
     # https://www.youtube.com/watch?v=ljHkWgBaQWU
-    stylix.url = "github:danth/stylix";
+    # stylix.url = "github:danth/stylix";
+    # TODO: Remove when stlyix readds fix
+    stylix.url = "github:danth/stylix?rev=762c07ee10b381bc8e085be5b6c2ec43139f13b0";
   };
 
   outputs = { nixpkgs, nixpkgs-stable, self, hosts, hyprland, home-manager, ... } @ inputs:
