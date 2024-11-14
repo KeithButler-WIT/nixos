@@ -56,12 +56,12 @@ with lib.my;
     };
     services = {
       # backup.enable = true;
-      # containers = {
-      # enable = true;
-      # distrobox.enable = true;
+      containers = {
+        enable = true;
+        distrobox.enable = true;
       # docker.enable = true;
-      # podman.enable = true;
-      # };
+        podman.enable = true;
+      };
       # firewall.enable = true;
       # flood.enable = true;
       mullvad-vpn.enable = true;
@@ -83,6 +83,7 @@ with lib.my;
     # stack
     # inkscape # TODO: make module
     # conda # TODO: make module
+    crun
   ];
 
   services.gvfs.enable = true;
