@@ -32,16 +32,10 @@ with lib.my;
       enable = true;
       hyprland.enable = true;
       # plasma6.enable = true;
-      # thunar.enable = true;
       tuigreet.enable = true;
       gaming = {
         steam.enable = true;
       };
-    };
-    dev = {
-      # haskell = true;
-      # rust = true;
-      python = true;
     };
     editors = {
       emacs.enable = true;

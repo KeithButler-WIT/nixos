@@ -80,6 +80,9 @@ with lib.my;
       };
       gtk.enable = true;
     };
+    dev = {
+      python.enable = true;
+    };
     editors = {
       default = "nvim";
       alternate = "emacsclient";
