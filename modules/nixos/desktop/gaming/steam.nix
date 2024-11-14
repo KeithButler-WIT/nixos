@@ -75,6 +75,7 @@ in {
       steamcmd
       # steam-tui
       mangohud
+      steamtinkerlaunch
     ];
 
     # Better for steam proton games
