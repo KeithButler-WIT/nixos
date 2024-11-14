@@ -82,6 +82,9 @@
 
     xdragon
     yt-dlp
+
+    nix-index 
+    inputs.nix-alien.packages.${system}.nix-alien
   ];
 
   # Let Home Manager install and manage itself.

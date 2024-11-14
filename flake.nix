@@ -39,6 +39,7 @@
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
     yazi.url = "github:sxyazi/yazi";
+    nix-alien.url = "github:thiagokokada/nix-alien";
 
     # impermanence.url = "github:nix-community/impermanence";
 
@@ -46,9 +47,6 @@
     #   url = "github:Mic92/sops-nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-    # Haskell thing
-    # ormolu.url = "github:tweag/ormolu";
 
     # https://www.youtube.com/watch?v=ljHkWgBaQWU
     # stylix.url = "github:danth/stylix";
