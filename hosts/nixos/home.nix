@@ -21,6 +21,10 @@ with lib.my;
 
     #TODO: remove
     ntlmrecon
+
+    p7zip
+    zenity
+    winetricks
   ];
 
   modules = {
