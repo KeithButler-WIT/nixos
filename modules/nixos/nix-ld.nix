@@ -33,6 +33,11 @@ in {
         gtk3
         icu
 
+        gss
+        krb5
+        libatomic_ops
+        nss
+
         # libdl
         # libm
         # libpython3
