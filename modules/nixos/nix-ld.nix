@@ -33,6 +33,7 @@ in {
         gtk3
         icu
 
+        libz
         gss
         krb5
         libatomic_ops
