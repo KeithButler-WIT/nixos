@@ -15,6 +15,7 @@ in {
       # wayland-egl
       brightnessctl
       galculator
+      wlogout
 
       libnotify
       xwayland
@@ -270,10 +271,10 @@ in {
         # bind = $mainMod SHIFT,C, exec, killall -9 wpaperd && wpaperd
 
         #status bar
-        exec-once = ags
-        # exec-once = waybar
-        layerrule = blur , waybar
-        layerrule = ignorezero , waybar
+        # exec-once = ags
+        exec-once = ${pkgs.waybar}/bin/waybar
+        # layerrule = blur , waybar
+        # layerrule = ignorezero , waybar
 
         # set volume (laptops only and may or may not work on PCs)
         bind = ,122, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -281,7 +282,7 @@ in {
         bind = ,121, exec, pactl set-sink-volume @DEFAULT_SINK@ 0%
         # other bindings
         bind = $mainMod, F, fullscreen
-        #bind = $mainMod SHIFT, F, fakefullscreen
+        # bind = $mainMod SHIFT, F, fakefullscreen
         bind = ,232,exec,brightnessctl -c backlight set 5%-
         bind = ,233,exec,brightnessctl -c backlight set +5%
 
