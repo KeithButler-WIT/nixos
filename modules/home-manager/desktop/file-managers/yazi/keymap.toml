@@ -1,0 +1,35 @@
+[[manager.prepend_keymap]]
+on   = "<C-d>"
+run  = "shell 'dragon -x -i -T \"$1\"' --confirm"
+desc = "Open shell here"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "d" ]
+run  = "cd ~/Downloads"
+desc = "Cd to ~/Downloads"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ]
+run  = "cd ~/Pictures"
+desc = "Cd to ~/Pictures"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "s" ]
+run  = "cd ~/Pictures/Screenshots"
+desc = "Cd to ~/Pictures/Screenshots"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "c" ]
+run  = "cd ~/OneDrive_20089137@wit.ie/Non-College-Stuff/CVs/KeithsCV"
+desc = "Cd to CVs"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "f" ]
+run  = 'search_do --via=fd --args="-d 3"'
+desc = "Switch to the flat view with a max depth of 3"
+
+[[manager.prepend_keymap]]
+on  = "y"
+run = [ '''
+	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
+''', "yank" ]
