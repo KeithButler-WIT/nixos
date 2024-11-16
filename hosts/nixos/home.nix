@@ -30,7 +30,12 @@ with lib.my;
     tmux.enable = true;
     desktop = {
       hyprland.enable = true;
-      # waybar.enable = true;
+      bars = {
+        waybar = { 
+          enable = true;
+          vertical = true;
+        };
+      };
       browsers = {
         default = "floorp";
         # firefox.enable = true;

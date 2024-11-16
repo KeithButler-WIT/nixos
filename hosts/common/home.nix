@@ -79,6 +79,7 @@
     noto-fonts
     roboto
     lato
+    font-awesome
 
     xdragon
     yt-dlp
