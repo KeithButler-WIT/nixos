@@ -29,6 +29,11 @@ in
       wl-clipboard
     ];
 
+    home.file.".config/yazi" = {
+      source = ./yazi;
+      recursive = true;
+    };
+
     programs.yazi = {
       enable = true;
       enableBashIntegration = true;
