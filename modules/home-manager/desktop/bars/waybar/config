@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "left",
   "width": 28,
-  "margin": "2 0 2 2",
+  "margin": "0 0 0 0",
   "spacing": 2,
   "modules-left": [
     "clock",
@@ -81,8 +81,7 @@
 		"warning": 30,
   		"critical": 15
   	},
-    "tooltip-format" = "{timeTo} {capacity} % | {power} W",
-},
+  },
   "pulseaudio": {
     "rotate": 90,
     "format": "{icon} {volume}%",
