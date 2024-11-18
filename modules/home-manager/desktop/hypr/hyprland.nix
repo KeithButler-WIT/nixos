@@ -272,7 +272,7 @@ in {
 
         #status bar
         # exec-once = ags
-        exec-once = ${pkgs.waybar}/bin/waybar
+        # exec-once = ${pkgs.waybar}/bin/waybar
         # layerrule = blur , waybar
         # layerrule = ignorezero , waybar
 
