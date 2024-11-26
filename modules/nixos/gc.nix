@@ -9,10 +9,12 @@ in {
     mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
-    nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+    nix = {
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
     };
   };
 
