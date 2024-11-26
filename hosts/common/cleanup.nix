@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, userSettings, ... }:
 
 
 {
@@ -7,7 +7,9 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
-      substituters = [
+      trusted-users = [ userSettings.username "root" "@wheel" ];
+      allowed-users = [ userSettings.username "@wheel" ];
+      trusted-substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
         "https://devenv.cachix.org"
@@ -27,6 +29,11 @@
       ];
     };
     optimise.automatic = true;
+    # Runs gc when theres 100mb left
+    extraOptions = ''
+      min-free = ${toString (100 * 1024 * 1024)}
+      max-free = ${toString (1024 * 1024 * 1024)}
+    '';
   };
 
   systemd = {

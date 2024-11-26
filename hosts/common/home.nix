@@ -25,7 +25,6 @@
     # package = pkgs.nix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
       trusted-users = [ userSettings.username ];
       extra-substituters = [
         "https://cache.nixos.org/"
@@ -48,11 +47,6 @@
       # substituters = [ "https://cache.nixos.org" "https://tomodachi94.cachix.org" ];
       # trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "tomodachi94.cachix.org-1:E1WFk+SYPtq3FFO+NvDgsyciIHg8nHxB/z7qNfojxpI=" ];
     };
-    gc = {
-      automatic = true;
-      frequency = "weekly";
-      options = "--delete-older-than 7d";
-    };
   };
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
@@ -73,7 +67,8 @@
   };
 
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
+    # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly"  "JetBrainsMono" ]; })
     fira-code-symbols
     corefonts
     noto-fonts
