@@ -25,6 +25,7 @@
     # FZF_DEFAULT_OPTS = "--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1";
     _JAVA_AWT_WM_NONREPARENTING = 1; # Fix for Java applications in dwm
 
+    MANPAGER = "nvim +Man!";
     NIXOS_OZONE_WL = "1";
     __GL_GSYNC_ALLOWED = "0";
     __GL_VRR_ALLOWED = "0";
