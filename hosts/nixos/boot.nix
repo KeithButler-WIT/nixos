@@ -25,9 +25,16 @@
   #   ];
   # };
 
+ # fileSystems."/nix" = {
+ #     device = "/dev/disk/by-label/nix";
+ #     fsType = "ext4";
+ #     neededForBoot = true;
+ #     options = [ "noatime" ];
+ # };
+
   fileSystems."/run/media/${userSettings.username}/game-drive" = {
     # device = "game-drive/fs1";
-    device = "/dev/disk/by-uuid/253c00e5-e419-4d05-80d1-cd98584bae1b";
+    device = "/dev/disk/by-label/game-drive";
     fsType = "ext4";
     options = [
       # If you don't have this options attribute, it'll default to "defaults" 
@@ -40,7 +47,7 @@
   # fileSystems."/mnt/4TB-BACKUP" = {
   fileSystems."/run/media/${userSettings.username}/4TB-BACKUP" = {
     # device = "game-drive/fs1";
-    device = "/dev/disk/by-uuid/B9DD-8882";
+    device = "/dev/disk/by-label/4TB-BACKUP";
     fsType = "exfat";
     options = [
       # If you don't have this options attribute, it'll default to "defaults" 
