@@ -22,19 +22,19 @@ in {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
-        dataDir = "/home/${userSettings.username}/.local/share/radarr";
+        #dataDir = "/home/${userSettings.username}/.local/share/radarr";
       };
       services.sonarr = {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
-        dataDir = "/home/${userSettings.username}/.local/share/sonarr";
+        #dataDir = "/home/${userSettings.username}/.local/share/sonarr";
       };
       services.jackett = {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
-        dataDir = "/home/${userSettings.username}/.local/share/jackett";
+        #dataDir = "/home/${userSettings.username}/.local/share/jackett";
       };
     }
 
@@ -43,7 +43,7 @@ in {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
-        dataDir = "/home/${userSettings.username}/.local/share/plex";
+        #dataDir = "/home/${userSettings.username}/.local/share/plex";
       };
     })
 
@@ -52,8 +52,8 @@ in {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
-        dataDir = "/home/${userSettings.username}/.local/share/jellyfin";
-        cacheDir = "/home/${userSettings.username}/.local/share/jellyfin/cache";
+        #dataDir = "/home/${userSettings.username}/.local/share/jellyfin/data";
+        #cacheDir = "/home/${userSettings.username}/.local/share/jellyfin/cache";
       };
       environment.systemPackages = [
         pkgs.jellyfin
