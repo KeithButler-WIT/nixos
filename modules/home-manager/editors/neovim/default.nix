@@ -24,8 +24,8 @@ in {
         extraPackages = with pkgs; [
           nixd
           luajitPackages.lua-lsp
-          #rnix-lsp
-          haskell-language-server
+          # rnix-lsp
+          # haskell-language-server
           cmake-language-server
           markdown-oxide
           vim-language-server
