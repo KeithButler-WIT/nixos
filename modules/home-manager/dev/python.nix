@@ -10,7 +10,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      (python3.withPackages (ps: with ps; [ types-beautifulsoup4 beautifulsoup4 wxpython]))
+      (python3.withPackages (ps: with ps; [ 
+        types-beautifulsoup4 
+        beautifulsoup4 
+        wxpython
+        requests
+      ]))
     ];
   };
 
