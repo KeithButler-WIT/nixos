@@ -7,6 +7,7 @@ with lib.my;
     v4l-utils
 
     nsxiv
+    wiki-tui
 
     # vscode
     # jetbrains-toolbox
@@ -26,6 +27,7 @@ with lib.my;
   modules = {
     # just.enable = true;
     nh.enable = true;
+    gc.enable = true;
     torrent.enable = true;
     tmux.enable = true;
     desktop = {
@@ -49,7 +51,7 @@ with lib.my;
         # blender.enable = true;
         # bottles.enable = true;
         godot.enable = true;
-        libreoffice.enable = true;
+        # libreoffice.enable = true;
         pass.enable = true;
         signal.enable = true;
         # slack.enable = true;
@@ -59,7 +61,7 @@ with lib.my;
         weeb.enable = true;
         # zoom.enable = true;
         discord.enable = true;
-        prismlauncher.enable = true;
+        # prismlauncher.enable = true;
         r2modman.enable = true;
       };
       file-managers = {
@@ -72,7 +74,7 @@ with lib.my;
       media = {
         video = {
           enable = true;
-          capture.enable = true;
+          # capture.enable = true;
           # editor.enable = true;
           player.enable = true;
           tools.enable = true;
