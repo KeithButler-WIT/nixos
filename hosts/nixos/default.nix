@@ -23,7 +23,7 @@ with lib.my;
     # doas.enable = true;
     sudo-rs.enable = true;
     nh.enable = true;
-    # gc.enable = true;
+    # gc.enable = true; # conflicts with nh clean
     flatpak.enable = true;
     nix-ld.enable = true;
     stylix.enable = true;
@@ -54,12 +54,12 @@ with lib.my;
     };
     services = {
       # backup.enable = true;
-      containers = {
-        enable = true;
-        distrobox.enable = true;
-      # docker.enable = true;
-        podman.enable = true;
-      };
+      # containers = {
+      #   enable = true;
+      #   distrobox.enable = true;
+      #   docker.enable = true;
+      #   podman.enable = true;
+      # };
       # firewall.enable = true;
       # flood.enable = true;
       mullvad-vpn.enable = true;
