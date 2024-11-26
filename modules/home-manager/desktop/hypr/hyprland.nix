@@ -32,7 +32,7 @@ in {
       hypridle.enable = lib.mkDefault true;
       tofi.enable = lib.mkDefault true;
       # eww.enable = lib.mkDefault true; # TODO Fix eww
-      ags.enable = lib.mkDefault true;
+      # ags.enable = lib.mkDefault true;
       # waybar.enable = lib.mkDefault true;
       # waybar.horizontal.enable = lib.mkDefault true;
       # waybar.vertical.enable = lib.mkDefault true;
