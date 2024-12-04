@@ -73,7 +73,7 @@ in {
         pipewire
         stdenv.cc.cc
         stdenv.cc.cc.lib
-        libstdcxx5
+        #libstdcxx5
         systemd
         vulkan-loader
         xorg.libX11
