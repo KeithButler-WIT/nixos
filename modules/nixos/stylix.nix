@@ -19,7 +19,7 @@ in {
       fonts = {
         monospace = {
           name = "JetBrainsMono Nerd Font Mono";
-          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+          package = pkgs.nerd-fonts.jetbrains-mono;
         };
         sansSerif = {
           package = pkgs.dejavu_fonts;
@@ -31,7 +31,7 @@ in {
         };
         emoji = {
           name = "Nerd Fonts Symbols Only";
-          package = pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; };
+          package = pkgs.nerd-fonts.symbols-only;
         };
         # sizes = {
         #   applications = 12;

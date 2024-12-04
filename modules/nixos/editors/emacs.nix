@@ -26,7 +26,7 @@ in
     environment.variables.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 
     fonts.packages = [
-      (pkgs.nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      pkgs.nerd-fonts.symbols-only
     ];
   };
 

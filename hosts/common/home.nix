@@ -68,7 +68,8 @@
 
   home.packages = with pkgs; [
     # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly"  "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
     fira-code-symbols
     corefonts
     noto-fonts
