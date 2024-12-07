@@ -13,6 +13,7 @@ in {
       # github-desktop
       delta
       lazygit
+      git-credential-manager
     ];
 
     programs.gh = {
@@ -48,8 +49,8 @@ in {
 
         init.defaultBranch = "main";
 
-        credential.helper = "/usr/bin/git-credential-manager";
-        credential.credentialStore = "gpg";
+        credential.helper = "bw";
+        # credential.credentialStore = "gpg";
 
         safe.directory = "/opt/flutter";
 
