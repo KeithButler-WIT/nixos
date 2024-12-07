@@ -15,13 +15,6 @@
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
 
-  boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device = "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
-
-  # 16GB swap
-  # swapDevices = [{ device = "/dev/disk/by-label/SWAP"; }];
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/e0f083ce-a92f-4533-a2b8-94af1beb7a30"; }];
-
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
