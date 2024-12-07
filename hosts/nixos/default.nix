@@ -84,6 +84,7 @@ with lib.my;
     crun
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
+    samrewritten
   ];
 
   services.gvfs.enable = true;
