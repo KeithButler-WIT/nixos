@@ -15,17 +15,6 @@
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/487106e6-1c6d-48fc-9b42-4ed75085bce6";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/0D5D-3591";
-      fsType = "vfat";
-    };
-  };
-
   boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device = "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
 
   # 16GB swap
