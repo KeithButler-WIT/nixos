@@ -33,6 +33,8 @@ in {
         gtk3
         icu
 
+        fuse
+
         libz
         gss
         krb5
