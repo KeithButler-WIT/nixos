@@ -3,7 +3,7 @@ let
   repo_url = "https://raw.githubusercontent.com/keithbutler-wit/nixos";
   mkIso =
     nixpkgs: isoPath:
-    lib.nixosSystem {
+    nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
         "${nixpkgs}/nixos/modules/installer/cd-dvd/${isoPath}.nix"
