@@ -15,6 +15,7 @@ with lib.my;
     scrcpy
     rclone-browser
     xdotool
+    freetube
 
     #TODO: remove
     ntlmrecon
