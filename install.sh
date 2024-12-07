@@ -198,10 +198,10 @@ echo "Installing NixOS"
 # nixos minimal iso does not have git for whatever fucking stupid reason???
 if [[ $repo == "github:keithbutler-wit/nixos" ]]; then
     # root password is irrelevant if initialPassword is set in the config
-    nix-shell -p git nixFlakes --command \
+    nix-shell -p git nixVersions.stable --command \
         "sudo nixos-install --no-root-password --flake \"$repo/${git_rev:-main}#$host\" --option tarball-ttl 0"
 else
-    nix-shell -p git nixFlakes --command \
+    nix-shell -p git nixVersions.stable --command \
         "sudo nixos-install --flake \"$repo/${git_rev:-main}#$host\" --option tarball-ttl 0"
 fi
 
