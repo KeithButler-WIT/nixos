@@ -26,13 +26,14 @@ in {
       packages = [
         "com.github.tchx84.Flatseal"
         "com.unity.UnityHub"
-        # "com.valvesoftware.Steam" # Steam works better as flatpak
-        # "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
-        # "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
-        # "com.valvesoftware.Steam.Utility.gamescope"
-        # "com.valvesoftware.Steam.Utility.protontricks"
-        # "com.valvesoftware.SteamLink"
-        # "org.freedesktop.Platform.VulkanLayer.MangoHud"
+        "com.valvesoftware.Steam" # Steam works better as flatpak
+        "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
+        "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
+        #"com.valvesoftware.Steam.Utility.gamescope"
+        #""
+        "com.valvesoftware.Steam.Utility.protontricks"
+        "com.valvesoftware.SteamLink"
+        "org.freedesktop.Platform.VulkanLayer.MangoHud"
       ];
       # update.onActivation = true;
       update.auto = {
