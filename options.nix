@@ -5,7 +5,7 @@
     timezone = "Europe/Dublin";
     locale = "en_IE.UTF-8";
   };
-  # User Variables 
+  # User Variables
   userSettings = rec {
     hostname = "nixos";
     username = "keith";

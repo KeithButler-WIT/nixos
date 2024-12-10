@@ -8,12 +8,9 @@ in {
   options.modules.nix-ld.enable =
     mkBoolOpt false;
 
-
   config = lib.mkIf cfg.enable {
-    # Enable nix ld
     programs.nix-ld = {
       enable = true;
-      # Sets up all the libraries to load
       # Sets up all the libraries to load
       libraries = with pkgs; [
         alsa-lib

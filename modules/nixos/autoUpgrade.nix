@@ -16,7 +16,6 @@ in {
         "--update-input"
         "nixpkgs"
         "--commit-lock-file"
-        "-L"
       ];
       dates = "daily";
       randomizedDelaySec = "45min";

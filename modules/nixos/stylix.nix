@@ -22,16 +22,17 @@ in {
           package = pkgs.nerd-fonts.jetbrains-mono;
         };
         sansSerif = {
-          package = pkgs.dejavu_fonts;
           name = "DejaVu Sans";
+          package = pkgs.dejavu_fonts;
         };
         serif = {
-          package = pkgs.dejavu_fonts;
           name = "DejaVu Serif";
+          package = pkgs.dejavu_fonts;
         };
         emoji = {
           name = "Nerd Fonts Symbols Only";
           package = pkgs.nerd-fonts.symbols-only;
+          #package = pkgs.jetbrains-mono;
         };
         # sizes = {
         #   applications = 12;
