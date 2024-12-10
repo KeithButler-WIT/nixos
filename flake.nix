@@ -52,13 +52,28 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, self, hosts, hyprland, home-manager, ... } @ inputs:
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-stable,
+      self,
+      hosts,
+      hyprland,
+      home-manager,
+      ...
+    }@inputs:
     let
-      forAllSystems = function:
+      forAllSystems =
+        function:
         nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
       commonInherits = {
         inherit (nixpkgs) lib;
-        inherit self inputs nixpkgs nixpkgs-stable;
+        inherit
+          self
+          inputs
+          nixpkgs
+          nixpkgs-stable
+          ;
         inherit (import ./options.nix) systemSettings userSettings;
         user = "keith";
         system = "x86_64-linux";
@@ -83,7 +98,8 @@
     in
     {
 
-      nixosConfigurations = (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
+      nixosConfigurations =
+        (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
 
       # homeConfigurations = {
       #   keith = inputs.home-manager.lib.homeManagerConfiguration {
@@ -100,9 +116,7 @@
       inherit self;
 
       # templates for devenv
-      templates = import
-        ./templates;
+      templates = import ./templates;
 
     };
 }
-
