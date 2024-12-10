@@ -12,10 +12,12 @@
     allowUnfree = true;
     allowUnfreePredicate = _: true;
     permittedInsecurePackages = [
-      "openssl-1.1.1u"
-      "python-2.7.18.6"
-      "nodejs-16.20.1"
-      "nodejs-16.20.2"
+      "aspnetcore-runtime-6.0.36"
+      "aspnetcore-runtime-wrapped-6.0.36"
+      "dotnet-sdk-6.0.428"
+      "dotnet-sdk-wrapped-6.0.428"
+      "dotnet-runtime-6.0.36"
+      "dotnet-runtime-wrapped-6.0.36"
     ];
   };
 
@@ -26,7 +28,7 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ userSettings.username ];
-      extra-substituters = [
+      extra-trusted-substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
         "https://devenv.cachix.org"
@@ -68,8 +70,8 @@
 
   home.packages = with pkgs; [
     # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "SourceCodePro" "FantasqueSansMono" "FiraCode" "OpenDyslexic" "JetBrainsMono" "Hack" ]; })
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.symbols-only
+    #nerd-fonts.jetbrains-mono
+    #nerd-fonts.symbols-only
     fira-code-symbols
     corefonts
     noto-fonts
