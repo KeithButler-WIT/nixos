@@ -64,7 +64,7 @@ in {
                 "/dev/disk/by-partuuid";
 
             package = pkgs.zfs_unstable;
-            requestEncryptionCredentials = config.custom.zfs.encryption;
+            # requestEncryptionCredentials = config.custom.zfs.encryption;
           };
         };
 
