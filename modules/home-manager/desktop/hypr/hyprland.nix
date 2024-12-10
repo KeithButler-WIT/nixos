@@ -28,7 +28,7 @@ in {
       # wpaperd.enable = lib.mkDefault true;
       kanshi.enable = lib.mkDefault true;
       hyprlock.enable = lib.mkDefault true;
-      # hyprpaper.enable = lib.mkDefault true;
+      hyprpaper.enable = lib.mkDefault true;
       hypridle.enable = lib.mkDefault true;
       tofi.enable = lib.mkDefault true;
       # eww.enable = lib.mkDefault true; # TODO Fix eww
