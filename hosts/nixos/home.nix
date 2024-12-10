@@ -51,6 +51,7 @@ with lib.my;
         bitwarden.enable = true;
         # blender.enable = true;
         # bottles.enable = true;
+        freetube.enable = true;
         godot.enable = true;
         # libreoffice.enable = true;
         pass.enable = true;
@@ -90,6 +91,7 @@ with lib.my;
     };
     dev = {
       python.enable = true;
+      rust.enable = true;
     };
     editors = {
       default = "nvim";
