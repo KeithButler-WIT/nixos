@@ -89,10 +89,6 @@ with lib.my;
       };
       gtk.enable = true;
     };
-    dev = {
-      python.enable = true;
-      rust.enable = true;
-    };
     editors = {
       default = "nvim";
       alternate = "emacsclient";

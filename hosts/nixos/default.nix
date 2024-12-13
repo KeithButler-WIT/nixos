@@ -37,6 +37,13 @@ with lib.my;
         steam.enable = true;
       };
     };
+    dev = {
+      xdg.enable = true;
+      cc.enable = true;
+      python.enable = true;
+      rust.enable = true;
+      shell.enable = true;
+    };
     editors = {
       emacs.enable = true;
     };

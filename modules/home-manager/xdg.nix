@@ -46,7 +46,6 @@
       #TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
       ANDROID_SDK_HOME = "$XDG_CONFIG_HOME/android";
       ANDROID_HOME = "$XDG_CONFIG_HOME/android";
-      CARGO_HOME = "$XDG_DATA_HOME/cargo";
       GOPATH = "$XDG_DATA_HOME/go";
       GOMODCACHE = "$XDG_CACHE_HOME/go/mod";
       ANSIBLE_CONFIG = "$XDG_CONFIG_HOME/ansible/ansible.cfg";
