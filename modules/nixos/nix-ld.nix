@@ -38,6 +38,9 @@ in {
         libatomic_ops
         nss
 
+        libxkbcommon
+
+        loguru
         # libdl
         # libm
         # libpython3
@@ -171,7 +174,7 @@ in {
         librsvg
         xorg.libXft
         libvdpau
-        gnome2.pango
+        #gnome2.pango
         cairo
         atk
         gdk-pixbuf
