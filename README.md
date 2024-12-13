@@ -46,6 +46,8 @@ nix build ".#nixosConfigurations.minimal-iso-unstable.config.system.build.isoIma
 
 <https://github.com/iynaix/dotfiles>
 
+<https://github.com/hlissner/dotfiles>
+
 ## TODO
 
 * Enable firewall
