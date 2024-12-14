@@ -23,6 +23,8 @@ with lib.my;
     p7zip
     zenity
     winetricks
+
+    libxkbcommon
   ];
 
   modules = {
@@ -33,12 +35,6 @@ with lib.my;
     tmux.enable = true;
     desktop = {
       hyprland.enable = true;
-      bars = {
-        waybar = { 
-          enable = true;
-          vertical = true;
-        };
-      };
       browsers = {
         default = "floorp";
         # firefox.enable = true;
@@ -53,7 +49,7 @@ with lib.my;
         # bottles.enable = true;
         freetube.enable = true;
         godot.enable = true;
-        # libreoffice.enable = true;
+        libreoffice.enable = true;
         pass.enable = true;
         signal.enable = true;
         # slack.enable = true;

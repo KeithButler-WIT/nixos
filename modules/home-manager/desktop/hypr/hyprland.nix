@@ -31,11 +31,15 @@ in {
       hyprpaper.enable = lib.mkDefault true;
       hypridle.enable = lib.mkDefault true;
       tofi.enable = lib.mkDefault true;
-      # eww.enable = lib.mkDefault true; # TODO Fix eww
-      # ags.enable = lib.mkDefault true;
-      # waybar.enable = lib.mkDefault true;
-      # waybar.horizontal.enable = lib.mkDefault true;
-      # waybar.vertical.enable = lib.mkDefault true;
+      bars = {
+        # ags.enable = lib.mkDefault true;
+        # eww.enable = lib.mkDefault true; # TODO Fix eww
+        waybar = {
+          enable = lib.mkDefault true;
+          vertical = lib.mkDefault true;
+          # horizontal.enable = lib.mkDefault true;
+        };
+      };
     };
 
     home.file.".config/hypr/pyprland.json".text = ''
@@ -164,7 +168,7 @@ in {
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
         # Execute your favorite apps at launch
-        # exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
+        exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         # exec-once = [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
         # exec-once = [workspace 1 silent] ${pkgs.steam}/bin/steam
         # exec-once = [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
@@ -265,16 +269,6 @@ in {
         # Move/resize windows with mainMod + LMB/RMB and dragging`
         bindm = $mainMod, mouse:272, movewindow
         bindm = $mainMod, mouse:273, resizewindow
-
-        #background
-        # exec-once = ${pkgs.wpaperd}/bin/wpaperd # stylix handles the wallpaper
-        # bind = $mainMod SHIFT,C, exec, killall -9 wpaperd && wpaperd
-
-        #status bar
-        # exec-once = ags
-        # exec-once = ${pkgs.waybar}/bin/waybar
-        # layerrule = blur , waybar
-        # layerrule = ignorezero , waybar
 
         # set volume (laptops only and may or may not work on PCs)
         bind = ,122, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
