@@ -29,6 +29,19 @@ in
       #pkgs.nerd-fonts.symbols-only
       pkgs.jetbrains-mono
     ];
+
+    systemd.user.services.clone-doom-config= {
+      enable = true;
+      after = [ "network.target" ];
+      wantedBy = [ "default.target" ];
+      description = "Doom Emacs Clone Service";
+      serviceConfig = {
+          Type = "simple";
+          WorkingDirectory = "~/.config";
+          ExecStart = ''${pkgs.git}/bin/git clone git@github.com:KeithButler-WIT/doom.git'';
+      };
+    };
+
   };
 
 }
