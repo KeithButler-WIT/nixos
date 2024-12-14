@@ -25,6 +25,7 @@ in
 
         wallpaper = [
           "eDP-1,/home/keith/Pictures/Stålenhag/tftfbig-22.jpg"
+          "HDMI-A-1,/home/keith/Pictures/Stålenhag/tftfbig-22.jpg"
         ];
       };
     };

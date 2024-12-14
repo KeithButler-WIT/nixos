@@ -288,10 +288,10 @@ in {
         # $mainMod+Print: Current window
         # $mainMod+Shfit+Print: Current output
 
-        bind = ,Print, exec, ${pkgs.grimblast}/bin/grimblast save screen && ${pkgs.libnotify}/bin/notify-send Screenshot captured
-        bind = SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast save area && ${pkgs.libnotify}/bin/notify-send Selected\ area captured
-        bind = $mainMod, Print, exec, ${pkgs.grimblast}/bin/grimblast save active && ${pkgs.libnotify}/bin/notify-send Active\ window captured
-        bind = $mainMod SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast output active && ${pkgs.libnotify}/bin/notify-send Output captured
+        bind = ,Print, exec, ${pkgs.grimblast}/bin/grimblast save screen ~/Pictures && ${pkgs.libnotify}/bin/notify-send Screenshot captured
+        bind = SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast save area ~/Pictures && ${pkgs.libnotify}/bin/notify-send Selected\ area captured
+        bind = $mainMod, Print, exec, ${pkgs.grimblast}/bin/grimblast save active ~/Pictures && ${pkgs.libnotify}/bin/notify-send Active\ window captured
+        bind = $mainMod SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast output active ~/Pictures && ${pkgs.libnotify}/bin/notify-send Output captured
 
         # for resizing window
         # will switch to a submap called resize
