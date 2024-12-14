@@ -33,7 +33,7 @@ in {
         #""
         "com.valvesoftware.Steam.Utility.protontricks"
         "com.valvesoftware.SteamLink"
-        "org.freedesktop.Platform.VulkanLayer.MangoHud"
+        "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
       ];
       # update.onActivation = true;
       update.auto = {
