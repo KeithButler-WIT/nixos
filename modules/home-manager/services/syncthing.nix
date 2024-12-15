@@ -12,8 +12,8 @@ in {
     services.syncthing = {
       enable = true;
       # openDefaultPorts = true;
+      # tray.enable = true;
     };
-    # services.syncthing.tray.enable = true;
   };
 
 }
