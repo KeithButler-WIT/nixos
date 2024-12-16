@@ -37,7 +37,7 @@ in {
         # Hide welcome message
         set fish_greeting
         set VIRTUAL_ENV_DISABLE_PROMPT "1"
-        set -x MANPAGER "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'"
+        # set -x MANPAGER "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'"
 
         # Set settings for https://github.com/franciscolourenco/done
         set -U __done_min_cmd_duration 10000
@@ -143,6 +143,9 @@ in {
     home.file.".config/macchina/themes/Berylilum.toml".text = ''
       # Beryllium
       # https://github.com/Macchina-CLI/macchina/blob/main/contrib/themes/Beryllium.toml
+
+      interface = "enp4s0"
+      disks = ["/", "/nix", "/home/keith/Games"]
 
       spacing         = 3
       hide_ascii      = true
