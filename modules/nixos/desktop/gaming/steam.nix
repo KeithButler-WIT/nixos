@@ -26,7 +26,10 @@ in {
     # services.logmein-hamachi.enable = true;
     # programs.haguichi.enable = true;
 
-    programs.gamescope.enable = true;
+    programs.gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
     programs.gamemode = {
       enable = true;
       settings = {
@@ -47,14 +50,14 @@ in {
       extraPackages = with pkgs; [
         gamescope
       ];
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
         # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
       localNetworkGameTransfers.openFirewall = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable = true;
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
       platformOptimizations.enable = true;
       extest.enable = true; # to translate X11 input events to uinput events
       protontricks.enable = true;
