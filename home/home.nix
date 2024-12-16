@@ -73,7 +73,7 @@
       # mpd.enable = true;
       ssh.enable = true;
       syncthing.enable = true;
-      xremap.enable = true;
+      # xremap.enable = true;
     };
   };
 
