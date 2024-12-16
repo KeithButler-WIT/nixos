@@ -8,18 +8,6 @@
   ];
 
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true;
-    permittedInsecurePackages = [
-      "aspnetcore-runtime-6.0.36"
-      "aspnetcore-runtime-wrapped-6.0.36"
-      "dotnet-sdk-6.0.428"
-      "dotnet-sdk-wrapped-6.0.428"
-      "dotnet-runtime-6.0.36"
-      "dotnet-runtime-wrapped-6.0.36"
-    ];
-  };
 
   #targets.genericLinux.enable = true; # Enable this on non nixos
 
@@ -28,7 +16,7 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ userSettings.username ];
-      extra-trusted-substituters = [
+      trusted-substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
         "https://devenv.cachix.org"
@@ -37,7 +25,7 @@
         "https://ghostty.cachix.org"
         "https://yazi.cachix.org"
       ];
-      extra-trusted-public-keys = [
+      trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="

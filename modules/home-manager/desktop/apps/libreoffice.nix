@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-stable, ... }:
 
 with lib;
 with lib.my;
@@ -9,7 +9,7 @@ in {
     mkBoolOpt false;
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
+    home.packages = with pkgs-stable; [
       libreoffice
     ];
   };

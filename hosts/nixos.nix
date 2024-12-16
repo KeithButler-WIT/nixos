@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, specialArgs, user ? "keith", userSettings, systemSettings, ... }:
+{ inputs, lib, pkgs, pkgs-stable, specialArgs, user ? "keith", userSettings, systemSettings, ... }:
 let
   inherit (lib.my) mapModules mapModulesRec mapHosts;
   lib = inputs.nixpkgs.lib.extend
@@ -12,6 +12,7 @@ let
       specialArgs = specialArgs // {
         inherit lib;
         inherit inputs;
+        inherit pkgs-stable;
         inherit userSettings systemSettings;
         inherit host user;
         isVm = host == "vm";
@@ -35,6 +36,7 @@ let
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
           home-manager.extraSpecialArgs = specialArgs // {
+            inherit pkgs-stable;
             inherit inputs;
             inherit host user;
             inherit userSettings systemSettings;

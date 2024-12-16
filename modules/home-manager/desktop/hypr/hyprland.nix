@@ -1,12 +1,36 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.hyprland;
-in {
+let
+  cfg = config.modules.desktop.hyprland;
+  gamemode = pkgs.writeShellScriptBin "gamemode" ''
+    #!/usr/bin/env sh
+    HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+    if [ "$HYPRGAMEMODE" = 1 ] ; then
+        hyprctl --batch "\
+            keyword animations:enabled 0;\
+            keyword decoration:shadow:enabled 0;\
+            keyword decoration:blur:enabled 0;\
+            keyword general:gaps_in 0;\
+            keyword general:gaps_out 0;\
+            keyword general:border_size 1;\
+            keyword decoration:rounding 0"
+        exit
+    fi
+    hyprctl reload
+  '';
+in
+{
 
-  options.modules.desktop.hyprland.enable =
-    mkBoolOpt false;
+  options.modules.desktop.hyprland.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -41,6 +65,8 @@ in {
         };
       };
     };
+
+    home.pointerCursor.hyprcursor.enable = true;
 
     home.file.".config/hypr/pyprland.json".text = ''
       {
@@ -92,6 +118,8 @@ in {
       settings = {
         input = {
           kb_layout = "us";
+          kb_options = "caps:swapescape";
+          # kb_options = "ctrl:nocaps";
           numlock_by_default = false;
           follow_mouse = 1;
           touchpad = {
@@ -100,7 +128,6 @@ in {
             disable_while_typing = true;
           };
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
-          # kb_options = "ctrl:nocaps";
         };
 
         general = {
@@ -156,35 +183,53 @@ in {
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
         };
+        monitor = [
+          # See https://wiki.hyprland.org/Configuring/Monitors/
+          "eDP-1, 1920x1080@60.04500, 0x0, 1.00"
+          "HDMI-A-1, 1920x1080@60.04500, 0x0, 1.00"
+          # monitor= auto,1920x1080@60,auto,auto
+        ];
+        exec-once = [
+          "${pkgs.kanshi}/bin/kanshi" # Monitor settings
+          # Execute your favorite apps at launch
+          "${pkgs.hyprpaper}/bin/hyprpaper"
+          # [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
+          # [workspace 1 silent] ${pkgs.steam}/bin/steam
+          # [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
+          "[workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird"
+          "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+          # ${pkgs.blueman}/bin/blueman-applet
+          # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+          "${pkgs.copyq}/bin/copyq"
+          # colour-temperature setting depending on the time [https://github.com/d4l3k/go-sct]
+          "${pkgs.go-sct}/bin/waysct"
+          "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive"
+          "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive"
+          "${pkgs.pyprland}/bin/pypr"
+          "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "dbus-update-activation-environment --systemd --all"
+          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        ];
+        # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+        "$mainMod" = "SUPER";
+        env = [
+          "XDG_CURRENT_DESKTOP,Hyprland"
+          "XDG_SESSION_TYPE,wayland"
+          "XDG_SESSION_DESKTOP,Hyprland"
+          "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+          "QT_QPA_PLATFORM,wayland;xcb"
+          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+          "QT_QPA_PLATFORMTHEME,qt5ct"
+          "GDK_BACKEND,wayland,x11,*"
+          "QT_QPA_PLATFORM,wayland;xcb"
+          "SDL_VIDEODRIVER,wayland"
+          "CLUTTER_BACKEND,wayland"
+          "XDG_SCREENSHOT_DIR,$HOME/Pictures"
+        ];
       };
 
       extraConfig = ''
-        # See https://wiki.hyprland.org/Configuring/Monitors/
-        monitor= eDP-1, 1920x1080@60.04500, 0x0, 1.00
-        monitor= HDMI-A-1, 1920x1080@60.04500, 0x0, 1.00
-        # monitor= auto,1920x1080@60,auto,auto
-        exec-once = ${pkgs.kanshi}/bin/kanshi
-
-        # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-
-        # Execute your favorite apps at launch
-        exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-        # exec-once = [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
-        # exec-once = [workspace 1 silent] ${pkgs.steam}/bin/steam
-        # exec-once = [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
-        exec-once = [workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird
-
-        # Add networkmanager applet to tray in waybar
-        exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-        # exec-once = ${pkgs.blueman}/bin/blueman-applet
-
-        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
-        # Example per-device config
-        # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-        #device:epic mouse V1 {
-        #    sensitivity = -0.5
-        #}
-
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
         # Example windowrule v1
         # windowrule = float, ^(kitty)$
@@ -193,7 +238,6 @@ in {
         # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-        $mainMod = SUPER
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod SHIFT, R, exec, hyprctl reload
@@ -209,9 +253,10 @@ in {
         bind = $mainMod, O, togglesplit, # dwindle
         bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
         bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
-      
+        bind = $mainMod, G, exec, ${gamemode}/bin/gamemode
+
         # Mainmod + Function keys
-        bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
+        # bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
         # bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
         # bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.yazi}/bin/yazi
         bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
@@ -319,11 +364,8 @@ in {
         bind = $mainMod SHIFT,right, movewindow, r
 
         # other blurings
-        blurls = wofi
         blurls = ${config.modules.desktop.file-managers.default}
-        blurls = gedit
         blurls = gtk-layer-shell # for nwg-drawer
-        blurls = catfish
         # window rules
         #windowrule = opacity 0.85 override 0.85 override,^(thunar)$
         windowrule = opacity 0.85 override 0.85 override,^(gedit)$
@@ -331,34 +373,14 @@ in {
         #window rules with evaluation
         windowrulev2 = opacity 0.85 0.85,floating:1
 
-        # exec-once = ${pkgs.mako}/bin/mako
-        # exec-once =/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-        # exec-once = emacs --daemon
-        # experimental(might work might won't)
-
-        #pre executions (under development)
-        #exec-once=exec ${pkgs.xorg.xrdb}/bin/xrdb -load ~/.Xresources
-        exec-once= ${pkgs.copyq}/bin/copyq
-
         #video play/pause bindings
         bind=,172,exec,${pkgs.playerctl}/bin/playerctl play-pause
         bind=,171,exec,${pkgs.playerctl}/bin/playerctl next
         bind=,173,exec,${pkgs.playerctl}/bin/playerctl previous
 
-        # Use gtk-settings
-        #exec-once = apply-gsettings
-
-        # colour-temperature setting depending on the time [https://github.com/d4l3k/go-sct]
-        exec-once = ${pkgs.go-sct}/bin/waysct
-        # exec-once = xremap ~/.config/xremap/config.yaml
-        exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive
-        exec-once = ${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive
-
         # -----------------------------------------------------
         # Scratch Pads
         # -----------------------------------------------------
-
-        exec-once = ${pkgs.pyprland}/bin/pypr
 
         bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
         bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
@@ -393,29 +415,6 @@ in {
         windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
         windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
         windowrulev2 = noblur, class:^(xwaylandvideobridge)$
-
-        # -----------------------------------------------------
-        # Env Variables
-        # -----------------------------------------------------
-
-        exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        # exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        exec-once = dbus-update-activation-environment --systemd --all
-        exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
-        env = XDG_CURRENT_DESKTOP,Hyprland 
-        env = XDG_SESSION_TYPE,wayland 
-        env = XDG_SESSION_DESKTOP,Hyprland
-
-        env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-        env = QT_QPA_PLATFORM,wayland;xcb
-        env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-        env = QT_QPA_PLATFORMTHEME,qt5ct
-
-        env = GDK_BACKEND,wayland,x11,*
-        env = QT_QPA_PLATFORM,wayland;xcb
-        env = SDL_VIDEODRIVER,wayland
-        env = CLUTTER_BACKEND,wayland
       '';
     };
 

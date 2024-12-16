@@ -80,6 +80,16 @@
         pkgs = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          config.allowUnfreePredicate = _: true;
+          config.permittedInsecurePackages = [ # all for sonarr
+            "aspnetcore-runtime-6.0.36"
+            "aspnetcore-runtime-wrapped-6.0.36"
+            "dotnet-sdk-6.0.428"
+            "dotnet-sdk-wrapped-6.0.428"
+            "dotnet-runtime-6.0.36"
+            "dotnet-runtime-wrapped-6.0.36"
+            "dotnet-sdk-6.0.428"
+          ];
         };
         pkgs-stable = import inputs.nixpkgs-stable {
           inherit system;
@@ -93,7 +103,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs-stable = nixpkgs-stable.legacyPackages.${system};
 
-      # unstable = nixpkgs-unstable.legacyPackages.${system};
       inherit (import ./options.nix) systemSettings userSettings;
     in
     {
