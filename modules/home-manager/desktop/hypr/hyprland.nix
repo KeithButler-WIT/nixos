@@ -225,7 +225,7 @@ in
           "QT_QPA_PLATFORM,wayland;xcb"
           "SDL_VIDEODRIVER,wayland"
           "CLUTTER_BACKEND,wayland"
-          "XDG_SCREENSHOT_DIR,$HOME/Pictures"
+          "XDG_SCREENSHOTS_DIR,$HOME/Pictures"
         ];
       };
 
