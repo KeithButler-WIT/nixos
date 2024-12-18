@@ -42,6 +42,12 @@ git clone git@github.com:KeithButler-WIT/nixos.git
 nix build ".#nixosConfigurations.minimal-iso-unstable.config.system.build.isoImage"
 ```
 
+### Getting Templates
+
+```sh
+nix flake init --template github:keithbutler-wit/nixos#templates.python
+```
+
 ## Source
 
 <https://github.com/iynaix/dotfiles>
