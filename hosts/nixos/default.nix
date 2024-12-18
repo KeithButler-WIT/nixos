@@ -77,20 +77,20 @@ with lib.my;
         enable = true;
         # plex.enable = true;
         jellyfin.enable = true;
+        radarr.enable = true;
+        sonarr.enable = true;
+        jackett.enable = true;
       };
     };
   };
 
   environment.systemPackages = with pkgs; [
-    # pika-backup
-    # haskell-language-server # TODO: move to devshell
-    # ghc
-    # stack
     # inkscape # TODO: make module
     # conda # TODO: make module
     crun
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
+    calibre
     samrewritten
   ];
 
