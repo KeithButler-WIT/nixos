@@ -118,7 +118,7 @@ in
       settings = {
         input = {
           kb_layout = "us";
-          kb_options = "caps:swapescape";
+          # kb_options = "caps:swapescape";
           # kb_options = "ctrl:nocaps";
           numlock_by_default = false;
           follow_mouse = 1;
