@@ -1,4 +1,4 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, pkgs-stable, config, lib, inputs, ... }:
 
 with lib;
 with lib.my;
@@ -26,13 +26,14 @@ in {
         freetype
         fuse3
         gdk-pixbuf
-        glib
+        glibc
         gtk3
         icu
 
         fuse
 
         libz
+        zstd
         gss
         krb5
         libatomic_ops
@@ -75,7 +76,7 @@ in {
         pipewire
         stdenv.cc.cc
         stdenv.cc.cc.lib
-        #libstdcxx5
+        pkgs-stable.libstdcxx5
         systemd
         vulkan-loader
         xorg.libX11
@@ -94,7 +95,6 @@ in {
         xorg.libxshmfence
         zlib
 
-        stdenv.cc.cc
         openssl
         xorg.libXcomposite
         xorg.libXtst
@@ -131,6 +131,7 @@ in {
         SDL2
         libusb1
         dbus-glib
+        gcc
         ffmpeg
         # Only libraries are needed from those two
         libudev0-shim
@@ -174,7 +175,6 @@ in {
         librsvg
         xorg.libXft
         libvdpau
-        #gnome2.pango
         cairo
         atk
         gdk-pixbuf
