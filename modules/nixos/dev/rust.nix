@@ -1,10 +1,18 @@
-{ pkgs, config, lib, userSettings, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let devCfg = config.modules.dev;
-    cfg = devCfg.rust;
-in {
+let
+  devCfg = config.modules.dev;
+  cfg = devCfg.rust;
+in
+{
 
   options.modules.dev.rust = {
     enable = mkBoolOpt false;
@@ -17,9 +25,9 @@ in {
         rustup
       ];
       environment.shellAliases = {
-        rs  = "rustc";
+        rs = "rustc";
         rsp = "rustup";
-        ca  = "cargo";
+        ca = "cargo";
       };
     })
 

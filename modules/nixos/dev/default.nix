@@ -1,12 +1,19 @@
-{ pkgs, config, lib, userSettings, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg= config.modules.dev;
-in {
+let
+  cfg = config.modules.dev;
+in
+{
 
-  options.modules.dev.xdg.enable =
-    mkBoolOpt false;
+  options.modules.dev.xdg.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.xdg.enable {
     # TODO
