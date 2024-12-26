@@ -29,6 +29,7 @@ in {
         "com.valvesoftware.Steam" # Steam works better as flatpak
         "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
         "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
+        "com.valvesoftware.Steam.Utility.steamtinkerlaunch"
         #"com.valvesoftware.Steam.Utility.gamescope"
         #""
         "com.valvesoftware.Steam.Utility.protontricks"
