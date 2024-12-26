@@ -67,6 +67,7 @@ with lib.my;
       #   docker.enable = true;
       #   podman.enable = true;
       # };
+      keyd.enable = true;
       # firewall.enable = true;
       # flood.enable = true;
       mullvad-vpn.enable = true;
@@ -95,5 +96,11 @@ with lib.my;
   ];
 
   services.gvfs.enable = true;
+
+  services.udev.packages = with pkgs; [ usb-modeswitch-data ];
+
+  hardware.new-lg4ff.enable = true;
+
+  networking.interfaces.enp4s0.wakeOnLan.enable = true;
 
 }
