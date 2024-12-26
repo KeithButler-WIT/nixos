@@ -29,6 +29,8 @@
     gnupg
     numlockx
     light
+    usbutils
+    oversteer
 
     # System management
     htop
