@@ -64,6 +64,7 @@ in {
     };
 
     hardware.steam-hardware.enable = true;
+    hardware.xone.enable = true;
 
     environment.systemPackages = with pkgs; [
       heroic
@@ -79,6 +80,7 @@ in {
       # steam-tui
       mangohud
       steamtinkerlaunch
+      yad
     ];
 
     # Better for steam proton games
