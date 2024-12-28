@@ -1,6 +1,27 @@
 {
   description = "Keith's dotfiles managed via NixOS and home-manager";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.nixos.org/"
+      "https://nix-community.cachix.org"
+      "https://devenv.cachix.org"
+      "https://nix-gaming.cachix.org"
+      "https://hyprland.cachix.org"
+      "https://ghostty.cachix.org"
+      "https://yazi.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
+      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+    ];
+  };
+
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -81,7 +102,8 @@
           inherit system;
           config.allowUnfree = true;
           config.allowUnfreePredicate = _: true;
-          config.permittedInsecurePackages = [ # all for sonarr
+          config.permittedInsecurePackages = [
+            # all for sonarr
             "aspnetcore-runtime-6.0.36"
             "aspnetcore-runtime-wrapped-6.0.36"
             "dotnet-sdk-6.0.428"
