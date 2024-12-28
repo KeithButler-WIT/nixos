@@ -30,6 +30,7 @@ in {
           markdown-oxide
           vim-language-server
           csharp-ls
+          rust-analyzer
 
           xclip
           wl-clipboard
