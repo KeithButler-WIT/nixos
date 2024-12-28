@@ -57,6 +57,11 @@ in
       users.users.${userSettings.username}.packages = with pkgs; [
         patchedpython
         #(python3.withPackages (ps: with ps; [
+        #types-beautifulsoup4
+        #beautifulsoup4
+        #wxpython
+        #requests
+        #loguru
         #]))
         uv
       ];
