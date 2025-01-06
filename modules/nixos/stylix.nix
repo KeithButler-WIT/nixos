@@ -1,20 +1,20 @@
-{ pkgs, config, lib, inputs, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 with lib;
-with lib.my;
-let cfg = config.modules.stylix;
+with lib.my; let
+  cfg = config.modules.stylix;
 in {
-
   options.modules.stylix.enable =
     mkBoolOpt false;
 
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
-      # package = inputs.stylix.nixosModules.stylix;
-      # package = inputs.stylix.packages."${pkgs.system}".stylix;
-      # FIXME: TEMP comment
-      # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       image = ../../wallpaper.jpg;
       fonts = {
         monospace = {
@@ -30,9 +30,10 @@ in {
           package = pkgs.dejavu_fonts;
         };
         emoji = {
-          name = "Nerd Fonts Symbols Only";
-          package = pkgs.nerd-fonts.symbols-only;
-          #package = pkgs.jetbrains-mono;
+          name = "Noto Color Emoji";
+          package = pkgs.noto-fonts-color-emoji;
+          #name = "Nerd Fonts Symbols Only";
+          #package = pkgs.nerd-fonts.symbols-only;
         };
         # sizes = {
         #   applications = 12;
@@ -58,5 +59,4 @@ in {
       polarity = "dark";
     };
   };
-
 }
