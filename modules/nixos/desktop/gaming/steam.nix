@@ -81,6 +81,9 @@ in {
       mangohud
       steamtinkerlaunch
       yad
+
+      glib
+      glibc
     ];
 
     # Better for steam proton games
