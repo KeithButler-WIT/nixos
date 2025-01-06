@@ -1,12 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, ... }:
-
-with lib.my;
 {
-
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib.my; {
   imports = [
     ./hardware-configuration.nix
     ./boot.nix
@@ -93,14 +94,43 @@ with lib.my;
     kdePackages.qtwayland
     calibre
     samrewritten
+    jetbrains.rust-rover
   ];
 
   services.gvfs.enable = true;
 
-  services.udev.packages = with pkgs; [ usb-modeswitch-data ];
+  services.udev.packages = with pkgs; [usb-modeswitch-data];
 
   hardware.new-lg4ff.enable = true;
 
   networking.interfaces.enp4s0.wakeOnLan.enable = true;
 
+  programs.nvf = {
+    enable = true;
+    enableManpages = true;
+    settings = {
+      vim = {
+        viAlias = false;
+        vimAlias = true;
+        lsp = {
+          enable = true;
+          formatOnSave = true;
+          trouble.enable = true;
+          lightbulb.enable = true;
+          # lspkind.enable = true;
+          lsplines.enable = true;
+          # nvim-docs-view.enable = true;
+        };
+        languages = {
+          enableLSP = true;
+          bash.lsp.enable = true;
+          css.lsp.enable = true;
+          markdown.lsp.enable = true;
+          nix.lsp.enable = true;
+          python.lsp.enable = true;
+          rust.lsp.enable = true;
+        };
+      };
+    };
+  };
 }

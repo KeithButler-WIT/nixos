@@ -61,6 +61,7 @@
 
     yazi.url = "github:sxyazi/yazi";
     nix-alien.url = "github:thiagokokada/nix-alien";
+    nvf.url = "github:notashelf/nvf";
 
     # impermanence.url = "github:nix-community/impermanence";
 
@@ -73,36 +74,35 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs =
-    {
-      nixpkgs,
-      nixpkgs-stable,
-      self,
-      hosts,
-      hyprland,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      forAllSystems =
-        function:
-        nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
-      commonInherits = {
-        inherit (nixpkgs) lib;
-        inherit
-          self
-          inputs
-          nixpkgs
-          nixpkgs-stable
-          ;
-        inherit (import ./options.nix) systemSettings userSettings;
-        user = "keith";
-        system = "x86_64-linux";
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          config.allowUnfreePredicate = _: true;
-          config.permittedInsecurePackages = [
+  outputs = {
+    nixpkgs,
+    nixpkgs-stable,
+    self,
+    hosts,
+    hyprland,
+    nvf,
+    home-manager,
+    ...
+  } @ inputs: let
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs ["x86_64-linux"] (system: function nixpkgs.legacyPackages.${system});
+    commonInherits = {
+      inherit (nixpkgs) lib;
+      inherit
+        self
+        inputs
+        nixpkgs
+        nixpkgs-stable
+        ;
+      inherit (import ./options.nix) systemSettings userSettings;
+      user = "keith";
+      system = "x86_64-linux";
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate = _: true;
+          permittedInsecurePackages = [
             # all for sonarr
             "aspnetcore-runtime-6.0.36"
             "aspnetcore-runtime-wrapped-6.0.36"
@@ -113,41 +113,27 @@
             "dotnet-sdk-6.0.428"
           ];
         };
-        pkgs-stable = import inputs.nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        specialArgs = {
-          inherit self inputs;
-        };
       };
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-
-      inherit (import ./options.nix) systemSettings userSettings;
-    in
-    {
-
-      nixosConfigurations =
-        (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
-
-      # homeConfigurations = {
-      #   keith = inputs.home-manager.lib.homeManagerConfiguration {
-      #     inherit pkgs;
-      #     # inherit userSettings systemSettings;
-      #     modules = [
-      #       # ./home/home.nix
-      #       ./hosts/common/home.nix
-      #       ./hosts/nixos/home.nix
-      #     ] ++ (lib.my.mapModulesRec' (toString ./modules/home-manager) import);
-      #   };
-      # };
-
-      inherit self;
-
-      # templates for devenv
-      templates = import ./templates;
-
+      pkgs-stable = import inputs.nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      specialArgs = {
+        inherit self inputs;
+      };
     };
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+
+    inherit (import ./options.nix) systemSettings userSettings;
+  in {
+    nixosConfigurations =
+      (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
+
+    inherit self;
+
+    # templates for devenv
+    templates = import ./templates;
+  };
 }
