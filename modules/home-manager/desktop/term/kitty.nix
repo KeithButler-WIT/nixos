@@ -23,6 +23,7 @@ in {
         italic_font = "auto";
         bold_italic_font = "auto";
         cursor_shape = "block";
+        cursor_trail = 3;
         # url_color = "#0087bd";
         url_style = "dotted";
         confirm_os_window_close = 0;
