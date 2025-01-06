@@ -1,15 +1,24 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 with lib;
 with lib.my;
 let
   cfg = config.modules.editors.emacs;
-  emacs = with pkgs; (emacsPackagesFor
-    # (if config.modules.desktop.type == "wayland"
-    # then emacs-pgtk
-    # else emacs-git)).emacsWithPackages
-    (emacs-pgtk)).emacsWithPackages
-    (epkgs: [ ]);
+  emacs =
+    with pkgs;
+    (emacsPackagesFor
+      # (if config.modules.desktop.type == "wayland"
+      # then emacs-pgtk
+      # else emacs-git)).emacsWithPackages
+      (emacs-pgtk)
+    ).emacsWithPackages
+      (epkgs: [ ]);
 in
 {
 
@@ -41,10 +50,17 @@ in
       #   pinentry-emacs) # in-emacs gnupg prompts
       pinentry-emacs
       zstd # for undo-fu-session/undo-tree compression
+      libtool
 
       ## Module dependencies
       # :checkers spell
-      (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+      (aspellWithDicts (
+        ds: with ds; [
+          en
+          en-computers
+          en-science
+        ]
+      ))
       # :tools editorconfig
       editorconfig-core-c # per-project style config
       # :tools lookup & :lang org +roam

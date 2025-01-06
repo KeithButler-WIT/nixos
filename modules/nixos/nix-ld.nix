@@ -1,12 +1,20 @@
-{ pkgs, pkgs-stable, config, lib, inputs, ... }:
+{
+  pkgs,
+  pkgs-stable,
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.nix-ld;
-in {
+let
+  cfg = config.modules.nix-ld;
+in
+{
 
-  options.modules.nix-ld.enable =
-    mkBoolOpt false;
+  options.modules.nix-ld.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     programs.nix-ld = {
@@ -26,7 +34,6 @@ in {
         freetype
         fuse3
         gdk-pixbuf
-        glibc
         gtk3
         icu
 
@@ -112,6 +119,7 @@ in {
 
         # Required
         glib
+        glibc
         gtk2
         bzip2
 
@@ -124,6 +132,7 @@ in {
         xorg.libSM
         xorg.libICE
         gnome2.GConf
+        #gnome2.ORBit2
         nspr
         nss
         cups
@@ -140,7 +149,7 @@ in {
         xorg.libXt
         xorg.libXmu
         libogg
-        libvorbis
+        #libvorbis
         SDL
         SDL2_image
         glew110

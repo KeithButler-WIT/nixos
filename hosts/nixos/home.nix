@@ -1,4 +1,11 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}:
 
 with lib.my;
 {
@@ -77,7 +84,7 @@ with lib.my;
           player.enable = true;
           tools.enable = true;
         };
-        # ncmpcpp.enable = true;
+        ncmpcpp.enable = true;
       };
       term = {
         kitty.enable = true;
