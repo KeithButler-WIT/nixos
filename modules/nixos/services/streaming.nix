@@ -1,10 +1,16 @@
-{ pkgs, config, lib, userSettings, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.services.streaming;
-in {
-
+let
+  cfg = config.modules.services.streaming;
+in
+{
   options.modules.services.streaming = {
     enable = mkBoolOpt false;
     plex.enable = mkBoolOpt false;
@@ -15,7 +21,7 @@ in {
   };
 
   config = mkIf cfg.enable (mkMerge [
-    (mkIf (cfg.radarr.enable) {
+    (mkIf cfg.radarr.enable {
       services.radarr = {
         enable = true;
         openFirewall = true;
@@ -23,7 +29,7 @@ in {
         #dataDir = "/home/${userSettings.username}/.local/share/radarr";
       };
     })
-    (mkIf (cfg.sonarr.enable) {
+    (mkIf cfg.sonarr.enable {
       services.sonarr = {
         enable = true;
         openFirewall = true;
@@ -31,7 +37,7 @@ in {
         #dataDir = "/home/${userSettings.username}/.local/share/sonarr";
       };
     })
-    (mkIf (cfg.jackett.enable) {
+    (mkIf cfg.jackett.enable {
       services.jackett = {
         enable = true;
         openFirewall = true;
@@ -39,7 +45,7 @@ in {
         #dataDir = "/home/${userSettings.username}/.local/share/jackett";
       };
     })
-    (mkIf (cfg.plex.enable) {
+    (mkIf cfg.plex.enable {
       services.plex = {
         enable = true;
         openFirewall = true;
@@ -47,7 +53,7 @@ in {
         #dataDir = "/home/${userSettings.username}/.local/share/plex";
       };
     })
-    (mkIf (cfg.jellyfin.enable) {
+    (mkIf cfg.jellyfin.enable {
       # TODO: remove every user = userSettings.username;
       services.jellyseerr = {
         enable = true;
@@ -66,6 +72,5 @@ in {
         pkgs.jellyfin-ffmpeg
       ];
     })
-
   ]);
 }

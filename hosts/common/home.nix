@@ -1,4 +1,11 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}:
 
 {
 
@@ -14,7 +21,10 @@
   nix = {
     # package = pkgs.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       trusted-users = [ userSettings.username ];
       trusted-substituters = [
         "https://cache.nixos.org/"
@@ -70,7 +80,7 @@
     xdragon
     yt-dlp
 
-    nix-index 
+    nix-index
     inputs.nix-alien.packages.${system}.nix-alien
   ];
 

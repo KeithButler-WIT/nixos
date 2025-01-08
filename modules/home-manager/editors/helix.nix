@@ -1,12 +1,18 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.editors.helix;
-in {
+let
+  cfg = config.modules.editors.helix;
+in
+{
 
-  options.modules.editors.helix.enable =
-    mkBoolOpt false;
+  options.modules.editors.helix.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.helix = {

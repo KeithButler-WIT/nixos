@@ -1,12 +1,19 @@
-{ pkgs, config, lib, userSettings, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.browsers.firefox;
-in {
+let
+  cfg = config.modules.desktop.browsers.firefox;
+in
+{
 
-  options.modules.desktop.browsers.firefox.enable =
-    mkBoolOpt false;
+  options.modules.desktop.browsers.firefox.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     programs.firefox = {
@@ -75,7 +82,10 @@ in {
                   ];
                 }
               ];
-              definedAliases = [ "@flathub" "@fh" ];
+              definedAliases = [
+                "@flathub"
+                "@fh"
+              ];
             };
           };
         };

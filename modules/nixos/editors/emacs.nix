@@ -6,7 +6,6 @@
   userSettings,
   ...
 }:
-
 with lib;
 with lib.my;
 let
@@ -17,12 +16,11 @@ let
       # (if config.modules.desktop.type == "wayland"
       # then emacs-pgtk
       # else emacs-git)).emacsWithPackages
-      (emacs-pgtk)
+      emacs-pgtk
     ).emacsWithPackages
       (epkgs: [ ]);
 in
 {
-
   options.modules.editors.emacs = {
     enable = mkBoolOpt false;
   };
@@ -64,7 +62,5 @@ in
         ExecStart = ''${pkgs.git}/bin/git clone git@github.com:KeithButler-WIT/doom.git'';
       };
     };
-
   };
-
 }

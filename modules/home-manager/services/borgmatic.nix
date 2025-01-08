@@ -1,12 +1,19 @@
-{ config, lib, pkgs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.borgmatic;
-in {
+let
+  cfg = config.modules.services.borgmatic;
+in
+{
 
-  options.modules.services.borgmatic.enable =
-    mkBoolOpt false;
+  options.modules.services.borgmatic.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.borgmatic = {

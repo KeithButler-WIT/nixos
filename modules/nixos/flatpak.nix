@@ -1,19 +1,22 @@
-{ pkgs, config, lib, inputs, ... }:
-
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.flatpak;
-in {
-
-  options.modules.flatpak.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.flatpak;
+in
+{
+  options.modules.flatpak.enable = mkBoolOpt false;
 
   imports = [
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
   config = lib.mkIf cfg.enable {
-
     # systemd.services.flatpak-repo = {
     #   wantedBy = [ "multi-user.target" ];
     #   path = [ pkgs.flatpak ];
@@ -58,5 +61,4 @@ in {
       };
     };
   };
-
 }

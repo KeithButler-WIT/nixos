@@ -1,15 +1,10 @@
 {
-  config,
   lib,
   pkgs,
-  inputs,
-  userSettings,
   ...
 }:
-
 with lib.my;
 {
-
   home.packages = with pkgs; [
     v4l-utils
 
@@ -96,7 +91,7 @@ with lib.my;
       default = "nvim";
       alternate = "emacsclient";
       emacs.enable = true;
-      neovim.enable = true;
+      # neovim.enable = true;
       # helix.enable = true;
     };
     shell = {
@@ -119,12 +114,11 @@ with lib.my;
       # mpd.enable = true;
       ssh.enable = true;
       syncthing.enable = true;
-      xremap.enable = true;
+      # xremap.enable = true;
     };
   };
 
   programs.java.enable = true;
 
   services.home-manager.autoUpgrade.frequency = "monthly";
-
 }

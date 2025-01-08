@@ -1,12 +1,19 @@
-{ pkgs, config, lib, userSettings, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.printer;
-in {
+let
+  cfg = config.modules.services.printer;
+in
+{
 
-  options.modules.services.printer.enable =
-    mkBoolOpt false;
+  options.modules.services.printer.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # Detect printers
@@ -26,7 +33,10 @@ in {
     #   disabledDefaultBackends = [ "escl" ];
     # };
     programs.system-config-printer.enable = true;
-    users.users.${userSettings.username}.extraGroups = [ "scanner" "lp" ];
+    users.users.${userSettings.username}.extraGroups = [
+      "scanner"
+      "lp"
+    ];
   };
 
 }

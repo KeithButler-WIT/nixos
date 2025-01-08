@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
   lib,
   ...
@@ -16,19 +12,18 @@ with lib.my; {
   #services.samba.enableWinbindd = true;
   #services.samba.nsswins = true;
 
-  hardware.graphics.enable = true;
-
   modules = {
     autologin.enable = true;
-    autoUpgrade.enable = true;
+    # autoUpgrade.enable = true;
     # doas.enable = true;
     sudo-rs.enable = true;
     nh.enable = true;
     # gc.enable = true; # conflicts with nh clean
     flatpak.enable = true;
-    nix-ld.enable = true;
+    # nix-ld.enable = true;
     stylix.enable = true;
     # vm.enable = true;
+    # vr.enable = true;
     desktop = {
       enable = true;
       hyprland.enable = true;
@@ -36,6 +31,8 @@ with lib.my; {
       tuigreet.enable = true;
       gaming = {
         steam.enable = true;
+        # heroic.enable = true;
+        # lutris.enable = true;
       };
     };
     dev = {
@@ -47,6 +44,7 @@ with lib.my; {
     };
     editors = {
       emacs.enable = true;
+      nvf.enable = true;
     };
     hardware = {
       audio.enable = true;
@@ -94,7 +92,7 @@ with lib.my; {
     kdePackages.qtwayland
     calibre
     samrewritten
-    jetbrains.rust-rover
+    #jetbrains.rust-rover
   ];
 
   services.gvfs.enable = true;
@@ -104,33 +102,4 @@ with lib.my; {
   hardware.new-lg4ff.enable = true;
 
   networking.interfaces.enp4s0.wakeOnLan.enable = true;
-
-  programs.nvf = {
-    enable = true;
-    enableManpages = true;
-    settings = {
-      vim = {
-        viAlias = false;
-        vimAlias = true;
-        lsp = {
-          enable = true;
-          formatOnSave = true;
-          trouble.enable = true;
-          lightbulb.enable = true;
-          # lspkind.enable = true;
-          lsplines.enable = true;
-          # nvim-docs-view.enable = true;
-        };
-        languages = {
-          enableLSP = true;
-          bash.lsp.enable = true;
-          css.lsp.enable = true;
-          markdown.lsp.enable = true;
-          nix.lsp.enable = true;
-          python.lsp.enable = true;
-          rust.lsp.enable = true;
-        };
-      };
-    };
-  };
 }

@@ -1,12 +1,16 @@
-{ pkgs, config, lib, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.thunar;
-in {
-
-  options.modules.desktop.thunar.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.desktop.thunar;
+in
+{
+  options.modules.desktop.thunar.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     programs.xfconf.enable = true;
@@ -37,5 +41,4 @@ in {
       archiver
     ];
   };
-
 }

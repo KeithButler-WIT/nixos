@@ -1,12 +1,13 @@
-{ config, lib, pkgs, userSettings, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
-with lib.my;
-let cfg = config.modules.shell.eza;
+with lib.my; let
+  cfg = config.modules.shell.eza;
 in {
-
-  options.modules.shell.eza.enable =
-    mkBoolOpt false;
+  options.modules.shell.eza.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.eza = {
@@ -18,5 +19,4 @@ in {
       icons = "auto";
     };
   };
-
 }

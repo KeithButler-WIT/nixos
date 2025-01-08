@@ -1,4 +1,11 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
@@ -7,8 +14,7 @@ let
 in
 {
 
-  options.modules.desktop.hyprlock.enable =
-    mkBoolOpt false;
+  options.modules.desktop.hyprlock.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/

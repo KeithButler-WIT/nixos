@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.editors.neovim;
-in {
+let
+  cfg = config.modules.editors.neovim;
+in
+{
 
-  options.modules.editors.neovim.enable =
-    mkBoolOpt false;
+  options.modules.editors.neovim.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.neovim =
@@ -75,27 +81,28 @@ in {
           luasnip
           friendly-snippets
 
-
           lualine-nvim
           nvim-web-devicons
 
           {
-            plugin = (nvim-treesitter.withPlugins (p: [
-              p.tree-sitter-c
-              p.tree-sitter-cpp
-              p.tree-sitter-tsx
-              p.tree-sitter-nix
-              p.tree-sitter-vim
-              p.tree-sitter-vimdoc
-              p.tree-sitter-bash
-              p.tree-sitter-lua
-              p.tree-sitter-python
-              p.tree-sitter-json
-              p.tree-sitter-rust
-              p.tree-sitter-fish
-              p.tree-sitter-java
-              p.tree-sitter-haskell
-            ]));
+            plugin = (
+              nvim-treesitter.withPlugins (p: [
+                p.tree-sitter-c
+                p.tree-sitter-cpp
+                p.tree-sitter-tsx
+                p.tree-sitter-nix
+                p.tree-sitter-vim
+                p.tree-sitter-vimdoc
+                p.tree-sitter-bash
+                p.tree-sitter-lua
+                p.tree-sitter-python
+                p.tree-sitter-json
+                p.tree-sitter-rust
+                p.tree-sitter-fish
+                p.tree-sitter-java
+                p.tree-sitter-haskell
+              ])
+            );
             config = toLuaFile ./plugin/treesitter.lua;
           }
 

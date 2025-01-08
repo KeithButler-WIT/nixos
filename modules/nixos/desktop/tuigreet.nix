@@ -1,13 +1,17 @@
-{ pkgs, config, lib, userSettings, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.tuigreet;
-in {
-
-  options.modules.desktop.tuigreet.enable =
-    mkBoolOpt false;
-
+let
+  cfg = config.modules.desktop.tuigreet;
+in
+{
+  options.modules.desktop.tuigreet.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     # Enable tuigreet login manager
@@ -29,5 +33,4 @@ in {
       };
     };
   };
-
 }

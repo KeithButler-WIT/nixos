@@ -1,12 +1,19 @@
-{ config, lib, pkgs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.thefuck;
-in {
+let
+  cfg = config.modules.shell.thefuck;
+in
+{
 
-  options.modules.shell.thefuck.enable =
-    mkBoolOpt false;
+  options.modules.shell.thefuck.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.thefuck = {

@@ -1,13 +1,15 @@
-{ pkgs, config, lib, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.desktop;
-in {
-
-  options.modules.desktop.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.desktop;
+in
+{
+  options.modules.desktop.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable { };
-
 }

@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
@@ -39,7 +44,9 @@
     # };
   };
 
-  boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; }; # Not needed while steam.platformOptimizations is enabled
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 2147483642;
+  }; # Not needed while steam.platformOptimizations is enabled
 
   boot.zfs.devNodes = "/dev/disk/by-partuuid";
 

@@ -1,21 +1,27 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.term.kitty;
-in {
+let
+  cfg = config.modules.desktop.term.kitty;
+in
+{
 
-  options.modules.desktop.term.kitty.enable =
-    mkBoolOpt false;
+  options.modules.desktop.term.kitty.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
       # font = {
-        # name = "JetBrainsMono Nerd Font";
-        # name = "jetbrains mono nerd font";
-        # package = pkgs.jetbrains-mono;
-        # size = 12;
+      # name = "JetBrainsMono Nerd Font";
+      # name = "jetbrains mono nerd font";
+      # package = pkgs.jetbrains-mono;
+      # size = 12;
       # };
       settings = {
         shell = "fish";

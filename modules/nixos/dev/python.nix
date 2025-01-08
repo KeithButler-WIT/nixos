@@ -5,7 +5,6 @@
   userSettings,
   ...
 }:
-
 with lib;
 with lib.my;
 let
@@ -46,7 +45,6 @@ let
   );
 in
 {
-
   options.modules.dev.python = {
     enable = mkBoolOpt false;
     xdg.enable = mkBoolOpt devCfg.xdg.enable;
@@ -96,5 +94,4 @@ in
       };
     })
   ];
-
 }

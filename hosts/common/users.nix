@@ -1,4 +1,10 @@
-{ config, lib, pkgs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -6,8 +12,19 @@
     initialPassword = "1234";
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups =
-      [ "networkmanager" "wheel" "disk" "plugdev" "video" "tty" "input" "storage" "lp" "nixconfig" "dialout" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "disk"
+      "plugdev"
+      "video"
+      "tty"
+      "input"
+      "storage"
+      "lp"
+      "nixconfig"
+      "dialout"
+    ];
     packages = with pkgs; [
     ];
     openssh.authorizedKeys.keys = lib.mkIf config.modules.services.ssh.enable [

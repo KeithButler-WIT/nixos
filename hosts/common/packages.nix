@@ -1,4 +1,11 @@
-{ pkgs, lib, inputs, systemSettings, userSettings, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  systemSettings,
+  userSettings,
+  ...
+}:
 
 {
 

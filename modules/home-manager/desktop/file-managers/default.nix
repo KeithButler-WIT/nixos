@@ -1,9 +1,18 @@
-{ self, lib, config, options, pkgs, ... }:
+{
+  self,
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.file-managers;
-in {
+let
+  cfg = config.modules.desktop.file-managers;
+in
+{
   options.modules.desktop.file-managers = {
     default = mkOpt (with types; nullOr str) null;
   };

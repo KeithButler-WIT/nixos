@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.bash;
-in {
+let
+  cfg = config.modules.shell.bash;
+in
+{
 
-  options.modules.shell.bash.enable =
-    mkBoolOpt false;
+  options.modules.shell.bash.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = [

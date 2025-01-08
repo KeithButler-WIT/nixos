@@ -1,9 +1,17 @@
-{ pkgs, config, lib, inputs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.ags;
-in {
+let
+  cfg = config.modules.desktop.ags;
+in
+{
 
   options.modules.desktop.ags = {
     enable = mkBoolOpt false;

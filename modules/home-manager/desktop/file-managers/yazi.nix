@@ -1,4 +1,10 @@
-{ pkgs, config, lib, inputs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 with lib;
 with lib.my;
@@ -13,8 +19,7 @@ let
 in
 {
 
-  options.modules.desktop.file-managers.yazi.enable =
-    mkBoolOpt false;
+  options.modules.desktop.file-managers.yazi.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

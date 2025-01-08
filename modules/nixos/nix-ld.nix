@@ -3,17 +3,14 @@
   pkgs-stable,
   config,
   lib,
-  inputs,
   ...
 }:
-
 with lib;
 with lib.my;
 let
   cfg = config.modules.nix-ld;
 in
 {
-
   options.modules.nix-ld.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -194,5 +191,4 @@ in
       ];
     };
   };
-
 }

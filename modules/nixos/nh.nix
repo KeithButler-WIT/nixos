@@ -1,12 +1,15 @@
-{ pkgs, config, lib, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.nh;
-in {
-
-  options.modules.nh.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.nh;
+in
+{
+  options.modules.nh.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.nh = {
@@ -17,5 +20,4 @@ in {
       # flake = "/home/${userSettings.username}/nixos";
     };
   };
-
 }

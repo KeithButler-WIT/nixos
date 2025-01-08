@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.dunst;
-in {
+let
+  cfg = config.modules.services.dunst;
+in
+{
 
-  options.modules.services.dunst.enable =
-    mkBoolOpt false;
+  options.modules.services.dunst.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     services.dunst = {
@@ -80,7 +86,6 @@ in {
 
           # Corner radius for the icon image.
           icon_corner_radius = 0;
-
 
           # Show how many messages are currently hidden (because of
           # notification_limit).
@@ -319,8 +324,6 @@ in {
           # where there are multiple screens with very different dpi values.
           per_monitor_dpi = false;
 
-
-
         };
         urgency_low = {
           # IMPORTANT: colors have to be defined in quotation marks.
@@ -330,7 +333,6 @@ in {
           timeout = 6;
           # Icon for notifications with low urgency, uncomment to enable
           #default_icon = /path/to/icon
-
 
         };
         urgency_normal = {

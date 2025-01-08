@@ -1,11 +1,17 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
-
+{
+  config,
+  lib,
+  inputs,
+  userSettings,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.hardware.audio;
-in {
-  options.modules.hardware.audio.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.hardware.audio;
+in
+{
+  options.modules.hardware.audio.enable = mkBoolOpt false;
 
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency

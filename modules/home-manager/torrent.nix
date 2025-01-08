@@ -1,12 +1,19 @@
-{ pkgs, config, lib, userSettings, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.torrent;
-in {
+let
+  cfg = config.modules.torrent;
+in
+{
 
-  options.modules.torrent.enable =
-    mkBoolOpt false;
+  options.modules.torrent.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

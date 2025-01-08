@@ -1,12 +1,15 @@
-{ pkgs, config, lib, userSettings, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.gc;
-in {
-
-  options.modules.gc.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.gc;
+in
+{
+  options.modules.gc.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     nix = {
@@ -17,5 +20,4 @@ in {
       };
     };
   };
-
 }

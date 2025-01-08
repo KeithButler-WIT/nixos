@@ -1,13 +1,17 @@
-{ config, lib, pkgs, userSettings, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.vm;
-in {
-
-  options.modules.vm.enable =
-    mkBoolOpt false;
-
+let
+  cfg = config.modules.vm;
+in
+{
+  options.modules.vm.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     # Install necessary packages
@@ -38,7 +42,9 @@ in {
       spiceUSBRedirection.enable = true;
     };
     services.spice-vdagentd.enable = true;
-    users.users.${userSettings.username}.extraGroups = [ "libvirtd" "kvm" ];
+    users.users.${userSettings.username}.extraGroups = [
+      "libvirtd"
+      "kvm"
+    ];
   };
-
 }

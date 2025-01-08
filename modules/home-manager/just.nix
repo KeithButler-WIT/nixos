@@ -1,12 +1,18 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.just;
-in {
+let
+  cfg = config.modules.just;
+in
+{
 
-  options.modules.just.enable =
-    mkBoolOpt false;
+  options.modules.just.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

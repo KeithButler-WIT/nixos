@@ -1,4 +1,9 @@
-{ config, pkgs, userSettings, ... }:
+{
+  config,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 {
 
@@ -26,19 +31,19 @@
   #   ];
   # };
 
- # fileSystems."/nix" = {
- #     device = "/dev/disk/by-label/nix";
- #     fsType = "ext4";
- #     neededForBoot = true;
- #     options = [ "noatime" ];
- # };
+  # fileSystems."/nix" = {
+  #     device = "/dev/disk/by-label/nix";
+  #     fsType = "ext4";
+  #     neededForBoot = true;
+  #     options = [ "noatime" ];
+  # };
 
   fileSystems."/run/media/${userSettings.username}/game-drive" = {
     # device = "game-drive/fs1";
     device = "/dev/disk/by-label/game-drive";
     fsType = "ext4";
     options = [
-      # If you don't have this options attribute, it'll default to "defaults" 
+      # If you don't have this options attribute, it'll default to "defaults"
       # boot options for fstab. Search up fstab mount options you can use
       "users" # Allows any user to mount and unmount
       "nofail" # Prevent system from failing if this drive doesn't mount
@@ -51,13 +56,12 @@
     device = "/dev/disk/by-label/4TB-BACKUP";
     fsType = "exfat";
     options = [
-      # If you don't have this options attribute, it'll default to "defaults" 
+      # If you don't have this options attribute, it'll default to "defaults"
       # boot options for fstab. Search up fstab mount options you can use
       #"users" # Allows any user to mount and unmount
       "nofail" # Prevent system from failing if this drive doesn't mount
       "x-gvfs-show" # Shows in file managers
     ];
   };
-
 
 }

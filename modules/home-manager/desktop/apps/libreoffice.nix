@@ -1,12 +1,19 @@
-{ config, lib, pkgs, pkgs-stable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.libreoffice;
-in {
+let
+  cfg = config.modules.desktop.apps.libreoffice;
+in
+{
 
-  options.modules.desktop.apps.libreoffice.enable =
-    mkBoolOpt false;
+  options.modules.desktop.apps.libreoffice.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs-stable; [

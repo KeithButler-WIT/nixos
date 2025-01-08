@@ -1,4 +1,10 @@
-{ config, pkgs, lib, systemSettings, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  systemSettings,
+  ...
+}:
 
 {
 

@@ -1,12 +1,15 @@
-{ pkgs, config, lib, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.services.power-management;
-in {
-
-  options.modules.services.power-management.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.services.power-management;
+in
+{
+  options.modules.services.power-management.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # https://nixos.wiki/wiki/Power_Management
@@ -59,5 +62,4 @@ in {
     #   };
     # };
   };
-
 }

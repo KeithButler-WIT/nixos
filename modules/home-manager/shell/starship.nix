@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.starship;
-in {
+let
+  cfg = config.modules.shell.starship;
+in
+{
 
-  options.modules.shell.starship.enable =
-    mkBoolOpt false;
+  options.modules.shell.starship.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.starship = {
@@ -64,7 +70,6 @@ in {
           format = "took [$duration]($style)";
           min_time = 1;
         };
-
 
         ## SECOND LINE/ROW: Prompt
         # Somethere at the beginning

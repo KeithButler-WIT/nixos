@@ -1,12 +1,16 @@
-{ pkgs, config, lib, userSettings, ... }:
-
+{
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.autologin;
-in {
-
-  options.modules.autologin.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.autologin;
+in
+{
+  options.modules.autologin.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     # Enable automatic login for the user.
@@ -16,7 +20,5 @@ in {
     };
 
     # services.getty.autologinUser = userSettings.username;
-
   };
-
 }

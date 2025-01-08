@@ -1,4 +1,9 @@
-{ config, home-manager, userSettings, ... }:
+{
+  config,
+  home-manager,
+  userSettings,
+  ...
+}:
 {
   ### A tidy $HOME is a tidy mind
   xdg.enable = true;

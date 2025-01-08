@@ -1,12 +1,19 @@
-{ config, lib, pkgs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.git;
-in {
+let
+  cfg = config.modules.shell.git;
+in
+{
 
-  options.modules.shell.git.enable =
-    mkBoolOpt false;
+  options.modules.shell.git.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -75,8 +82,8 @@ in {
         diff.colorMoved = "default";
 
         core.compression = 0; # Quick fix for Fatal: early EOF’ Error
-        core.packedGitLimit = "512m"; 
-        core.packedGitWindowSize = "512m"; 
+        core.packedGitLimit = "512m";
+        core.packedGitWindowSize = "512m";
         pack.deltaCacheSize = "2047m";
         pack.packSizeLimit = "2047m";
         pack.windowMemory = "2047m";

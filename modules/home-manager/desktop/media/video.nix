@@ -1,9 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.media.video;
-in {
+let
+  cfg = config.modules.desktop.media.video;
+in
+{
 
   options.modules.desktop.media.video = {
     enable = mkBoolOpt false;
@@ -30,7 +37,12 @@ in {
       programs.mpv = {
         enable = true;
         # package = pkgs.wrapMpv (pkgs.mpv-unwrapped.override { vapoursynthSupport = true; }) { youtubeSupport = true; };
-        scripts = [ pkgs.mpvScripts.sponsorblock pkgs.mpvScripts.webtorrent-mpv-hook pkgs.mpvScripts.thumbfast pkgs.mpvScripts.mpris ];
+        scripts = [
+          pkgs.mpvScripts.sponsorblock
+          pkgs.mpvScripts.webtorrent-mpv-hook
+          pkgs.mpvScripts.thumbfast
+          pkgs.mpvScripts.mpris
+        ];
         config = {
           #
           # Example mpv configuration file

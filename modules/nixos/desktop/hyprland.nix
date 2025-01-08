@@ -1,13 +1,16 @@
-{ pkgs, config, lib, inputs, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.hyprland;
-in {
-
-  options.modules.desktop.hyprland.enable =
-    mkBoolOpt false;
-
+let
+  cfg = config.modules.desktop.hyprland;
+in
+{
+  options.modules.desktop.hyprland.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     #programs.hyprland = {
@@ -20,8 +23,11 @@ in {
       wlr.enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = ["gtk"];
-        hyprland.default = ["gtk" "hyprland"];
+        common.default = [ "gtk" ];
+        hyprland.default = [
+          "gtk"
+          "hyprland"
+        ];
       };
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
@@ -33,5 +39,4 @@ in {
     # modules.desktop.tuigreet.enable = mkDefault true;
     # modules.autologin.enable = mkDefault true;
   };
-
 }

@@ -1,12 +1,15 @@
-{ pkgs, config, lib, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.services.backup;
-in {
-
-  options.modules.services.backup.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.services.backup;
+in
+{
+  options.modules.services.backup.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # Enable the OpenSSH daemon.
@@ -47,11 +50,15 @@ in {
       {
         home-keith = basicBorgJob "backups/station/home-keith" // rec {
           paths = "/home/keith";
-          exclude = work-dirs ++ map (x: paths + "/" + x) (common-excludes ++ [
-            "Downloads"
-          ]);
+          exclude =
+            work-dirs
+            ++ map (x: paths + "/" + x) (
+              common-excludes
+              ++ [
+                "Downloads"
+              ]
+            );
         };
       };
   };
-
 }

@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.browsers.floorp;
-in {
+let
+  cfg = config.modules.desktop.browsers.floorp;
+in
+{
 
-  options.modules.desktop.browsers.floorp.enable =
-    mkBoolOpt false;
+  options.modules.desktop.browsers.floorp.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

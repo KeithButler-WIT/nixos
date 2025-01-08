@@ -1,4 +1,11 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
@@ -7,8 +14,7 @@ let
 in
 {
 
-  options.modules.desktop.kanshi.enable =
-    mkBoolOpt false;
+  options.modules.desktop.kanshi.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     services.kanshi = {
@@ -17,7 +23,7 @@ in
       settings = [
         {
           profile.name = "docked";
-          profile.outputs= [
+          profile.outputs = [
             {
               criteria = "eDP-1";
               position = "0,1080";
@@ -34,7 +40,7 @@ in
         }
         {
           profile.name = "undocked";
-          profile.outputs= [
+          profile.outputs = [
             {
               criteria = "eDP-1";
               position = "0,0";

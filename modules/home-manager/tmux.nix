@@ -1,12 +1,18 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.tmux;
-in {
+let
+  cfg = config.modules.tmux;
+in
+{
 
-  options.modules.tmux.enable =
-    mkBoolOpt false;
+  options.modules.tmux.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.tmux = {

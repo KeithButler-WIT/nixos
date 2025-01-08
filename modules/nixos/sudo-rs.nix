@@ -1,12 +1,15 @@
-{ pkgs, config, lib, userSettings, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.sudo-rs;
-in {
-
-  options.modules.sudo-rs.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.sudo-rs;
+in
+{
+  options.modules.sudo-rs.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     security.sudo.enable = false;
@@ -15,9 +18,8 @@ in {
       # execWheelOnly = true;
       # wheelNeedsPassword = true;
       # extraRules = [{
-        # groups = [ "sudo" "wheel" ]; commands = [ "ALL" ];
+      # groups = [ "sudo" "wheel" ]; commands = [ "ALL" ];
       # }];
     };
   };
-
 }

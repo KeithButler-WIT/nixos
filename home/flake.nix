@@ -42,7 +42,14 @@
 
   };
 
-  outputs = { nixpkgs, nur, home-manager, hyprland, ... }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      nur,
+      home-manager,
+      hyprland,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

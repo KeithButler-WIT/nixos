@@ -1,12 +1,19 @@
-{ config, lib, pkgs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.fish;
-in {
+let
+  cfg = config.modules.shell.fish;
+in
+{
 
-  options.modules.shell.fish.enable =
-    mkBoolOpt false;
+  options.modules.shell.fish.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -113,8 +120,7 @@ in {
 
       '';
 
-      loginShellInit = ''
-    '';
+      loginShellInit = '''';
 
       interactiveShellInit = ''
         ## Run fastfetch if session is interactive
@@ -131,8 +137,14 @@ in {
 
       plugins = [
         # Enable a plugin (here grc for colorized command output) from nixpkgs
-        { name = "grc"; src = pkgs.fishPlugins.grc.src; }
-        { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
+        {
+          name = "grc";
+          src = pkgs.fishPlugins.grc.src;
+        }
+        {
+          name = "sponge";
+          src = pkgs.fishPlugins.sponge.src;
+        }
         # Manually packaging and enable a plugin
 
       ];

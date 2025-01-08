@@ -1,12 +1,18 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.term.alacritty;
-in {
+let
+  cfg = config.modules.desktop.term.alacritty;
+in
+{
 
-  options.modules.desktop.term.alacritty.enable =
-    mkBoolOpt false;
+  options.modules.desktop.term.alacritty.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     # requires extra setup on non-Nixos
@@ -53,7 +59,6 @@ in {
         live_config_reload = true;
         shell.program = "/usr/bin/fish";
         mouse.hide_when_typing = true;
-
 
         colors = with config.colorScheme.palette; {
           bright = {

@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.ssh;
-in {
+let
+  cfg = config.modules.services.ssh;
+in
+{
 
-  options.modules.services.ssh.enable =
-    mkBoolOpt false;
+  options.modules.services.ssh.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.ssh = {
@@ -15,8 +21,7 @@ in {
         user = "git";
         identityFile = "~/.ssh/id_ed25519";
       };
-      extraConfig = ''
-    '';
+      extraConfig = '''';
     };
   };
 

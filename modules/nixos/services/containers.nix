@@ -1,10 +1,16 @@
-{ pkgs, config, lib, userSettings, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.services.containers;
-in {
-
+let
+  cfg = config.modules.services.containers;
+in
+{
   options.modules.services.containers = {
     enable = mkBoolOpt false;
     distrobox.enable = mkBoolOpt false;
@@ -39,11 +45,13 @@ in {
         rootless = {
           enable = true;
           setSocketVariable = true;
-         };
         };
       };
+    };
 
-    users.users.${userSettings.username}.extraGroups = [ "docker" "podman" ];
+    users.users.${userSettings.username}.extraGroups = [
+      "docker"
+      "podman"
+    ];
   };
-
 }

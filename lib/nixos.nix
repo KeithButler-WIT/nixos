@@ -1,4 +1,9 @@
-{ inputs, lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
@@ -53,7 +58,6 @@ in
   #     ] ++ (lib.my.mapModulesRec' (toString ../modules/home-manager) import);
   #   };
   # };
-
 
   # mapHosts = dir: attrs @ { system ? system, ... }:
   #   mapModules dir

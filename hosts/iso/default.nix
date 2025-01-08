@@ -1,4 +1,9 @@
-{ inputs, lib, system ? "x86_64-linux", ... }:
+{
+  inputs,
+  lib,
+  system ? "x86_64-linux",
+  ...
+}:
 let
   repo_url = "https://raw.githubusercontent.com/keithbutler-wit/nixos";
   mkIso =

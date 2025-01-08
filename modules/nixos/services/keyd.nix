@@ -1,12 +1,16 @@
-{ config, lib, pkgs, userSettings, ... }:
-
+{
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.services.keyd;
-in {
-
-  options.modules.services.keyd.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.services.keyd;
+in
+{
+  options.modules.services.keyd.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     users.users.${userSettings.username}.extraGroups = [ "keyd" ];
@@ -14,7 +18,7 @@ in {
       enable = true;
       keyboards = {
         default = {
-          ids = ["*"];
+          ids = [ "*" ];
           settings = {
             main = {
               capslock = "overload(esc, capslock)";
@@ -23,7 +27,6 @@ in {
           };
         };
       };
-    }; 
+    };
   };
-
 }

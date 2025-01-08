@@ -1,12 +1,13 @@
-{ pkgs, config, lib, ... }:
-
+{
+  config,
+  lib,
+  ...
+}:
 with lib;
-with lib.my;
-let cfg = config.modules.gc;
+with lib.my; let
+  cfg = config.modules.gc;
 in {
-
-  options.modules.gc.enable =
-    mkBoolOpt false;
+  options.modules.gc.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     nix = {
@@ -15,10 +16,9 @@ in {
         automatic = true;
         persistent = true;
         frequency = "weekly";
-        randomizedDelaySec = "45min"; 
+        randomizedDelaySec = "45min";
         #options = "--max-freed $((64 * 1024**3)) --delete-older-than 7d";
       };
     };
   };
-
 }

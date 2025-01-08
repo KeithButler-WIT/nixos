@@ -1,12 +1,16 @@
-{ pkgs, config, lib, inputs, ... }:
-
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.autoUpgrade;
-in {
-
-  options.modules.autoUpgrade.enable =
-    mkBoolOpt false;
+let
+  cfg = config.modules.autoUpgrade;
+in
+{
+  options.modules.autoUpgrade.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
     system.autoUpgrade = {
@@ -21,5 +25,4 @@ in {
       randomizedDelaySec = "45min";
     };
   };
-
 }

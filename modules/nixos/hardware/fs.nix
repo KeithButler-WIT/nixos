@@ -1,9 +1,16 @@
-{ config, isVm, options, lib, pkgs, ... }:
-
+{
+  config,
+  isVm,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.hardware.fs;
-in {
+let
+  cfg = config.modules.hardware.fs;
+in
+{
   options.modules.hardware.fs = {
     enable = mkBoolOpt false;
     zfs.enable = mkBoolOpt false;
@@ -38,12 +45,12 @@ in {
         };
       };
 
-      boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device = "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
+      boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device =
+        "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
 
       # 16GB swap
       # swapDevices = [{ device = "/dev/disk/by-label/SWAP"; }];
-      swapDevices =
-        [{ device = "/dev/disk/by-uuid/e0f083ce-a92f-4533-a2b8-94af1beb7a30"; }];
+      swapDevices = [ { device = "/dev/disk/by-uuid/e0f083ce-a92f-4533-a2b8-94af1beb7a30"; } ];
     })
 
     (mkIf cfg.zfs.enable (mkMerge [
@@ -78,42 +85,42 @@ in {
 
         # standardized filesystem layout
         # TODO: Uncomment before running under a zfs system
-         fileSystems = {
-           # NOTE: root and home are on tmpfs
-           # root partition, exists only as a fallback, actual root is a tmpfs
-           "/" = {
-             device = "zroot/root";
-             fsType = "zfs";
-             neededForBoot = true;
-           };
+        fileSystems = {
+          # NOTE: root and home are on tmpfs
+          # root partition, exists only as a fallback, actual root is a tmpfs
+          "/" = {
+            device = "zroot/root";
+            fsType = "zfs";
+            neededForBoot = true;
+          };
 
-           # boot partition
-           "/boot" = {
-             device = "/dev/disk/by-label/NIXBOOT";
-             fsType = "vfat";
-           };
+          # boot partition
+          "/boot" = {
+            device = "/dev/disk/by-label/NIXBOOT";
+            fsType = "vfat";
+          };
 
-           "/nix" = {
-             device = "zroot/nix";
-             fsType = "zfs";
-           };
+          "/nix" = {
+            device = "zroot/nix";
+            fsType = "zfs";
+          };
 
-           "/tmp" = {
-             device = "zroot/tmp";
-             fsType = "zfs";
-           };
+          "/tmp" = {
+            device = "zroot/tmp";
+            fsType = "zfs";
+          };
 
-           "/persist" = {
-             device = "zroot/persist";
-             fsType = "zfs";
-             neededForBoot = true;
-           };
+          "/persist" = {
+            device = "zroot/persist";
+            fsType = "zfs";
+            neededForBoot = true;
+          };
 
-           "/persist/cache" = {
-             device = "zroot/cache";
-             fsType = "zfs";
-             neededForBoot = true;
-           };
+          "/persist/cache" = {
+            device = "zroot/cache";
+            fsType = "zfs";
+            neededForBoot = true;
+          };
         };
 
         systemd.services = {

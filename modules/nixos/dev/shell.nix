@@ -5,7 +5,6 @@
   userSettings,
   ...
 }:
-
 with lib;
 with lib.my;
 let
@@ -13,7 +12,6 @@ let
   cfg = devCfg.shell;
 in
 {
-
   options.modules.dev.shell = {
     enable = mkBoolOpt false;
     xdg.enable = mkBoolOpt devCfg.xdg.enable;
@@ -29,7 +27,5 @@ in
     (mkIf cfg.xdg.enable {
       # TODO
     })
-
   ];
-
 }

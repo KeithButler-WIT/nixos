@@ -1,14 +1,29 @@
-{ config, pkgs, lib, userSettings, ... }:
-
+{
+  config,
+  pkgs,
+  lib,
+  userSettings,
+  ...
+}:
 
 {
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
-      trusted-users = [ userSettings.username "root" "@wheel" ];
-      allowed-users = [ userSettings.username "@wheel" ];
+      trusted-users = [
+        userSettings.username
+        "root"
+        "@wheel"
+      ];
+      allowed-users = [
+        userSettings.username
+        "@wheel"
+      ];
     };
     optimise.automatic = true;
     # Runs gc when theres 100mb left

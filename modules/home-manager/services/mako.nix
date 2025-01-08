@@ -1,12 +1,18 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.mako;
-in {
+let
+  cfg = config.modules.services.mako;
+in
+{
 
-  options.modules.services.mako.enable =
-    mkBoolOpt false;
+  options.modules.services.mako.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     services.mako = with config.colorScheme.palette; {

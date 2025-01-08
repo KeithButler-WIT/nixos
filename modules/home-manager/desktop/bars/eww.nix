@@ -1,4 +1,11 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
@@ -7,8 +14,7 @@ let
 in
 {
 
-  options.modules.desktop.eww.enable =
-    mkBoolOpt false;
+  options.modules.desktop.eww.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

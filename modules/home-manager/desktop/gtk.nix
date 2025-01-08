@@ -1,12 +1,19 @@
-{ config, lib, pkgs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.gtk;
-in {
+let
+  cfg = config.modules.desktop.gtk;
+in
+{
 
-  options.modules.desktop.gtk.enable =
-    mkBoolOpt false;
+  options.modules.desktop.gtk.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     fonts.fontconfig.enable = true;

@@ -1,12 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.browsers.qutebrowser;
-in {
+let
+  cfg = config.modules.desktop.browsers.qutebrowser;
+in
+{
 
-  options.modules.desktop.browsers.qutebrowser.enable =
-    mkBoolOpt false;
+  options.modules.desktop.browsers.qutebrowser.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.qutebrowser = with config.colorScheme.palette; {
