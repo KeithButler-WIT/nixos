@@ -6,11 +6,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.services.streaming;
-in
-{
+in {
   options.modules.services.streaming = {
     enable = mkBoolOpt false;
     plex.enable = mkBoolOpt false;
@@ -32,6 +30,8 @@ in
     (mkIf cfg.sonarr.enable {
       services.sonarr = {
         enable = true;
+        # skip checks for faster builds
+        package = pkgs.sonarr.overrideAttrs {doCheck = false;};
         openFirewall = true;
         user = userSettings.username;
         #dataDir = "/home/${userSettings.username}/.local/share/sonarr";
