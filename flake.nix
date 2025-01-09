@@ -8,7 +8,6 @@
       "https://devenv.cachix.org"
       "https://nix-gaming.cachix.org"
       "https://hyprland.cachix.org"
-      "https://ghostty.cachix.org"
       "https://yazi.cachix.org"
     ];
     extra-trusted-public-keys = [
@@ -17,7 +16,6 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
     ];
   };
@@ -56,12 +54,17 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     yazi.url = "github:sxyazi/yazi";
     nix-alien.url = "github:thiagokokada/nix-alien";
-    nvf.url = "github:notashelf/nvf";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # impermanence.url = "github:nix-community/impermanence";
 
@@ -74,70 +77,66 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs =
-    {
-      nixpkgs,
-      nixpkgs-stable,
-      self,
-      hosts,
-      hyprland,
-      nvf,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      forAllSystems =
-        function:
-        nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
-      commonInherits = {
-        inherit (nixpkgs) lib;
-        inherit
-          self
-          inputs
-          nixpkgs
-          nixpkgs-stable
-          ;
-        inherit (import ./options.nix) systemSettings userSettings;
-        user = "keith";
-        system = "x86_64-linux";
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
-            allowUnfreePredicate = _: true;
-            permittedInsecurePackages = [
-              # all for sonarr
-              "aspnetcore-runtime-6.0.36"
-              "aspnetcore-runtime-wrapped-6.0.36"
-              "dotnet-sdk-6.0.428"
-              "dotnet-sdk-wrapped-6.0.428"
-              "dotnet-runtime-6.0.36"
-              "dotnet-runtime-wrapped-6.0.36"
-              "dotnet-sdk-6.0.428"
-            ];
-          };
-        };
-        pkgs-stable = import inputs.nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        specialArgs = {
-          inherit self inputs;
+  outputs = {
+    nixpkgs,
+    nixpkgs-stable,
+    self,
+    hosts,
+    hyprland,
+    nvf,
+    home-manager,
+    ...
+  } @ inputs: let
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs ["x86_64-linux"] (system: function nixpkgs.legacyPackages.${system});
+    commonInherits = {
+      inherit (nixpkgs) lib;
+      inherit
+        self
+        inputs
+        nixpkgs
+        nixpkgs-stable
+        ;
+      inherit (import ./options.nix) systemSettings userSettings;
+      user = "keith";
+      system = "x86_64-linux";
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate = _: true;
+          permittedInsecurePackages = [
+            # all for sonarr
+            "aspnetcore-runtime-6.0.36"
+            "aspnetcore-runtime-wrapped-6.0.36"
+            "dotnet-sdk-6.0.428"
+            "dotnet-sdk-wrapped-6.0.428"
+            "dotnet-runtime-6.0.36"
+            "dotnet-runtime-wrapped-6.0.36"
+            "dotnet-sdk-6.0.428"
+          ];
         };
       };
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-
-      inherit (import ./options.nix) systemSettings userSettings;
-    in
-    {
-      nixosConfigurations =
-        (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
-
-      inherit self;
-
-      # templates for devenv
-      templates = import ./templates;
+      pkgs-stable = import inputs.nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      specialArgs = {
+        inherit self inputs;
+      };
     };
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+
+    inherit (import ./options.nix) systemSettings userSettings;
+  in {
+    nixosConfigurations =
+      (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
+
+    inherit self;
+
+    # templates for devenv
+    templates = import ./templates;
+  };
 }
