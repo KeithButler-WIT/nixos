@@ -1,6 +1,31 @@
+{
+  inputs,
+  lib,
+  pkgs,
+  pkgs-stable,
+  specialArgs,
+  user ? "keith",
+  userSettings,
+  systemSettings,
+  ...
+}: let
+  inherit (lib.my) mapModules mapModulesRec mapHosts;
+  lib = inputs.nixpkgs.lib.extend (
+    self: super: {
+      my = import ../lib {
+        inherit pkgs inputs;
+        lib = self;
+      };
+    }
+  );
+
+  mkNixosConfiguration = host:
+    lib.nixosSystem {
+      inherit pkgs;
+
       specialArgs =
         specialArgs
-         {
+        // {
           inherit lib;
           inherit inputs;
           inherit userSettings systemSettings;
