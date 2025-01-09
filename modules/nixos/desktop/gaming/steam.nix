@@ -66,13 +66,13 @@ in {
     hardware.xone.enable = true;
 
     environment.systemPackages = with pkgs; [
-      # heroic
+      heroic
       lutris
       protonup-qt
       protonup-ng
       wine
       winetricks
-      # openmw
+      openmw
       # openmw-tes3mp
       # steam-run
       steamcmd
