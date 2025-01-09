@@ -24,6 +24,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -80,10 +81,10 @@
   outputs = {
     nixpkgs,
     nixpkgs-stable,
+    chaotic,
     self,
     hosts,
     hyprland,
-    nvf,
     home-manager,
     ...
   } @ inputs: let
@@ -102,20 +103,7 @@
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs {
         inherit system;
-        config = {
-          allowUnfree = true;
-          allowUnfreePredicate = _: true;
-          permittedInsecurePackages = [
-            # all for sonarr
-            "aspnetcore-runtime-6.0.36"
-            "aspnetcore-runtime-wrapped-6.0.36"
-            "dotnet-sdk-6.0.428"
-            "dotnet-sdk-wrapped-6.0.428"
-            "dotnet-runtime-6.0.36"
-            "dotnet-runtime-wrapped-6.0.36"
-            "dotnet-sdk-6.0.428"
-          ];
-        };
+        config.allowUnfree = true;
       };
       pkgs-stable = import inputs.nixpkgs-stable {
         inherit system;

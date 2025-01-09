@@ -1,73 +1,50 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  pkgs-stable,
-  specialArgs,
-  user ? "keith",
-  userSettings,
-  systemSettings,
-  ...
-}:
-let
-  inherit (lib.my) mapModules mapModulesRec mapHosts;
-  lib = inputs.nixpkgs.lib.extend (
-    self: super: {
-      my = import ../lib {
-        inherit pkgs inputs;
-        lib = self;
-      };
-    }
-  );
+      specialArgs =
+        specialArgs
+         {
+          inherit lib;
+          inherit inputs;
+          inherit userSettings systemSettings;
+          inherit host user;
+          isVm = host == "vm";
+        };
+      modules =
+        [
+          inputs.chaotic.nixosModules.default
+          ./${host}/default.nix
+          ./common/default.nix
+          # ./.
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${user}.imports =
+              [
+                # inputs.stylix.homeManagerModules.stylix
+                # ./home/home.nix
+                # ./home/${userSettings.username}.nix
+                ./common/home.nix
+                ./${host}/home.nix
+              ]
+              ++ (lib.my.mapModulesRec' (toString ../modules/home-manager) import);
 
-  mkNixosConfiguration =
-    host:
-    lib.nixosSystem {
-      inherit pkgs;
-
-      specialArgs = specialArgs // {
-        inherit lib;
-        inherit inputs;
-        inherit pkgs-stable;
-        inherit userSettings systemSettings;
-        inherit host user;
-        isVm = host == "vm";
-      };
-      modules = [
-        ./${host}/default.nix
-        ./common/default.nix
-        # ./.
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.${user}.imports = [
-              # inputs.stylix.homeManagerModules.stylix
-              # ./home/home.nix
-              # ./home/${userSettings.username}.nix
-              ./common/home.nix
-              ./${host}/home.nix
-            ] ++ (lib.my.mapModulesRec' (toString ../modules/home-manager) import);
-            extraSpecialArgs = specialArgs // {
-              inherit pkgs-stable;
-              inherit inputs;
-              inherit host user;
-              inherit userSettings systemSettings;
-            };
-          };
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
-        }
-        inputs.hosts.nixosModule
-        inputs.stylix.nixosModules.stylix
-        inputs.nvf.nixosModules.default
-        # inputs.impermanence.nixosModules.impermanence
-        # inputs.sops-nix.nixosModules.sops
-      ] ++ (lib.my.mapModulesRec' (toString ../modules/nixos) import);
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+            home-manager.extraSpecialArgs =
+              specialArgs
+              // {
+                inherit inputs;
+                inherit host user;
+                inherit userSettings systemSettings;
+              };
+          }
+          inputs.hosts.nixosModule
+          inputs.stylix.nixosModules.stylix
+          # inputs.impermanence.nixosModules.impermanence
+          # inputs.sops-nix.nixosModules.sops
+        ]
+        ++ (lib.my.mapModulesRec' (toString ../modules/nixos) import);
     };
-in
-{
+in {
   lib = lib.my;
   nixos = mkNixosConfiguration "nixos";
   vm = mkNixosConfiguration "vm";
