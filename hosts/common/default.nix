@@ -1,13 +1,8 @@
 {
-  config,
   pkgs,
-  lib,
   systemSettings,
   ...
-}:
-
-{
-
+}: {
   imports = [
     ./boot.nix
     ./cleanup.nix
@@ -30,32 +25,33 @@
     dev.enable = true;
   };
 
-  programs.dconf.enable = true;
-
   time.hardwareClockInLocalTime = true;
 
-  services.xserver.enable = true;
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services = {
+    xserver.enable = true;
+    # Configure keymap in X11
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
+    envfs.enable = true;
   };
 
-  services.envfs.enable = true;
-
-  programs.fuse.userAllowOther = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    fuse.userAllowOther = true;
+    dconf.enable = true;
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 
   time.timeZone = systemSettings.timezone;
 
-  # Select internationalisation properties.
   i18n.defaultLocale = systemSettings.locale;
 
   i18n.extraLocaleSettings = {
@@ -77,5 +73,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
