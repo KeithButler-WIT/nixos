@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   config,
   lib,
   inputs,
@@ -65,25 +66,28 @@ in {
     hardware.steam-hardware.enable = true;
     hardware.xone.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      heroic
-      lutris
-      protonup-qt
-      protonup-ng
-      wine
-      winetricks
-      openmw
-      # openmw-tes3mp
-      # steam-run
-      steamcmd
-      # steam-tui
-      mangohud
-      steamtinkerlaunch
-      yad
+    environment.systemPackages = with pkgs;
+      [
+        protonup-qt
+        protonup-ng
+        wine
+        winetricks
+        # steam-run
+        steamcmd
+        # steam-tui
+        mangohud
+        steamtinkerlaunch
+        yad
 
-      glib
-      glibc
-    ];
+        glib
+        glibc
+      ]
+      ++ [
+        pkgs-stable.openmw
+        pkgs-stable.openmw-tes3mp
+        pkgs-stable.heroic
+        pkgs-stable.lutris
+      ];
 
     # Better for steam proton games
     systemd.extraConfig = "DefaultLimitNOFILE=1048576";
