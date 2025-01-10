@@ -52,7 +52,7 @@ in {
 
     (mkIf cfg.zfs.enable (mkMerge [
       {
-        services.scx.enable = true;
+        # services.scx.enable = true;
         boot = {
           # booting with zfs
           supportedFilesystems.zfs = true;
