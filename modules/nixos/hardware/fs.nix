@@ -6,11 +6,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.hardware.fs;
-in
-{
+in {
   options.modules.hardware.fs = {
     enable = mkBoolOpt false;
     zfs.enable = mkBoolOpt false;
@@ -45,32 +43,31 @@ in
         };
       };
 
-      boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device =
-        "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
+      boot.initrd.luks.devices."luks-d653e092-1b1c-4f91-8b7d-d82f2cf4be28".device = "/dev/disk/by-uuid/d653e092-1b1c-4f91-8b7d-d82f2cf4be28";
 
       # 16GB swap
       # swapDevices = [{ device = "/dev/disk/by-label/SWAP"; }];
-      swapDevices = [ { device = "/dev/disk/by-uuid/e0f083ce-a92f-4533-a2b8-94af1beb7a30"; } ];
+      swapDevices = [{device = "/dev/disk/by-uuid/e0f083ce-a92f-4533-a2b8-94af1beb7a30";}];
     })
 
     (mkIf cfg.zfs.enable (mkMerge [
       {
+        services.scx.enable = true;
         boot = {
           # booting with zfs
           supportedFilesystems.zfs = true;
-          # kernelPackages = pkgs.linuxPackages_xanmod_latest;
-          # kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
+          kernelPackages = pkgs.linuxPackages_cachyos;
           zfs = {
             devNodes =
-              if isVm then
-                "/dev/disk/by-partuuid"
+              if isVm
+              then "/dev/disk/by-partuuid"
               # use by-id for intel mobo when not in a vm
-              else if config.hardware.cpu.intel.updateMicrocode then
-                "/dev/disk/by-id"
-              else
-                "/dev/disk/by-partuuid";
+              else if config.hardware.cpu.intel.updateMicrocode
+              then "/dev/disk/by-id"
+              else "/dev/disk/by-partuuid";
 
-            package = pkgs.zfs_unstable;
+            package = pkgs.zfs;
+            # package = pkgs.zfs_unstable;
             # requestEncryptionCredentials = config.custom.zfs.encryption;
           };
         };
@@ -81,7 +78,7 @@ in
         };
 
         # 16GB swap
-        swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
+        swapDevices = [{device = "/dev/disk/by-label/SWAP";}];
 
         # standardized filesystem layout
         # TODO: Uncomment before running under a zfs system
@@ -130,7 +127,7 @@ in
           # https://github.com/NixOS/nixpkgs/issues/257505#issuecomment-2348313665
           zfs-mount = {
             serviceConfig = {
-              ExecStart = [ "${lib.getExe' pkgs.util-linux "mount"} -t zfs zroot/persist -o remount" ];
+              ExecStart = ["${lib.getExe' pkgs.util-linux "mount"} -t zfs zroot/persist -o remount"];
             };
           };
         };
