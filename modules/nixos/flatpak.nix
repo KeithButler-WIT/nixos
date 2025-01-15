@@ -5,11 +5,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.flatpak;
-in
-{
+in {
   options.modules.flatpak.enable = mkBoolOpt false;
 
   imports = [
@@ -29,15 +27,15 @@ in
       packages = [
         "com.github.tchx84.Flatseal"
         "com.unity.UnityHub"
-        "com.valvesoftware.Steam" # Steam works better as flatpak
+        "com.valvesoftware.Steam"
         "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
         "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
         "com.valvesoftware.Steam.Utility.steamtinkerlaunch"
-        #"com.valvesoftware.Steam.Utility.gamescope"
-        #""
-        "com.valvesoftware.Steam.Utility.protontricks"
+        "com.valvesoftware.Steam.Utility.gamescope"
         "com.valvesoftware.SteamLink"
+        "com.Matoking.protontricks"
         "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+        #""
       ];
       # update.onActivation = true;
       update.auto = {

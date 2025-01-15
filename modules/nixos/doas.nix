@@ -5,11 +5,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.doas;
-in
-{
+in {
   options.modules.doas.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -18,7 +16,7 @@ in
       sudo.enable = false;
       doas.extraRules = [
         {
-          users = [ userSettings.username ]; # TODO: change to username
+          users = [userSettings.username];
           # Optional, retains environment variables while running commands
           # e.g. retains your NIX_PATH when applying your config
           keepEnv = true;

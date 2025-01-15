@@ -7,20 +7,19 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.editors.emacs;
-  emacs =
-    with pkgs;
-    (emacsPackagesFor
+  emacs = with pkgs;
+    (
+      emacsPackagesFor
       # (if config.modules.desktop.type == "wayland"
       # then emacs-pgtk
       # else emacs-git)).emacsWithPackages
       emacs-pgtk
-    ).emacsWithPackages
-      (epkgs: [ ]);
-in
-{
+    )
+    .emacsWithPackages
+    (epkgs: []);
+in {
   options.modules.editors.emacs = {
     enable = mkBoolOpt false;
   };
@@ -30,7 +29,8 @@ in
       inputs.emacs-overlay.overlays.default
     ];
 
-    users.users.${userSettings.username}.packages = with pkgs; [
+    environment.systemPackages = [
+      pkgs.sqlite
       (mkLauncherEntry "Doom Emacs" {
         description = "Start Doom Emacs";
         icon = "emacs";
@@ -43,8 +43,11 @@ in
       })
     ];
 
+    # users.users.${userSettings.username}.packages = with pkgs; [
+    # ];
+
     # TODO: move to home-manager
-    environment.variables.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
+    environment.variables.PATH = ["$XDG_CONFIG_HOME/emacs/bin"];
 
     fonts.packages = [
       #pkgs.nerd-fonts.symbols-only
@@ -53,8 +56,8 @@ in
 
     systemd.user.services.clone-doom-config = {
       enable = true;
-      after = [ "network.target" ];
-      wantedBy = [ "default.target" ];
+      after = ["network.target"];
+      wantedBy = ["default.target"];
       description = "Doom Emacs Clone Service";
       serviceConfig = {
         Type = "simple";

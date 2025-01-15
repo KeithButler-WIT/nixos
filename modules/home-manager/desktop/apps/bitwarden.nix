@@ -4,15 +4,10 @@
   lib,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.apps.bitwarden;
-in
-{
-
-  #TODO: Fix module path
+in {
   options.modules.desktop.apps.bitwarden.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -21,5 +16,4 @@ in
       bitwarden-cli
     ];
   };
-
 }

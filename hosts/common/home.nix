@@ -1,14 +1,9 @@
 {
-  config,
-  lib,
   pkgs,
   inputs,
   userSettings,
   ...
-}:
-
-{
-
+}: {
   imports = [
     inputs.nix-colors.homeManagerModules.default
     # inputs.nixvim.homeManagerModules.nixvim
@@ -25,7 +20,7 @@
         "nix-command"
         "flakes"
       ];
-      trusted-users = [ userSettings.username ];
+      trusted-users = [userSettings.username];
       trusted-substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
@@ -86,5 +81,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 }

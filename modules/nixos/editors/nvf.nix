@@ -4,11 +4,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.editors.nvf;
-in
-{
+in {
   options.modules.editors.nvf = {
     enable = mkBoolOpt false;
   };
@@ -59,30 +57,30 @@ in
             enableTreesitter = true;
             enableExtraDiagnostics = true;
 
-            # Languages that will be supported in default and maximal configurations.
+            # Languages that are always used
             nix.enable = true;
             markdown.enable = true;
 
-            # Languages that are enabled in the maximal configuration.
+            # Languages that I use
             bash.enable = true;
-            clang.enable = false;
             css.enable = true;
             html.enable = true;
-            sql.enable = false;
-            java.enable = false;
-            kotlin.enable = false;
-            ts.enable = false;
-            go.enable = false;
             lua.enable = true;
-            zig.enable = false;
             python.enable = true;
-            typst.enable = false;
             rust = {
               enable = true;
               crates.enable = true;
             };
 
             # Language modules that are not as common.
+            typst.enable = false;
+            zig.enable = false;
+            clang.enable = false;
+            sql.enable = false;
+            java.enable = false;
+            kotlin.enable = false;
+            ts.enable = false;
+            go.enable = false;
             assembly.enable = false;
             astro.enable = false;
             nu.enable = false;
@@ -144,6 +142,10 @@ in
           filetree = {
             neo-tree = {
               enable = true;
+              setupOpts = {
+                enable_cursor_hijack = true;
+                git_status_async = true;
+              };
             };
           };
 

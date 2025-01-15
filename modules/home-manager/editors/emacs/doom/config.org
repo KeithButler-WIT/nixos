@@ -41,7 +41,6 @@
   - [[#org-auto-tangle][org-auto-tangle]]
 - [[#languanges][Languanges]]
   - [[#org-babel-do-load-languages][Org-babel-do-load-languages]]
-  - [[#programming][Programming]]
   - [[#design][Design]]
 - [[#applications][Applications]]
   - [[#vterm][Vterm]]
@@ -1083,20 +1082,6 @@ Use [[https://github.com/awth13/org-appear][org-appear]] to reveal emphasis mark
    (rust . t)
    (plantuml. t)
    ))
-#+end_src
-
-** Programming
-*** COMMENT Mongodb
-I'm currently using mongodb in college.
-So these packages help alot when righting reports.
-#+begin_src  emacs-lisp :results none :tangle packages.el
-(package! mongo)
-(package! ob-mongo)
-#+end_src
-
-*** COMMENT Kotlin
-#+begin_src  emacs-lisp :results none :tangle packages.el
-(package! ob-kotlin)
 #+end_src
 
 ** Design
