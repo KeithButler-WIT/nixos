@@ -20,7 +20,7 @@ with lib.my; {
     nh.enable = true;
     # gc.enable = true; # conflicts with nh clean
     flatpak.enable = true;
-    # nix-ld.enable = true;
+    nix-ld.enable = true;
     stylix.enable = true;
     # vm.enable = true;
     # vr.enable = true;

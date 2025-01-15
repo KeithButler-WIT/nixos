@@ -6,11 +6,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.nix-ld;
-in
-{
+in {
   options.modules.nix-ld.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -128,7 +126,8 @@ in
         xorg.libXi
         xorg.libSM
         xorg.libICE
-        gnome2.GConf
+        # TODO: uncomment when builds
+        #gnome2.GConf
         #gnome2.ORBit2
         nspr
         nss
@@ -188,6 +187,36 @@ in
         freetype
         dbus
         expat
+
+        libz
+        icu
+        openssl # For updater
+
+        xorg.libX11
+        xorg.libXcomposite
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libXfixes
+        xorg.libXrandr
+        xorg.libxcb
+
+        gtk3
+        glib
+        nss
+        nspr
+        dbus
+        atk
+        cups
+        libdrm
+        expat
+        libxkbcommon
+        pango
+        cairo
+        udev
+        alsa-lib
+        mesa
+        libGL
+        libsecret
       ];
     };
   };
