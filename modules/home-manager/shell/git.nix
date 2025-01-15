@@ -25,7 +25,7 @@ in
 
     programs.gh = {
       enable = true;
-      extensions = [ pkgs.gh-eco ];
+      extensions = with pkgs; [ gh-eco gh-dash ];
       gitCredentialHelper.hosts = [ "https://github.com" ];
       settings = {
         version = 1; # https://github.com/cli/cli/issues/8462
