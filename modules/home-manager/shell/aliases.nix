@@ -37,6 +37,7 @@
     hms = "home-manager --flake ~/nixos/home/ switch --impure";
     upd = "sudo nixos-rebuild --flake ~/nixos#nixos switch";
     g = "git";
+    lg = "lazygit";
 
     # Get fastest mirrors
     mirror = "sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist";
