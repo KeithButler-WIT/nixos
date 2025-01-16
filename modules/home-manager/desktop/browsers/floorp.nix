@@ -22,6 +22,9 @@ in {
       profiles = {
         main = {
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            ublock-origin
+            sponsorblock
+            bukubrow
             torrent-control
             sidebery
             youtube-shorts-block
