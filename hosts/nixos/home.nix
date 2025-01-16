@@ -109,6 +109,7 @@ with lib.my; {
     services = {
       borgmatic.enable = true;
       dunst.enable = true;
+      gpg.enable = true;
       # mako.enable = true;
       # mpd.enable = true;
       ssh.enable = true;

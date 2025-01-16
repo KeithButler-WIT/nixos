@@ -1,12 +1,8 @@
 {
   config,
   lib,
-  pkgs,
-  userSettings,
   ...
-}:
-
-{
+}: {
   # home.sessionPath = [
   #       "$HOME/.local/bin"
   #       "\${xdg.configHome}/emacs/bin"
@@ -51,7 +47,5 @@
     XDG_SESSION_TYPE = "wayland";
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
-
   };
-
 }

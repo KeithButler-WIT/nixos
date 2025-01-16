@@ -5,10 +5,7 @@
   systemSettings,
   userSettings,
   ...
-}:
-
-{
-
+}: {
   environment.systemPackages = with pkgs; [
     git
     nixd
@@ -33,7 +30,6 @@
     grc
     ripgrep
     progress
-    gnupg
     numlockx
     light
     usbutils
@@ -47,7 +43,6 @@
     killall
     pass
     feh
-    gnupg
     trash-cli
     ncdu # disk space management
     xorg.xhost # needed to run gparted on wayland
@@ -56,6 +51,5 @@
     unrar
   ];
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 }

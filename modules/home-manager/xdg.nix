@@ -3,8 +3,7 @@
   home-manager,
   userSettings,
   ...
-}:
-{
+}: {
   ### A tidy $HOME is a tidy mind
   xdg.enable = true;
 
@@ -44,7 +43,6 @@
       NOTMUCH_CONFIG = "$XDG_CONFIG_HOME/notmuch-config";
       # GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0";
       ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
-      GNUPGHOME = "$XDG_DATA_HOME/gnupg";
       WINEPREFIX = "$XDG_DATA_HOME/wineprefixes/default";
       KODI_DATA = "$XDG_DATA_HOME/kodi";
       PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
@@ -66,5 +64,4 @@
     #   [ -e ~/.Xauthority ] && mv -f ~/.Xauthority "$XAUTHORITY"
     # '';
   };
-
 }
