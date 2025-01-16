@@ -3,8 +3,7 @@
   pkgs,
   ...
 }:
-with lib.my;
-{
+with lib.my; {
   home.packages = with pkgs; [
     v4l-utils
 
@@ -47,7 +46,7 @@ with lib.my;
       };
       apps = {
         bitwarden.enable = true;
-        # blender.enable = true;
+        blender.enable = true;
         # bottles.enable = true;
         freetube.enable = true;
         godot.enable = true;
