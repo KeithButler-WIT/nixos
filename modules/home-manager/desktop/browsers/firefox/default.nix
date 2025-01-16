@@ -5,14 +5,10 @@
   userSettings,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.browsers.firefox;
-in
-{
-
+in {
   options.modules.desktop.browsers.firefox.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -40,7 +36,7 @@ in
             ExtensionRecommendations = false;
             SkipOnboarding = true;
           };
-          ExtensionSettings = { };
+          ExtensionSettings = {};
         };
       };
       profiles.${userSettings.username} = {
@@ -68,7 +64,7 @@ in
                 }
               ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@n" ];
+              definedAliases = ["@n"];
             };
             "Flathub" = {
               urls = [
@@ -94,7 +90,7 @@ in
           "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
-        # extensions = with config.nur.repos.rycee.firefox-addons; [
+        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         #   keepassxc-browser
         #   libredirect
         #   ublock-origin
@@ -109,7 +105,5 @@ in
         userContent = builtins.readFile ./userContent.css;
       };
     };
-
   };
-
 }
