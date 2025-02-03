@@ -67,7 +67,6 @@ in {
               else "/dev/disk/by-partuuid";
 
             package = pkgs.zfs;
-            # package = pkgs.zfs_unstable;
             # requestEncryptionCredentials = config.custom.zfs.encryption;
           };
         };
@@ -81,7 +80,6 @@ in {
         swapDevices = [{device = "/dev/disk/by-label/SWAP";}];
 
         # standardized filesystem layout
-        # TODO: Uncomment before running under a zfs system
         fileSystems = {
           # NOTE: root and home are on tmpfs
           # root partition, exists only as a fallback, actual root is a tmpfs

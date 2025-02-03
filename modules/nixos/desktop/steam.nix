@@ -9,13 +9,16 @@
 }:
 with lib;
 with lib.my; let
-  cfg = config.modules.desktop.gaming.steam;
+  cfg = config.modules.desktop.steam;
 in {
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
 
-  options.modules.desktop.gaming.steam.enable = mkBoolOpt false;
+  options.modules.desktop.steam = {
+    enable = mkBoolOpt false;
+    flatpak = mkBoolOpt false;
+  };
 
   config = lib.mkIf cfg.enable {
     # TODO: move to own module
@@ -59,7 +62,7 @@ in {
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable = true;
       platformOptimizations.enable = true;
-      extest.enable = true; # to translate X11 input events to uinput events
+      # extest.enable = true; # to translate X11 input events to uinput events
       protontricks.enable = true;
     };
 

@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  userSettings,
   ...
 }:
 with lib;
@@ -63,6 +62,18 @@ in {
         Type = "simple";
         WorkingDirectory = "~/.config";
         ExecStart = ''${pkgs.git}/bin/git clone git@github.com:KeithButler-WIT/doom.git'';
+      };
+    };
+
+    systemd.user.services.clone-org-files = {
+      enable = true;
+      after = ["network.target"];
+      wantedBy = ["default.target"];
+      description = "Org Files Clone Service";
+      serviceConfig = {
+        Type = "simple";
+        WorkingDirectory = "~/workspace";
+        ExecStart = ''${pkgs.git}/bin/git clone git@github.com:KeithButler-WIT/org.git'';
       };
     };
   };

@@ -6,11 +6,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.hardware.audio;
-in
-{
+in {
   options.modules.hardware.audio.enable = mkBoolOpt false;
 
   imports = [
@@ -20,7 +18,7 @@ in
   config = mkIf cfg.enable {
     # Enable sound with pipewire.
     #sound.enable = true;
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     # make pipewire realtime-capable
     security.rtkit.enable = true;
     services.pipewire = {
@@ -48,6 +46,6 @@ in
       };
     };
 
-    users.users.${userSettings.username}.extraGroups = [ "audio" ];
+    users.users.${userSettings.username}.extraGroups = ["audio"];
   };
 }

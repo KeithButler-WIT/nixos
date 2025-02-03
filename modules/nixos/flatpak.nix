@@ -24,25 +24,31 @@ in {
     # };
     services.flatpak = {
       enable = true;
-      packages = [
-        "com.github.tchx84.Flatseal"
-        "com.unity.UnityHub"
-        "com.valvesoftware.Steam"
-        "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
-        "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
-        "com.valvesoftware.Steam.Utility.steamtinkerlaunch"
-        "com.valvesoftware.Steam.Utility.gamescope"
-        "com.valvesoftware.SteamLink"
-        "com.Matoking.protontricks"
-        "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
-        #""
+      # {lib.mkIf config.modules.desktop.steam}
+      packages = mkMerge [
+        [
+          "com.github.tchx84.Flatseal"
+          "com.unity.UnityHub"
+        ]
+
+        (mkIf config.modules.desktop.steam.flatpak
+          [
+            "com.valvesoftware.Steam"
+            "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
+            "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
+            "com.valvesoftware.Steam.Utility.steamtinkerlaunch"
+            "com.valvesoftware.Steam.Utility.gamescope"
+            "com.valvesoftware.SteamLink"
+            "com.Matoking.protontricks"
+            "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+          ])
       ];
       # update.onActivation = true;
       update.auto = {
         enable = true;
         onCalendar = "weekly"; # Default value
       };
-      # uninstallUnmanaged = true;
+      uninstallUnmanaged = true;
       overrides = {
         global = {
           # Force Wayland by default

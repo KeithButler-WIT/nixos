@@ -26,6 +26,8 @@ with lib.my; {
     winetricks
 
     libxkbcommon
+
+    cozy
   ];
 
   modules = {

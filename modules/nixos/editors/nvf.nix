@@ -115,6 +115,7 @@ in {
 
             highlight-undo.enable = true;
             indent-blankline.enable = true;
+            rainbow-delimiters.enable = true;
 
             # Fun
             cellular-automaton.enable = true;
