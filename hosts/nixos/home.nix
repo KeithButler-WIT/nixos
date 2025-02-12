@@ -93,7 +93,7 @@ with lib.my; {
       alternate = "emacsclient";
       emacs.enable = true;
       # neovim.enable = true;
-      # helix.enable = true;
+      helix.enable = true;
     };
     shell = {
       bash.enable = true;
