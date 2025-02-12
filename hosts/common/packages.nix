@@ -10,12 +10,10 @@
     git
     nixd
     nixfmt-rfc-style
-    nixpkgs-fmt
     shfmt
 
     cachix
     curl
-    nixpkgs-fmt
     bind
     cached-nix-shell
     git
