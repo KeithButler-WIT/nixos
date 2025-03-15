@@ -14,7 +14,7 @@ with lib.my; let
       # (if config.modules.desktop.type == "wayland"
       # then emacs-pgtk
       # else emacs-git)).emacsWithPackages
-      emacs-pgtk
+      emacs-git-pgtk
     )
     .emacsWithPackages
     (epkgs: []);
@@ -33,7 +33,7 @@ in {
       (mkLauncherEntry "Doom Emacs" {
         description = "Start Doom Emacs";
         icon = "emacs";
-        exec = "doom run";
+        exec = "/home/keith/.config/emacs/bin/doom run /home/keith"; # TODO: Change to user
       })
       (mkLauncherEntry "Emacs (Debug Mode)" {
         description = "Start Emacs in debug mode";
