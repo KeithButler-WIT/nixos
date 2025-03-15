@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   ...
 }:
 
@@ -22,13 +23,13 @@ in
 
   config = mkIf cfg.enable (mkMerge [
     (mkIf cfg.capture.enable {
-      home.packages = with pkgs; [
+      home.packages = with pkgs-stable; [
         obs-studio # For streaming/recording footage
       ];
     })
 
     (mkIf cfg.editor.enable {
-      home.packages = with pkgs; [
+      home.packages = with pkgs-stable; [
         davinci-resolve # For streaming/recording footage
       ];
     })
