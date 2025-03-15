@@ -16,6 +16,10 @@ in {
     radarr.enable = mkBoolOpt false;
     sonarr.enable = mkBoolOpt false;
     jackett.enable = mkBoolOpt false;
+    lidarr.enable = mkBoolOpt false;
+    prowlarr.enable = mkBoolOpt false;
+    audiobookshelf.enable = mkBoolOpt false;
+    readarr.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -37,7 +41,7 @@ in {
         #dataDir = "/home/${userSettings.username}/.local/share/sonarr";
       };
     })
-    (mkIf cfg.jackett.enable {
+    (mkIf (!cfg.prowlarr.enable && cfg.jackett.enable) {
       services.jackett = {
         enable = true;
         openFirewall = true;
@@ -54,7 +58,6 @@ in {
       };
     })
     (mkIf cfg.jellyfin.enable {
-      # TODO: remove every user = userSettings.username;
       services.jellyseerr = {
         enable = true;
         openFirewall = true;
@@ -71,6 +74,38 @@ in {
         pkgs.jellyfin-web
         pkgs.jellyfin-ffmpeg
       ];
+    })
+
+    # lidarr
+    (mkIf cfg.lidarr.enable {
+      services.lidarr = {
+        enable = true;
+        openFirewall = true;
+        user = userSettings.username;
+      };
+    })
+    # readarr
+    (mkIf cfg.readarr.enable {
+      services.readarr = {
+        enable = true;
+        openFirewall = true;
+        user = userSettings.username;
+      };
+    })
+    # audiobookshelf
+    (mkIf cfg.audiobookshelf.enable {
+      services.audiobookshelf = {
+        enable = true;
+        openFirewall = true;
+        user = userSettings.username;
+      };
+    })
+    # prowlerr instead of jackett
+    (mkIf (cfg.prowlarr.enable && !cfg.jackett.enable) {
+      services.prowlarr = {
+        enable = true;
+        openFirewall = true;
+      };
     })
   ]);
 }
