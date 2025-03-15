@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   userSettings,
   ...
 }:
@@ -15,7 +16,7 @@ in
 
   config = lib.mkIf cfg.enable {
     # Install necessary packages
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs-stable; [
       virt-manager
       virt-viewer
       spice
