@@ -17,8 +17,8 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       # aseprite
-      godot_4
-      godot_4-export-templates
+      godot
+      godot-export-templates
       gdtoolkit_4
     ];
   };
