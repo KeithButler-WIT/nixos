@@ -9,7 +9,9 @@ with lib;
 with lib.my; let
   cfg = config.modules.hardware.audio;
 in {
-  options.modules.hardware.audio.enable = mkBoolOpt false;
+  options.modules.hardware.audio = {
+    enable = mkBoolOpt false;
+  };
 
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -17,8 +19,7 @@ in {
 
   config = mkIf cfg.enable {
     # Enable sound with pipewire.
-    #sound.enable = true;
-    services.pulseaudio.enable = false;
+    # services.pulseaudio.enable = false;
     # make pipewire realtime-capable
     security.rtkit.enable = true;
     services.pipewire = {
@@ -26,7 +27,6 @@ in {
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
       jack.enable = true;
 
       # use the example session manager (no others are packaged yet so this is enabled by default,
