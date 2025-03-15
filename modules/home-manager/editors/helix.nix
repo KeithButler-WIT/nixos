@@ -13,25 +13,25 @@ in {
   config = mkIf cfg.enable {
     programs.helix = {
       enable = true;
-      package = pkgs.evil-helix;
+      # package = pkgs.evil-helix;
       settings = {
-        editor.cursor-shape = {
-          normal = "block";
-          insert = "bar";
-          select = "underline";
+        editor = {
+          line-number = "relative";
+          cursorline = true;
+          bufferline = "multiple";
+          color-modes = true;
+          cursor-shape = {
+            normal = "block";
+            insert = "bar";
+            select = "underline";
+          };
+          indent-guides = {
+            render = true;
+          };
         };
       };
       languages = {
-        # the language-server option currently requires helix from the master branch at https://github.com/helix-editor/helix/
         language-server = {
-          # typescript-language-server = with pkgs.nodePackages; {
-          #   command = "${typescript-language-server}/bin/typescript-language-server";
-          #   args = [ "--stdio" "--tsserver-path=${typescript}/lib/node_modules/typescript/lib" ];
-          # };
-          haskell-language-server = with pkgs.haskellPackages; {
-            command = "${haskell-language-server}/bin/haskell-language-server";
-            args = [];
-          };
           cmake-language-server = with pkgs; {
             command = "${cmake-language-server}/bin/cmake-language-server";
             args = [];
@@ -73,12 +73,6 @@ in {
             auto-format = true;
             file-types = ["cpp"];
             scope = "source.cpp";
-          }
-          {
-            name = "haskell";
-            auto-format = true;
-            file-types = ["hs"];
-            scope = "source.hs";
           }
           {
             name = "cmake";
