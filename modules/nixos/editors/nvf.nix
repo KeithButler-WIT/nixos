@@ -118,20 +118,20 @@ in {
             rainbow-delimiters.enable = true;
 
             # Fun
-            cellular-automaton.enable = true;
+            # cellular-automaton.enable = true;
           };
 
           statusline = {
             lualine = {
               enable = true;
-              theme = "catppuccin";
+              # theme = "auto";
             };
           };
 
           theme = {
             enable = true;
-            name = "catppuccin";
-            style = "mocha";
+            #name = "catppuccin"; # Now done with stylix
+            #style = "mocha";
             transparent = false;
           };
 
@@ -211,8 +211,8 @@ in {
 
           notes = {
             obsidian.enable = false; # FIXME: neovim fails to build if obsidian is enabled
-            neorg.enable = false;
-            orgmode.enable = true;
+            # neorg.enable = false; # TODO: Uncomment
+            # orgmode.enable = true;
             mind-nvim.enable = true;
             todo-comments.enable = true;
           };
