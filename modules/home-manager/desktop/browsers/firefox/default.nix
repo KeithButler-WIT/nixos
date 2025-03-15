@@ -12,6 +12,7 @@ in {
   options.modules.desktop.browsers.firefox.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
+    stylix.targets.firefox.profileNames = ["${userSettings.username}"];
     programs.firefox = {
       enable = true;
       package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
