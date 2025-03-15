@@ -5,23 +5,20 @@
   inputs,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.editors.emacs;
-  emacs =
-    with pkgs;
-    (emacsPackagesFor
+  emacs = with pkgs;
+    (
+      emacsPackagesFor
       # (if config.modules.desktop.type == "wayland"
       # then emacs-pgtk
       # else emacs-git)).emacsWithPackages
-      (emacs-pgtk)
-    ).emacsWithPackages
-      (epkgs: [ ]);
-in
-{
-
+      emacs-git-pgtk
+    )
+    .emacsWithPackages
+    (epkgs: []);
+in {
   options.modules.editors.emacs = {
     enable = mkBoolOpt false;
   };
@@ -55,11 +52,12 @@ in
       ## Module dependencies
       # :checkers spell
       (aspellWithDicts (
-        ds: with ds; [
-          en
-          en-computers
-          en-science
-        ]
+        ds:
+          with ds; [
+            en
+            en-computers
+            en-science
+          ]
       ))
       # :tools editorconfig
       editorconfig-core-c # per-project style config
@@ -91,7 +89,5 @@ in
     #     fi
     #   '';
     # };
-
   };
-
 }
