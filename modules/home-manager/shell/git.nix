@@ -5,14 +5,10 @@
   userSettings,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.shell.git;
-in
-{
-
+in {
   options.modules.shell.git.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -25,8 +21,8 @@ in
 
     programs.gh = {
       enable = true;
-      extensions = with pkgs; [ gh-eco gh-dash ];
-      gitCredentialHelper.hosts = [ "https://github.com" ];
+      extensions = with pkgs; [gh-eco gh-dash];
+      gitCredentialHelper.hosts = ["https://github.com"];
       settings = {
         version = 1; # https://github.com/cli/cli/issues/8462
         git_protocol = "ssh";
@@ -61,17 +57,17 @@ in
 
         safe.directory = "/opt/flutter";
 
-        gpg.format = "ssh";
+        # gpg.format = "ssh";
 
         push.autoSetupRemote = true;
 
         # Fixed a fatal error of url hanging
-        http.postBuffer = 2147483648;
-        http.lowSpeedLimit = 0;
-        http.lowSpeedTime = 999999;
+        http = {
+          postBuffer = 2147483648;
+          lowSpeedLimit = 0;
+          lowSpeedTime = 999999;
+        };
 
-        # https://github.com/dandavison/delta
-        core.pager = "${pkgs.delta}/bin/delta";
         interactive.diffFilter = "${pkgs.delta}/bin/delta - -color-only";
         delta.navigate = true; # use n and N to move between diff sections
         delta.side-by-side = true;
@@ -81,12 +77,18 @@ in
         merge.conflictstyle = "diff3";
         diff.colorMoved = "default";
 
-        core.compression = 0; # Quick fix for Fatal: early EOF’ Error
-        core.packedGitLimit = "512m";
-        core.packedGitWindowSize = "512m";
-        pack.deltaCacheSize = "2047m";
-        pack.packSizeLimit = "2047m";
-        pack.windowMemory = "2047m";
+        core = {
+          # https://github.com/dandavison/delta
+          pager = "${pkgs.delta}/bin/delta";
+          compression = 0; # Quick fix for Fatal: early EOF’ Error
+          packedGitLimit = "512m";
+          packedGitWindowSize = "512m";
+        };
+        pack = {
+          deltaCacheSize = "2047m";
+          packSizeLimit = "2047m";
+          windowMemory = "2047m";
+        };
       };
       lfs.enable = true;
       aliases = {
@@ -96,5 +98,4 @@ in
       };
     };
   };
-
 }
