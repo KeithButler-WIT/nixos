@@ -6,10 +6,8 @@
   userSettings,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.hyprland;
   gamemode = pkgs.writeShellScriptBin "gamemode" ''
     #!/usr/bin/env sh
@@ -27,9 +25,7 @@ let
     fi
     hyprctl reload
   '';
-in
-{
-
+in {
   options.modules.desktop.hyprland.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -43,8 +39,7 @@ in
 
       libnotify
       xwayland
-
-      xwaylandvideobridge
+      kdePackages.xwaylandvideobridge
     ];
 
     modules.desktop = {
@@ -105,7 +100,7 @@ in
       # ]
     '';
 
-    systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+    systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -417,7 +412,5 @@ in
         windowrulev2 = noblur, class:^(xwaylandvideobridge)$
       '';
     };
-
   };
-
 }
