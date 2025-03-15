@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-stable,
   ...
 }:
 
@@ -15,7 +15,7 @@ in
   options.modules.desktop.apps.r2modman.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
+    home.packages = with pkgs-stable; [
       r2modman
     ];
   };
