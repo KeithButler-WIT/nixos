@@ -19,13 +19,10 @@ in
       enable = true;
       sensibleOnTop = true;
       shell = "${pkgs.fish}/bin/fish";
+      keyMode = "vi";
       mouse = true;
       plugins = with pkgs; [
         tmuxPlugins.cpu
-        #{
-        #  plugin = tmuxPlugins.resurrect;
-        #  extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-        #}
         {
           plugin = tmuxPlugins.continuum;
           extraConfig = ''
