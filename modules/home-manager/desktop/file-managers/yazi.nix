@@ -85,22 +85,28 @@ in
         #   bizarre_retry = 5;
         # };
 
-        #   open = {
-        #     rules = [
-        #       {
-        #         use = "open";
-        #         mime = "image/*";
-        #       }
-        #       {
-        #         use = [ "play" "reveal" ];
-        #         mime = "video/*";
-        #       }
-        #       {
-        #         use = [ "play" "reveal" ];
-        #         mime = "audio/*";
-        #       }
-        #     ];
-        #   };
+        open = {
+          rules = [
+            {
+              use = "open";
+              mime = "image/*";
+            }
+            {
+              use = [
+                "play"
+                "reveal"
+              ];
+              mime = "video/*";
+            }
+            {
+              use = [
+                "play"
+                "reveal"
+              ];
+              mime = "audio/*";
+            }
+          ];
+        };
 
         #   opener = {
         #     edit = [
@@ -142,17 +148,6 @@ in
         #     ];
         #   };
       };
-
-      # FIXME: keymap breaking all other keybinds
-      # keymap = {
-      #   manager.keymap = [
-      #     {
-      #       run = "shell 'dragon -x -i -T \"$1\"'";
-      #       on = [ "<C-d>" ];
-      #       desc = "Open file in dragon";
-      #     }
-      #   ];
-      # };
 
     };
   };
