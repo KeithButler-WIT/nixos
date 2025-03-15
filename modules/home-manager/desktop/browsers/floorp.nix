@@ -15,13 +15,18 @@ in {
       buku # browser indepenent bookmarks
       bukubrow
     ];
+
+    stylix.targets.floorp.profileNames = ["main"];
+    stylix.targets.floorp.colorTheme.enable = true;
+
     programs.floorp = {
       enable = true;
       languagePacks = ["en-GB"];
       # TODO: Continue editing
       profiles = {
         main = {
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          extensions.force = true;
+          extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
             ublock-origin
             sponsorblock
             bukubrow
@@ -37,6 +42,7 @@ in {
             terms-of-service-didnt-read
             search-by-image
             duckduckgo-privacy-essentials
+            firefox-color # stylix coloring
             #privacy-badger
           ];
           search = {
