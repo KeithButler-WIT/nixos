@@ -133,7 +133,7 @@ in {
         nss
         cups
         libcap
-        SDL2
+        # SDL2
         libusb1
         dbus-glib
         gcc
@@ -165,11 +165,11 @@ in {
         libtiff
         pixman
         speex
-        SDL_image
-        SDL_ttf
-        SDL_mixer
-        SDL2_ttf
-        SDL2_mixer
+        # SDL_image
+        # SDL_ttf
+        # SDL_mixer
+        # SDL2_ttf
+        # SDL2_mixer
         libappindicator-gtk2
         libdbusmenu-gtk2
         libindicator-gtk2
