@@ -66,7 +66,7 @@ in {
               then "/dev/disk/by-id"
               else "/dev/disk/by-partuuid";
 
-            package = pkgs.zfs;
+            package = pkgs.zfs_cachyos;
             # requestEncryptionCredentials = config.custom.zfs.encryption;
           };
         };
