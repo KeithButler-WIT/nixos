@@ -3,18 +3,20 @@
   lib,
   ...
 }:
-with lib.my; {
+with lib.my;
+{
   imports = [
     ./hardware-configuration.nix
     ./boot.nix
   ];
 
+  # TODO: Needed for openmw multiplayer
   #services.samba.enableWinbindd = true;
   #services.samba.nsswins = true;
 
   modules = {
     autologin.enable = true;
-    # autoUpgrade.enable = true;
+    autoUpgrade.enable = true;
     # doas.enable = true;
     sudo-rs.enable = true;
     nh.enable = true;
@@ -78,17 +80,19 @@ with lib.my; {
         jellyfin.enable = true;
         radarr.enable = true;
         sonarr.enable = true;
-        jackett.enable = true;
+        # jackett.enable = true;
+        lidarr.enable = true;
+        prowlarr.enable = true;
+        audiobookshelf.enable = true;
+        readarr.enable = true;
       };
     };
   };
 
   environment.systemPackages = with pkgs; [
-    # inkscape # TODO: make module
-    # conda # TODO: make module
-    crun
+    crun # TODO: DO i need this
     libsForQt5.qt5.qtwayland
-    kdePackages.qtwayland
+    kdePackages.qtwayland # TODO: Do i still need these
     calibre
     samrewritten
     #jetbrains.rust-rover
@@ -96,7 +100,7 @@ with lib.my; {
 
   services.gvfs.enable = true;
 
-  services.udev.packages = with pkgs; [usb-modeswitch-data];
+  services.udev.packages = with pkgs; [ usb-modeswitch-data ];
 
   hardware.new-lg4ff.enable = true;
 
