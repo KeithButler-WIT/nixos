@@ -114,6 +114,7 @@
           allowUnfree = true;
           allowUnfreePredicate = _: true;
           permittedInsecurePackages = [
+            "dotnet-runtime-7.0.20" # vintagestory
             # all for sonarr
             "aspnetcore-runtime-6.0.36"
             "aspnetcore-runtime-wrapped-6.0.36"
