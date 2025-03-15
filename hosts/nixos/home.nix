@@ -3,7 +3,8 @@
   pkgs,
   ...
 }:
-with lib.my; {
+with lib.my;
+{
   home.packages = with pkgs; [
     v4l-utils
 
@@ -16,7 +17,6 @@ with lib.my; {
     scrcpy
     rclone-browser
     xdotool
-    freetube
 
     #TODO: remove
     ntlmrecon
@@ -27,7 +27,7 @@ with lib.my; {
 
     libxkbcommon
 
-    cozy
+    vintagestory
   ];
 
   modules = {
@@ -42,6 +42,7 @@ with lib.my; {
         default = "floorp";
         # firefox.enable = true;
         floorp.enable = true;
+        # zen.enable = true; # TODO: Add zen module
         # qutebrowser.enable = true;
         # tor.enable = true;
         # chromium.enable = true;
@@ -50,7 +51,7 @@ with lib.my; {
         bitwarden.enable = true;
         blender.enable = true;
         # bottles.enable = true;
-        freetube.enable = true;
+        # freetube.enable = true;
         godot.enable = true;
         libreoffice.enable = true;
         pass.enable = true;
@@ -92,7 +93,7 @@ with lib.my; {
       default = "nvim";
       alternate = "emacsclient";
       emacs.enable = true;
-      # neovim.enable = true;
+      # neovim.enable = true; # nvf in the nixos default.nix
       helix.enable = true;
     };
     shell = {
