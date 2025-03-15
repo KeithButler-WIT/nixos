@@ -1,0 +1,1 @@
+* TODO change nixos hostname to be sazabi or zaku
