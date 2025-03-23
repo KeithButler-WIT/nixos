@@ -3,8 +3,7 @@
   pkgs,
   ...
 }:
-with lib.my;
-{
+with lib.my; {
   home.packages = with pkgs; [
     v4l-utils
 
@@ -50,15 +49,16 @@ with lib.my;
       apps = {
         bitwarden.enable = true;
         blender.enable = true;
-        # bottles.enable = true;
+        bottles.enable = true;
         # freetube.enable = true;
         godot.enable = true;
+        gimp.enable = true;
         libreoffice.enable = true;
         pass.enable = true;
         signal.enable = true;
         # slack.enable = true;
         thunderbird.enable = true;
-        # unity3d.enable = true;
+        # unity.enable = true;
         # ue.enable = true;
         weeb.enable = true;
         # zoom.enable = true;

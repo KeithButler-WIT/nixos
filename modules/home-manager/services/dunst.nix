@@ -53,7 +53,7 @@ in
 
           # Offset from the origin
           # offset = "0x30";
-          offset = "0x10";
+          offset = "10x10";
           #offset = 10x50;
 
           # Scale factor. It is auto-detected if value is 0.

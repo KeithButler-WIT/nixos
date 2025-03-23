@@ -8,9 +8,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.steam;
-in {
+in
+{
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
@@ -46,12 +48,15 @@ in {
       };
     };
 
-    users.users.${userSettings.username}.extraGroups = ["gamemode"];
+    users.users.${userSettings.username}.extraGroups = [ "gamemode" ];
 
     programs.steam = {
       enable = true;
       extraPackages = with pkgs; [
         gamescope
+        gamemode
+        mangohud
+        python3
       ];
       extraCompatPackages = with pkgs; [
         proton-ge-bin
@@ -69,7 +74,8 @@ in {
     hardware.steam-hardware.enable = true;
     hardware.xone.enable = true;
 
-    environment.systemPackages = with pkgs;
+    environment.systemPackages =
+      with pkgs;
       [
         protonup-qt
         protonup-ng

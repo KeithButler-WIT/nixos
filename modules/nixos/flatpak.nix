@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.flatpak;
-in {
+in
+{
   options.modules.flatpak.enable = mkBoolOpt false;
 
   imports = [
@@ -24,24 +26,25 @@ in {
     # };
     services.flatpak = {
       enable = true;
-      # {lib.mkIf config.modules.desktop.steam}
       packages = mkMerge [
         [
           "com.github.tchx84.Flatseal"
           "com.unity.UnityHub"
         ]
-
-        (mkIf config.modules.desktop.steam.flatpak
-          [
-            "com.valvesoftware.Steam"
-            "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
-            "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
-            "com.valvesoftware.Steam.Utility.steamtinkerlaunch"
-            "com.valvesoftware.Steam.Utility.gamescope"
-            "com.valvesoftware.SteamLink"
-            "com.Matoking.protontricks"
-            "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
-          ])
+        # (mkIf home.config.modules.desktop.apps.unity.flatpak [
+        #   # FIXME: under home-manager config
+        #   "com.unity.UnityHub"
+        # ])
+        (mkIf config.modules.desktop.steam.flatpak [
+          "com.valvesoftware.Steam"
+          "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
+          "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
+          "com.valvesoftware.Steam.Utility.steamtinkerlaunch"
+          "com.valvesoftware.Steam.Utility.gamescope"
+          "com.valvesoftware.SteamLink"
+          "com.Matoking.protontricks"
+          "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+        ])
       ];
       # update.onActivation = true;
       update.auto = {

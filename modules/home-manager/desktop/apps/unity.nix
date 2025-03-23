@@ -10,13 +10,16 @@
 with lib;
 with lib.my;
 let
-  cfg = config.modules.desktop.apps.unity3d;
+  cfg = config.modules.desktop.apps.unity;
 in
 {
 
-  options.modules.desktop.apps.unity3d.enable = mkBoolOpt false;
+  options.modules.desktop.apps.unity = {
+    enable = mkBoolOpt false;
+    flatpak = mkBoolOpt false;
+  };
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !cfg.flatpak) {
     home.packages = with pkgs; [
       (unityhub.override {
         extraPkgs = fhsPkgs: [
