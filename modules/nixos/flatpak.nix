@@ -6,6 +6,7 @@
 }:
 with lib;
 with lib.my;
+with builtins;
 let
   cfg = config.modules.flatpak;
 in
@@ -29,9 +30,13 @@ in
       packages = mkMerge [
         [
           "com.github.tchx84.Flatseal"
-          "com.unity.UnityHub"
+          "dev.vencord.Vesktop"
         ]
-        # (mkIf home.config.modules.desktop.apps.unity.flatpak [
+        # (mkIf config.modules.desktop.apps.discord.flatpak [
+        #   # FIXME: under home-manager config
+        #   "com.discordapp.Discord"
+        # ])
+        # (mkIf config.modules.desktop.apps.unity.flatpak [
         #   # FIXME: under home-manager config
         #   "com.unity.UnityHub"
         # ])
