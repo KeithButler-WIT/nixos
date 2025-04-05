@@ -29,7 +29,6 @@ in {
           extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
             ublock-origin
             sponsorblock
-            bukubrow
             torrent-control
             sidebery
             youtube-shorts-block
@@ -46,7 +45,7 @@ in {
             #privacy-badger
           ];
           search = {
-            default = "DuckDuckGo";
+            default = "ddg";
             engines = {
               "Nix Packages" = {
                 urls = [
@@ -71,19 +70,19 @@ in {
 
               "NixOS Wiki" = {
                 urls = [{template = "https://wiki.nixos.org/index.php?search={searchTerms}";}];
-                iconUpdateURL = "https://wiki.nixos.org/favicon.png";
+                icon = "https://wiki.nixos.org/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = ["@nw"];
               };
 
-              "Bing".metaData.hidden = true;
-              "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+              "bing".metaData.hidden = true;
+              "google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
             };
             order = [
-              "DuckDuckGo"
-              "Google"
+              "ddg"
+              "google"
             ];
-            privateDefault = "DuckDuckGo";
+            privateDefault = "ddg";
           };
         };
       };
