@@ -4,10 +4,7 @@
   lib,
   userSettings,
   ...
-}:
-
-{
-
+}: {
   networking.hostName = userSettings.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -23,9 +20,8 @@
   networking.stevenBlackHosts = {
     enable = true;
     blockFakenews = true;
-    blockGambling = true;
+    blockGambling = false;
     blockPorn = false;
     blockSocial = false;
   };
-
 }
