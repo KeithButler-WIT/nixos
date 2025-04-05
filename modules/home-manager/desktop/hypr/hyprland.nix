@@ -3,11 +3,13 @@
   lib,
   pkgs,
   inputs,
+  options,
   userSettings,
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.hyprland;
   gamemode = pkgs.writeShellScriptBin "gamemode" ''
     #!/usr/bin/env sh
@@ -25,8 +27,22 @@ with lib.my; let
     fi
     hyprctl reload
   '';
-in {
-  options.modules.desktop.hyprland.enable = mkBoolOpt false;
+in
+{
+  options.modules.desktop.hyprland = with types; {
+    enable = mkBoolOpt false;
+    extraConfig = mkOpt lines "";
+    monitors = mkOpt (listOf (submodule {
+      options = {
+        output = mkOpt str "";
+        mode = mkOpt str "preferred";
+        position = mkOpt str "auto";
+        scale = mkOpt int 1;
+        disable = mkOpt bool false;
+        primary = mkOpt bool false;
+      };
+    })) [ { } ];
+  };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -53,6 +69,7 @@ in {
       bars = {
         # ags.enable = lib.mkDefault true;
         # eww.enable = lib.mkDefault true; # TODO Fix eww
+        # hyprpanel.enable = true;
         waybar = {
           enable = lib.mkDefault true;
           vertical = lib.mkDefault true;
@@ -100,7 +117,7 @@ in {
       # ]
     '';
 
-    systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
+    systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -178,12 +195,13 @@ in {
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
         };
-        monitor = [
-          # See https://wiki.hyprland.org/Configuring/Monitors/
-          "eDP-1, 1920x1080@60.04500, 0x0, 1.00"
-          "HDMI-A-1, 1920x1080@60.04500, 0x0, 1.00"
-          # monitor= auto,1920x1080@60,auto,auto
-        ];
+        minitor = cfg.monitors;
+        # monitor = [
+        #   # See https://wiki.hyprland.org/Configuring/Monitors/
+        #   "eDP-1, 1920x1080@60.04500, 0x0, 1.00"
+        #   "HDMI-A-1, 1920x1080@60.04500, 0x0, 1.00"
+        #   # monitor= auto,1920x1080@60,auto,auto
+        # ];
         exec-once = [
           "${pkgs.kanshi}/bin/kanshi" # Monitor settings
           # Execute your favorite apps at launch
@@ -236,8 +254,8 @@ in {
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod SHIFT, R, exec, hyprctl reload
-        bind = $mainMod, 36, exec, ${pkgs.kitty}/bin/kitty
-        bind = $mainMod, T, exec, ${pkgs.kitty}/bin/kitty
+        bind = $mainMod, 36, exec, ${config.modules.desktop.term.default}
+        bind = $mainMod, T, exec, ${config.modules.desktop.term.default}
         bind = $mainMod, Q, killactive,
         bind = $mainMod, N, exec, ${config.modules.desktop.file-managers.default}
         bind = $mainMod SHIFT, N, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.yazi}/bin/yazi
@@ -328,6 +346,7 @@ in {
         # $mainMod+Print: Current window
         # $mainMod+Shfit+Print: Current output
 
+        # TODO: use hyprshot
         bind = ,Print, exec, ${pkgs.grimblast}/bin/grimblast save screen && ${pkgs.libnotify}/bin/notify-send Screenshot captured
         bind = SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast save area && ${pkgs.libnotify}/bin/notify-send Selected\ area captured
         bind = $mainMod, Print, exec, ${pkgs.grimblast}/bin/grimblast save active && ${pkgs.libnotify}/bin/notify-send Active\ window captured

@@ -3,7 +3,8 @@
   pkgs,
   ...
 }:
-with lib.my; {
+with lib.my;
+{
   home.packages = with pkgs; [
     v4l-utils
 
@@ -36,7 +37,20 @@ with lib.my; {
     torrent.enable = true;
     tmux.enable = true;
     desktop = {
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        monitors = [
+          {
+            output = "eDP-1";
+            position = "1920x1080@60";
+            primary = true;
+          }
+          {
+            output = "HDMI-A-1";
+            mode = "1920x1080@60";
+          }
+        ];
+      };
       browsers = {
         default = "floorp";
         # firefox.enable = true;
@@ -58,7 +72,10 @@ with lib.my; {
         signal.enable = true;
         # slack.enable = true;
         thunderbird.enable = true;
-        # unity.enable = true;
+        unity = {
+          enable = true;
+          flatpak = true;
+        };
         # ue.enable = true;
         weeb.enable = true;
         # zoom.enable = true;
@@ -84,7 +101,9 @@ with lib.my; {
         ncmpcpp.enable = true;
       };
       term = {
+        default = "kitty";
         kitty.enable = true;
+        foot.enable = true;
         # alacritty.enable = true;
       };
       gtk.enable = true;
@@ -94,7 +113,7 @@ with lib.my; {
       alternate = "emacsclient";
       emacs.enable = true;
       # neovim.enable = true; # nvf in the nixos default.nix
-      helix.enable = true;
+      # helix.enable = true;
     };
     shell = {
       bash.enable = true;
