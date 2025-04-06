@@ -227,6 +227,7 @@ in
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";
         env = [
+          "HYPRSHOT_DIR,~/Pictures"
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XDG_SESSION_TYPE,wayland"
           "XDG_SESSION_DESKTOP,Hyprland"
@@ -339,18 +340,11 @@ in
         bind = ,233,exec,brightnessctl -c backlight set +5%
 
         # Screenshots:
-
-        # https://github.com/hyprwm/contrib/blob/main/grimblast/grimblast.1.scd
-        # Print: All outputs
-        # SHIFT+Print: Select area
-        # $mainMod+Print: Current window
-        # $mainMod+Shfit+Print: Current output
-
-        # TODO: use hyprshot
-        bind = ,Print, exec, ${pkgs.grimblast}/bin/grimblast save screen && ${pkgs.libnotify}/bin/notify-send Screenshot captured
-        bind = SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast save area && ${pkgs.libnotify}/bin/notify-send Selected\ area captured
-        bind = $mainMod, Print, exec, ${pkgs.grimblast}/bin/grimblast save active && ${pkgs.libnotify}/bin/notify-send Active\ window captured
-        bind = $mainMod SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast output active && ${pkgs.libnotify}/bin/notify-send Output captured
+        # Saves to HYPRSHOT_DIR or XDG_PICTURES_DIR or ~
+        bind = ,Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m output
+        bind = SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region
+        bind = $mainMod, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m window
+        bind = $mainMod SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region
 
         # for resizing window
         # will switch to a submap called resize
