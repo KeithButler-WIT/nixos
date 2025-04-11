@@ -227,7 +227,8 @@ in
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";
         env = [
-          "HYPRSHOT_DIR,~/Pictures"
+          "HYPRSHOT_DIR,$HOME/Pictures"
+          "XDG_PICTURES_DIR,$HOME/Pictures"
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XDG_SESSION_TYPE,wayland"
           "XDG_SESSION_DESKTOP,Hyprland"
