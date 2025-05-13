@@ -66,6 +66,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    openmw-nix = {
+      url = "git+https://codeberg.org/PopeRigby/openmw-nix.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     yazi.url = "github:sxyazi/yazi";
     nix-alien.url = "github:thiagokokada/nix-alien";
     nvf = {
@@ -89,69 +94,74 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = {
-    nixpkgs,
-    nixpkgs-stable,
-    chaotic,
-    self,
-    hosts,
-    hyprland,
-    nvf,
-    home-manager,
-    ...
-  } @ inputs: let
-    forAllSystems = function:
-      nixpkgs.lib.genAttrs ["x86_64-linux"] (system: function nixpkgs.legacyPackages.${system});
-    commonInherits = {
-      inherit (nixpkgs) lib;
-      inherit
-        self
-        inputs
-        nixpkgs
-        nixpkgs-stable
-        chaotic
-        ;
-      inherit (import ./options.nix) systemSettings userSettings;
-      user = "keith";
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          allowUnfreePredicate = _: true;
-          permittedInsecurePackages = [
-            "dotnet-runtime-7.0.20" # vintagestory
-            # all for sonarr
-            "aspnetcore-runtime-6.0.36"
-            "aspnetcore-runtime-wrapped-6.0.36"
-            "dotnet-sdk-6.0.428"
-            "dotnet-sdk-wrapped-6.0.428"
-            "dotnet-runtime-6.0.36"
-            "dotnet-runtime-wrapped-6.0.36"
-            "dotnet-sdk-6.0.428"
-          ];
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-stable,
+      chaotic,
+      self,
+      hosts,
+      hyprland,
+      nvf,
+      home-manager,
+      openmw-nix,
+      ...
+    }@inputs:
+    let
+      forAllSystems =
+        function:
+        nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
+      commonInherits = {
+        inherit (nixpkgs) lib;
+        inherit
+          self
+          inputs
+          nixpkgs
+          nixpkgs-stable
+          chaotic
+          ;
+        inherit (import ./options.nix) systemSettings userSettings;
+        user = "keith";
+        system = "x86_64-linux";
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowUnfreePredicate = _: true;
+            permittedInsecurePackages = [
+              "dotnet-runtime-7.0.20" # vintagestory
+              # all for sonarr
+              "aspnetcore-runtime-6.0.36"
+              "aspnetcore-runtime-wrapped-6.0.36"
+              "dotnet-sdk-6.0.428"
+              "dotnet-sdk-wrapped-6.0.428"
+              "dotnet-runtime-6.0.36"
+              "dotnet-runtime-wrapped-6.0.36"
+              "dotnet-sdk-6.0.428"
+            ];
+          };
+        };
+        pkgs-stable = import inputs.nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        specialArgs = {
+          inherit self inputs;
         };
       };
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      specialArgs = {
-        inherit self inputs;
-      };
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+
+      inherit (import ./options.nix) systemSettings userSettings;
+    in
+    {
+      nixosConfigurations =
+        (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
+
+      inherit self;
+
+      # templates for devenv
+      templates = import ./templates;
     };
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-
-    inherit (import ./options.nix) systemSettings userSettings;
-  in {
-    nixosConfigurations =
-      (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
-
-    inherit self;
-
-    # templates for devenv
-    templates = import ./templates;
-  };
 }
