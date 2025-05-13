@@ -14,6 +14,7 @@
   ],
   "modules-right": [
     "custom/bluetooth_devices",
+    "idle_inhibitor",
     "custom/sep",
     "temperature",
     "custom/sep",
@@ -41,6 +42,14 @@
     "interval": 5,
     "on-click": "blueman-manager"
   },
+"idle_inhibitor": {
+	"format": "{icon}",
+	"format-icons": {
+		"activated": "",
+		"deactivated": ""
+	},
+	"timeout": 30.5
+},
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
