@@ -338,6 +338,8 @@ in
         # bind = $mainMod SHIFT, F, fakefullscreen
         bind = ,232,exec,brightnessctl -c backlight set 5%-
         bind = ,233,exec,brightnessctl -c backlight set +5%
+        bindel = ,XF86MonBrightnessDown, exec, hyprctl hyprsunset gamma -10
+        bindel = ,XF86MonBrightnessUp, exec, hyprctl hyprsunset gamma +10
 
         # Screenshots:
         # Saves to HYPRSHOT_DIR or XDG_PICTURES_DIR or ~
