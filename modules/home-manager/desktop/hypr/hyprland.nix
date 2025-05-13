@@ -374,9 +374,6 @@ in
         blurls = ${config.modules.desktop.file-managers.default}
         blurls = gtk-layer-shell # for nwg-drawer
         # window rules
-        #windowrule = opacity 0.85 override 0.85 override,^(thunar)$
-        windowrule = opacity 0.85 override 0.85 override,^(gedit)$
-        windowrule = opacity 0.85 override 0.85 override,^(catfish)$
         #window rules with evaluation
         windowrulev2 = opacity 0.85 0.85,floating:1
 
