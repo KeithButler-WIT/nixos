@@ -8,8 +8,7 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.hyprland;
   gamemode = pkgs.writeShellScriptBin "gamemode" ''
     #!/usr/bin/env sh
@@ -27,8 +26,7 @@ let
     fi
     hyprctl reload
   '';
-in
-{
+in {
   options.modules.desktop.hyprland = with types; {
     enable = mkBoolOpt false;
     extraConfig = mkOpt lines "";
@@ -41,7 +39,7 @@ in
         disable = mkOpt bool false;
         primary = mkOpt bool false;
       };
-    })) [ { } ];
+    })) [{}];
   };
 
   config = mkIf cfg.enable {
@@ -122,6 +120,7 @@ in
     };
 
     services.hyprpolkitagent.enable = true;
+
     systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
     wayland.windowManager.hyprland = {
       enable = true;
