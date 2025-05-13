@@ -8,8 +8,7 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.hyprland;
   gamemode = pkgs.writeShellScriptBin "gamemode" ''
     #!/usr/bin/env sh
@@ -27,8 +26,7 @@ let
     fi
     hyprctl reload
   '';
-in
-{
+in {
   options.modules.desktop.hyprland = with types; {
     enable = mkBoolOpt false;
     extraConfig = mkOpt lines "";
@@ -41,7 +39,7 @@ in
         disable = mkOpt bool false;
         primary = mkOpt bool false;
       };
-    })) [ { } ];
+    })) [{}];
   };
 
   config = mkIf cfg.enable {
@@ -92,13 +90,6 @@ in
                   "unfocus": "hide",
                   "lazy": true
               },
-              "keepass": {
-                  "command": "keepassxc",
-                  "margin": 50,
-                  "unfocus": "hide",
-                  "animation": "fromTop",
-                  "lazy": true
-              },
               "pavucontrol": {
                   "command": "pavucontrol",
                   "margin": 50,
@@ -123,7 +114,7 @@ in
 
     services.hyprpolkitagent.enable = true;
 
-    systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+    systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -393,17 +384,10 @@ in
 
         bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
         bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-        #bind = $mainMod, P,exec,${pkgs.pyprland}/bin/pypr toggle keepass && hyprctl dispatch bringactivetotop
         $scratchpadsize = size 80% 85%
 
         $scratchpad = class:^(scratchpad)$
         windowrulev2 = float,$scratchpad
-        windowrulev2 = $scratchpadsize,$scratchpad
-        windowrulev2 = workspace special silent,$scratchpad
-        windowrulev2 = center,$scratchpad
-
-        $keepass = class:^(keepassxc)$
-        windowrulev2 = float,$keepassxc
         windowrulev2 = $scratchpadsize,$scratchpad
         windowrulev2 = workspace special silent,$scratchpad
         windowrulev2 = center,$scratchpad
