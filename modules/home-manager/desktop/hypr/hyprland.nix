@@ -413,6 +413,10 @@ in
         windowrulev2 = workspace special silent,$pavucontrol
         windowrulev2 = opacity 0.80,$pavucontrol
 
+        windowrulev2 = idleinhibit fullscreen, class:^(*)$
+        windowrulev2 = idleinhibit fullscreen, title:^(*)$
+        windowrulev2 = idleinhibit fullscreen, fullscreen:1
+
         # -----------------------------------------------------
         # xwaylandvideobridge workaround
         # -----------------------------------------------------
