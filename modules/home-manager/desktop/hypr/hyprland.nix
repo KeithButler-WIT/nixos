@@ -154,6 +154,7 @@ in
           # "col.active_border" = "rgba (33 ccffee) rgba (8 f00ffee) 45 deg";
           # "col.inactive_border" = "rgba (595959 aa)";
           layout = "dwindle";
+          allow_tearing = true;
         };
 
         decoration = {
@@ -423,6 +424,11 @@ in
         windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
         windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
         windowrulev2 = noblur, class:^(xwaylandvideobridge)$
+
+        # -----------------------------------------------------
+        # Tearing
+        # -----------------------------------------------------
+        windowrule = immediate, class:^(cs2)$ # change cs2 to game tearing is wanted
       '';
     };
   };
