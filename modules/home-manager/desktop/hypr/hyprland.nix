@@ -108,6 +108,11 @@ in {
       # ]
     '';
 
+    services.clipse = {
+      enable = true;
+      historySize = 200;
+    };
+
     services.hyprsunset = {
       enable = true;
     };
@@ -118,7 +123,7 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-      systemd.enable = true;
+      # systemd.enable = true;
       xwayland.enable = true;
       systemd.enableXdgAutostart = true;
       plugins = [
@@ -209,7 +214,6 @@ in {
           "[workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird"
           "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
           # ${pkgs.blueman}/bin/blueman-applet
-          #TODO: uncomment "${pkgs.copyq}/bin/copyq"
           "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive"
           "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive"
           "${pkgs.pyprland}/bin/pypr"
@@ -427,7 +431,20 @@ in {
         # -----------------------------------------------------
         # Tearing
         # -----------------------------------------------------
+
         windowrule = immediate, class:^(cs2)$ # change cs2 to game tearing is wanted
+
+        # -----------------------------------------------------
+        # Clipse
+        # -----------------------------------------------------
+
+        windowrule = float, class:(clipse)
+        windowrule = size 622 652, class:(clipse)
+        windowrule = stayfocused, class:(clipse)
+
+        # bind = $mainMod, B, exec, ${config.modules.desktop.term.default} --class clipse -e clipse
+        bind = $mainMod, B, exec, kitty --class clipse -e ${pkgs.clipse}/bin/clipse
+        bind = $mainMod, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker
       '';
     };
   };
