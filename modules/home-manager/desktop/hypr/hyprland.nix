@@ -244,6 +244,54 @@ in
           "CLUTTER_BACKEND,wayland"
           "XDG_SCREENSHOTS_DIR,$HOME/Pictures"
         ];
+        bind = [
+          "$mainMod SHIFT, R, exec, hyprctl reload" # Reload config
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
+          "$mainMod, H, movefocus, l"
+          "$mainMod, L, movefocus, r"
+          "$mainMod, K, movefocus, u"
+          "$mainMod, J, movefocus, d"
+          # Switch workspaces with mainMod + [0-9]
+          "$mainMod, 1, workspace, 1"
+          "$mainMod, 2, workspace, 2"
+          "$mainMod, 3, workspace, 3"
+          "$mainMod, 4, workspace, 4"
+          "$mainMod, 5, workspace, 5"
+          "$mainMod, 6, workspace, 6"
+          "$mainMod, 7, workspace, 7"
+          "$mainMod, 8, workspace, 8"
+          "$mainMod, 9, workspace, 9"
+          "$mainMod, 0, workspace, 10"
+          # Move to workspace with focused container with ALT + SHIFT + [0-9]
+          "ALT SHIFT, 1, movetoworkspace, 1"
+          "ALT SHIFT, 2, movetoworkspace, 2"
+          "ALT SHIFT, 3, movetoworkspace, 3"
+          "ALT SHIFT, 4, movetoworkspace, 4"
+          "ALT SHIFT, 5, movetoworkspace, 5"
+          "ALT SHIFT, 6, movetoworkspace, 6"
+          "ALT SHIFT, 7, movetoworkspace, 7"
+          "ALT SHIFT, 8, movetoworkspace, 8"
+          "ALT SHIFT, 9, movetoworkspace, 9"
+          "ALT SHIFT, 0, movetoworkspace, 10"
+          # Move active window to a workspace with mainMod + SHIFT + [0-9]
+          "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
+          "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
+          "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
+          "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
+          "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
+          "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
+          "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
+          "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
+          "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
+          "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
+          # Scroll through existing workspaces with mainMod + scroll
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
+        ];
       };
 
       extraConfig = ''
@@ -257,7 +305,6 @@ in
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        bind = $mainMod SHIFT, R, exec, hyprctl reload
         bind = $mainMod, 36, exec, ${config.modules.desktop.term.default}
         bind = $mainMod, T, exec, ${config.modules.desktop.term.default}
         bind = $mainMod, Q, killactive,
@@ -277,56 +324,6 @@ in
         # bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
         # bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.yazi}/bin/yazi
         bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
-
-        # Move focus with mainMod + arrow keys
-        bind = $mainMod, left, movefocus, l
-        bind = $mainMod, right, movefocus, r
-        bind = $mainMod, up, movefocus, u
-        bind = $mainMod, down, movefocus, d
-        bind = $mainMod, H, movefocus, l
-        bind = $mainMod, L, movefocus, r
-        bind = $mainMod, K, movefocus, u
-        bind = $mainMod, J, movefocus, d
-
-        # Switch workspaces with mainMod + [0-9]
-        bind = $mainMod, 1, workspace, 1
-        bind = $mainMod, 2, workspace, 2
-        bind = $mainMod, 3, workspace, 3
-        bind = $mainMod, 4, workspace, 4
-        bind = $mainMod, 5, workspace, 5
-        bind = $mainMod, 6, workspace, 6
-        bind = $mainMod, 7, workspace, 7
-        bind = $mainMod, 8, workspace, 8
-        bind = $mainMod, 9, workspace, 9
-        bind = $mainMod, 0, workspace, 10
-
-        # Move to workspace with focused container with ALT + SHIFT + [0-9]
-        bind = ALT SHIFT, 1, movetoworkspace, 1
-        bind = ALT SHIFT, 2, movetoworkspace, 2
-        bind = ALT SHIFT, 3, movetoworkspace, 3
-        bind = ALT SHIFT, 4, movetoworkspace, 4
-        bind = ALT SHIFT, 5, movetoworkspace, 5
-        bind = ALT SHIFT, 6, movetoworkspace, 6
-        bind = ALT SHIFT, 7, movetoworkspace, 7
-        bind = ALT SHIFT, 8, movetoworkspace, 8
-        bind = ALT SHIFT, 9, movetoworkspace, 9
-        bind = ALT SHIFT, 0, movetoworkspace, 10
-
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
-        bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
-        bind = $mainMod SHIFT, 3, movetoworkspacesilent, 3
-        bind = $mainMod SHIFT, 4, movetoworkspacesilent, 4
-        bind = $mainMod SHIFT, 5, movetoworkspacesilent, 5
-        bind = $mainMod SHIFT, 6, movetoworkspacesilent, 6
-        bind = $mainMod SHIFT, 7, movetoworkspacesilent, 7
-        bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
-        bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
-        bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
-
-        # Scroll through existing workspaces with mainMod + scroll
-        bind = $mainMod, mouse_down, workspace, e+1
-        bind = $mainMod, mouse_up, workspace, e-1
 
         # Move/resize windows with mainMod + LMB/RMB and dragging`
         bindm = $mainMod, mouse:272, movewindow
