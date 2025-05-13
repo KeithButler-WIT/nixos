@@ -18,7 +18,7 @@ in
 
   config = mkIf cfg.enable {
 
-    # https://wiki.hyprland.org/Hypr-Ecosystem/hypridle/
+    # https://wiki.hyprland.org/Hypr-Ecosystem/hyprpaper/
     services.hyprpaper = {
       enable = true;
       settings = {
