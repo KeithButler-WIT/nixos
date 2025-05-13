@@ -4,14 +4,10 @@
   lib,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.nh;
-in
-{
-
+in {
   options.modules.nh.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -22,8 +18,7 @@ in
     ];
 
     home.sessionVariables = {
-      FLAKE = "$HOME/nixos";
+      NH_FLAKE = "$HOME/nixos";
     };
   };
-
 }
