@@ -118,6 +118,10 @@ in
     '';
 
     systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+    services.hyprsunset = {
+      enable = true;
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -214,8 +218,6 @@ in
           # ${pkgs.blueman}/bin/blueman-applet
           # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
           "${pkgs.copyq}/bin/copyq"
-          # colour-temperature setting depending on the time [https://github.com/d4l3k/go-sct]
-          "${pkgs.go-sct}/bin/waysct"
           "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive"
           "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive"
           "${pkgs.pyprland}/bin/pypr"
