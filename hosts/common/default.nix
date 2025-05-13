@@ -2,7 +2,8 @@
   pkgs,
   systemSettings,
   ...
-}: {
+}:
+{
   imports = [
     ./boot.nix
     ./cleanup.nix
@@ -12,7 +13,7 @@
     ./users.nix
   ];
 
-  home-manager.backupFileExtension = "backup";
+  home-manager.backupFileExtension = "bkup";
 
   environment.systemPackages = with pkgs; [
     man-pages
