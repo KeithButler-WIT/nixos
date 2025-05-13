@@ -200,25 +200,23 @@ in
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
         };
-        minitor = cfg.monitors;
-        # monitor = [
-        #   # See https://wiki.hyprland.org/Configuring/Monitors/
-        #   "eDP-1, 1920x1080@60.04500, 0x0, 1.00"
-        #   "HDMI-A-1, 1920x1080@60.04500, 0x0, 1.00"
-        #   # monitor= auto,1920x1080@60,auto,auto
-        # ];
+        # monitor = cfg.monitors;
+        monitor = [
+          # See https://wiki.hyprland.org/Configuring/Monitors/
+          "eDP-1, 1920x1080@60.04500, 0x0, 1.00"
+          "HDMI-A-1, 1920x1080@60.04500, 0x0, 1.00"
+          # monitor= auto,1920x1080@60,auto,auto
+        ];
         exec-once = [
           "${pkgs.kanshi}/bin/kanshi" # Monitor settings
           # Execute your favorite apps at launch
           "${pkgs.hyprpaper}/bin/hyprpaper"
-          # [workspace 1 silent] ${pkgs.vesktop}/bin/vesktop
-          # [workspace 1 silent] ${pkgs.steam}/bin/steam
+          # [workspace 1 silent] ${pkgs.discord}/bin/discord
           # [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
           "[workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird"
           "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
           # ${pkgs.blueman}/bin/blueman-applet
-          # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-          "${pkgs.copyq}/bin/copyq"
+          #TODO: uncomment "${pkgs.copyq}/bin/copyq"
           "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive"
           "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount GoogleDrive: ~/GoogleDrive"
           "${pkgs.pyprland}/bin/pypr"
