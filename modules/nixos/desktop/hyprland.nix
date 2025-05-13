@@ -35,6 +35,7 @@ in
         xdg-desktop-portal
       ];
     };
+    programs.hyprland.withUWSM = true;
 
     # modules.desktop.tuigreet.enable = mkDefault true;
     # modules.autologin.enable = mkDefault true;
