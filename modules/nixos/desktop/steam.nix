@@ -88,7 +88,7 @@ in {
         glib
         glibc
 
-        lldb
+        lldb #for openmw
       ]
       ++ [
         # pkgs-stable.openmw
