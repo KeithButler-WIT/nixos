@@ -1,6 +1,6 @@
 [[manager.prepend_keymap]]
 on   = "<C-d>"
-run  = "shell 'dragon -x -i -T \"$1\"' --confirm"
+run  = "shell 'dragon-drop -x -i -T \"$1\"' --confirm"
 desc = "Open shell here"
 
 [[manager.prepend_keymap]]
