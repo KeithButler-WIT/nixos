@@ -34,7 +34,6 @@
     _JAVA_AWT_WM_NONEREPARENTING = "1";
     SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
     DISABLE_QT5_COMPAT = "0";
-    GDK_BACKEND = "wayland";
     ANKI_WAYLAND = "1";
     DIRENV_LOG_FORMAT = "";
     WLR_DRM_NO_ATOMIC = "1";
@@ -45,7 +44,8 @@
     # WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_SESSION_TYPE = "wayland";
-    SDL_VIDEODRIVER = "wayland";
+    GDK_BACKEND = "wayland,x11";
+    SDL_VIDEODRIVER = "wayland,x11";
     CLUTTER_BACKEND = "wayland";
   };
 }
