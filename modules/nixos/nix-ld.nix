@@ -78,7 +78,7 @@ in {
         pipewire
         stdenv.cc.cc
         stdenv.cc.cc.lib
-        pkgs-stable.libstdcxx5
+        #pkgs-stable.libstdcxx5
         systemd
         vulkan-loader
         xorg.libX11
@@ -214,7 +214,6 @@ in {
         cairo
         udev
         alsa-lib
-        mesa
         libGL
         libsecret
       ];
