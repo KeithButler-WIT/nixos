@@ -34,7 +34,11 @@ with lib.my;
     # just.enable = true;
     nh.enable = true;
     gc.enable = true;
-    torrent.enable = true;
+    torrent = {
+      enable = true;
+      # rtorrent.enable = true;
+      qbit.enable = true;
+    };
     tmux.enable = true;
     desktop = {
       hyprland = {
