@@ -25,7 +25,17 @@ in {
       amdgpu.amdvlk = {
         enable = true;
         support32Bit.enable = true;
+        settings = {
+          gttsize = 6000;
+          AllowVkPipelineCachingToDisk = 1;
+          EnableVmAlwaysValid = 1;
+          IFH = 0;
+          IdleAfterSubmitGpuMask = 1;
+          ShaderCacheMode = 1;
+        };
       };
     };
+    programs.tuxclocker.enable = true;
+    programs.tuxclocker.enableAMD = true;
   };
 }
