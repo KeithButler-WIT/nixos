@@ -10,6 +10,15 @@ with lib.my;
 
     nsxiv
     wiki-tui
+    rusty-man
+    tokei
+    ripgrep-all
+    presenterm
+    du-dust
+    dua
+    bacon
+    cargo-info
+    ncspot
 
     # vscode
     # jetbrains-toolbox
@@ -29,6 +38,8 @@ with lib.my;
 
     vintagestory
   ];
+
+  programs.rclone.enable = true;
 
   modules = {
     # just.enable = true;
