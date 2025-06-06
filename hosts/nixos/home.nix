@@ -3,8 +3,7 @@
   pkgs,
   ...
 }:
-with lib.my;
-{
+with lib.my; {
   home.packages = with pkgs; [
     v4l-utils
 
@@ -19,6 +18,8 @@ with lib.my;
     bacon
     cargo-info
     ncspot
+
+    grayjay
 
     # vscode
     # jetbrains-toolbox
@@ -141,7 +142,8 @@ with lib.my;
       direnv.enable = true;
       eza.enable = true;
       zoxide.enable = true;
-      thefuck.enable = true;
+      # thefuck.enable = true;
+      pay-respects.enable = true;
     };
     services = {
       borgmatic.enable = true;
