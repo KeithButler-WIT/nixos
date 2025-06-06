@@ -57,7 +57,8 @@ in {
         (python3.withPackages (ps: with ps; [renpy]))
       ];
       extraCompatPackages = with pkgs; [
-        proton-ge-bin
+        #proton-ge-bin
+        proton-ge-custom
       ];
       # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
       localNetworkGameTransfers.openFirewall = true;
