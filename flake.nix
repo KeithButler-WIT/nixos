@@ -91,7 +91,10 @@
     # inputs.zen-browser.packages."${system}".default # beta
 
     # https://www.youtube.com/watch?v=ljHkWgBaQWU
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
