@@ -5,7 +5,6 @@
   userSettings,
   ...
 }:
-
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${userSettings.username} = {
@@ -25,11 +24,12 @@
       "nixconfig"
       "dialout"
     ];
+    shell = pkgs.fish; # Enabled in home manager
+    ignoreShellProgramCheck = true;
     packages = with pkgs; [
     ];
     openssh.authorizedKeys.keys = lib.mkIf config.modules.services.ssh.enable [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNXXNh8eWgPtjc7+iiBFuM6mB+C+8m13wD4tHZFPtYm keithbutler2001@gmail.com"
     ];
   };
-
 }
