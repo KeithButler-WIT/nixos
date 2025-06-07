@@ -5,10 +5,8 @@
   inputs,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.file-managers.yazi;
   plugins-repo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
@@ -16,9 +14,7 @@ let
     rev = "06e5fe1c7a2a4009c483b28b298700590e7b6784";
     sha256 = "sha256-jg8+GDsHOSIh8QPYxCvMde1c1D9M78El0PljSerkLQc=";
   };
-in
-{
-
+in {
   options.modules.desktop.file-managers.yazi.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -64,7 +60,7 @@ in
       #'';
 
       settings = {
-        manager = {
+        mgr = {
           sort_by = "natural";
           # show_hidden = true;
           # show_symlink = true;
@@ -148,8 +144,6 @@ in
         #     ];
         #   };
       };
-
     };
   };
-
 }
