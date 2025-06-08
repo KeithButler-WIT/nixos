@@ -3,8 +3,7 @@
   lib,
   ...
 }:
-with lib.my;
-{
+with lib.my; {
   imports = [
     ./hardware-configuration.nix
     ./boot.nix
@@ -100,9 +99,9 @@ with lib.my;
 
   services.gvfs.enable = true;
 
-  services.udev.packages = with pkgs; [ usb-modeswitch-data ];
+  services.udev.packages = with pkgs; [usb-modeswitch-data];
 
-  hardware.new-lg4ff.enable = true;
+  # hardware.new-lg4ff.enable = true;
 
   networking.interfaces.enp4s0.wakeOnLan.enable = true;
 
