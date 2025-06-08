@@ -110,7 +110,7 @@ in {
 
     services.clipse = {
       enable = true;
-      historySize = 200;
+      # historySize = 200;
     };
 
     services.hyprsunset = {
@@ -124,8 +124,8 @@ in {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
       # systemd.enable = true;
+      # systemd.enableXdgAutostart = true;
       xwayland.enable = true;
-      systemd.enableXdgAutostart = true;
       plugins = [
         # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       ];
@@ -235,9 +235,9 @@ in {
           "QT_QPA_PLATFORM,wayland;xcb"
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
           "QT_QPA_PLATFORMTHEME,qt5ct"
-          "GDK_BACKEND,wayland,x11,*"
+          "GDK_BACKEND,wayland;x11;*"
           "QT_QPA_PLATFORM,wayland;xcb"
-          "SDL_VIDEODRIVER,wayland,x11"
+          "SDL_VIDEODRIVER,wayland;x11"
           "CLUTTER_BACKEND,wayland"
         ];
         bind = [
