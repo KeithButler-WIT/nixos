@@ -5,11 +5,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.hyprland;
-in
-{
+in {
   options.modules.desktop.hyprland.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -23,7 +21,7 @@ in
       wlr.enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = [ "gtk" ];
+        common.default = ["gtk"];
         hyprland.default = [
           "gtk"
           "hyprland"
@@ -36,6 +34,17 @@ in
       ];
     };
     programs.hyprland.withUWSM = true;
+
+    programs.uwsm = {
+      enable = true;
+      waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "/etc/profiles/per-user/keith/bin/hyprland";
+        };
+      };
+    };
 
     # modules.desktop.tuigreet.enable = mkDefault true;
     # modules.autologin.enable = mkDefault true;
