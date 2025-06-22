@@ -22,6 +22,7 @@ in {
         enable = true;
         enable32Bit = true;
       };
+      amdgpu.overdrive.enable = true;
       amdgpu.amdvlk = {
         enable = true;
         support32Bit.enable = true;
@@ -35,7 +36,5 @@ in {
         };
       };
     };
-    programs.tuxclocker.enable = true;
-    programs.tuxclocker.enableAMD = true;
   };
 }
