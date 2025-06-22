@@ -47,6 +47,7 @@
     rsync
     rclone
     unrar
+    bonk # touch / mkdir replacer
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
