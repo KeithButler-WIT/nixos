@@ -5,14 +5,10 @@
   pkgs-stable,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.media.video;
-in
-{
-
+in {
   options.modules.desktop.media.video = {
     enable = mkBoolOpt false;
     capture.enable = mkBoolOpt false;
@@ -198,7 +194,5 @@ in
         handbrake # ...for the GUI
       ];
     })
-
   ]);
-
 }
