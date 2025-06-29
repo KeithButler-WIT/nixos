@@ -21,6 +21,7 @@
   home.sessionVariables = {
     OpenGL_GL_PREFERENCE = "GLVND";
     ROC_ENABLE_PRE_VEGA = "1";
+    GSK_RENDERER = "ngl";
 
     # Other program settings:
     _ZO_RESOLVE_SYMLINKS = "1";
