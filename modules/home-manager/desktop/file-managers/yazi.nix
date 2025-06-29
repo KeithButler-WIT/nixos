@@ -30,10 +30,10 @@ in {
       wl-clipboard
     ];
 
-    home.file.".config/yazi" = {
-      source = ./yazi;
-      recursive = true;
-    };
+    # home.file.".config/yazi" = {
+    #   source = ./yazi;
+    #   recursive = true;
+    # };
 
     programs.yazi = {
       enable = true;
@@ -44,20 +44,24 @@ in {
       shellWrapperName = "y";
 
       plugins = {
-        #chmod = "${plugins-repo}/chmod.yazi";
-        #full-border = "${plugins-repo}/full-border.yazi";
-        #starship = pkgs.fetchFromGitHub {
-        #  owner = "Rolv-Apneseth";
-        #  repo = "starship.yazi";
-        #  rev = "0a141f6dd80a4f9f53af8d52a5802c69f5b4b618";
-        #  sha256 = "sha256-OL4kSDa1BuPPg9N8QuMtl+MV/S24qk5R1PbO0jgq2rA=";
-        #};
+        git = pkgs.yaziPlugins.git;
+        rsync = pkgs.yaziPlugins.rsync;
+        mount = pkgs.yaziPlugins.mount;
+        chmod = pkgs.yaziPlugins.chmod;
+        lazygit = pkgs.yaziPlugins.lazygit;
+        starship = pkgs.yaziPlugins.starship;
       };
 
-      #initLua = ''
-      #  require("full-border"):setup()
-      #  require("starship"):setup()
-      #'';
+      # TODO: Convert from toml file
+      keymap = {
+        mgr.prepend_keymap = [
+          {
+            run = "shell 'dragon-drop -x -i -T \"$1\"' --confirm";
+            on = ["<C-t>"];
+            desc = "Open shell here";
+          }
+        ];
+      };
 
       settings = {
         mgr = {
@@ -65,21 +69,6 @@ in {
           # show_hidden = true;
           # show_symlink = true;
         };
-
-        # preview = {
-        #   image_filter = "lanczos3";
-        #   image_quality = 80;
-        #   max_width = 600;
-        #   max_height = 900;
-        #   ueberzug_scale = 1;
-        #   ueberzug_offset = [ 0 0 0 0 ];
-        # };
-
-        # tasks = {
-        #   micro_workers = 5;
-        #   macro_workers = 10;
-        #   bizarre_retry = 5;
-        # };
 
         open = {
           rules = [
@@ -103,46 +92,6 @@ in {
             }
           ];
         };
-
-        #   opener = {
-        #     edit = [
-        #       {
-        #         run = "nvim \"$@\"";
-        #         block = true;
-        #         for = "unix";
-        #       }
-        #     ];
-        #     open = [
-        #       {
-        #         run = "qimgv \"$@\"";
-        #         desc = "Open";
-        #       }
-        #     ];
-        #     reveal = [
-        #       {
-        #         run = "''${pkgs.exiftool}/bin/exiftool \"$1\"; echo \"Press enter to exit\"; read _''";
-        #         block = true;
-        #         desc = "Show EXIF";
-        #       }
-        #     ];
-        #     play = [
-        #       {
-        #         run = "mpv \"$@\"";
-        #         orphan = true;
-        #       }
-        #       {
-        #         run = "''${pkgs.mediainfo}/bin/mediainfo \"$1\"; echo \"Press enter to exit\"; read _''";
-        #         block = true;
-        #         desc = "Show media info";
-        #       }
-        #     ];
-        #     archive = [
-        #       {
-        #         run = "unar \"$1\"";
-        #         desc = "Extract here";
-        #       }
-        #     ];
-        #   };
       };
     };
   };
