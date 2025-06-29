@@ -88,7 +88,6 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     zen-browser.url = "github:0xc000022070/zen-browser-flake"; # TODO: remove when added to nixpkgs
-    # inputs.zen-browser.packages."${system}".default # beta
 
     # https://www.youtube.com/watch?v=ljHkWgBaQWU
     stylix = {
