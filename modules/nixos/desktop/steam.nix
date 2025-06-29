@@ -55,6 +55,8 @@ in {
         gamemode
         mangohud
         (python3.withPackages (ps: with ps; [renpy]))
+        glib
+        glibc
       ];
       extraCompatPackages = with pkgs; [
         #proton-ge-bin
