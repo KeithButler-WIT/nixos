@@ -48,7 +48,6 @@
     rclone
     unrar
     bonk # touch / mkdir replacer
-    inputs.zen-browser.packages."${system}".default # beta
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
