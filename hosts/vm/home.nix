@@ -6,16 +6,13 @@
   userSettings,
   ...
 }:
-
-with lib.my;
-{
-
+with lib.my; {
   modules = {
     # just.enable = true;
     nh.enable = true;
     desktop = {
       hyprland.enable = true;
-      # waybar.enable = true;
+      waybar.enable = true;
       # browsers = {
       # qutebrowser.enable = true;
       # };
@@ -46,5 +43,4 @@ with lib.my;
       # xremap.enable = true;
     };
   };
-
 }
