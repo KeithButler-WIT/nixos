@@ -4,14 +4,10 @@
   lib,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.bars.waybar;
-in
-{
-
+in {
   options.modules.desktop.bars.waybar = {
     enable = mkBoolOpt false;
     horizontal = mkBoolOpt false;
@@ -22,7 +18,7 @@ in
     {
       programs.waybar = {
         enable = true;
-        systemd.enable = true;
+        # systemd.enable = true;
       };
     }
 
@@ -36,7 +32,5 @@ in
         recursive = true;
       };
     })
-
   ]);
-
 }
