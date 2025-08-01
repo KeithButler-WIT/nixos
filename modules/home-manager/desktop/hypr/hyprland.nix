@@ -444,6 +444,14 @@ in {
         # bind = $mainMod, B, exec, ${config.modules.desktop.term.default} --class clipse -e clipse
         bind = $mainMod, B, exec, kitty --class clipse -e ${pkgs.clipse}/bin/clipse
         bind = $mainMod, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker
+
+        # -----------------------------------------------------
+        # Steam Fix
+        # -----------------------------------------------------
+
+        windowrulev2 = stayfocused, title:^()$,class:^(steam)$
+        windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
+
       '';
     };
   };
