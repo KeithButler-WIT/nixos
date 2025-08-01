@@ -34,6 +34,7 @@ in {
 
         fuse
 
+        libgbm
         libz
         zstd
         gss
