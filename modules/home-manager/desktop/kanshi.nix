@@ -1,19 +1,12 @@
 {
   config,
   lib,
-  pkgs,
-  inputs,
-  userSettings,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.kanshi;
-in
-{
-
+in {
   options.modules.desktop.kanshi.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -26,14 +19,12 @@ in
           profile.outputs = [
             {
               criteria = "eDP-1";
-              position = "0,1080";
-              mode = "1920x1080@60Hz";
-              status = "enable";
+              status = "disable";
             }
             {
-              criteria = "*";
+              criteria = "HDMI-A-1";
               position = "0,0";
-              mode = "1920x1080@60Hz";
+              mode = "3840x2160@60Hz";
               status = "enable";
             }
           ];
@@ -52,5 +43,4 @@ in
       ];
     };
   };
-
 }
