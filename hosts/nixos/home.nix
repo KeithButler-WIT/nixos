@@ -20,6 +20,7 @@ with lib.my; {
     ncspot
 
     grayjay
+    lmstudio
 
     # vscode
     # jetbrains-toolbox
@@ -68,10 +69,10 @@ with lib.my; {
         ];
       };
       browsers = {
-        default = "floorp";
+        default = "zen-beta";
         # firefox.enable = true;
         floorp.enable = true;
-        # zen.enable = true; # TODO: Add zen module
+        zen.enable = true; # TODO: Add zen module
         # qutebrowser.enable = true;
         # tor.enable = true;
         # chromium.enable = true;
@@ -114,7 +115,7 @@ with lib.my; {
           player.enable = true;
           tools.enable = true;
         };
-        ncmpcpp.enable = true;
+        # ncmpcpp.enable = true;
       };
       term = {
         default = "kitty";
