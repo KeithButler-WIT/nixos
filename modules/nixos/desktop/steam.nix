@@ -103,8 +103,5 @@ in {
         inputs.openmw-nix.packages.${system}.openmw-validator
         inputs.openmw-nix.packages.${system}.plox
       ];
-
-    # Better for steam proton games
-    systemd.extraConfig = "DefaultLimitNOFILE=1048576";
   };
 }
