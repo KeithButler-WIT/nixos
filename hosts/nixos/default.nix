@@ -28,7 +28,8 @@ with lib.my; {
     desktop = {
       enable = true;
       hyprland.enable = true;
-      # plasma6.enable = true;
+      # cosmic.enable = true;
+      plasma6.enable = true;
       tuigreet.enable = true;
       steam = {
         enable = true;
