@@ -67,7 +67,6 @@ in {
       bars = {
         # ags.enable = lib.mkDefault true;
         # eww.enable = lib.mkDefault true; # TODO Fix eww
-        # hyprpanel.enable = true;
         waybar = {
           enable = lib.mkDefault true;
           vertical = lib.mkDefault true;
