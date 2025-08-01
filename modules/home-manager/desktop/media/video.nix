@@ -191,7 +191,7 @@ in {
       home.packages = with pkgs; [
         # Tools for (en|de)coding.
         ffmpeg_6-full # ...in the CLI
-        handbrake # ...for the GUI
+        # handbrake # ...for the GUI
       ];
     })
   ]);
