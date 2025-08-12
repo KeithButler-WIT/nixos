@@ -53,7 +53,7 @@ in {
         terminal = 0.95;
       };
       targets = {
-        grub.useImage = true;
+        grub.useWallpaper = true;
       };
       polarity = "dark";
     };
