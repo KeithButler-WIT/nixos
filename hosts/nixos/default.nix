@@ -13,6 +13,8 @@ with lib.my; {
   #services.samba.enableWinbindd = true;
   #services.samba.nsswins = true;
 
+  programs.niri.enable = true;
+
   modules = {
     autologin.enable = true;
     autoUpgrade.enable = true;

@@ -7,6 +7,7 @@ with lib.my; {
   home.packages = with pkgs; [
     v4l-utils
 
+    # TODO: Move to shell module
     nsxiv
     wiki-tui
     rusty-man
@@ -19,6 +20,7 @@ with lib.my; {
     cargo-info
     ncspot
 
+    # TODO: Move to own module
     grayjay
     lmstudio
 
@@ -39,6 +41,10 @@ with lib.my; {
     libxkbcommon
 
     vintagestory
+
+    # TODO: Move to niri module
+    tofi
+    xwayland-satellite
   ];
 
   programs.rclone.enable = true;
