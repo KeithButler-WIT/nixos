@@ -208,6 +208,7 @@ in {
           "${pkgs.kanshi}/bin/kanshi" # Monitor settings
           # Execute your favorite apps at launch
           "${pkgs.hyprpaper}/bin/hyprpaper"
+          "${pkgs.waybar}/bin/waybar"
           # [workspace 1 silent] ${pkgs.discord}/bin/discord
           # [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
           "[workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird"
