@@ -201,7 +201,7 @@ in {
         monitor = [
           # See https://wiki.hyprland.org/Configuring/Monitors/
           "eDP-1, 1920x1080@60.04500, 0x0, 1.00"
-          "HDMI-A-1, 1920x1080@60.04500, 0x0, 1.00"
+          "HDMI-A-1, 2560x1440@59.95, 0x0, 1.00"
           # monitor= auto,1920x1080@60,auto,auto
         ];
         exec-once = [

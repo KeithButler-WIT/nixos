@@ -24,8 +24,9 @@ in {
             {
               criteria = "HDMI-A-1";
               position = "0,0";
-              mode = "3840x2160@60Hz";
+              mode = "2560x1440@59.95Hz";
               status = "enable";
+              # scale = 1.25;
             }
           ];
         }
