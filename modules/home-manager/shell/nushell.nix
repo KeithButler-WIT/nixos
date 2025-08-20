@@ -5,26 +5,24 @@
   userSettings,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.shell.nu;
-in
-{
-
+in {
   options.modules.shell.nu.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
     programs.nushell = {
       enable = true;
+      extraConfig = ''
+        $env.config.hooks.command_not_found = source ${pkgs.nix-index}/etc/profile.d/command-not-found.nu
+      '';
+
       # functions = {
       #   gitignore = "${pkgs.curl}/bin/curl -sL https://www.gitignore.io/api/$argv";
       #   yy = ''
       #   '';
       # };
-
     };
   };
-
 }

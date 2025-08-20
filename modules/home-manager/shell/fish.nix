@@ -5,14 +5,10 @@
   userSettings,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.shell.fish;
-in
-{
-
+in {
   options.modules.shell.fish.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -24,6 +20,8 @@ in
       pkgs.bat
       pkgs.mcfly
     ];
+
+    programs.command-not-found.enable = false;
 
     programs.fish = {
       enable = true;
@@ -133,6 +131,8 @@ in
         ${pkgs.zoxide}/bin/zoxide init fish | source
         alias cd "z" # Temp fix
         alias cdi "zi" # Temp fix
+
+        source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
       '';
 
       plugins = [
@@ -146,10 +146,9 @@ in
           src = pkgs.fishPlugins.sponge.src;
         }
         # Manually packaging and enable a plugin
-
       ];
 
-      shellAliases = { };
+      shellAliases = {};
     };
 
     home.file.".config/macchina/themes/Berylilum.toml".text = ''
@@ -185,5 +184,4 @@ in
       color           = "#FF7001"
     '';
   };
-
 }

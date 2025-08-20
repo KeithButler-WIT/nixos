@@ -4,14 +4,10 @@
   pkgs,
   ...
 }:
-
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.shell.bash;
-in
-{
-
+in {
   options.modules.shell.bash.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -20,6 +16,8 @@ in
       pkgs.curl
       pkgs.man
     ];
+
+    programs.command-not-found.enable = false;
 
     programs.bash = {
       enable = true;
@@ -50,10 +48,11 @@ in
         ${pkgs.macchina}/bin/macchina -t Berylilum
 
         eval "$(${pkgs.zoxide}/bin/zoxide init bash)"
+
+        source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
       '';
 
-      shellAliases = { };
+      shellAliases = {};
     };
   };
-
 }
