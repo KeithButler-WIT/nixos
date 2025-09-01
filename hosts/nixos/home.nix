@@ -23,6 +23,9 @@ with lib.my; {
     # TODO: Move to own module
     grayjay
     lmstudio
+    openrgb
+    mcontrolcenter
+    nyx
 
     # vscode
     # jetbrains-toolbox
