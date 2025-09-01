@@ -16,7 +16,7 @@ with lib.my; {
   programs.niri.enable = true;
 
   modules = {
-    autologin.enable = true;
+    # autologin.enable = true;
     autoUpgrade.enable = true;
     # doas.enable = true;
     sudo-rs.enable = true;
