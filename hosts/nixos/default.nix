@@ -14,6 +14,8 @@ with lib.my; {
   #services.samba.nsswins = true;
 
   programs.niri.enable = true;
+  services.bpftune.enable = true; # Network tuning
+  services.psd.enable = true;
 
   modules = {
     # autologin.enable = true;
