@@ -29,9 +29,6 @@ in {
         kmail
       ]
       ++ [
-        # pkgs.libsForQt5.plasma-browser-integration
-        pkgs.libsForQt5.konsole
-        pkgs.libsForQt5.oxygen
       ];
   };
 }
