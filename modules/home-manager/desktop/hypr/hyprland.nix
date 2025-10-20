@@ -189,10 +189,10 @@ in {
           # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
           # new_is_master = true;
         };
-        gestures = {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-          workspace_swipe = "on";
-        };
+        # gestures = {
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        # workspace_swipe = "on";
+        # };
         misc = {
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
@@ -317,7 +317,7 @@ in {
         bind = $mainMod, G, exec, ${gamemode}/bin/gamemode
 
         # Mainmod + Function keys
-        # bind = $mainMod, F1, exec, ${pkgs.floorp}/bin/floorp
+        # bind = $mainMod, F1, exec,
         # bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
         # bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.yazi}/bin/yazi
         bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
