@@ -72,7 +72,7 @@ with lib.my; {
       #   podman.enable = true;
       # };
       keyd.enable = true;
-      # firewall.enable = true;
+      firewall.enable = true;
       # flood.enable = true;
       mullvad-vpn.enable = true;
       # power-management.enable = true;
@@ -100,6 +100,12 @@ with lib.my; {
     calibre
     samrewritten
     #jetbrains.rust-rover
+
+    # Unreal Engine Libs
+    # libandroid
+    # libopensles
+    # libglesv3
+    # liblog
   ];
 
   services.gvfs.enable = true;
