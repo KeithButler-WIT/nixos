@@ -37,7 +37,7 @@ in {
             lightbulb.enable = true;
             lspsaga.enable = false;
             trouble.enable = true;
-            lspSignature.enable = true;
+            lspSignature.enable = false;
             otter-nvim.enable = true;
             nvim-docs-view.enable = true;
           };
@@ -64,6 +64,8 @@ in {
             bash.enable = true;
             css.enable = true;
             html.enable = true;
+            sql.enable = true;
+            java.enable = true;
             lua.enable = true;
             python.enable = true;
             rust = {
@@ -75,8 +77,6 @@ in {
             typst.enable = false;
             zig.enable = false;
             clang.enable = false;
-            sql.enable = false;
-            java.enable = false;
             kotlin.enable = false;
             ts.enable = false;
             go.enable = false;
@@ -93,6 +93,8 @@ in {
             ocaml.enable = false;
             elixir.enable = false;
             haskell.enable = false;
+            ruby.enable = false;
+            fsharp.enable = false;
 
             tailwind.enable = false;
             svelte.enable = false;
@@ -136,7 +138,10 @@ in {
 
           autopairs.nvim-autopairs.enable = true;
 
-          autocomplete.nvim-cmp.enable = true;
+          autocomplete = {
+            nvim-cmp.enable = false;
+            blink-cmp.enable = true;
+          };
           snippets.luasnip.enable = true;
 
           filetree = {
@@ -171,6 +176,7 @@ in {
             enable = true;
             gitsigns.enable = true;
             gitsigns.codeActions.enable = false; # throws an annoying debug message
+            neogit.enable = true;
           };
 
           minimap = {
@@ -194,9 +200,15 @@ in {
           utility = {
             ccc.enable = false;
             vim-wakatime.enable = false;
+            diffview-nvim.enable = true;
+            yanky-nvim.enable = false;
             icon-picker.enable = true;
             surround.enable = true;
-            diffview-nvim.enable = true;
+            leetcode-nvim.enable = true;
+            multicursors.enable = true;
+            smart-splits.enable = true;
+            undotree.enable = true;
+            nvim-biscuits.enable = true;
             motion = {
               hop.enable = true;
               leap.enable = true;
@@ -205,6 +217,7 @@ in {
 
             images = {
               image-nvim.enable = false;
+              img-clip.enable = true;
             };
           };
 
@@ -212,7 +225,7 @@ in {
             obsidian.enable = false; # FIXME: neovim fails to build if obsidian is enabled
             # neorg.enable = false; # TODO: Uncomment
             # orgmode.enable = true;
-            mind-nvim.enable = true;
+            mind-nvim.enable = false;
             todo-comments.enable = true;
           };
 
@@ -255,6 +268,32 @@ in {
               enable = false;
               cmp.enable = true;
             };
+            codecompanion-nvim = {
+              enable = true;
+              setupOpts = {
+                adapters = {
+                  _type = "lua-inline";
+                  expr = ''
+                    function()
+                              return require("codecompanion.adapters").extend("openai_compatible", {
+                                env = {
+                                  url = "http://127.0.0.1:1234",
+                                },
+                              })
+                            end,
+                  '';
+                };
+
+                # -- key bindings of AI
+                # vim.keymap.set('n', '<leader>a', ':CodeCompanionChat Toggle<CR>')
+                # vim.keymap.set('v', '<leader>a', ':CodeCompanionChat Add<CR>')'';
+                strategies = {
+                  chat = {adapter = "qwen";};
+                  inline = {adapter = "qwen";};
+                };
+              };
+            };
+            avante-nvim.enable = false;
           };
 
           session = {
