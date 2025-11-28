@@ -3,7 +3,8 @@
   lib,
   ...
 }:
-with lib.my; {
+with lib.my;
+{
   imports = [
     ./hardware-configuration.nix
     ./boot.nix
@@ -34,6 +35,7 @@ with lib.my; {
       hyprland.enable = true;
       # cosmic.enable = true;
       plasma6.enable = true;
+      # niri.enable = true;
       tuigreet.enable = true;
       steam = {
         enable = true;
@@ -108,11 +110,13 @@ with lib.my; {
     # libopensles
     # libglesv3
     # liblog
+
+    fuzzel # niri default app launcher
   ];
 
   services.gvfs.enable = true;
 
-  services.udev.packages = with pkgs; [usb-modeswitch-data];
+  services.udev.packages = with pkgs; [ usb-modeswitch-data ];
 
   # hardware.new-lg4ff.enable = true;
 
