@@ -4,14 +4,14 @@
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 
 |                |                                                          |
-|----------------|----------------------------------------------------------|
-| **Shell:**     | fish |
-| **DM:**        | greetd + tuigreetd |
-| **WM:**        | Hyprland + waybar |
-| **Editor:**    | [Doom Emacs][doom-emacs] |
-| **Terminal:**  | kitty |
-| **Launcher:**  | rofi |
-| **Browser:**   | floorp |
+| -------------- | -------------------------------------------------------- |
+| **Shell:**     | fish                                                     |
+| **DM:**        | greetd + tuigreetd                                       |
+| **WM:**        | Hyprland + waybar                                        |
+| **Editor:**    | [Doom Emacs][doom-emacs]                                 |
+| **Terminal:**  | kitty                                                    |
+| **Launcher:**  | rofi                                                     |
+| **Browser:**   | floorp                                                   |
 | **GTK Theme:** | [Ant Dracula](https://github.com/EliverLara/Ant-Dracula) |
 
 ## Quick Start
@@ -56,6 +56,6 @@ nix flake init --template github:keithbutler-wit/nixos#templates.python
 
 ## TODO
 
-* Enable firewall
+- Add more todos
 
 [doom-emacs]: https://github.com/hlissner/doom-emacs
