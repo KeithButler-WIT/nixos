@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.hyprland;
-in {
+in
+{
   options.modules.desktop.hyprland.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -16,23 +18,6 @@ in {
     #  package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     #  xwayland.enable = true;
     #};
-    xdg.portal = {
-      enable = true;
-      wlr.enable = true;
-      xdgOpenUsePortal = true;
-      config = {
-        common.default = ["gtk"];
-        hyprland.default = [
-          "gtk"
-          "hyprland"
-        ];
-      };
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal
-      ];
-    };
     programs.hyprland.withUWSM = true;
 
     programs.uwsm = {

@@ -39,6 +39,7 @@ with lib.my; {
         enable = true;
         flatpak = true;
       };
+      xdg.enable = true;
     };
     dev = {
       xdg.enable = true;
