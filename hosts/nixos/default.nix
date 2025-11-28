@@ -90,6 +90,7 @@ with lib.my; {
         prowlarr.enable = true;
         audiobookshelf.enable = true;
         readarr.enable = true;
+        navidrome.enable = true;
       };
     };
   };
