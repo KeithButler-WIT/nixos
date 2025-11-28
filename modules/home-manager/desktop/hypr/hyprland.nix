@@ -53,7 +53,6 @@ in {
 
       libnotify
       xwayland
-      kdePackages.xwaylandvideobridge
     ];
 
     modules.desktop = {
@@ -406,16 +405,6 @@ in {
         windowrulev2 = idleinhibit fullscreen, class:^(*)$
         windowrulev2 = idleinhibit fullscreen, title:^(*)$
         windowrulev2 = idleinhibit fullscreen, fullscreen:1
-
-        # -----------------------------------------------------
-        # xwaylandvideobridge workaround
-        # -----------------------------------------------------
-
-        windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
-        windowrulev2 = noanim, class:^(xwaylandvideobridge)$
-        windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
-        windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
-        windowrulev2 = noblur, class:^(xwaylandvideobridge)$
 
         # -----------------------------------------------------
         # Smart Gaps
