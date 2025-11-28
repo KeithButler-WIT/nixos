@@ -57,6 +57,25 @@ in {
         (python3.withPackages (ps: with ps; [renpy]))
         glib
         glibc
+
+            # Controller support libraries
+            libusb1
+            udev
+            SDL2
+
+            # Additional libraries for better compatibility
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            xorg.libXcomposite
+            xorg.libXdamage
+            xorg.libXrender
+            xorg.libXext
+
+            # Fix for Xwayland symbol errors
+            libkrb5
+            keyutils
       ];
       extraCompatPackages = with pkgs; [
         #proton-ge-bin
