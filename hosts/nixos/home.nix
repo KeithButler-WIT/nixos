@@ -14,7 +14,7 @@ with lib.my; {
     tokei
     ripgrep-all
     presenterm
-    du-dust
+    dust
     dua
     bacon
     cargo-info
