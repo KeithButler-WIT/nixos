@@ -98,10 +98,11 @@ in {
         # pkgs-stable.openmw-tes3mp
         pkgs-stable.heroic
         pkgs-stable.lutris
-        inputs.openmw-nix.packages.${system}.delta-plugin
-        inputs.openmw-nix.packages.${system}.openmw-dev
-        inputs.openmw-nix.packages.${system}.openmw-validator
-        inputs.openmw-nix.packages.${system}.plox
+        # TODO: Reenable after build failure fix
+        # inputs.openmw-nix.packages.${system}.delta-plugin
+        # inputs.openmw-nix.packages.${system}.openmw-dev
+        # inputs.openmw-nix.packages.${system}.openmw-validator
+        # inputs.openmw-nix.packages.${system}.plox
       ];
   };
 }
