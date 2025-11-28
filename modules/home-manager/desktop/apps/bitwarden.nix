@@ -12,7 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      bitwarden
+      bitwarden-desktop
       bitwarden-cli
     ];
   };
