@@ -20,6 +20,7 @@ in {
     prowlarr.enable = mkBoolOpt false;
     audiobookshelf.enable = mkBoolOpt false;
     readarr.enable = mkBoolOpt false;
+    navidrome.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -90,6 +91,18 @@ in {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
+      };
+    })
+    (mkIf cfg.navidrome.enable {
+      services.navidrome = {
+        enable = true;
+        openFirewall = true;
+        user = userSettings.username;
+	settings = {
+	# MusicFolder = "/run/media/keith/4TB-BACKUP/media-store/Music";
+	MusicFolder = "/home/${userSettings.username}/Music";
+	};
+        #dataDir = "/home/${userSettings.username}/.local/share/radarr";
       };
     })
     # audiobookshelf
