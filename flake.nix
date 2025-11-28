@@ -137,6 +137,7 @@
             "dotnet-runtime-6.0.36"
             "dotnet-runtime-wrapped-6.0.36"
             "dotnet-sdk-6.0.428"
+            "mbedtls-2.28.10" # TODO: remove after update
           ];
         };
       };
