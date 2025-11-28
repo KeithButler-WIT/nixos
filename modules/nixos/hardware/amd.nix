@@ -23,18 +23,6 @@ in {
         enable32Bit = true;
       };
       amdgpu.overdrive.enable = true;
-      amdgpu.amdvlk = {
-        enable = true;
-        support32Bit.enable = true;
-        settings = {
-          gttsize = 6000;
-          AllowVkPipelineCachingToDisk = 1;
-          EnableVmAlwaysValid = 1;
-          IFH = 0;
-          IdleAfterSubmitGpuMask = 1;
-          ShaderCacheMode = 1;
-        };
-      };
     };
     environment.systemPackages = with pkgs; [lact];
     systemd.packages = with pkgs; [lact];
