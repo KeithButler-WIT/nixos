@@ -11,7 +11,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     # Open ports in the firewall.
-    networking.firewall.allowedTCPPorts = [27036 42805];
+    networking.firewall.allowedTCPPorts = [27036 42805 4549];
     networking.firewall.allowedTCPPortRanges = [
       {
         from = 27015;
@@ -22,7 +22,7 @@ in {
         to = 42872;
       }
     ];
-    networking.firewall.allowedUDPPorts = [42805];
+    networking.firewall.allowedUDPPorts = [42805 4175 4179 4171 4549];
     networking.firewall.allowedUDPPortRanges = [
       {
         from = 27015;
