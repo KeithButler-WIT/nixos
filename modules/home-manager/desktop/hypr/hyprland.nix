@@ -308,7 +308,8 @@ in {
         bind = $mainMod SHIFT, N, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.yazi}/bin/yazi
         bind = $mainMod SHIFT, 65, togglefloating,
         bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/soy-milk
-        bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
+        bind = $mainMod SHIFT, D, exec, ${pkgs.hyprlauncher}/bin/hyprlauncher
+        # bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
         # bind = $mainMod, P, pseudo, # dwindle
         bind = $mainMod, O, togglesplit, # dwindle
         bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
