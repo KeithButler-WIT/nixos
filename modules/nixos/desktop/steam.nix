@@ -92,7 +92,7 @@ in {
     };
 
     hardware.steam-hardware.enable = true;
-    hardware.xone.enable = true;
+    # hardware.xone.enable = true; # TODO: uncomment when builds
 
     environment.systemPackages = with pkgs;
       [
