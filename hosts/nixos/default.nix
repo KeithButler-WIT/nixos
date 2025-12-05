@@ -20,7 +20,7 @@ with lib.my;
 
   modules = {
     # autologin.enable = true;
-    autoUpgrade.enable = true;
+    # autoUpgrade.enable = true;
     # doas.enable = true;
     sudo-rs.enable = true;
     nh.enable = true;
