@@ -21,14 +21,6 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.kernelModules = [
-    "kvm-amd"
-    "v4l2loopback"
-  ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-  '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
