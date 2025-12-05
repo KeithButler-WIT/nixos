@@ -422,8 +422,8 @@ in {
         # Tearing
         # -----------------------------------------------------
 
-        windowrule = immediate, class:^(cs2)$ # change cs2 to game tearing is wanted
-
+        # windowrule = immediate, class:^(cs2)$ # change cs2 to game tearing is wanted
+        
         # -----------------------------------------------------
         # Clipse
         # -----------------------------------------------------
