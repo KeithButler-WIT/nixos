@@ -428,9 +428,9 @@ in {
         # Clipse
         # -----------------------------------------------------
 
-        windowrule = float, class:(clipse)
-        windowrule = size 622 652, class:(clipse)
-        windowrule = stayfocused, class:(clipse)
+        # windowrule = float, class:(clipse)
+        # windowrule = size 622 652, class:(clipse)
+        # windowrule = stayfocused, class:(clipse)
 
         # bind = $mainMod, B, exec, ${config.modules.desktop.term.default} --class clipse -e clipse
         bind = $mainMod, B, exec, kitty --class clipse -e ${pkgs.clipse}/bin/clipse
