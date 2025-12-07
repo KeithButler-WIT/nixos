@@ -138,4 +138,9 @@ with lib.my;
     SUBSYSTEM=="usb", ATTRS{idVendor}=="114d", ATTRS{idProduct}=="8200", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="114d", ATTRS{idProduct}=="8a12", TAG+="uaccess"
   '';
+
+  services.lsfg-vk = {
+    enable = true;
+    ui.enable = true; # installs gui for configuring lsfg-vk
+  };
 }

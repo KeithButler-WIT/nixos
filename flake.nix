@@ -94,6 +94,9 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lsfg-vk-flake.url = "github:pabloaul/lsfg-vk-flake/main";
+    lsfg-vk-flake.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
