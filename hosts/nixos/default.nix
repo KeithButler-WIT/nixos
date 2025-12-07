@@ -34,7 +34,7 @@ with lib.my;
       enable = true;
       hyprland.enable = true;
       # cosmic.enable = true;
-      plasma6.enable = true;
+      # plasma6.enable = true;
       # niri.enable = true;
       tuigreet.enable = true;
       steam = {
