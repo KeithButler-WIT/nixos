@@ -293,8 +293,8 @@ in {
         # Example windowrule v1
         # windowrule = float, ^(kitty)$
 
-        # Example windowrule v2
-        # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
+        # Example windowrule 
+        # windowrule = float,class:^(kitty)$,title:^(kitty)$
 
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
@@ -369,11 +369,11 @@ in {
         bind = $mainMod SHIFT,right, movewindow, r
 
         # other blurings
-        blurls = ${config.modules.desktop.file-managers.default}
-        blurls = gtk-layer-shell # for nwg-drawer
+        # blurls = ${config.modules.desktop.file-managers.default}
+        # blurls = gtk-layer-shell # for nwg-drawer
         # window rules
         #window rules with evaluation
-        windowrulev2 = opacity 0.85 0.85,floating:1
+        # windowrule = opacity 0.85 0.85,match:floating:1
 
         #video play/pause bindings
         bind=,172,exec,${pkgs.playerctl}/bin/playerctl play-pause
@@ -384,26 +384,28 @@ in {
         # Scratch Pads
         # -----------------------------------------------------
 
+	# TODO: FIX SCRATCH PADS
+
         bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
         bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-        $scratchpadsize = size 80% 85%
+        # $scratchpadsize = size 80% 85%
+        #
+        # $scratchpad = class:^(scratchpad)$
+        # windowrule = float,$scratchpad
+        # windowrule = $scratchpadsize,$scratchpad
+        # windowrule = workspace special silent,$scratchpad
+        # windowrule = center,$scratchpad
 
-        $scratchpad = class:^(scratchpad)$
-        windowrulev2 = float,$scratchpad
-        windowrulev2 = $scratchpadsize,$scratchpad
-        windowrulev2 = workspace special silent,$scratchpad
-        windowrulev2 = center,$scratchpad
-
-        $pavucontrol = class:^(pavucontrol)$
-        windowrulev2 = float,$pavucontrol
-        windowrulev2 = size 86% 40%,$pavucontrol
-        windowrulev2 = move 50% 6%,$pavucontrol
-        windowrulev2 = workspace special silent,$pavucontrol
-        windowrulev2 = opacity 0.80,$pavucontrol
-
-        windowrulev2 = idleinhibit fullscreen, class:^(*)$
-        windowrulev2 = idleinhibit fullscreen, title:^(*)$
-        windowrulev2 = idleinhibit fullscreen, fullscreen:1
+        # $pavucontrol = class:^(pavucontrol)$
+        # windowrule = float,$pavucontrol
+        # windowrule = size 86% 40%,$pavucontrol
+        # windowrule = move 50% 6%,$pavucontrol
+        # windowrule = workspace special silent,$pavucontrol
+        # windowrule = opacity 0.80,$pavucontrol
+        #
+        # windowrule = idleinhibit fullscreen, class:^(*)$
+        # windowrule = idleinhibit fullscreen, title:^(*)$
+        # windowrule = idleinhibit fullscreen, fullscreen:1
 
         # -----------------------------------------------------
         # Smart Gaps
@@ -438,30 +440,30 @@ in {
         # Steam Fix
         # -----------------------------------------------------
 
-        windowrulev2 = stayfocused, title:^()$,class:^(steam)$
-        windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
+        # windowrule = stayfocused, title:^()$,class:^(steam)$
+        # windowrule = minsize 1 1, title:^()$,class:^(steam)$
 
         # -----------------------------------------------------
         # Rusty Retirement Game Overlay
         # -----------------------------------------------------
 
-        windowrulev2 = tag +rtr, title:(Rusty's Retirement)
-        windowrulev2 = float, tag:rtr
-
-        # Remove this if you don't want rtr to appear in all workspaces
-        # windowrulev2 = pin, tag:rtr
-
-        # windowrulev2 = size 100% 350, tag:rtr
-        windowrulev2 = size 100% 296, tag:rtr
-
-        # Move rtr to buttom of the screen
-        # windowrulev2 = move 0 730, tag:rtr
-        windowrulev2 = move 0 784, tag:rtr
-
-        windowrulev2 = noblur, tag:rtr
-        windowrulev2 = noshadow, tag:rtr
-        windowrulev2 = noborder, tag:rtr
-        windowrulev2 = opacity 1.0 override, tag:rtr
+        # windowrule = tag +rtr, title:(Rusty's Retirement)
+        # windowrule = float, tag:rtr
+        #
+        # # Remove this if you don't want rtr to appear in all workspaces
+        # # windowrule = pin, tag:rtr
+        #
+        # # windowrule = size 100% 350, tag:rtr
+        # windowrule = size 100% 296, tag:rtr
+        #
+        # # Move rtr to buttom of the screen
+        # # windowrule = move 0 730, tag:rtr
+        # windowrule = move 0 784, tag:rtr
+        #
+        # windowrule = noblur, tag:rtr
+        # windowrule = noshadow, tag:rtr
+        # windowrule = noborder, tag:rtr
+        # windowrule = opacity 1.0 override, tag:rtr
       '';
     };
   };
