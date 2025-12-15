@@ -53,11 +53,16 @@ in {
           # To list all available language module options, please visit the nvf manual.
           languages = {
             enableFormat = true;
+
             enableTreesitter = true;
             enableExtraDiagnostics = true;
 
             # Languages that are always used
             nix.enable = true;
+            nix.extraDiagnostics.enable = true;
+            nix.format.enable = true;
+            nix.lsp.enable = true;
+            nix.treesitter.enable = true;
             markdown.enable = true;
 
             # Languages that I use
@@ -70,7 +75,9 @@ in {
             python.enable = true;
             rust = {
               enable = true;
-              crates.enable = true;
+              extensions = {
+                crates-nvim.enable = true;
+              };
             };
 
             # Language modules that are not as common.
