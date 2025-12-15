@@ -25,7 +25,7 @@ with lib.my;
     sudo-rs.enable = true;
     nh.enable = true;
     # gc.enable = true; # conflicts with nh clean
-    flatpak.enable = true;
+    # flatpak.enable = true;
     nix-ld.enable = true;
     stylix.enable = true;
     # vm.enable = true;
