@@ -1,3 +1,5 @@
+# List of available nvf options
+# https://notashelf.github.io/nvf/options.html
 {
   config,
   lib,
@@ -31,15 +33,19 @@ in {
           };
 
           lsp = {
+            # This must be enabled for the language modules to hook into
+            # the LSP API.
             enable = true;
+
             formatOnSave = true;
             lspkind.enable = false;
             lightbulb.enable = true;
             lspsaga.enable = false;
             trouble.enable = true;
-            lspSignature.enable = false;
+            lspSignature.enable = !true; # conflicts with blink in maximal
             otter-nvim.enable = true;
             nvim-docs-view.enable = true;
+            harper-ls.enable = true;
           };
 
           debugger = {
@@ -53,44 +59,38 @@ in {
           # To list all available language module options, please visit the nvf manual.
           languages = {
             enableFormat = true;
-
             enableTreesitter = true;
             enableExtraDiagnostics = true;
 
-            # Languages that are always used
+            # Languages that will be supported in default and maximal configurations.
             nix.enable = true;
-            nix.extraDiagnostics.enable = true;
-            nix.format.enable = true;
-            nix.lsp.enable = true;
-            nix.treesitter.enable = true;
             markdown.enable = true;
 
-            # Languages that I use
+            # Languages that are enabled in the maximal configuration.
             bash.enable = true;
+            clang.enable = true;
             css.enable = true;
             html.enable = true;
+            json.enable = true;
             sql.enable = true;
             java.enable = true;
+            kotlin.enable = true;
+            ts.enable = false;
+            go.enable = false;
             lua.enable = true;
+            zig.enable = false;
             python.enable = true;
+            typst.enable = false;
             rust = {
               enable = true;
-              extensions = {
-                crates-nvim.enable = true;
-              };
+              extensions.crates-nvim.enable = true;
             };
 
             # Language modules that are not as common.
-            typst.enable = false;
-            zig.enable = false;
-            clang.enable = false;
-            kotlin.enable = false;
-            ts.enable = false;
-            go.enable = false;
             assembly.enable = false;
             astro.enable = false;
             nu.enable = false;
-            csharp.enable = false;
+            csharp.enable = true;
             julia.enable = false;
             vala.enable = false;
             scala.enable = false;
@@ -100,8 +100,11 @@ in {
             ocaml.enable = false;
             elixir.enable = false;
             haskell.enable = false;
+            hcl.enable = false;
             ruby.enable = false;
             fsharp.enable = false;
+            just.enable = false;
+            qml.enable = false;
 
             tailwind.enable = false;
             svelte.enable = false;
@@ -120,44 +123,49 @@ in {
             nvim-cursorline.enable = true;
             cinnamon-nvim.enable = true;
             fidget-nvim.enable = true;
+            rainbow-delimiters.enable = true;
 
             highlight-undo.enable = true;
             indent-blankline.enable = true;
-            rainbow-delimiters.enable = true;
 
             # Fun
-            # cellular-automaton.enable = true;
+            cellular-automaton.enable = false;
           };
 
           statusline = {
             lualine = {
               enable = true;
-              # theme = "auto";
+              # done automatically with stylix
+              # TODO: add conditional
+              # theme = "catppuccin";
             };
           };
 
           theme = {
             enable = true;
-            #name = "catppuccin"; # Now done with stylix
-            #style = "mocha";
+            # done automatically with stylix
+            # TODO: add conditional
+            # name = "catppuccin";
+            # style = "mocha";
             transparent = false;
           };
 
           autopairs.nvim-autopairs.enable = true;
 
+          # nvf provides various autocomplete options. The tried and tested nvim-cmp
+          # is enabled in default package, because it does not trigger a build. We
+          # enable blink-cmp in maximal because it needs to build its rust fuzzy
+          # matcher library.
           autocomplete = {
-            nvim-cmp.enable = false;
+            nvim-cmp.enable = !true;
             blink-cmp.enable = true;
           };
+
           snippets.luasnip.enable = true;
 
           filetree = {
             neo-tree = {
               enable = true;
-              setupOpts = {
-                enable_cursor_hijack = true;
-                git_status_async = true;
-              };
             };
           };
 
@@ -165,12 +173,7 @@ in {
             nvimBufferline.enable = true;
           };
 
-          treesitter = {
-            enable = true;
-            autotagHtml = true;
-            context.enable = true;
-            fold = true;
-          };
+          treesitter.context.enable = true;
 
           binds = {
             whichKey.enable = true;
@@ -209,6 +212,7 @@ in {
             vim-wakatime.enable = false;
             diffview-nvim.enable = true;
             yanky-nvim.enable = false;
+            qmk-nvim.enable = false; # requires hardware specific options
             icon-picker.enable = true;
             surround.enable = true;
             leetcode-nvim.enable = true;
@@ -216,12 +220,12 @@ in {
             smart-splits.enable = true;
             undotree.enable = true;
             nvim-biscuits.enable = true;
+
             motion = {
               hop.enable = true;
               leap.enable = true;
               precognition.enable = true;
             };
-
             images = {
               image-nvim.enable = false;
               img-clip.enable = true;
@@ -230,9 +234,9 @@ in {
 
           notes = {
             obsidian.enable = false; # FIXME: neovim fails to build if obsidian is enabled
-            # neorg.enable = false; # TODO: Uncomment
-            # orgmode.enable = true;
-            mind-nvim.enable = false;
+            neorg.enable = false;
+            orgmode.enable = true;
+            mind-nvim.enable = true;
             todo-comments.enable = true;
           };
 
@@ -260,10 +264,7 @@ in {
                 nix = "110";
                 ruby = "120";
                 java = "130";
-                go = [
-                  "90"
-                  "130"
-                ];
+                go = ["90" "130"];
               };
             };
             fastaction.enable = true;
@@ -275,32 +276,8 @@ in {
               enable = false;
               cmp.enable = true;
             };
-            codecompanion-nvim = {
-              enable = true;
-              setupOpts = {
-                adapters = {
-                  _type = "lua-inline";
-                  expr = ''
-                    function()
-                              return require("codecompanion.adapters").extend("openai_compatible", {
-                                env = {
-                                  url = "http://127.0.0.1:1234",
-                                },
-                              })
-                            end,
-                  '';
-                };
-
-                # -- key bindings of AI
-                # vim.keymap.set('n', '<leader>a', ':CodeCompanionChat Toggle<CR>')
-                # vim.keymap.set('v', '<leader>a', ':CodeCompanionChat Add<CR>')'';
-                strategies = {
-                  chat = {adapter = "qwen";};
-                  inline = {adapter = "qwen";};
-                };
-              };
-            };
-            avante-nvim.enable = false;
+            codecompanion-nvim.enable = false;
+            avante-nvim.enable = true;
           };
 
           session = {
