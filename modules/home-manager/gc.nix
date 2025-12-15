@@ -15,7 +15,7 @@ in {
       gc = {
         automatic = true;
         persistent = true;
-        frequency = "weekly";
+        dates = "weekly";
         randomizedDelaySec = "45min";
         #options = "--max-freed $((64 * 1024**3)) --delete-older-than 7d";
       };
