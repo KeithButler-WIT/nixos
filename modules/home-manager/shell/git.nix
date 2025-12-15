@@ -37,7 +37,7 @@ in {
     programs.git = {
       enable = true;
       package = pkgs.git;
-      extraConfig = {
+      settings = {
         user = {
           useConfigOnly = true;
           name = userSettings.fullName;
@@ -89,13 +89,13 @@ in {
           packSizeLimit = "2047m";
           windowMemory = "2047m";
         };
+        alias = {
+          # identify = "! git-identify";
+          # id = "! git-identify";
+          co = "checkout";
+        };
       };
       lfs.enable = true;
-      aliases = {
-        # identify = "! git-identify";
-        # id = "! git-identify";
-        co = "checkout";
-      };
     };
   };
 }
