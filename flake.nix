@@ -59,7 +59,7 @@
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
     ags.url = "github:Aylur/ags";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
