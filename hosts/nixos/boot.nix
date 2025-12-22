@@ -12,19 +12,4 @@
   # boot.zfs.enabled = true;
   # boot.zfs.extraPools = ["media" "backup"];
   boot.zfs.extraPools = ["media"];
-
-  fileSystems = {
-    "/run/media/${userSettings.username}/game-drive" = {
-      # device = "game-drive/fs1";
-      device = "/dev/disk/by-label/game-drive";
-      fsType = "ext4";
-      options = [
-        # If you don't have this options attribute, it'll default to "defaults"
-        # boot options for fstab. Search up fstab mount options you can use
-        "users" # Allows any user to mount and unmount
-        "nofail" # Prevent system from failing if this drive doesn't mount
-        "x-gvfs-show" # Shows in file managers
-      ];
-    };
-  };
 }
