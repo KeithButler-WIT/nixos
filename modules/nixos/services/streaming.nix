@@ -67,6 +67,12 @@ in {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
+        transcoding = {
+          enableHardwareEncoding = true;
+          hardwareEncodingCodecs.av1 = true;
+          hardwareDecodingCodecs.av1 = true;
+          deleteSegments = true;
+        };
         #dataDir = "/home/${userSettings.username}/.local/share/jellyfin/data";
         #cacheDir = "/home/${userSettings.username}/.local/share/jellyfin/cache";
       };
