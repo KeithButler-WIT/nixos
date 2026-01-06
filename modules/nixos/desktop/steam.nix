@@ -96,6 +96,16 @@ in {
 
     environment.systemPackages = with pkgs;
       [
+        (mkLauncherEntry "Steam Native" {
+          description = "Start Steam Native";
+          icon = "steam";
+          exec = "steam";
+        })
+        (mkLauncherEntry "Steam Flatpak" {
+          description = "Start Steam Flatpak";
+          icon = "steam";
+          exec = "com.valvesoftware.Steam";
+        })
         protonup-qt
         protonup-ng
         wine
