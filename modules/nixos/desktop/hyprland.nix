@@ -5,11 +5,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.hyprland;
-in
-{
+in {
   options.modules.desktop.hyprland.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -18,10 +16,10 @@ in
     #  package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     #  xwayland.enable = true;
     #};
-    programs.hyprland.withUWSM = true;
+    programs.hyprland.withUWSM = false;
 
     programs.uwsm = {
-      enable = true;
+      enable = false;
       waylandCompositors = {
         hyprland = {
           prettyName = "Hyprland";
