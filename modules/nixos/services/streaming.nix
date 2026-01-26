@@ -107,10 +107,10 @@ in {
         enable = true;
         openFirewall = true;
         user = userSettings.username;
-	settings = {
-	# MusicFolder = "/run/media/keith/4TB-BACKUP/media-store/Music";
-	MusicFolder = "/home/${userSettings.username}/Music";
-	};
+        settings = {
+          # MusicFolder = "/run/media/keith/4TB-BACKUP/media-store/Music";
+          MusicFolder = "/home/${userSettings.username}/Music";
+        };
         #dataDir = "/home/${userSettings.username}/.local/share/radarr";
       };
     })
