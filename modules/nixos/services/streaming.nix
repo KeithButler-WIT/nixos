@@ -70,9 +70,12 @@ in {
         transcoding = {
           enableHardwareEncoding = true;
           hardwareEncodingCodecs.av1 = true;
+          hardwareEncodingCodecs.h264 = true;
           hardwareDecodingCodecs.av1 = true;
+          hardwareDecodingCodecs.h264 = true;
           deleteSegments = true;
         };
+        # hardwareAcceleration.enable = true;
         #dataDir = "/home/${userSettings.username}/.local/share/jellyfin/data";
         #cacheDir = "/home/${userSettings.username}/.local/share/jellyfin/cache";
       };
