@@ -28,6 +28,7 @@ in {
       fzf
       zoxide # TODO: if zoxide module enabled
       wl-clipboard
+      mediainfo
     ];
 
     # home.file.".config/yazi" = {
@@ -49,6 +50,7 @@ in {
         mount = pkgs.yaziPlugins.mount;
         chmod = pkgs.yaziPlugins.chmod;
         lazygit = pkgs.yaziPlugins.lazygit;
+        mediainfo = pkgs.yaziPlugins.mediainfo;
         starship = pkgs.yaziPlugins.starship;
       };
 
@@ -69,26 +71,25 @@ in {
           # show_hidden = true;
           # show_symlink = true;
         };
-
-        open = {
+      };
+      theme = {
+        filetype = {
           rules = [
             {
-              use = "open";
+              fg = "#7AD9E5";
               mime = "image/*";
             }
             {
-              use = [
-                "play"
-                "reveal"
-              ];
+              fg = "#F3D398";
               mime = "video/*";
             }
             {
-              use = [
-                "play"
-                "reveal"
-              ];
+              fg = "#F3D398";
               mime = "audio/*";
+            }
+            {
+              fg = "#CD9EFC";
+              mime = "application/bzip";
             }
           ];
         };
