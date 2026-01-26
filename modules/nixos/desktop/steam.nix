@@ -58,24 +58,24 @@ in {
         glib
         glibc
 
-            # Controller support libraries
-            libusb1
-            udev
-            SDL2
+        # Controller support libraries
+        libusb1
+        udev
+        SDL2
 
-            # Additional libraries for better compatibility
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
-            xorg.libXcomposite
-            xorg.libXdamage
-            xorg.libXrender
-            xorg.libXext
+        # Additional libraries for better compatibility
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        xorg.libXcomposite
+        xorg.libXdamage
+        xorg.libXrender
+        xorg.libXext
 
-            # Fix for Xwayland symbol errors
-            libkrb5
-            keyutils
+        # Fix for Xwayland symbol errors
+        libkrb5
+        keyutils
       ];
       extraCompatPackages = with pkgs; [
         #proton-ge-bin
