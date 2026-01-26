@@ -48,11 +48,20 @@ in {
       pavucontrol
       # wayland-egl
       brightnessctl
-      galculator
+      kdePackages.kcalc
       wlogout
 
       libnotify
       xwayland
+
+      hyprpolkitagent
+      kdePackages.dolphin
+      hyprlauncher
+
+      discordo
+      bluetui
+      wiremix
+      # impala
     ];
 
     modules.desktop = {
@@ -121,8 +130,8 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-      # systemd.enable = true;
-      # systemd.enableXdgAutostart = true;
+      systemd.enable = true;
+      systemd.enableXdgAutostart = true;
       xwayland.enable = true;
       plugins = [
         # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
@@ -222,6 +231,7 @@ in {
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";
         env = [
+          # https://wiki.hypr.land/Configuring/Environment-variables/
           "HYPRSHOT_DIR,$HOME/Pictures"
           "XDG_PICTURES_DIR,$HOME/Pictures"
           "XDG_SCREENSHOTS_DIR,$HOME/Pictures"
@@ -232,15 +242,15 @@ in {
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
           "QT_QPA_PLATFORMTHEME,qt5ct"
           "GDK_BACKEND,wayland,x11,*"
-	  "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-          "QT_QPA_PLATFORM,wayland"
+          "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "QT_QPA_PLATFORM,wayland;xcb"
-	  "AQ_DRM_DEVICES=,/dev/dri/card1:/dev/dri/card0"
+          "SDL_VIDEODRIVER,wayland" # Change to x11 if games have problems
           "CLUTTER_BACKEND,wayland"
-	  # Usually set by portals but done explicitly just in case
-	  "XDG_CURRENT_DESKTOP,Hyprland"
-	  "XDG_SESSION_TYPE,wayland"
-	  "XDG_SESSION_DESKTOP,Hyprland"
+          "AQ_DRM_DEVICES=,/dev/dri/card1:/dev/dri/card0"
+          # Usually set by portals but done explicitly just in case
+          "XDG_CURRENT_DESKTOP,Hyprland"
+          "XDG_SESSION_TYPE,wayland"
+          "XDG_SESSION_DESKTOP,Hyprland"
         ];
         bind = [
           # Reload config
@@ -294,181 +304,182 @@ in {
       };
 
       extraConfig = ''
-        # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-        # Example windowrule v1
-        # windowrule = float, ^(kitty)$
+               # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+               # Example windowrule v1
+               # windowrule = float, ^(kitty)$
 
-        # Example windowrule 
-        # windowrule = float,class:^(kitty)$,title:^(kitty)$
+               # Example windowrule
+               # windowrule = float,class:^(kitty)$,title:^(kitty)$
 
-        # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+               # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
-        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        bind = $mainMod, 36, exec, ${config.modules.desktop.term.default}
-        bind = $mainMod, T, exec, ${config.modules.desktop.term.default}
-        bind = $mainMod, Q, killactive,
-        bind = $mainMod, N, exec, ${config.modules.desktop.file-managers.default}
-        bind = $mainMod SHIFT, N, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.yazi}/bin/yazi
-        bind = $mainMod SHIFT, 65, togglefloating,
-        bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/soy-milk
-        bind = $mainMod SHIFT, D, exec, ${pkgs.hyprlauncher}/bin/hyprlauncher
-        # bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
-        # bind = $mainMod, P, pseudo, # dwindle
-        bind = $mainMod, O, togglesplit, # dwindle
-        bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
-        bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
-        bind = $mainMod, G, exec, ${gamemode}/bin/gamemode
+               # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+               bind = $mainMod, 36, exec, ${config.modules.desktop.term.default}
+               bind = $mainMod, T, exec, ${config.modules.desktop.term.default}
+               bind = $mainMod, Q, killactive,
+               bind = $mainMod, N, exec, ${config.modules.desktop.file-managers.default}
+               bind = $mainMod SHIFT, N, exec, ${pkgs.kitty}/bin/kitty -e ${pkgs.yazi}/bin/yazi
+               bind = $mainMod SHIFT, 65, togglefloating,
+               bind = $mainMod, D, exec, ${pkgs.tofi}/bin/tofi-run | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/soy-milk
+               bind = $mainMod SHIFT, D, exec, ${pkgs.hyprlauncher}/bin/hyprlauncher
+               # bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
+               # bind = $mainMod, P, pseudo, # dwindle
+               bind = $mainMod, O, togglesplit, # dwindle
+               bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
+               bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
+               bind = $mainMod, G, exec, ${gamemode}/bin/gamemode
 
-        # Mainmod + Function keys
-        # bind = $mainMod, F1, exec,
-        # bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
-        # bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.yazi}/bin/yazi
-        bind = $mainMod, F12, exec, ${pkgs.galculator}/bin/galculator
+               # Mainmod + Function keys
+               # bind = $mainMod, F1, exec,
+               # bind = $mainMod, F2, exec, ${pkgs.thunderbird}/bin/thunderbird
+               # bind = $mainMod, F3, exec, ${pkgs.kitty}/bin/kitty ${pkgs.yazi}/bin/yazi
+               bind = $mainMod, F12, exec, ${pkgs.kdePackages.kcalc}/bin/kcalc
 
-        # Move/resize windows with mainMod + LMB/RMB and dragging`
-        bindm = $mainMod, mouse:272, movewindow
-        bindm = $mainMod, mouse:273, resizewindow
+               # Move/resize windows with mainMod + LMB/RMB and dragging`
+               bindm = $mainMod, mouse:272, movewindow
+               bindm = $mainMod, mouse:273, resizewindow
 
-        # set volume (laptops only and may or may not work on PCs)
-        bind = ,122, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
-        bind = ,123, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
-        bind = ,121, exec, pactl set-sink-volume @DEFAULT_SINK@ 0%
-        # other bindings
-        bind = $mainMod, F, fullscreen
-        # bind = $mainMod SHIFT, F, fakefullscreen
-        bind = ,232,exec,brightnessctl -c backlight set 5%-
-        bind = ,233,exec,brightnessctl -c backlight set +5%
-        bindel = ,XF86MonBrightnessDown, exec, hyprctl hyprsunset gamma -10
-        bindel = ,XF86MonBrightnessUp, exec, hyprctl hyprsunset gamma +10
+               # set volume (laptops only and may or may not work on PCs)
+               bind = ,122, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
+               bind = ,123, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
+               bind = ,121, exec, pactl set-sink-volume @DEFAULT_SINK@ 0%
+               # other bindings
+               bind = $mainMod, F, fullscreen
+               # bind = $mainMod SHIFT, F, fakefullscreen
+               bind = ,232,exec,brightnessctl -c backlight set 5%-
+               bind = ,233,exec,brightnessctl -c backlight set +5%
+               bindel = ,XF86MonBrightnessDown, exec, hyprctl hyprsunset gamma -10
+               bindel = ,XF86MonBrightnessUp, exec, hyprctl hyprsunset gamma +10
 
-        # Screenshots:
-        # Saves to HYPRSHOT_DIR or XDG_PICTURES_DIR or ~
-        bind = ,Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m output
-        bind = SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region
-        bind = $mainMod, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m window
-        bind = $mainMod SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region
+               # Screenshots:
+               # Saves to HYPRSHOT_DIR or XDG_PICTURES_DIR or ~
+               bind = ,Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m output
+               bind = SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region
+               bind = $mainMod, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m window
+               bind = $mainMod SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region
 
-        # for resizing window
-        # will switch to a submap called resize
-        bind=$mainMod,R,submap,resize
+               # for resizing window
+               # will switch to a submap called resize
+               bind=$mainMod,R,submap,resize
 
-        # will start a submap called "resize"
-        submap=resize
+               # will start a submap called "resize"
+               submap=resize
 
-        # sets repeatable binds for resizing the active window
-        binde=,right,resizeactive,10 0
-        binde=,left,resizeactive,-10 0
-        binde=,up,resizeactive,0 -10
-        binde=,down,resizeactive,0 10
+               # sets repeatable binds for resizing the active window
+               binde=,right,resizeactive,10 0
+               binde=,left,resizeactive,-10 0
+               binde=,up,resizeactive,0 -10
+               binde=,down,resizeactive,0 10
 
-        # use reset to go back to the global submap
-        bind=,escape,submap,reset
+               # use reset to go back to the global submap
+               bind=,escape,submap,reset
 
-        # will reset the submap, meaning end the current one and return to the global one
-        submap=reset
+               # will reset the submap, meaning end the current one and return to the global one
+               submap=reset
 
-        # to move window
-        bind = $mainMod SHIFT,up, movewindow, u
-        bind = $mainMod SHIFT,down, movewindow, d
-        bind = $mainMod SHIFT,left, movewindow, l
-        bind = $mainMod SHIFT,right, movewindow, r
+               # to move window
+               bind = $mainMod SHIFT,up, movewindow, u
+               bind = $mainMod SHIFT,down, movewindow, d
+               bind = $mainMod SHIFT,left, movewindow, l
+               bind = $mainMod SHIFT,right, movewindow, r
 
-        # other blurings
-        # blurls = ${config.modules.desktop.file-managers.default}
-        # blurls = gtk-layer-shell # for nwg-drawer
-        # window rules
-        #window rules with evaluation
-        # windowrule = opacity 0.85 0.85,match:floating:1
+               # other blurings
+               # blurls = ${config.modules.desktop.file-managers.default}
+               # blurls = gtk-layer-shell # for nwg-drawer
+               # window rules
+               #window rules with evaluation
+               # windowrule = opacity 0.85 0.85,match:floating:1
 
-        #video play/pause bindings
-        bind=,172,exec,${pkgs.playerctl}/bin/playerctl play-pause
-        bind=,171,exec,${pkgs.playerctl}/bin/playerctl next
-        bind=,173,exec,${pkgs.playerctl}/bin/playerctl previous
+               #video play/pause bindings
+               bind=,172,exec,${pkgs.playerctl}/bin/playerctl play-pause
+               bind=,171,exec,${pkgs.playerctl}/bin/playerctl next
+               bind=,173,exec,${pkgs.playerctl}/bin/playerctl previous
 
-        # -----------------------------------------------------
-        # Scratch Pads
-        # -----------------------------------------------------
+               # -----------------------------------------------------
+               # Scratch Pads
+               # -----------------------------------------------------
 
-	# TODO: FIX SCRATCH PADS
+               # TODO: FIX SCRATCH PADS
 
-        bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
-        bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-        # $scratchpadsize = size 80% 85%
-        #
-        # $scratchpad = class:^(scratchpad)$
-        # windowrule = float,$scratchpad
-        # windowrule = $scratchpadsize,$scratchpad
-        # windowrule = workspace special silent,$scratchpad
-        # windowrule = center,$scratchpad
+               bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
+               bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
+               # bind = $mainMod, V,exec,${pkgs.wiremix}/bin/wiremix 
+               # $scratchpadsize = size 80% 85%
+               #
+               # $scratchpad = class:^(scratchpad)$
+               # windowrule = float,$scratchpad
+               # windowrule = $scratchpadsize,$scratchpad
+               # windowrule = workspace special silent,$scratchpad
+               # windowrule = center,$scratchpad
 
-        # $pavucontrol = class:^(pavucontrol)$
-        # windowrule = float,$pavucontrol
-        # windowrule = size 86% 40%,$pavucontrol
-        # windowrule = move 50% 6%,$pavucontrol
-        # windowrule = workspace special silent,$pavucontrol
-        # windowrule = opacity 0.80,$pavucontrol
-        #
-        # windowrule = idleinhibit fullscreen, class:^(*)$
-        # windowrule = idleinhibit fullscreen, title:^(*)$
-        # windowrule = idleinhibit fullscreen, fullscreen:1
+               # $pavucontrol = class:^(pavucontrol)$
+               # windowrule = float,$pavucontrol
+               # windowrule = size 86% 40%,$pavucontrol
+               # windowrule = move 50% 6%,$pavucontrol
+               # windowrule = workspace special silent,$pavucontrol
+               # windowrule = opacity 0.80,$pavucontrol
+               #
+               # windowrule = idleinhibit fullscreen, class:^(*)$
+               # windowrule = idleinhibit fullscreen, title:^(*)$
+               # windowrule = idleinhibit fullscreen, fullscreen:1
 
-        # -----------------------------------------------------
-        # Smart Gaps
-        # -----------------------------------------------------
+               # -----------------------------------------------------
+               # Smart Gaps
+               # -----------------------------------------------------
 
-	workspace = w[tv1], gapsout:0, gapsin:0
-	workspace = f[1], gapsout:0, gapsin:0
-	windowrule = border_size 0, match:float 0, match:workspace w[tv1]
-	windowrule = rounding 0, match:float 0, match:workspace w[tv1]
-	windowrule = border_size 0, match:float 0, match:workspace f[1]
-	windowrule = rounding 0, match:float 0, match:workspace f[1]
+        workspace = w[tv1], gapsout:0, gapsin:0
+        workspace = f[1], gapsout:0, gapsin:0
+        windowrule = border_size 0, match:float 0, match:workspace w[tv1]
+        windowrule = rounding 0, match:float 0, match:workspace w[tv1]
+        windowrule = border_size 0, match:float 0, match:workspace f[1]
+        windowrule = rounding 0, match:float 0, match:workspace f[1]
 
-        # -----------------------------------------------------
-        # Tearing
-        # -----------------------------------------------------
+               # -----------------------------------------------------
+               # Tearing
+               # -----------------------------------------------------
 
-        # windowrule = immediate, class:^(cs2)$ # change cs2 to game tearing is wanted
-        
-        # -----------------------------------------------------
-        # Clipse
-        # -----------------------------------------------------
+               # windowrule = immediate, class:^(cs2)$ # change cs2 to game tearing is wanted
 
-        # windowrule = float, class:(clipse)
-        # windowrule = size 622 652, class:(clipse)
-        # windowrule = stayfocused, class:(clipse)
+               # -----------------------------------------------------
+               # Clipse
+               # -----------------------------------------------------
 
-        # bind = $mainMod, B, exec, ${config.modules.desktop.term.default} --class clipse -e clipse
-        bind = $mainMod, B, exec, kitty --class clipse -e ${pkgs.clipse}/bin/clipse
-        bind = $mainMod, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker
+               # windowrule = float, class:(clipse)
+               # windowrule = size 622 652, class:(clipse)
+               # windowrule = stayfocused, class:(clipse)
 
-        # -----------------------------------------------------
-        # Steam Fix
-        # -----------------------------------------------------
+               # bind = $mainMod, B, exec, ${config.modules.desktop.term.default} --class clipse -e clipse
+               bind = $mainMod, B, exec, kitty --class clipse -e ${pkgs.clipse}/bin/clipse
+               bind = $mainMod, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker
 
-        # windowrule = stayfocused, title:^()$,class:^(steam)$
-        # windowrule = minsize 1 1, title:^()$,class:^(steam)$
+               # -----------------------------------------------------
+               # Steam Fix
+               # -----------------------------------------------------
 
-        # -----------------------------------------------------
-        # Rusty Retirement Game Overlay
-        # -----------------------------------------------------
+               # windowrule = stayfocused, title:^()$,class:^(steam)$
+               # windowrule = minsize 1 1, title:^()$,class:^(steam)$
 
-        # windowrule = tag +rtr, title:(Rusty's Retirement)
-        # windowrule = float, tag:rtr
-        #
-        # # Remove this if you don't want rtr to appear in all workspaces
-        # # windowrule = pin, tag:rtr
-        #
-        # # windowrule = size 100% 350, tag:rtr
-        # windowrule = size 100% 296, tag:rtr
-        #
-        # # Move rtr to buttom of the screen
-        # # windowrule = move 0 730, tag:rtr
-        # windowrule = move 0 784, tag:rtr
-        #
-        # windowrule = noblur, tag:rtr
-        # windowrule = noshadow, tag:rtr
-        # windowrule = noborder, tag:rtr
-        # windowrule = opacity 1.0 override, tag:rtr
+               # -----------------------------------------------------
+               # Rusty Retirement Game Overlay
+               # -----------------------------------------------------
+
+               # windowrule = tag +rtr, title:(Rusty's Retirement)
+               # windowrule = float, tag:rtr
+               #
+               # # Remove this if you don't want rtr to appear in all workspaces
+               # # windowrule = pin, tag:rtr
+               #
+               # # windowrule = size 100% 350, tag:rtr
+               # windowrule = size 100% 296, tag:rtr
+               #
+               # # Move rtr to buttom of the screen
+               # # windowrule = move 0 730, tag:rtr
+               # windowrule = move 0 784, tag:rtr
+               #
+               # windowrule = noblur, tag:rtr
+               # windowrule = noshadow, tag:rtr
+               # windowrule = noborder, tag:rtr
+               # windowrule = opacity 1.0 override, tag:rtr
       '';
     };
   };
