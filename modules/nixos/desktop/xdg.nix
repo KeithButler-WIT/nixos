@@ -5,11 +5,9 @@
   ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.xdg;
-in
-{
+in {
   options.modules.desktop.xdg.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -36,16 +34,15 @@ in
       wlr.enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = [ "gtk" ];
+        common.default = ["gtk"];
         hyprland.default = [
-          "gtk"
           "hyprland"
+          "gtk"
         ];
       };
       extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
         xdg-desktop-portal
+        xdg-desktop-portal-gtk
         xdg-desktop-portal-gnome # for niri
       ];
     };
