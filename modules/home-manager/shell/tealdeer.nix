@@ -54,7 +54,7 @@ in
 
         display = {
           compact = false;
-          use_pager = false;
+          use_pager = true;
         };
 
         updates = {
