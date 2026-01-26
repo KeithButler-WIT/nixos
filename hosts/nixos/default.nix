@@ -3,8 +3,7 @@
   lib,
   ...
 }:
-with lib.my;
-{
+with lib.my; {
   imports = [
     ./hardware-configuration.nix
     ./boot.nix
@@ -25,14 +24,14 @@ with lib.my;
     sudo-rs.enable = true;
     nh.enable = true;
     # gc.enable = true; # conflicts with nh clean
-    # flatpak.enable = true;
+    flatpak.enable = true;
     nix-ld.enable = true;
     stylix.enable = true;
     # vm.enable = true;
     # vr.enable = true;
     desktop = {
       enable = true;
-      hyprland.enable = true;
+      # hyprland.enable = true;
       # cosmic.enable = true;
       # plasma6.enable = true;
       # niri.enable = true;
@@ -116,7 +115,7 @@ with lib.my;
 
   services.gvfs.enable = true;
 
-  services.udev.packages = with pkgs; [ usb-modeswitch-data ];
+  services.udev.packages = with pkgs; [usb-modeswitch-data];
 
   # hardware.new-lg4ff.enable = true;
 
