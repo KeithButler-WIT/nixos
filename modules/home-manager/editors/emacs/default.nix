@@ -14,7 +14,7 @@ with lib.my; let
       # (if config.modules.desktop.type == "wayland"
       # then emacs-pgtk
       # else emacs-git)).emacsWithPackages
-      emacs-git-pgtk
+      emacs-pgtk
     )
     .emacsWithPackages
     (epkgs: []);
