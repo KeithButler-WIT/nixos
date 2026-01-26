@@ -10,7 +10,7 @@ with lib.my; {
     # TODO: Move to shell module
     nsxiv
     wiki-tui
-    rusty-man
+    # rusty-man
     tokei
     ripgrep-all
     presenterm
@@ -26,6 +26,11 @@ with lib.my; {
     openrgb
     mcontrolcenter
     nyx
+    wiremix
+    # impala # not my network manager
+    bluetui
+    discordo # Discord flagged the login
+    lynx
 
     # vscode
     # jetbrains-toolbox
