@@ -9,7 +9,7 @@
   environment.systemPackages = with pkgs; [
     git
     nixd
-    nixfmt-rfc-style
+    nixfmt
     shfmt
 
     cachix
