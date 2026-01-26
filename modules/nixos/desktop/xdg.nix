@@ -13,6 +13,24 @@ in
   options.modules.desktop.xdg.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
+    xdg.mime = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = "zen.desktop";
+        "image/png" = [
+          "sxiv.desktop"
+          "gimp.desktop"
+        ];
+        "video/*" = [
+          "mpv.desktop"
+          "vlc.desktop"
+        ];
+        "audio/*" = [
+          "mpv.desktop"
+          "vlc.desktop"
+        ];
+      };
+    };
     xdg.portal = {
       enable = true;
       wlr.enable = true;
