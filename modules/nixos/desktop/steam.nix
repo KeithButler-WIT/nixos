@@ -78,8 +78,8 @@ in {
         keyutils
       ];
       extraCompatPackages = with pkgs; [
-        #proton-ge-bin
-        proton-ge-custom
+        proton-ge-bin
+        # proton-ge-custom # From Chaotic-nyx
       ];
       # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
       localNetworkGameTransfers.openFirewall = true;
