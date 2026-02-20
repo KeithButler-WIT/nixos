@@ -66,7 +66,7 @@ with lib.my; {
       # rtorrent.enable = true;
       qbit.enable = true;
     };
-    tmux.enable = true;
+    # tmux.enable = true;
     desktop = {
       hyprland = {
         enable = true;
