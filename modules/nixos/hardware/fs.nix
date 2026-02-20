@@ -59,7 +59,7 @@ in {
         boot = {
           # booting with zfs
           supportedFilesystems.zfs = true;
-          kernelPackages = pkgs.linuxPackages_cachyos;
+          kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
           zfs = {
             devNodes =
               if isVm
@@ -69,7 +69,7 @@ in {
               then "/dev/disk/by-id"
               else "/dev/disk/by-partuuid";
 
-            package = pkgs.zfs_cachyos;
+            package = config.boot.kernelPackages.zfs_cachyos;
             # requestEncryptionCredentials = config.custom.zfs.encryption;
           };
         };

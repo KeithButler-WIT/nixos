@@ -26,7 +26,8 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # KILLED # TODO: Remove
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -103,6 +104,7 @@
     nixpkgs,
     nixpkgs-stable,
     chaotic,
+    nix-cachyos-kernel,
     self,
     hosts,
     hyprland,
@@ -121,6 +123,7 @@
         nixpkgs
         nixpkgs-stable
         chaotic
+        nix-cachyos-kernel
         ;
       inherit (import ./options.nix) systemSettings userSettings;
       user = "keith";

@@ -37,7 +37,21 @@
         [
           ./${host}/default.nix
           ./common/default.nix # ./.
-          inputs.chaotic.nixosModules.default
+          inputs.chaotic.nixosModules.default # TODO: REMOVE
+
+        ( # TODO: Cleanup maybe move to own file
+          { pkgs, ... }:
+          {
+            nixpkgs.overlays = [
+              # Use the exact kernel versions as defined in this repo.
+              # Guarantees you have binary cache.
+              inputs.nix-cachyos-kernel.overlays.pinned
+            ];
+
+            # ... your other configs
+          }
+        )
+
           inputs.nur.modules.nixos.default
           inputs.home-manager.nixosModules.home-manager
 	  inputs.lsfg-vk-flake.nixosModules.default
