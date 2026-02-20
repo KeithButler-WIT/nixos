@@ -25,6 +25,7 @@
     "kvm-amd"
     # "v4l2loopback"
     "msi-ec"
+    "coretemp"
   ];
   boot.extraModulePackages = [ config.boot.kernelPackages.msi-ec]; # config.boot.kernelPackages.v4l2loopback
   # boot.extraModprobeConfig = ''
