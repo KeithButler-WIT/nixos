@@ -83,11 +83,11 @@ with lib.my; {
         ];
       };
       browsers = {
-        default = "zen";
-        # firefox.enable = true;
+        default = "zen-beta";
+        firefox.enable = true;
         # floorp.enable = true;
         zen.enable = true; # TODO: Add zen module
-        # qutebrowser.enable = true;
+        qutebrowser.enable = true;
         # tor.enable = true;
         # chromium.enable = true;
       };
