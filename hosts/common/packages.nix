@@ -5,7 +5,8 @@
   systemSettings,
   userSettings,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     git
     nixd
@@ -53,5 +54,5 @@
     pandoc # TODO: move to markdown module # format markdown files
   ];
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }
