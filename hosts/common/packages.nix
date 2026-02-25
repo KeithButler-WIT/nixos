@@ -48,6 +48,9 @@
     rclone
     unrar
     bonk # touch / mkdir replacer
+
+    lm_sensors
+    pandoc # TODO: move to markdown module # format markdown files
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
