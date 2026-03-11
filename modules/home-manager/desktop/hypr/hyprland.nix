@@ -150,6 +150,10 @@ in {
           };
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
         };
+        
+        cursor = {
+          inactive_timeout = 3;
+        };
 
         general = {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more

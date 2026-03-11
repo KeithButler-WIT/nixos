@@ -50,6 +50,7 @@ in {
         eval "$(${pkgs.zoxide}/bin/zoxide init bash)"
 
         source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+        # ${pkgs.unclutter}/bin/unclutter -idle 1 4
       '';
 
       shellAliases = {};
