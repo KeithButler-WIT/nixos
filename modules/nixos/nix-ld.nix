@@ -82,35 +82,35 @@ in {
         #pkgs-stable.libstdcxx5
         systemd
         vulkan-loader
-        xorg.libX11
-        xorg.libXScrnSaver
-        xorg.libXcomposite
-        xorg.libXcursor
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXi
-        xorg.libXrandr
-        xorg.libXrender
-        xorg.libXtst
-        xorg.libxcb
-        xorg.libxkbfile
-        xorg.libxshmfence
+        libX11
+        libXScrnSaver
+        libXcomposite
+        libXcursor
+        libXdamage
+        libXext
+        libXfixes
+        libXi
+        libXrandr
+        libXrender
+        libXtst
+        libxcb
+        libxkbfile
+        libxshmfence
         zlib
 
         openssl
-        xorg.libXcomposite
-        xorg.libXtst
-        xorg.libXrandr
-        xorg.libXext
-        xorg.libX11
-        xorg.libXfixes
+        libXcomposite
+        libXtst
+        libXrandr
+        libXext
+        libX11
+        libXfixes
         libGL
         libva
-        xorg.libxcb
-        xorg.libXdamage
-        xorg.libxshmfence
-        xorg.libXxf86vm
+        libxcb
+        libXdamage
+        libxshmfence
+        libXxf86vm
         libelf
 
         # Required
@@ -120,13 +120,13 @@ in {
         bzip2
 
         # Without these it silently fails
-        xorg.libXinerama
-        xorg.libXcursor
-        xorg.libXrender
-        xorg.libXScrnSaver
-        xorg.libXi
-        xorg.libSM
-        xorg.libICE
+        libXinerama
+        libXcursor
+        libXrender
+        libXScrnSaver
+        libXi
+        libSM
+        libICE
         # TODO: uncomment when builds
         #gnome2.GConf
         #gnome2.ORBit2
@@ -143,8 +143,8 @@ in {
         libudev0-shim
 
         # Verified games requirements
-        xorg.libXt
-        xorg.libXmu
+        libXt
+        libXmu
         libogg
         #libvorbis
         SDL
@@ -179,7 +179,7 @@ in {
         libgcrypt
         libvpx
         librsvg
-        xorg.libXft
+        libXft
         libvdpau
         cairo
         atk
@@ -193,13 +193,13 @@ in {
         icu
         openssl # For updater
 
-        xorg.libX11
-        xorg.libXcomposite
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXrandr
-        xorg.libxcb
+        libX11
+        libXcomposite
+        libXdamage
+        libXext
+        libXfixes
+        libXrandr
+        libxcb
 
         gtk3
         glib

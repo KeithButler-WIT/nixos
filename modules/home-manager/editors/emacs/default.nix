@@ -36,7 +36,7 @@ in {
       gnutls # for TLS connectivity
 
       xclip
-      xorg.xwininfo
+      xwininfo
       graphviz
       cmake
 
