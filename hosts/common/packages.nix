@@ -30,7 +30,7 @@
     ripgrep
     progress
     numlockx
-    light
+    brightnessctl
     usbutils
     oversteer
 
