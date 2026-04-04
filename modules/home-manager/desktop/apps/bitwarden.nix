@@ -1,5 +1,5 @@
 {
-  pkgs,
+  pkgs-stable,
   config,
   lib,
   ...
@@ -11,7 +11,7 @@ in {
   options.modules.desktop.apps.bitwarden.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+    home.packages = with pkgs-stable; [
       bitwarden-desktop
       bitwarden-cli
     ];
