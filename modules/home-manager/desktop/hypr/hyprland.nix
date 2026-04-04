@@ -62,6 +62,8 @@ in {
       bluetui
       wiremix
       # impala
+
+      noctalia-shell # TODO: make its own module
     ];
 
     modules.desktop = {
@@ -75,13 +77,19 @@ in {
       bars = {
         # ags.enable = lib.mkDefault true;
         # eww.enable = lib.mkDefault true; # TODO Fix eww
-        waybar = {
-          enable = lib.mkDefault true;
-          vertical = lib.mkDefault true;
-          # horizontal.enable = lib.mkDefault true;
-        };
+        # noctalia-shell.enable = lib.mkDefault true;
+        # waybar = {
+        #   enable = lib.mkDefault true;
+        #   vertical = lib.mkDefault true;
+        #   # horizontal.enable = lib.mkDefault true;
+        # };
       };
     };
+    modules.services = {
+        dunst = {
+          enable = lib.mkDefault true;
+        };
+      };
 
     home.pointerCursor.hyprcursor.enable = true;
 
@@ -219,11 +227,14 @@ in {
         exec-once = [
           "${pkgs.kanshi}/bin/kanshi" # Monitor settings
           # Execute your favorite apps at launch
-          "${pkgs.hyprpaper}/bin/hyprpaper"
-          "${pkgs.waybar}/bin/waybar"
+          # "${pkgs.hyprpaper}/bin/hyprpaper"
+          # "${pkgs.waybar}/bin/waybar" # TODO: Change to current bar
+          
+          "${lib.getExe pkgs.noctalia-shell}"
+          # "${pkgs.noctalia-shell}/bin/noctalia-shell"
           # [workspace 1 silent] ${pkgs.discord}/bin/discord
           # [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
-          "[workspace 10 silent] ${pkgs.thunderbird}/bin/thunderbird"
+          "[workspace 10 silent] ${lib.getExe pkgs.thunderbird}"
           "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
           # ${pkgs.blueman}/bin/blueman-applet
           "${pkgs.rclone}/bin/rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive"
@@ -328,7 +339,7 @@ in {
                bind = $mainMod SHIFT, D, exec, ${pkgs.hyprlauncher}/bin/hyprlauncher
                # bind = $mainMod SHIFT, D, exec, ${pkgs.tofi}/bin/tofi-drun | xargs hyprctl dispatch exec -- # -c ~/.config/tofi/themes/fullscreen
                # bind = $mainMod, P, pseudo, # dwindle
-               bind = $mainMod, O, togglesplit, # dwindle
+               # bind = $mainMod, O, togglesplit, # dwindle # TODO: Find replacement
                bind = $mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock
                bind = $mainMod SHIFT, ESCAPE, exec, ${pkgs.wlogout}/bin/wlogout
                bind = $mainMod, G, exec, ${gamemode}/bin/gamemode

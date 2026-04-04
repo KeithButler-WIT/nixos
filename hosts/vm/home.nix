@@ -12,7 +12,7 @@ with lib.my; {
     nh.enable = true;
     desktop = {
       hyprland.enable = true;
-      waybar.enable = true;
+      # waybar.enable = true; # Enabled in hyprland
       # browsers = {
       # qutebrowser.enable = true;
       # };
@@ -38,7 +38,7 @@ with lib.my; {
       # direnv.enable = true;
     };
     services = {
-      dunst.enable = true;
+      # dunst.enable = true; # Enabled in hyprland
       # ssh.enable = true;
       # xremap.enable = true;
     };
