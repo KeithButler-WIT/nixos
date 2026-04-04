@@ -32,6 +32,7 @@ in {
         gtk3
         icu
 
+        libva
         fuse
 
         libgbm
