@@ -1,6 +1,7 @@
 # List of available nvf options
 # https://notashelf.github.io/nvf/options.html
 {
+  pkgs,
   config,
   lib,
   ...
@@ -64,6 +65,8 @@ in {
 
             # Languages that will be supported in default and maximal configurations.
             nix.enable = true;
+            nix.lsp.enable = true;
+            nix.treesitter.enable = true;
             markdown.enable = true;
 
             # Languages that are enabled in the maximal configuration.
@@ -116,6 +119,22 @@ in {
             # See: <https://github.com/PMunch/nimlsp/issues/178#issue-2128106096>
             nim.enable = false;
           };
+
+          treesitter = {
+          enable = true;
+          fold = true;
+
+          # # Neither enables syntax highlighting:
+          # grammars = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+          # grammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+          #   elixir
+          #   heex
+          #   eex
+          # ];
+
+          # # Enables syntax highlighting:
+          grammars = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+        };
 
           visuals = {
             nvim-scrollbar.enable = true;
