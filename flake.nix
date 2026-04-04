@@ -28,6 +28,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # KILLED # TODO: Remove
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -118,6 +120,7 @@
     nvf,
     home-manager,
     openmw-nix,
+    nix-index-database,
     ...
   } @ inputs: let
     forAllSystems = function:

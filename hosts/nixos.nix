@@ -38,6 +38,7 @@
           ./${host}/default.nix
           ./common/default.nix # ./.
           inputs.chaotic.nixosModules.default # TODO: REMOVE
+          inputs.nix-index-database.nixosModules.default
 
         ( # TODO: Cleanup maybe move to own file
           { pkgs, ... }:
