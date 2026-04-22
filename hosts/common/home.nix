@@ -75,7 +75,6 @@
     dragon-drop
     yt-dlp
 
-    nix-index
     inputs.nix-alien.packages.${system}.nix-alien
   ];
 
