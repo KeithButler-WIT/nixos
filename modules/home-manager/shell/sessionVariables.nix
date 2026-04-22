@@ -3,11 +3,6 @@
   lib,
   ...
 }: {
-  # home.sessionPath = [
-  #       "$HOME/.local/bin"
-  #       "\${xdg.configHome}/emacs/bin"
-  # ];
-
   # You can also manage environment variables but you will have to manually
   # source
   #
