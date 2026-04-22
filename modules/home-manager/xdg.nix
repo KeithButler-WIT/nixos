@@ -16,7 +16,7 @@
       # XDG_CACHE_HOME = "$HOME/.cache";
       # XDG_CONFIG_HOME = "$HOME/.config";
       # XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_BIN_HOME = "$HOME/.local/bin";
+      # XDG_BIN_HOME = "$HOME/.local/bin"; # DEFAULT
       # XINITRC = "$XDG_CONFIG_HOME/x11/xinitrc";
       # XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"; # This line will break some DMs.
 
