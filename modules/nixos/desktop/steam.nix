@@ -79,6 +79,7 @@ in {
       ];
       extraCompatPackages = with pkgs; [
         proton-ge-bin
+        # proton-cachyos
         # proton-ge-custom # From Chaotic-nyx
       ];
       # extraPkgs = pkgs: [ pkgs.ncurses6 pkgs.bumblebee pkgs.glxinfo ];
