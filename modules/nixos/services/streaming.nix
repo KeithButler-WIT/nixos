@@ -59,7 +59,7 @@ in {
       };
     })
     (mkIf cfg.jellyfin.enable {
-      services.jellyseerr = {
+      services.seerr = {
         enable = true;
         openFirewall = true;
       };
