@@ -54,13 +54,6 @@ in {
               source ~/.fish_profile
         end
 
-        # Add ~/.local/bin to PATH
-        if test -d ~/.local/bin
-              if not contains -- ~/.local/bin $PATH
-                    set -p PATH ~/.local/bin
-              end
-        end
-
         # Add depot_tools to PATH
         if test -d ~/Applications/depot_tools
               if not contains -- ~/Applications/depot_tools $PATH
