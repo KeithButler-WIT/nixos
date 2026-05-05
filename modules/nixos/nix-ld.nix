@@ -31,6 +31,7 @@ in {
         gdk-pixbuf
         gtk3
         icu
+        musl
 
         libva
         fuse

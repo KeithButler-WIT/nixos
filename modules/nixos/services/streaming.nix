@@ -59,6 +59,40 @@ in {
       };
     })
     (mkIf cfg.jellyfin.enable {
+      services.homepage-dashboard.enable = true;
+      services.tdarr = {
+        enable = true;
+
+nodes = {
+      internal = {
+        enable = true;
+        package = pkgs.tdarr-node;
+        name = "InternalNode";
+        serverURL = "http://127.0.0.1:8266";
+        workers = {
+          transcodeCPU = 0;
+          transcodeGPU = 2;
+          healthcheckCPU = 1;
+          healthcheckGPU = 1;
+        };
+      };
+
+      external = {
+        enable = true;
+        package = pkgs.tdarr-node;
+        name = "ExternalNode";
+        serverURL = "http://127.0.0.1:8266";
+        workers = {
+          transcodeCPU = 0;
+          transcodeGPU = 2;
+          healthcheckCPU = 1;
+          healthcheckGPU = 1;
+        };
+      };
+      };
+
+
+      };
       services.seerr = {
         enable = true;
         openFirewall = true;
@@ -83,6 +117,8 @@ in {
         pkgs.jellyfin
         pkgs.jellyfin-web
         pkgs.jellyfin-ffmpeg
+        pkgs.musl # tdarr
+        pkgs.ccextractor
       ];
     })
 

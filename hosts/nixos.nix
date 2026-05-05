@@ -19,6 +19,8 @@
     }
   );
 
+  overlay-tdarr = import ../patches/tdarr;
+
   mkNixosConfiguration = host:
     lib.nixosSystem {
       inherit pkgs;
@@ -47,6 +49,7 @@
               # Use the exact kernel versions as defined in this repo.
               # Guarantees you have binary cache.
               inputs.nix-cachyos-kernel.overlays.pinned
+              overlay-tdarr
             ];
 
             # ... your other configs
