@@ -15,6 +15,7 @@ in {
     stylix.targets.firefox.profileNames = ["${userSettings.username}"];
     programs.firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
         extraPolicies = {
           DisableFirefoxStudies = true;
