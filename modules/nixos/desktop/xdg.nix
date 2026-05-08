@@ -34,7 +34,7 @@ in {
       wlr.enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = ["gtk"];
+        common.default = ["gnome"];
         hyprland.default = [
           "hyprland"
           "gtk"

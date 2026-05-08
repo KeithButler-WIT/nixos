@@ -23,8 +23,8 @@ in {
           user = userSettings.username;
         };
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --cmd start-hyprland";
-          # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --cmd Hyprland -s ${config.services.xserver.displayManager.sessionData.desktops}";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --cmd niri";
+          # command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --cmd start-hyprland";
           user = "greeter";
         };
       };

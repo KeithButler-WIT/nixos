@@ -69,7 +69,7 @@ with lib.my; {
     # tmux.enable = true;
     desktop = {
       hyprland = {
-        enable = true;
+        enable = false;
         monitors = [
           {
             output = "eDP-1";
@@ -162,7 +162,7 @@ with lib.my; {
     };
     services = {
       borgmatic.enable = true;
-      dunst.enable = true;
+      # dunst.enable = true;
       gpg.enable = true;
       # mako.enable = true;
       # mpd.enable = true;
