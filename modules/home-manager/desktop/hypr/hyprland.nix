@@ -55,15 +55,7 @@ in {
       xwayland
 
       hyprpolkitagent
-      kdePackages.dolphin
       hyprlauncher
-
-      discordo
-      bluetui
-      wiremix
-      # impala
-
-      noctalia-shell # TODO: make its own module
     ];
 
     modules.desktop = {

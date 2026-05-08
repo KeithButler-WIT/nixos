@@ -52,6 +52,17 @@
 
     lm_sensors
     pandoc # TODO: move to markdown module # format markdown files
+
+
+    libnotify #TODO: make its own module
+    noctalia-shell
+    pavucontrol
+    kdePackages.kcalc
+    kdePackages.dolphin
+    discordo
+    bluetui
+    wiremix
+
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
