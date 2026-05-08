@@ -173,6 +173,8 @@ with lib.my; {
   };
 
   programs.java.enable = true;
+  programs.steam.theme = pkgs.millenniumThemes.space;
+  programs.steam.plugins = with pkgs.millenniumPlugins; [ extendium gratitude hltb non-steam-playtimes ];
 
   services.home-manager.autoUpgrade.frequency = "monthly";
 }
