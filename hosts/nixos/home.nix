@@ -174,6 +174,17 @@ with lib.my; {
 
   programs.java.enable = true;
   programs.steam.theme = pkgs.millenniumThemes.space;
+  programs.steam.millenniumConfig = {
+    themes.conditions."adwaita-for-steam" = {
+      "Login QR code" = "Show";
+      "Keep pointer cursor for clickable elements" = "yes";
+      "Remove rounded corners" = "yes";
+      "Show Library sidebar on hover" = "no";
+      "Show URL" = "yes";
+      "Window controls layout" = "Adwaita";
+      "Window controls theme" = "Breeze (KDE)";
+    };
+  };
   programs.steam.plugins = with pkgs.millenniumPlugins; [ extendium gratitude non-steam-playtimes ];
 
   services.home-manager.autoUpgrade.frequency = "monthly";
