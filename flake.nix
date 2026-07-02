@@ -154,7 +154,7 @@
             "dotnet-runtime-wrapped-6.0.36"
             "dotnet-sdk-6.0.428"
             "mbedtls-2.28.10" # TODO: remove after update
-            "electron-36.9.5" # TODO: remove after update
+            "electron-39.8.10" # TODO: remove after update
           ];
         };
       };
