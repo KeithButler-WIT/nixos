@@ -32,7 +32,6 @@
     egrep = "egrep --color=auto";
     hw = "hwinfo --short"; # Hardware Info
     big = "expac -H M '%m\t%n' | sort -h | nl"; # Sort installed packages according to size in MB
-    #gitpkg="pacman -Q | grep -i '\-git' | wc -l"; # List amount of -git packages
     hm = "home-manager";
     hms = "home-manager --flake ~/nixos/home/ switch --impure";
     upd = "sudo nixos-rebuild --flake ~/nixos#nixos switch";
@@ -46,7 +45,6 @@
     mirrora = "sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist";
 
     # Cleanup orphaned packages
-    # cleanup="sudo pacman -Rns (pacman -Qtdq)";
     nix-clean = "home-manager expire-generations 10 days; sudo nix-store --optimize; sudo nix-store --gc; sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/ * && nix-collect-garbage && nix-collect-garbage -d";
 
     # Get the error messages from journalctl
