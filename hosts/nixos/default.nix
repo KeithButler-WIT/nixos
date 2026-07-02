@@ -99,7 +99,7 @@ with lib.my; {
 
   environment.systemPackages = with pkgs; [
     crun # TODO: DO i need this
-    libsForQt5.qt5.qtwayland
+    qt5.qtwayland
     kdePackages.qtwayland # TODO: Do i still need these
     calibre
     samrewritten
