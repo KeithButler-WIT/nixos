@@ -122,12 +122,12 @@ in {
         glibc
 
         lldb #for openmw
+        heroic
+        lutris
       ]
       ++ [
         # pkgs-stable.openmw
         # pkgs-stable.openmw-tes3mp
-        pkgs-stable.heroic
-        pkgs-stable.lutris
         # eden # Switch emulation
         # TODO: Reenable after build failure fix
         # inputs.openmw-nix.packages.${system}.delta-plugin
