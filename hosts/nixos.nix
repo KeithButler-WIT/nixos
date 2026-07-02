@@ -89,6 +89,7 @@
           inputs.nvf.nixosModules.default
           # inputs.impermanence.nixosModules.impermanence
           # inputs.sops-nix.nixosModules.sops
+          inputs.nixos-millennium.nixosModules.default
         ]
         ++ (lib.my.mapModulesRec' (toString ../modules/nixos) import);
     };
