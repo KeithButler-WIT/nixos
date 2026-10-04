@@ -13,6 +13,7 @@ with lib.my; {
   #services.samba.enableWinbindd = true;
   #services.samba.nsswins = true;
 
+  programs.appimage.enable = true;
   programs.niri.enable = true;
 
   services.bpftune.enable = true; # Network tuning
@@ -34,7 +35,7 @@ with lib.my; {
       enable = true;
       # hyprland.enable = true;
       # cosmic.enable = true;
-      # plasma6.enable = true;
+      plasma6.enable = true;
       # niri.enable = true;
       tuigreet.enable = true;
       steam = {
@@ -143,4 +144,15 @@ with lib.my; {
     enable = true;
     ui.enable = true; # installs gui for configuring lsfg-vk
   };
+
+  boot.kernelPatches = [
+    {
+      name = "amdgpu-ignore-ctx-privileges";
+      patch = pkgs.fetchpatch {
+        name = "cap_sys_nice_begone.patch";
+        url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+      };
+    }
+  ];
 }
