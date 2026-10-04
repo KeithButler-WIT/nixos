@@ -12,9 +12,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     services = {
+      # displayManager.enable = false;
+      # displayManager.plasma-login-manager.enable = false;
+      displayManager.defaultSession = "plasma"; # TODO: make defaultSession an option shared between desktop environments
       xserver = {
         enable = true;
-        displayManager.sddm.enable = true;
+        displayManager.sddm.enable = false;
       };
       desktopManager.plasma6.enable = true;
     };
