@@ -22,11 +22,6 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
-      boot.extraModulePackages = with config.boot.kernelPackages; [
-        (amdgpu-kernel-module.overrideAttrs (_: {
-          patches = [./patches/cap_sys_nice_begone.patch];
-        }))
-      ];
       programs.udevil.enable = true;
 
       # Support for more filesystems, mostly to support external drives
