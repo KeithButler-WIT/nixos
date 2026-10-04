@@ -3,7 +3,6 @@
   isVm,
   lib,
   pkgs,
-  kernel ? pkgs.cachyosKernels.linuxPackages-cachyos-latest.kernel,
   ...
 }:
 with lib;
