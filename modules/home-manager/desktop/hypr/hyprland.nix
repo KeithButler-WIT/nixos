@@ -69,7 +69,6 @@ in {
       bars = {
         # ags.enable = lib.mkDefault true;
         # eww.enable = lib.mkDefault true; # TODO Fix eww
-        # noctalia-shell.enable = lib.mkDefault true;
         # waybar = {
         #   enable = lib.mkDefault true;
         #   vertical = lib.mkDefault true;
@@ -78,10 +77,10 @@ in {
       };
     };
     modules.services = {
-        dunst = {
-          enable = lib.mkDefault true;
-        };
+      dunst = {
+        enable = lib.mkDefault true;
       };
+    };
 
     home.pointerCursor.hyprcursor.enable = true;
 
@@ -150,7 +149,7 @@ in {
           };
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
         };
-        
+
         cursor = {
           inactive_timeout = 3;
         };
@@ -221,9 +220,7 @@ in {
           # Execute your favorite apps at launch
           # "${pkgs.hyprpaper}/bin/hyprpaper"
           # "${pkgs.waybar}/bin/waybar" # TODO: Change to current bar
-          
-          "${lib.getExe pkgs.noctalia-shell}"
-          # "${pkgs.noctalia-shell}/bin/noctalia-shell"
+
           # [workspace 1 silent] ${pkgs.discord}/bin/discord
           # [workspace 9 silent] ${pkgs.signal-desktop}/bin/signal-desktop
           "[workspace 10 silent] ${lib.getExe pkgs.thunderbird}"
@@ -410,7 +407,7 @@ in {
 
                bind = $mainMod SHIFT, RETURN, exec, ${pkgs.pyprland}/bin/pypr toggle term && hyprctl dispatch bringactivetotop
                bind = $mainMod, V,exec,${pkgs.pyprland}/bin/pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-               # bind = $mainMod, V,exec,${pkgs.wiremix}/bin/wiremix 
+               # bind = $mainMod, V,exec,${pkgs.wiremix}/bin/wiremix
                # $scratchpadsize = size 80% 85%
                #
                # $scratchpad = class:^(scratchpad)$
