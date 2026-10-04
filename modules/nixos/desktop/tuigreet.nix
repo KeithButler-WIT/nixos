@@ -15,6 +15,7 @@ in {
     # Enable tuigreet login manager
     services.greetd = {
       enable = true;
+      useTextGreeter = true; # tuigreet used
       settings = {
         initial_session = lib.mkIf config.modules.autologin.enable {
           # Auto Login
