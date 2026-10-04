@@ -185,7 +185,7 @@ with lib.my; {
       "Window controls theme" = "Breeze (KDE)";
     };
   };
-  programs.steam.plugins = with pkgs.millenniumPlugins; [ extendium gratitude non-steam-playtimes ];
+  # programs.steam.plugins = with pkgs.millenniumPlugins; [ extendium gratitude non-steam-playtimes ];
 
   services.home-manager.autoUpgrade.frequency = "monthly";
 }
