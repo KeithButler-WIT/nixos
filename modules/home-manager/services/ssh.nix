@@ -21,7 +21,7 @@ in
         user = "git";
         identityFile = "~/.ssh/id_ed25519";
       };
-      extraConfig = '''';
+      extraConfig = "";
     };
   };
 

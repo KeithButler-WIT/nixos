@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.tuigreet;
-in {
+in
+{
   options.modules.desktop.tuigreet.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {

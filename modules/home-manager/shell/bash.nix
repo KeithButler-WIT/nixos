@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.shell.bash;
-in {
+in
+{
   options.modules.shell.bash.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -53,7 +55,7 @@ in {
         # ${pkgs.unclutter}/bin/unclutter -idle 1 4
       '';
 
-      shellAliases = {};
+      shellAliases = { };
     };
   };
 }

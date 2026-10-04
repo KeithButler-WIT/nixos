@@ -4,9 +4,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.gc;
-in {
+in
+{
   options.modules.gc.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

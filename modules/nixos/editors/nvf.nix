@@ -7,9 +7,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.editors.nvf;
-in {
+in
+{
   options.modules.editors.nvf = {
     enable = mkBoolOpt false;
   };
@@ -120,20 +122,20 @@ in {
           };
 
           treesitter = {
-          enable = true;
-          fold = true;
+            enable = true;
+            fold = true;
 
-          # # Neither enables syntax highlighting:
-          # grammars = with pkgs.vimPlugins.nvim-treesitter-parsers; [
-          # grammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
-          #   elixir
-          #   heex
-          #   eex
-          # ];
+            # # Neither enables syntax highlighting:
+            # grammars = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+            # grammars = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+            #   elixir
+            #   heex
+            #   eex
+            # ];
 
-          # # Enables syntax highlighting:
-          grammars = pkgs.vimPlugins.nvim-treesitter.allGrammars;
-        };
+            # # Enables syntax highlighting:
+            grammars = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+          };
 
           visuals = {
             nvim-scrollbar.enable = true;
@@ -280,7 +282,10 @@ in {
                 nix = "110";
                 ruby = "120";
                 java = "130";
-                go = ["90" "130"];
+                go = [
+                  "90"
+                  "130"
+                ];
               };
             };
             fastaction.enable = true;

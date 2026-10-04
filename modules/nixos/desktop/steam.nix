@@ -8,9 +8,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.steam;
-in {
+in
+{
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
@@ -46,7 +48,7 @@ in {
       };
     };
 
-    users.users.${userSettings.username}.extraGroups = ["gamemode"];
+    users.users.${userSettings.username}.extraGroups = [ "gamemode" ];
 
     programs.steam = {
       enable = true;
@@ -54,7 +56,7 @@ in {
         gamescope
         gamemode
         mangohud
-        (python3.withPackages (ps: with ps; [renpy]))
+        (python3.withPackages (ps: with ps; [ renpy ]))
         glib
         glibc
 
@@ -95,7 +97,8 @@ in {
     hardware.steam-hardware.enable = true;
     # hardware.xone.enable = true; # TODO: uncomment when builds
 
-    environment.systemPackages = with pkgs;
+    environment.systemPackages =
+      with pkgs;
       [
         (mkLauncherEntry "Steam Native" {
           description = "Start Steam Native";
@@ -121,7 +124,7 @@ in {
         glib
         glibc
 
-        lldb #for openmw
+        lldb # for openmw
         heroic
         lutris
       ]

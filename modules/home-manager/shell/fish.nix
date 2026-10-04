@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.shell.fish;
-in {
+in
+{
   options.modules.shell.fish.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -111,7 +113,7 @@ in {
 
       '';
 
-      loginShellInit = '''';
+      loginShellInit = "";
 
       interactiveShellInit = ''
         ## Run fastfetch if session is interactive
@@ -141,7 +143,7 @@ in {
         # Manually packaging and enable a plugin
       ];
 
-      shellAliases = {};
+      shellAliases = { };
     };
 
     home.file.".config/macchina/themes/Berylilum.toml".text = ''

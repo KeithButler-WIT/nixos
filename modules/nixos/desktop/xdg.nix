@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.xdg;
-in {
+in
+{
   options.modules.desktop.xdg.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -34,7 +36,7 @@ in {
       wlr.enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = ["gnome"];
+        common.default = [ "gnome" ];
         hyprland.default = [
           "hyprland"
           "gtk"

@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.shell.nu;
-in {
+in
+{
   options.modules.shell.nu.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.shellAliases = {
     # Replace ls with exa
     ls = "${pkgs.eza}/bin/eza -al --color=always --group-directories-first --icons"; # preferred listing

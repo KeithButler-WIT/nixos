@@ -6,7 +6,8 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.file-managers.yazi;
   plugins-repo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
@@ -14,7 +15,8 @@ with lib.my; let
     rev = "06e5fe1c7a2a4009c483b28b298700590e7b6784";
     sha256 = "sha256-jg8+GDsHOSIh8QPYxCvMde1c1D9M78El0PljSerkLQc=";
   };
-in {
+in
+{
   options.modules.desktop.file-managers.yazi.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -59,7 +61,7 @@ in {
         mgr.prepend_keymap = [
           {
             run = "shell 'dragon-drop -x -i -T \"$1\"' --confirm";
-            on = ["<C-t>"];
+            on = [ "<C-t>" ];
             desc = "Open shell here";
           }
         ];

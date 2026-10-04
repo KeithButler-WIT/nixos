@@ -4,7 +4,8 @@
   inputs,
   userSettings,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nix-colors.homeManagerModules.default
     # inputs.nixvim.homeManagerModules.nixvim
@@ -33,7 +34,7 @@
         "nix-command"
         "flakes"
       ];
-      trusted-users = [userSettings.username];
+      trusted-users = [ userSettings.username ];
       # TODO: Check all substituters and keys are valid
       # trusted-substituters = [
       #   "https://cache.nixos.org/"

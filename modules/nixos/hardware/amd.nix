@@ -5,17 +5,19 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.hardware.amd;
-in {
+in
+{
   options.modules.hardware.amd.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
-    boot.initrd.kernelModules = ["amdgpu"];
+    boot.initrd.kernelModules = [ "amdgpu" ];
 
     services.xserver = {
       enable = true;
-      videoDrivers = ["amdgpu"];
+      videoDrivers = [ "amdgpu" ];
     };
     hardware = {
       graphics = {
@@ -24,8 +26,8 @@ in {
       };
       amdgpu.overdrive.enable = true;
     };
-    environment.systemPackages = with pkgs; [lact];
-    systemd.packages = with pkgs; [lact];
-    systemd.services.lactd.wantedBy = ["multi-user.target"];
+    environment.systemPackages = with pkgs; [ lact ];
+    systemd.packages = with pkgs; [ lact ];
+    systemd.services.lactd.wantedBy = [ "multi-user.target" ];
   };
 }

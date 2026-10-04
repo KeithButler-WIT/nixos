@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.hardware.audio;
-in {
+in
+{
   options.modules.hardware.audio = {
     enable = mkBoolOpt false;
   };
@@ -46,6 +48,6 @@ in {
       };
     };
 
-    users.users.${userSettings.username}.extraGroups = ["audio"];
+    users.users.${userSettings.username}.extraGroups = [ "audio" ];
   };
 }

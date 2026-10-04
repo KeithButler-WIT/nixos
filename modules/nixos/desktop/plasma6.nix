@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.plasma6;
-in {
+in
+{
   options.modules.desktop.plasma6.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
@@ -21,7 +23,8 @@ in {
       };
       desktopManager.plasma6.enable = true;
     };
-    environment.plasma6.excludePackages = with pkgs.kdePackages;
+    environment.plasma6.excludePackages =
+      with pkgs.kdePackages;
       [
         elisa
         kate

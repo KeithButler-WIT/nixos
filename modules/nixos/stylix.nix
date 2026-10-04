@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.stylix;
-in {
+in
+{
   options.modules.stylix.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

@@ -4,9 +4,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.services.gpg;
-in {
+in
+{
   options.modules.services.gpg.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

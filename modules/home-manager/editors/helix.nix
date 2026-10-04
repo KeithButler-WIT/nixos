@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.editors.helix;
-in {
+in
+{
   options.modules.editors.helix.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -34,11 +36,11 @@ in {
         language-server = {
           cmake-language-server = with pkgs; {
             command = "${cmake-language-server}/bin/cmake-language-server";
-            args = [];
+            args = [ ];
           };
           yaml-language-server = with pkgs; {
             command = "${yaml-language-server}/bin/yaml-language-server";
-            args = [];
+            args = [ ];
           };
         };
 
@@ -47,31 +49,31 @@ in {
             name = "nix";
             auto-format = true;
             formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-            file-types = ["nix"];
+            file-types = [ "nix" ];
             scope = "source.nix";
           }
           {
             name = "rust";
             auto-format = true;
-            file-types = ["rs"];
+            file-types = [ "rs" ];
             scope = "source.rs";
           }
           {
             name = "python";
             auto-format = true;
-            file-types = ["py"];
+            file-types = [ "py" ];
             scope = "source.py";
           }
           {
             name = "bash";
             auto-format = true;
-            file-types = ["sh"];
+            file-types = [ "sh" ];
             scope = "source.sh";
           }
           {
             name = "c++";
             auto-format = true;
-            file-types = ["cpp"];
+            file-types = [ "cpp" ];
             scope = "source.cpp";
           }
           {

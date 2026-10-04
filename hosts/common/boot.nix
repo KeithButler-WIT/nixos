@@ -3,7 +3,8 @@
   pkgs,
   userSettings,
   ...
-}: {
+}:
+{
   boot.loader.grub = {
     enable = true;
     device = "nodev";
@@ -27,7 +28,7 @@
     "msi-ec"
     "coretemp"
   ];
-  boot.extraModulePackages = [config.boot.kernelPackages.msi-ec]; # config.boot.kernelPackages.v4l2loopback
+  boot.extraModulePackages = [ config.boot.kernelPackages.msi-ec ]; # config.boot.kernelPackages.v4l2loopback
   # for steam VR
   boot.extraModprobeConfig = ''
     options cfg80211 ieee80211_regdom=IE

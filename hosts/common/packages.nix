@@ -5,7 +5,8 @@
   systemSettings,
   userSettings,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     git
     nixd
@@ -52,7 +53,7 @@
     lm_sensors
     pandoc # TODO: move to markdown module # format markdown files
 
-    libnotify #TODO: make its own module
+    libnotify # TODO: make its own module
     pavucontrol
     kdePackages.kcalc
     kdePackages.dolphin
@@ -61,5 +62,5 @@
     wiremix
   ];
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }

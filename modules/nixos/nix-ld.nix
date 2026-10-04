@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.nix-ld;
-in {
+in
+{
   options.modules.nix-ld.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {

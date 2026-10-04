@@ -4,9 +4,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.term.ghostty;
-in {
+in
+{
   options.modules.desktop.term.ghostty.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

@@ -6,13 +6,15 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.browsers.firefox;
-in {
+in
+{
   options.modules.desktop.browsers.firefox.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {
-    stylix.targets.firefox.profileNames = ["${userSettings.username}"];
+    stylix.targets.firefox.profileNames = [ "${userSettings.username}" ];
     programs.firefox = {
       enable = true;
       configPath = "${config.xdg.configHome}/mozilla/firefox";
@@ -38,7 +40,7 @@ in {
             ExtensionRecommendations = false;
             SkipOnboarding = true;
           };
-          ExtensionSettings = {};
+          ExtensionSettings = { };
         };
       };
       profiles.${userSettings.username} = {
@@ -66,7 +68,7 @@ in {
                 }
               ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@n"];
+              definedAliases = [ "@n" ];
             };
             "Flathub" = {
               urls = [

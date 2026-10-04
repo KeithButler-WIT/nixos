@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.browsers.floorp;
-in {
+in
+{
   options.modules.desktop.browsers.floorp.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -16,12 +18,12 @@ in {
       bukubrow
     ];
 
-    stylix.targets.floorp.profileNames = ["main"];
+    stylix.targets.floorp.profileNames = [ "main" ];
     stylix.targets.floorp.colorTheme.enable = true;
 
     programs.floorp = {
       enable = true;
-      languagePacks = ["en-GB"];
+      languagePacks = [ "en-GB" ];
       # TODO: Continue editing
       profiles = {
         main = {
@@ -65,14 +67,14 @@ in {
                 ];
 
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = ["@np"];
+                definedAliases = [ "@np" ];
               };
 
               "NixOS Wiki" = {
-                urls = [{template = "https://wiki.nixos.org/index.php?search={searchTerms}";}];
+                urls = [ { template = "https://wiki.nixos.org/index.php?search={searchTerms}"; } ];
                 icon = "https://wiki.nixos.org/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
-                definedAliases = ["@nw"];
+                definedAliases = [ "@nw" ];
               };
 
               "bing".metaData.hidden = true;

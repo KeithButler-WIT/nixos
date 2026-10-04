@@ -16,30 +16,29 @@ let
           { pkgs, ... }:
           {
             environment = {
-              systemPackages =
-                [
-                  (pkgs.writeShellApplication {
-                    name = "os-install";
-                    runtimeInputs = [ pkgs.curl ];
-                    text = "sh <(curl -L ${repo_url}/main/install.sh)";
-                  })
-                  (pkgs.writeShellApplication {
-                    name = "os-recover";
-                    runtimeInputs = [ pkgs.curl ];
-                    text = "sh <(curl -L ${repo_url}/main/recover.sh)";
-                  })
-                  (pkgs.writeShellApplication {
-                    name = "os-reinstall";
-                    runtimeInputs = [ pkgs.curl ];
-                    text = "sh <(curl -L ${repo_url}/main/recover.sh)";
-                  })
-                ]
-                ++ (with pkgs; [
-                  btop
-                  git
-                  eza
-                  yazi
-                ]);
+              systemPackages = [
+                (pkgs.writeShellApplication {
+                  name = "os-install";
+                  runtimeInputs = [ pkgs.curl ];
+                  text = "sh <(curl -L ${repo_url}/main/install.sh)";
+                })
+                (pkgs.writeShellApplication {
+                  name = "os-recover";
+                  runtimeInputs = [ pkgs.curl ];
+                  text = "sh <(curl -L ${repo_url}/main/recover.sh)";
+                })
+                (pkgs.writeShellApplication {
+                  name = "os-reinstall";
+                  runtimeInputs = [ pkgs.curl ];
+                  text = "sh <(curl -L ${repo_url}/main/recover.sh)";
+                })
+              ]
+              ++ (with pkgs; [
+                btop
+                git
+                eza
+                yazi
+              ]);
               shellAliases = {
                 eza = "eza '--icons' '--group-directories-first' '--header' '--octal-permissions' '--hyperlink'";
                 ls = "eza";

@@ -6,7 +6,8 @@
   userSettings,
   ...
 }:
-with lib.my; {
+with lib.my;
+{
   modules = {
     # just.enable = true;
     nh.enable = true;

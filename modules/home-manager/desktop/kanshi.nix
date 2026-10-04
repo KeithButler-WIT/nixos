@@ -4,9 +4,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.kanshi;
-in {
+in
+{
   options.modules.desktop.kanshi.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

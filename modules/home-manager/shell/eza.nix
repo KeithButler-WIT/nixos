@@ -4,9 +4,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.shell.eza;
-in {
+in
+{
   options.modules.shell.eza.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

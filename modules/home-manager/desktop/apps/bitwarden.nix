@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.apps.bitwarden;
-in {
+in
+{
   options.modules.desktop.apps.bitwarden.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {

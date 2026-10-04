@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.apps.ue;
-in {
+in
+{
   options.modules.desktop.apps.ue.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

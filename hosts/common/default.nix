@@ -2,7 +2,8 @@
   pkgs,
   systemSettings,
   ...
-}: {
+}:
+{
   imports = [
     ./boot.nix
     ./cleanup.nix

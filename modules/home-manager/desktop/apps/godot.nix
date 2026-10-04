@@ -5,9 +5,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.apps.godot;
-in {
+in
+{
   options.modules.desktop.apps.godot.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

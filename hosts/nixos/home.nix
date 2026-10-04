@@ -3,7 +3,8 @@
   pkgs,
   ...
 }:
-with lib.my; {
+with lib.my;
+{
   home.packages = with pkgs; [
     v4l-utils
 

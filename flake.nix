@@ -117,78 +117,82 @@
     lsfg-vk-flake.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    systems,
-    nixpkgs,
-    nixpkgs-stable,
-    chaotic,
-    nix-cachyos-kernel,
-    self,
-    hosts,
-    hyprland,
-    nvf,
-    home-manager,
-    openmw-nix,
-    nix-index-database,
-    ...
-  } @ inputs: let
-    forAllSystems = function:
-      nixpkgs.lib.genAttrs ["x86_64-linux"] (system: function nixpkgs.legacyPackages.${system});
-    forEachSystem = nixpkgs.lib.genAttrs (import systems);
-    commonInherits = {
-      inherit (nixpkgs) lib;
-      inherit
-        self
-        inputs
-        nixpkgs
-        nixpkgs-stable
-        chaotic
-        nix-cachyos-kernel
-        ;
-      inherit (import ./options.nix) systemSettings userSettings;
-      user = "keith";
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          allowUnfreePredicate = _: true;
-          permittedInsecurePackages = [
-            "dotnet-runtime-7.0.20" # vintagestory
-            # all for sonarr
-            "aspnetcore-runtime-6.0.36"
-            "aspnetcore-runtime-wrapped-6.0.36"
-            "dotnet-sdk-6.0.428"
-            "dotnet-sdk-wrapped-6.0.428"
-            "dotnet-runtime-6.0.36"
-            "dotnet-runtime-wrapped-6.0.36"
-            "dotnet-sdk-6.0.428"
-            "mbedtls-2.28.10" # TODO: remove after update
-            "electron-39.8.10" # TODO: remove after update
-          ];
+  outputs =
+    {
+      systems,
+      nixpkgs,
+      nixpkgs-stable,
+      chaotic,
+      nix-cachyos-kernel,
+      self,
+      hosts,
+      hyprland,
+      nvf,
+      home-manager,
+      openmw-nix,
+      nix-index-database,
+      ...
+    }@inputs:
+    let
+      forAllSystems =
+        function:
+        nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: function nixpkgs.legacyPackages.${system});
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+      commonInherits = {
+        inherit (nixpkgs) lib;
+        inherit
+          self
+          inputs
+          nixpkgs
+          nixpkgs-stable
+          chaotic
+          nix-cachyos-kernel
+          ;
+        inherit (import ./options.nix) systemSettings userSettings;
+        user = "keith";
+        system = "x86_64-linux";
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowUnfreePredicate = _: true;
+            permittedInsecurePackages = [
+              "dotnet-runtime-7.0.20" # vintagestory
+              # all for sonarr
+              "aspnetcore-runtime-6.0.36"
+              "aspnetcore-runtime-wrapped-6.0.36"
+              "dotnet-sdk-6.0.428"
+              "dotnet-sdk-wrapped-6.0.428"
+              "dotnet-runtime-6.0.36"
+              "dotnet-runtime-wrapped-6.0.36"
+              "dotnet-sdk-6.0.428"
+              "mbedtls-2.28.10" # TODO: remove after update
+              "electron-39.8.10" # TODO: remove after update
+            ];
+          };
+        };
+        pkgs-stable = import inputs.nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        specialArgs = {
+          inherit self inputs;
         };
       };
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      specialArgs = {
-        inherit self inputs;
-      };
-    };
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
 
-    inherit (import ./options.nix) systemSettings userSettings;
-  in {
-    nixosConfigurations =
-      (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
+      inherit (import ./options.nix) systemSettings userSettings;
+    in
+    {
+      nixosConfigurations =
+        (import ./hosts/nixos.nix commonInherits) // (import ./hosts/iso commonInherits);
 
-    inherit self;
+      inherit self;
 
-    # templates for devenv
-    templates = import ./templates;
+      # templates for devenv
+      templates = import ./templates;
 
       # Run the hooks with `nix fmt`.
       formatter = forEachSystem (
@@ -230,5 +234,5 @@
           };
       });
 
-  };
+    };
 }

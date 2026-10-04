@@ -3,7 +3,8 @@
   home-manager,
   userSettings,
   ...
-}: {
+}:
+{
   ### A tidy $HOME is a tidy mind
   xdg.enable = true;
 

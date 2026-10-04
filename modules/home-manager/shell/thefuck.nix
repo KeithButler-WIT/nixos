@@ -4,9 +4,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.shell.thefuck;
-in {
+in
+{
   options.modules.shell.thefuck.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

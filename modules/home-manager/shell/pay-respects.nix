@@ -4,9 +4,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.shell.pay-respects;
-in {
+in
+{
   options.modules.shell.pay-respects.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {

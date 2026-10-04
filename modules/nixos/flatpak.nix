@@ -6,9 +6,11 @@
 }:
 with lib;
 with lib.my;
-with builtins; let
+with builtins;
+let
   cfg = config.modules.flatpak;
-in {
+in
+{
   options.modules.flatpak.enable = mkBoolOpt false;
 
   config = lib.mkIf cfg.enable {

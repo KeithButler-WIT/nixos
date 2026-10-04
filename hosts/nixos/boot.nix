@@ -1,4 +1,4 @@
-{userSettings, ...}: {
+{ userSettings, ... }: {
   # boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; }; # Not needed while steam.platformOptimizations is enabled
 
   # boot.zfs.forceImportRoot = false;
@@ -11,5 +11,5 @@
 
   # boot.zfs.enabled = true;
   # boot.zfs.extraPools = ["media" "backup"];
-  boot.zfs.extraPools = ["media"];
+  boot.zfs.extraPools = [ "media" ];
 }

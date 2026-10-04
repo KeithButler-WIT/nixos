@@ -5,12 +5,13 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.desktop.vr;
-in {
+in
+{
   options.modules.desktop.vr.enable = mkBoolOpt false;
 
-  config =
-    lib.mkIf cfg.enable {
-    };
+  config = lib.mkIf cfg.enable {
+  };
 }

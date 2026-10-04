@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.shell.git;
-in {
+in
+{
   options.modules.shell.git.enable = mkBoolOpt false;
 
   config = mkIf cfg.enable {
@@ -21,8 +23,11 @@ in {
 
     programs.gh = {
       enable = true;
-      extensions = with pkgs; [gh-eco gh-dash];
-      gitCredentialHelper.hosts = ["https://github.com"];
+      extensions = with pkgs; [
+        gh-eco
+        gh-dash
+      ];
+      gitCredentialHelper.hosts = [ "https://github.com" ];
       settings = {
         version = 1; # https://github.com/cli/cli/issues/8462
         git_protocol = "ssh";

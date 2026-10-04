@@ -6,9 +6,11 @@
   ...
 }:
 with lib;
-with lib.my; let
+with lib.my;
+let
   cfg = config.modules.services.streaming;
-in {
+in
+{
   options.modules.services.streaming = {
     enable = mkBoolOpt false;
     plex.enable = mkBoolOpt false;
@@ -36,7 +38,7 @@ in {
       services.sonarr = {
         enable = true;
         # skip checks for faster builds
-        package = pkgs.sonarr.overrideAttrs {doCheck = false;};
+        package = pkgs.sonarr.overrideAttrs { doCheck = false; };
         openFirewall = true;
         user = userSettings.username;
         #dataDir = "/home/${userSettings.username}/.local/share/sonarr";
@@ -63,33 +65,33 @@ in {
       # services.tdarr = {
       #   enable = true;
 
-# nodes = {
-#       internal = {
-#         enable = true;
-#         package = pkgs.tdarr-node;
-#         name = "InternalNode";
-#         serverURL = "http://127.0.0.1:8266";
-#         workers = {
-#           transcodeCPU = 0;
-#           transcodeGPU = 2;
-#           healthcheckCPU = 1;
-#           healthcheckGPU = 1;
-#         };
-#       };
-#
-#       external = {
-#         enable = true;
-#         package = pkgs.tdarr-node;
-#         name = "ExternalNode";
-#         serverURL = "http://127.0.0.1:8266";
-#         workers = {
-#           transcodeCPU = 0;
-#           transcodeGPU = 2;
-#           healthcheckCPU = 1;
-#           healthcheckGPU = 1;
-#         };
-#       };
-#       };
+      # nodes = {
+      #       internal = {
+      #         enable = true;
+      #         package = pkgs.tdarr-node;
+      #         name = "InternalNode";
+      #         serverURL = "http://127.0.0.1:8266";
+      #         workers = {
+      #           transcodeCPU = 0;
+      #           transcodeGPU = 2;
+      #           healthcheckCPU = 1;
+      #           healthcheckGPU = 1;
+      #         };
+      #       };
+      #
+      #       external = {
+      #         enable = true;
+      #         package = pkgs.tdarr-node;
+      #         name = "ExternalNode";
+      #         serverURL = "http://127.0.0.1:8266";
+      #         workers = {
+      #           transcodeCPU = 0;
+      #           transcodeGPU = 2;
+      #           healthcheckCPU = 1;
+      #           healthcheckGPU = 1;
+      #         };
+      #       };
+      #       };
       # };
       services.seerr = {
         enable = true;
