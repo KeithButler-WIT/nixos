@@ -78,7 +78,7 @@ in {
             sql.enable = true;
             java.enable = true;
             kotlin.enable = true;
-            ts.enable = false;
+            tsx.enable = false;
             go.enable = false;
             lua.enable = true;
             zig.enable = false;
@@ -109,7 +109,6 @@ in {
             just.enable = false;
             qml.enable = false;
 
-            tailwind.enable = false;
             svelte.enable = false;
 
             # Nim LSP is broken on Darwin and therefore
@@ -210,7 +209,6 @@ in {
 
           minimap = {
             minimap-vim.enable = false;
-            codewindow.enable = true; # lighter, faster, and uses lua for configuration
           };
 
           dashboard = {
