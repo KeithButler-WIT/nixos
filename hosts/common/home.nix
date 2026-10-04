@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   userSettings,
@@ -12,6 +13,18 @@
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   #targets.genericLinux.enable = true; # Enable this on non nixos
+
+  # for steamVR
+  xdg.configFile."openxr/1/active_runtime.json".text = ''
+    {
+       "file_format_version": "1.0.0",
+        "runtime": {
+        "VALVE_runtime_is_steamvr": true,
+        "library_path": "${config.home.homeDirectory}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrclient.so",
+        "name": "SteamVR"
+        }
+    }
+  '';
 
   nix = {
     # package = pkgs.nix;
