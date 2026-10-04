@@ -28,8 +28,8 @@ in {
 
     programs = {
       gamescope = {
-        enable = false;
-        capSysNice = false;
+        enable = true;
+        capSysNice = true;
       };
       gamemode = {
         enable = true;
