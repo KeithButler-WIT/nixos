@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  kernel ? pkgs.linuxPackages_latest.kernel,
+  kernel ? pkgs.cachyosKernels.linuxPackages-cachyos-latest.kernel,
 }:
 pkgs.stdenv.mkDerivation {
   pname = "amdgpu-kernel-module";
